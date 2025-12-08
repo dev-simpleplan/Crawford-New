@@ -82,6 +82,7 @@
     },
     "customCore": {
       "type": "custom-core",
+      "disabled": true,
       "settings": {
         "heading": "custom to our core",
         "body": "From selecting the finest gemstones to crafting intricate designs, our meticulous process ensures every desire is met, delivering an exquisite masterpiece of the utmost quality.",
@@ -99,10 +100,12 @@
     },
     "extrapad3": {
       "type": "extrapad",
+      "disabled": true,
       "settings": {}
     },
     "three-boxes": {
       "type": "boxes-info",
+      "disabled": true,
       "settings": {
         "heading": "Heritage Designs,<br> Eternal Elegance",
         "body": "With profound respect for past artistry, we seamlessly blend tradition into our modern creations. True luxury lies not only in the finest materials and design but also in the stories that unfold as our pieces become cherished heirlooms.",
@@ -117,6 +120,7 @@
     },
     "extrapad4": {
       "type": "extrapad",
+      "disabled": true,
       "settings": {}
     },
     "foundersStory": {
