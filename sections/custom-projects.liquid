@@ -1,11 +1,15 @@
 <section class="custom-projects">
-    <div class="container">
-        <div class="custom-projects-in" style="background-image: url('{{ section.settings.bg_image | img_url: 'master' }}');">
-            <h2>{{ section.settings.title }}</h2>
+        <div class="custom-projects-in">
+            <div class="bg-image">
+                <img src="{{ section.settings.bg_image | img_url: 'master' }}" alt="Image">
+            </div>
+            <div class="cp-content">
+                  <h2>{{ section.settings.title }}</h2>
             <p>{{ section.settings.para }}</p>
-            <a href="{{ section.settings.build_cta_url }}">{{ section.settings.build_cta_text }}</a>
-        </div>
-    </div>
+            <a class="craw-cta cta-white" href="{{ section.settings.build_cta_url }}">{{ section.settings.build_cta_text }}</a>
+        
+            </div>
+          </div>
 </section>
 
 {% schema %}
