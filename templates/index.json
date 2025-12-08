@@ -53,11 +53,7 @@
           }
         }
       },
-      "block_order": [
-        "card1",
-        "card2",
-        "card3"
-      ],
+      "block_order": ["card1", "card2", "card3"],
       "settings": {
         "heading": "Our Products"
       }
@@ -102,9 +98,7 @@
           }
         }
       },
-      "block_order": [
-        "instafeed_app_block_q8Wkc6"
-      ],
+      "block_order": ["instafeed_app_block_q8Wkc6"],
       "settings": {
         "token": "IGQWRNWVB0R0hjOHBXLXo2VkJScjY0SHFNWWZAOOHhxd3FJek43NGQ4VEJVbG9PR2pYQlFNWEN0ODktdUhmVVJ3c0RudUNaRmJXRTVITjlDeDBrOWQyNzJkdnpzRVp0ZA1hLWVY1a3hZAUHQ4ZA3l0ODdQNC1Sa0NSdFUZD"
       }
@@ -230,6 +224,40 @@
     "extrapad8": {
       "type": "extrapad",
       "settings": {}
+    },
+    "test-slider": {
+      "type": "testimonial-slider",
+      "settings": {
+        "title": "What Our Clients Say",
+        "text": "Read All",
+        "cta_link": "/pages/testimonials"
+      },
+      "blocks": {
+        "testi-1": {
+          "type": "testimonial",
+          "settings": {
+            "author_image": "",
+            "author_name": "",
+            "author_position": "",
+            "author_testimonial": ""
+          }
+        },
+        "testi-2": {
+          "type": "testimonial",
+          "settings": {
+            "author_image": "shopify://shop_images/author2.jpg",
+            "author_name": "Michael Smith",
+            "author_position": "Creative Director",
+            "author_testimonial": "An unforgettable luxury experience! Highly recommended."
+          }
+        }
+      },
+      "block_order": ["testi-1", "testi-2"]
+    },
+
+    "extrapad9": {
+      "type": "extrapad",
+      "settings": {}
     }
   },
   "order": [
@@ -249,6 +277,8 @@
     "extrapad5",
     "newsletter",
     "landing-faq",
-    "extrapad8"
+    "extrapad8",
+    "test-slider",
+    "extrapad9"
   ]
 }

@@ -1,5 +1,5 @@
 <section class="landing-faq">
-    <div class="container">
+    <div class="container-fluid">
         <div class="landing-faq-in">
             <div class="left">
                 <h2>{{ section.settings.title }}</h2>
@@ -17,7 +17,7 @@
                                 </span>
                                 {{ block.settings.accord_title }}
                                 <span class="accordion-icon">
-                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                    <svg width="14" height="14" viewBox="0 0 15 15" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M7.5 0.5V14.5" stroke="#161716" stroke-linecap="round"
                                             stroke-linejoin="round" />
@@ -42,30 +42,30 @@
 
 
 <script>
-
     var acc = document.getElementsByClassName('accordion-title');
-    var i;
-    for (i = 0; i < acc.length; i++) {
+    if (acc.length > 0) {
+        acc[0].classList.add('active');
+        acc[0].nextElementSibling.style.maxHeight = acc[0].nextElementSibling.scrollHeight + "px";
+    }
+
+    for (var i = 0; i < acc.length; i++) {
         acc[i].addEventListener('click', function () {
-            // Close all other accordions
-            var allAccordions = document.getElementsByClassName('accordion-title');
-            for (var j = 0; j < allAccordions.length; j++) {
-                if (allAccordions[j] !== this) {
-                    allAccordions[j].classList.remove('active');
-                    allAccordions[j].nextElementSibling.style.maxHeight = null;
+            for (var j = 0; j < acc.length; j++) {
+                if (acc[j] !== this) {
+                    acc[j].classList.remove('active');
+                    acc[j].nextElementSibling.style.maxHeight = null;
                 }
             }
-            // Toggle current accordion
             this.classList.toggle('active');
             var panel = this.nextElementSibling;
+
             if (panel.style.maxHeight) {
                 panel.style.maxHeight = null;
             } else {
-                panel.style.maxHeight = panel.scrollHeight + 'px';
+                panel.style.maxHeight = panel.scrollHeight + "px";
             }
         });
     }
-
 </script>
 
 {% schema %}

@@ -1,0 +1,153 @@
+<section class="testi-slider">
+    <div class="container-fluid">
+        <div class="testi-slider-in">
+
+            <div class="heading">
+                <h2>{{ section.settings.title }}</h2>
+                <a href="{{ section.settings.cta_link }}">{{ section.settings.text }}</a>
+            </div>
+
+            <div class="ts-slider-wrap">
+                <div class="owl-carousel owl-theme">
+
+                    {% for block in section.blocks %}
+                    <div class="ts-slider-item" {{ block.shopify_attributes }}>
+                        <div class="left">
+                            <div class="ts-slider-img">
+                                {% if block.settings.author_image %}
+                                <img src="{{ block.settings.author_image | img_url: 'master' }}" alt="image">
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="right">
+                            <div class="top">
+                                <div>
+                                    <svg width="32" height="24" viewBox="0 0 32 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M32 24V12H24C24 7.56 27.56 4 32 4V0C25.4 0 20 5.4 20 12V24H32ZM12 24V12H4C4 7.56 7.56 4 12 4V0C5.4 0 0 5.4 0 12V24H12Z"
+                                            fill="#2C5234" />
+                                    </svg>
+                                </div>
+
+                                <p>{{ block.settings.author_testimonial }}</p>
+                            </div>
+
+                            <div class="ts-author-wrap">
+                                <p>{{ block.settings.author_name }}</p>
+                                <p>{{ block.settings.author_position }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+                <div class="testi-custom-btn-wrap">
+                    <button class="testi-prev">
+                        <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.06067 0.530334L1.06067 8.53033L9.06067 16.5303" stroke="#555555"
+                                stroke-width="1.5" />
+                        </svg>
+                    </button>
+
+                    <button class="testi-next">
+                        <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.530273 16.5303L8.53027 8.53033L0.530273 0.530334" stroke="#555555"
+                                stroke-width="1.5" />
+                        </svg>
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    var testiSlider = $('.ts-slider-wrap .owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: false,
+        animateOut: 'fadeOut',
+        dots: false,
+        responsive: {
+            0: { items: 1 }
+        }
+    });
+
+    // Custom Next Button
+
+    $('.testi-next').click(function () {
+        testiSlider.trigger('next.owl.carousel');
+    });
+
+    $('.testi-prev').click(function () {
+        testiSlider.trigger('prev.owl.carousel');
+    });
+</script>
+
+{% schema %}
+
+
+{
+"name": "Testimonial Slider",
+"tag": "section",
+"class": "testi-slider-section",
+"settings": [
+{
+"type": "text",
+"id": "title",
+"label": "Heading"
+},
+{
+"type": "text",
+"id": "text",
+"label": "CTA Text"
+},
+{
+"type": "url",
+"id": "cta_link",
+"label": "CTA Link"
+}
+],
+"blocks": [
+{
+"type": "testimonial",
+"name": "Testimonial",
+"settings": [
+{
+"type": "image_picker",
+"id": "author_image",
+"label": "Author Image"
+},
+{
+"type": "text",
+"id": "author_name",
+"label": "Author Name"
+},
+{
+"type": "text",
+"id": "author_position",
+"label": "Author Position"
+},
+{
+"type": "textarea",
+"id": "author_testimonial",
+"label": "Testimonial Text"
+}
+]
+}
+],
+"max_blocks": 10,
+"presets": [
+{
+"name": "Testimonial Slider",
+"category": "Testimonials"
+}
+]
+}
+
+{% endschema %}

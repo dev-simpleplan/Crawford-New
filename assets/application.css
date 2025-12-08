@@ -7589,7 +7589,6 @@ header.active .header-link.dropdown-normal svg {
 
 .landing-faq .accordion-title {
     background-color: #fff;
-    color: ##000000;
     cursor: pointer;
     width: 100%;
     border: none;
@@ -7598,6 +7597,8 @@ header.active .header-link.dropdown-normal svg {
     font-size: 15px;
     transition: 0.4s;
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .landing-faq .accordion-item {
@@ -7620,6 +7621,7 @@ header.active .header-link.dropdown-normal svg {
 
 .landing-faq .accordion-content p {
     padding-top: 10px;
+    font-family: var(--general);
 }
 
 .landing-faq .accordion-icon {
@@ -7638,15 +7640,18 @@ header.active .header-link.dropdown-normal svg {
 
 .landing-faq-in {
     display: flex;
-    gap: 40px;
+    gap: 20px;
 }
 
 .landing-faq-in .left {
-    width: 40%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .landing-faq-in .right {
-    width: 60%;
+    width: 50%;
 }
 
 .landing-faq .accord-title-img img {
@@ -7667,4 +7672,128 @@ header.active .header-link.dropdown-normal svg {
     line-height: 120%;
     letter-spacing: 1px;
     font-weight: 300;
+    font-family: var(--aboreto);
+}
+
+.landing-faq-in .left h2 {
+    font-size: clamp(24px, 7vw, 40px);
+    line-height: 117%;
+    letter-spacing: 1px;
+}
+
+.landing-faq-in .left p {
+    max-width: 44ch;
+}
+
+.testi-slider-in {
+    padding: 0px 140px;
+}
+
+.testi-slider .ts-slider-item {
+    display: flex;
+    gap: 36px;
+}
+
+.testi-slider .ts-slider-item .left {
+    width: 35%;
+}
+
+.testi-slider .ts-slider-item .right {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 50px;
+}
+
+.testi-slider .ts-slider-item .right .top {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.testi-slider .ts-slider-item .top p {
+    font-size: 22px;
+    line-height: 150%;
+    letter-spacing: 0.02em;
+    color: #555555;
+    font-family: var(--general);
+}
+
+.testi-slider .ts-slider-item .ts-slider-img {
+    aspect-ratio: 1/1;
+}
+
+.testi-slider .ts-slider-item .ts-slider-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.testi-slider .testi-custom-btn-wrap {
+    display: flex;
+    gap: 24px;
+    position: absolute;
+    left: calc(35% + 34px);
+    bottom: 0px;
+    z-index: 2;
+}
+
+.ts-slider-wrap {
+    position: relative;
+}
+
+@media screen and (max-width: 1400px) {
+    .testi-slider-in {
+        padding: 0px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .testi-slider .ts-slider-item .top p {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .landing-faq-in {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .landing-faq-in .left {
+        width: 100%;
+        text-align: center;
+    }
+    .landing-faq-in .right {
+        width: 100%;
+    }
+    .landing-faq-in .left p {
+        max-width: 80%;
+    }
+    .testi-slider-in .ts-slider-item {
+        flex-direction: column;
+    }
+    .testi-slider-in .ts-slider-item .left,
+    .testi-slider-in .ts-slider-item .right {
+        width: 100%;
+    }
+    .testi-slider .testi-custom-btn-wrap {
+        position: relative;
+        left: unset;
+        bottom: unset;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .landing-faq-in .left p {
+        max-width: 100%;
+    }
+    .landing-faq-in .accordion-title {
+        font-size: 14px;
+    }
+    .landing-faq .accordion-content p {
+        font-size: 14px;
+    }
 }
