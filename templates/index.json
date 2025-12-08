@@ -53,7 +53,11 @@
           }
         }
       },
-      "block_order": ["card1", "card2", "card3"],
+      "block_order": [
+        "card1",
+        "card2",
+        "card3"
+      ],
       "settings": {
         "heading": "Our Products"
       }
@@ -98,10 +102,16 @@
           }
         }
       },
-      "block_order": ["instafeed_app_block_q8Wkc6"],
+      "block_order": [
+        "instafeed_app_block_q8Wkc6"
+      ],
       "settings": {
         "token": "IGQWRNWVB0R0hjOHBXLXo2VkJScjY0SHFNWWZAOOHhxd3FJek43NGQ4VEJVbG9PR2pYQlFNWEN0ODktdUhmVVJ3c0RudUNaRmJXRTVITjlDeDBrOWQyNzJkdnpzRVp0ZA1hLWVY1a3hZAUHQ4ZA3l0ODdQNC1Sa0NSdFUZD"
       }
+    },
+    "extrapad6": {
+      "type": "extrapad",
+      "settings": {}
     },
     "customCore": {
       "type": "custom-core",
@@ -170,20 +180,13 @@
         "image": "shopify://shop_images/E5A8AF3E-6A99-4BF0-A374-65C0BC103D17-14349-000009C6241CE3FB_1_2.png"
       }
     },
-    "extrapad6": {
-      "type": "extrapad",
-      "settings": {}
-    },
     "landing-faq": {
       "type": "landing-faq",
-      "settings": {
-        "title": "The Crawford Stone Company Difference",
-        "para": "From selecting the finest gemstones to crafting intricate designs, we don't just create jewellery—we create future heirlooms."
-      },
       "blocks": {
         "faq1": {
           "type": "landing-faq-item",
           "settings": {
+            "accord_title_img": "shopify://shop_images/Black_1.svg",
             "accord_title": "Handcrafted & Customisable",
             "accord_para": "Every piece is made to order, allowing us to bring your unique vision to life. Whether you're selecting from our collections or working with our bespoke team, we guide you through the process to create a one-of-a-kind piece."
           }
@@ -191,12 +194,38 @@
         "faq2": {
           "type": "landing-faq-item",
           "settings": {
+            "accord_title_img": "shopify://shop_images/Black_2.svg",
             "accord_title": "Ethical & Certified",
             "accord_para": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour."
           }
+        },
+        "landing_faq_item_HVwRLn": {
+          "type": "landing-faq-item",
+          "settings": {
+            "accord_title_img": "shopify://shop_images/Black_3.svg",
+            "accord_title": "Complimentary & Secure Shipping",
+            "accord_para": ""
+          }
+        },
+        "landing_faq_item_kqjDQp": {
+          "type": "landing-faq-item",
+          "settings": {
+            "accord_title_img": "shopify://shop_images/Black_4.svg",
+            "accord_title": "Warranty & Care",
+            "accord_para": ""
+          }
         }
       },
-      "block_order": ["faq1", "faq2"]
+      "block_order": [
+        "faq1",
+        "faq2",
+        "landing_faq_item_HVwRLn",
+        "landing_faq_item_kqjDQp"
+      ],
+      "settings": {
+        "title": "The Crawford Stone Company Difference",
+        "para": "From selecting the finest gemstones to crafting intricate designs, we don't just create jewellery—we create future heirlooms."
+      }
     },
     "extrapad8": {
       "type": "extrapad",
