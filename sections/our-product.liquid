@@ -1,0 +1,78 @@
+<section class="our-product">
+    <div class="container-left">
+        <div class="our-product-in">
+            <div class="heading">
+                <h2>{{ section.settings.title }}</h2>
+            </div>
+            <div class="our-product-slider-wrap">
+                <div class="owl-carousel owl-theme">
+                    <div class="product-item">
+                        <a href="{{ block.settings.collectionUrl }}" class="featured-collection-card">
+                            <div class="featured-collection-card-img">
+                                <img src="{{ block.settings.collectionImg |  img_url: 'master' }}" alt="">
+                            </div>
+                            <div class="featured-collection-card-content">
+                                <div class="featured-collection-card-sub">
+                                    <span>{{ block.settings.subCollection }}</span>
+                                </div>
+                                <div class="featured-collection-card-head">
+                                    <h3 class="head-black">{{ block.settings.headingCollection }}</h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+ <div class="testi-custom-btn-wrap">
+                    <button class="testi-prev">
+                        <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.06067 0.530334L1.06067 8.53033L9.06067 16.5303" stroke="#555555"
+                                stroke-width="1.5" />
+                        </svg>
+                    </button>
+
+                    <button class="testi-next">
+                        <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.530273 16.5303L8.53027 8.53033L0.530273 0.530334" stroke="#555555"
+                                stroke-width="1.5" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    var testiSlider = $('.our-product .owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: false,
+        dots: false,
+        responsive: {
+            0: {
+                items: 1
+            },
+            767: {
+                items: 1.5
+            },
+            991: {
+                items: 2.2
+            },
+            1200: {
+                items: 3.2
+            },
+            1300{
+                items: 3.5
+            }
+        }
+    });
+
+    // Custom Next Button
+
+    $('.testi-next').click(function () {
+        testiSlider.trigger('next.owl.carousel');
+    });
+
+    $('.testi-prev').click(function () {
+        testiSlider.trigger('prev.owl.carousel');
+    });
+</script>

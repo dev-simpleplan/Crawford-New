@@ -257,9 +257,9 @@
         "testi-2"
       ],
       "settings": {
-        "title": "What Our Clients Say",
-        "text": "Read All",
-        "cta_link": "/pages/testimonials"
+        "title": "Loved by Our Customers",
+        "text": "read all reviews",
+        "cta_link": "#!"
       }
     },
     "extrapad9": {

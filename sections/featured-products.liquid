@@ -1,14 +1,12 @@
-<section
-  id="first"
-  class="featured-collection"
-  data-scroll-section>
-  <div class="custom-container">
+<section id="first" class="featured-collection" data-scroll-section>
+  <div class="container-fluid">
     <div class="featured-collection-head">
       <h2 class="head-black">{{ section.settings.heading }}</h2>
     </div>
     <div class="featured-collection-cards">
       <div class="featured-collection-cards-wrap">
-        {% for block in section.blocks %}
+        <div class="owl-carousel owl-theme">
+          {% for block in section.blocks %}
           <a href="{{ block.settings.collectionUrl }}" class="featured-collection-card">
             <div class="featured-collection-card-img">
               <img src="{{ block.settings.collectionImg |  img_url: 'master' }}" alt="">
@@ -22,46 +20,88 @@
               </div>
             </div>
           </a>
-        {% endfor %}
+          {% endfor %}
+        </div>
+        <div class="fc-custom-btn-wrap">
+          <button class="fc-custom-prev">
+            <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.06067 0.530334L1.06067 8.53033L9.06067 16.5303" stroke="#555555" stroke-width="1.5" />
+            </svg>
+          </button>
+
+          <button class="fc-custom-next">
+            <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.530273 16.5303L8.53027 8.53033L0.530273 0.530334" stroke="#555555" stroke-width="1.5" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </div>
 </section>
+<script>
+  $(document).ready(function() {
+  var testiSlider = $('.featured-collection-cards-wrap .owl-carousel');
+
+  testiSlider.owlCarousel({
+    loop: true,
+    margin: 10,
+    nav: false,
+    dots: false,
+    responsive: {
+      0: { items: 1 },
+      767: { items: 1.5 },
+      991: { items: 2.2 },
+      1200: { items: 3.2 },
+      1300: { items: 3.5 }
+    }
+  });
+
+  $('.fc-custom-next').click(function () {
+    testiSlider.trigger('next.owl.carousel');
+  });
+
+  $('.fc-custom-prev').click(function () {
+    testiSlider.trigger('prev.owl.carousel');
+  });
+});
+
+</script>
 
 {% schema %}
-  {
-    "name": "Featured Colelctions",
-    "settings": [
-      {
-        "type": "text",
-        "id": "heading",
-        "label": "Section Heading"
-      }
-    ],
-    "blocks": [
-      {
-        "type": "Card",
-        "name": "Featured Collection",
-        "settings": [
-          {
-            "type": "image_picker",
-            "id": "collectionImg",
-            "label": "Collection 1 Image"
-          }, {
-            "type": "url",
-            "id": "collectionUrl",
-            "label": "Collection 1 URL"
-          }, {
-            "type": "text",
-            "id": "subCollection",
-            "label": "Collection 1 Sub-Heading"
-          }, {
-            "type": "text",
-            "id": "headingCollection",
-            "label": "Collection 1 Heading"
-          }
-        ]
-      }
-    ]
-  }
+{
+"name": "Featured Colelctions",
+"settings": [
+{
+"type": "text",
+"id": "heading",
+"label": "Section Heading"
+}
+],
+"blocks": [
+{
+"type": "Card",
+"name": "Featured Collection",
+"settings": [
+{
+"type": "image_picker",
+"id": "collectionImg",
+"label": "Collection 1 Image"
+}, {
+"type": "url",
+"id": "collectionUrl",
+"label": "Collection 1 URL"
+}, {
+"type": "text",
+"id": "subCollection",
+"label": "Collection 1 Sub-Heading"
+}, {
+"type": "text",
+"id": "headingCollection",
+"label": "Collection 1 Heading"
+}
+]
+}
+]
+}
 {% endschema %}
