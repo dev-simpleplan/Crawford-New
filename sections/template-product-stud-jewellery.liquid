@@ -1,0 +1,1669 @@
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+>
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+  integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+  integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+  integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
+
+<style>
+  .prod-desp-in .border-bottom{
+    border-bottom: none !important;
+  }
+  .width-options-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  .width-option {
+    cursor: pointer;
+    text-align: center;
+    border-radius: 8px;
+    transition: 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    opacity: 0.6;
+  }
+  .width-option.active {
+    opacity: 1;
+  }
+  .width-option span {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 129%;
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: capitalize;
+    position: relative;
+  }
+  .width-option span::before {
+    content: '';
+    width: 0;
+    height: 1px;
+    background: #000;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: all 0.3s ease;
+  }
+  .width-option.active span::before {
+    width: 100%;
+  }
+  .width-option span::before:hover {
+    width: 100%;
+  }
+  .width-option img {
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    object-fit: contain;
+  }
+
+  .dimension-select {
+    gap: 25px;
+    flex-direction: column;
+  }
+  .dimension-select-wrap {
+    gap: 60px;
+    margin-left: 0px;
+    flex-direction: column;
+    width: 100%;
+  }
+  .dimension-select.size-select {
+    flex-direction: row;
+    position: relative;
+    align-items: center;
+  }
+  .custom-dropdown {
+    position: relative;
+    background: #f4f4e7;
+    border: none;
+    padding: 5px 8px;
+    max-width: 90px;
+    width: 100%;
+    cursor: pointer;
+    border-bottom: 1px solid #dadac5;
+  }
+  .custom-dropdown-selected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 150%;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    /* padding: 5px 0; */
+  }
+  .custom-dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #f4f4e7;
+    z-index: 10;
+    display: block;
+    max-height: 200px;
+    overflow-y: auto;
+    border-top: 1px solid #ecece5;
+    transition: all 0.3s ease;
+    clip-path: inset(0 0 100% 0);
+  }
+  .custom-dropdown-options.active {
+    clip-path: inset(0 0 0 0);
+  }
+  .custom-dropdown-option {
+    padding: 5px 8px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 150%;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #dadac5;
+  }
+  .custom-dropdown-option:hover {
+    background: #e7e7d3;
+  }
+  .custom-dropdown-arrow {
+    transition: transform 0.3s ease;
+  }
+  .custom-dropdown.active .custom-dropdown-arrow {
+    transform: rotate(180deg);
+  }
+  select.select-stone {
+    background: #f4f4e7;
+    border: none;
+    padding: 3px 8px;
+    max-width: 288px;
+    width: 100%;
+    font-weight: 500;
+    font-size: 12px;
+    leading-trim: Cap height;
+    line-height: 150%;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  
+  li.Dimension.variant-cats label {
+    color: #161716;
+  }
+  li.Dimension.variant-cats label span {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 150%;
+    letter-spacing: 3px;
+    text-align: right;
+    text-transform: uppercase;
+  }
+  .stone-options-ul {
+    display: none !important;
+  }
+  .selected-stone {
+    display: none !important;
+  }
+  .Diamond .dimension-select {
+    display: flex !important;
+    flex-direction: row;
+  }
+  .Diamond .width-option span {
+    cursor: pointer;
+    background: #f4f4e7;
+    display: flex;
+    gap: 5px;
+    padding: 8px;
+    border: 1px solid transparent;
+    min-width: 135px;
+    font-family: var(--general);
+    font-size: 12px;
+    line-height: 90%;
+    letter-spacing: 3px;
+    color: #161716;
+    text-transform: uppercase;
+  }
+  .Diamond .width-option.active span {
+    border: 1px solid #161716;
+  }
+  .Diamond .width-option span::before {
+    display: none;
+  }
+  .Diamond .width-option span::after {
+    content: '';
+    width: 11px;
+    display: none;
+    height: 11px;
+    background: #161716;
+    transform: rotate(90deg);
+    background: url('https://cdn.shopify.com/s/files/1/0674/4591/5905/files/Vector.svg?v=1745305819') no-repeat center center;
+  }
+  .Diamond .width-option.active span::after  {
+    display: inline-block;
+  }
+  .detail-accordion {
+    margin-top: 0;
+    padding-top: 26px;
+    border-top: 1px solid #ECECE5;
+}
+  li.variant-in.stone-shape{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 26px;
+}
+li.variant-in.stone-shape .owl-carousel .related-prod img{
+    width: 40px;
+    height: 40px;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+    opacity: 0.5 !important;
+}
+li.variant-in.stone-shape .owl-carousel .related-prod a{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-start;
+}
+li.variant-in.stone-shape .owl-carousel .related-prod p{
+    text-align: center;
+}
+li.variant-in.stone-shape .owl-carousel .related-prod[data-selected=true] img{
+    opacity: 1 !important;
+}
+li.variant-in.stone-shape .owl-carousel .related-prod[data-selected=true] p{
+    font-weight: 500;
+    color: #161716;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+li.variant-in.stone-shape .metal-variant-headings p{
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    margin-top: 8px;
+}
+  li.variant-in.stone-shape .metal-variant-headings span{
+    font-weight: 500;
+    color: #161716;
+}
+  .pro-desp li label{
+    color: #161716;
+  }
+  li.variant-in.stone-shape .metal-variant-headings p {
+    text-transform: none;
+}
+</style>
+
+{% assign selected_variant = product.selected_or_first_available_variant %}
+<div style="display:none;" class="global-loadingState prod">
+  <img src="https://cdn.shopify.com/s/files/1/0674/4591/5905/files/Loader-1_1.gif?v=1716898287" alt="">
+</div>
+<div
+  id="prodInfo"
+  class="product-info"
+  data-scroll-section
+>
+  <div class="container-fluid">
+    <div class="product-container-fine-jewel">
+      <div class="pro-grid">
+        <h1 class="mob-display">
+          {{ product.title | split: 'Moissanite' | first | strip }}
+        </h1>
+        <div id="prodImgSlide" class="pro-img-con">
+          <div
+            class="pro-img"
+            id="pro-img"
+            {% for media in product.media %}
+              thumbnail-alt="{{ product.selected_or_first_available_variant.featured_image.alt }}"
+            {% endfor %}
+          >
+            <div class="thumb-slider-con">
+              <div
+                id="thumbnail-slider"
+                class="thumbnail-slider"
+                {% for media in product.media %}
+                  thumbnail-alt="{{ product.selected_or_first_available_variant.featured_image.alt }}"
+                {% endfor %}
+              >
+                {% for media in product.media %}
+                  {% if product.selected_or_first_available_variant.featured_image.alt == media.alt and product.selected_or_first_available_variant.featured_image.alt != blank %}
+                    <div class="item" thumbnail-alt="{{ media.alt }}">
+                      <div class="prod-thumb-img">
+                        {% render 'product-media' | media: media %}
+                      </div>
+                    </div>
+                  {% endif %}
+                  
+                {% endfor %}
+              </div>
+            </div>
+            <div class="main-slider-con">
+              <div
+                id="main-slider"
+                class="main-slider"
+                {% for media in product.media %}
+                  thumbnail-alt="{{ product.selected_or_first_available_variant.featured_image.alt }}"
+                {% endfor %}
+              >
+                {% for media in product.media %}
+                  {% if product.selected_or_first_available_variant.featured_image.alt == media.alt and product.selected_or_first_available_variant.featured_image.alt != blank %}
+                    <div class="item" thumbnail-alt="{{ media.alt }}">
+                      <div class="prod-main-img">
+                        {% render 'product-media' | media: media %}
+                      </div>
+                    </div>
+                  {% endif %}
+                  
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pro-desp">
+        {% form 'product', product, id: 'product-form', novalidate: 'novalidate' %}
+          <input
+            type="hidden"
+            name="id"
+            value="{{ selected_variant.id }}"
+          >
+          <div class="prod-desp-in">
+            <div class="prod-name border-bottom">
+              <h1>{{ product.title }}</h1>
+              <div class="pro-description">
+                <p>{{ product.description }}</p>
+              </div>
+            </div>
+            <div class="variant">
+              <p class="curate-item">Curate Your {{ product.type }}</p>
+              {% unless product.has_only_default_variant %}
+                <variant-selector data-url="{{ product.url }}" data-section="{{ section.id }}">
+                  <ul class="variant-wrapper">
+                    <li class="variant-in stone-shape">
+                          {% assign current_product_handle = product.handle %}
+                          {% assign allowed_collections = "hoop,stud-earring,bezel-pendant,whisper-thin-solitaire,three-stone,classic-solitaire,classic-pave,floating-gallery,triple-edge-pave,halo-pave,pear-emerald,bezel-solitaire,fine-pave,fixed-signet,ultra-fine-pave-eternity-band,fine-pave-eternity-band,classic-pave-eternity-band,floating-stone-eternity-band,single-bezel-eternity-band,low-profile-eternity-band,classic-eternity-band,eternity-band,east-west-eternity-band,band" | split: "," %}
+                          {% assign allowed_titles = "Asscher,Cushion,Emerald,Heart,Oval,Pear,Radiant,Round" | split: "," %}
+                          {% assign current_collections = "" %}
+
+                          {% for collection in product.collections %}
+                            {% if allowed_collections contains collection.handle %}
+                              {% assign current_collections = collection %}
+                            {% endif %}
+                          {% endfor %}
+
+                          {% if current_collections != "" %}
+                            <div class="metal-variant-headings">
+                                <label for="stone-shape">
+                                  Stone Shape: 
+                                  {% for collection in product.collections %}
+                                    {% if collection.title == "Asscher" or collection.title == "Cushion" or collection.title == "Emerald" or collection.title == "Heart" or collection.title == "Oval" or collection.title == "Pear" or collection.title == "Radiant" or collection.title == "Round" %}
+                                      <span>{{ collection.title }}</span>
+                                    {% endif %}
+                                  {% endfor %}
+                                </label>
+                                <p>Choose a different diamond shape for your band.</p>
+                            </div>
+                            <div class="owl-theme owl-carousel">
+                              {% if product.type == 'Necklace' or product.type == 'Bracelet' or product.type == 'Earring' %}
+                                <div class="item">
+                                  <div class="related-prod" data-selected="true">
+                                    <a href="javascript:void(0)">
+                                      {% for collection in product.collections %}
+                                        {% if collection.title == "Asscher" or collection.title == "Cushion" or collection.title == "Emerald" or collection.title == "Heart" or collection.title == "Oval" or collection.title == "Pear" or collection.title == "Radiant" or collection.title == "Round" %}
+                                          <img src="{{ collection.image | img_url: 'small' }}" alt="{{ collection.title }}">
+                                          <p>{{ collection.title }}</p>
+                                        {% endif %}
+                                      {% endfor %}
+                                    </a>
+                                  </div>
+                                </div>
+                              {% endif %}
+                              {% for related_product in current_collections.products %}
+                                {% if related_product.handle != current_product_handle and related_product.type == 'Earring' %}
+                                  <div class="item">
+                                    <div class="related-prod">
+                                      <a href="{{ related_product.url }}">
+                                        {% for collection in related_product.collections %}
+                                          {% if allowed_titles contains collection.title %}
+                                            <img src="{{ collection.image | img_url: 'small' }}" alt="{{ collection.title }}">
+                                            <p>{{ collection.title }}</p>
+                                          {% endif %}
+                                        {% endfor %}
+                                      </a>
+                                    </div>
+                                  </div>
+                                {% endif %}
+                              {% endfor %}
+                            </div>
+                          {% endif %}
+                        </li>
+                    {% for variant in product.variants limit: 1 %}
+                      {% for option in product.options_with_values %}
+                        <li class="{{ option.name }} variant-cats border-bottom">
+                          {% if option.name == 'Metal Color' %}
+                            <label>
+                              <p class="small">
+                                Metal Type:
+                                <p class="metal-display">{{ option.selected_value }}</p>
+                                <span style="display: none;">{{ option.selected_value }}</span>
+                              </p>
+                            </label>
+                            <ul>
+                              {% for value in option.values %}
+                                <li
+                                  data-value="{{ value | escape }}"
+                                  data-category="{{ option.name | handle }}"
+                                  {% if option.selected_value == value %}
+                                    data-selected="true"
+                                  {% endif %}
+                                >
+                                  <div class="pallete {{ value }}"></div>
+                                  <!-- <p>{{ value }}</p> -->
+                                </li>
+                              {% endfor %}
+                            </ul>
+
+                          {% elsif option.name == 'Diamond' %}
+                            <label style="display: none;">
+                              <p class="small" style="display: none;">
+                                Stone Type:
+                                <span style="display: none;">{{ option.selected_value }}</span>
+                              </p>
+                            </label>
+                            <ul class="stone-options-ul">
+                              {% for value in option.values %}
+                                <li
+                                  data-value="{{ value | escape }}"
+                                  data-category="{{ option.name | handle }}"
+                                  {% if option.selected_value == value %}
+                                    data-selected="true"
+                                  {% endif %}
+                                >
+                                  <p>
+                                    {{ value }}
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="6"
+                                      height="11"
+                                      viewBox="0 0 6 11"
+                                      fill="none"
+                                    >
+                                      <path
+                                        d="M1.09937 9.34961L4.94824 5.50073L1.09937 1.65186"
+                                        stroke="#161716"
+                                        stroke-linecap="square"
+                                        stroke-linejoin="round" />
+                                    </svg>
+                                  </p>
+                                </li>
+                              {% endfor %}
+                            </ul>
+                          
+                          {% elsif option.name == 'Dimension' %}
+                            <label>
+                              <p class="small">
+                                <strong>
+                                  <span>{{ option.selected_value }}</span>
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="6"
+                                    height="11"
+                                    viewBox="0 0 6 11"
+                                    fill="none"
+                                  >
+                                    <path
+                                      d="M1.09937 9.34961L4.94824 5.50073L1.09937 1.65186"
+                                      stroke="#161716"
+                                      stroke-linecap="square"
+                                      stroke-linejoin="round" />
+                                  </svg>
+                                </strong>
+                              </p>
+                            </label>
+                            <ul class="size-dimensions">
+                              {% for value in option.values %}
+                                <li
+                                  data-value="{{ value | escape }}"
+                                  data-category="{{ option.name | handle }}"
+                                  {% if option.selected_value == value %}
+                                    data-selected="true"
+                                  {% endif %}
+                                >
+                                  <p>{{ value }}</p>
+                                </li>
+                              {% endfor %}
+                            </ul>
+                          {% endif %}
+                        </li>
+                      {% endfor %}
+                    {% endfor %}
+                    
+                  </ul>
+                  <script type="application/json">
+                    {{ product.variants | json }}
+                  </script>
+                </variant-selector>
+              {% endunless %}
+            </div>
+            <div class="detail-accordion">
+                        <div class="detail-button">
+                          <p class="detail-button-txt">Product Details {% render 'down-chevron' %}</p>
+                        </div>
+                        <div class="detail-info">
+                          <div class="item">
+                            {{ selected_variant.metafields.custom.product_details |  metafield_tag }}
+                          </div>
+                        </div>
+                      </div>
+          </div>
+          <p class="get-in-touch">
+            Couldn't find what you were looking for?
+            <a href="/pages/custom-enquiry">Get in touch with us!</a>
+          </p>
+          <div class="prod-sticky-button">
+            <div class="container-fluid">
+              <div class="psb-wrapper">
+                <div class="psb-in">
+                  <div class="psb-head">
+                    <h3>{{ product.title }}</h3>
+                  </div>
+                  <div class="psb-variant">
+                    {% if product.selected_or_first_available_variant %}
+                      {{ product.selected_or_first_available_variant.title | replace: '/', ', ' }}
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="psb-price-add-wrap">
+                  <div class="price" id="price-{{ section.id }}">
+                    <strike class="real-price">{{ selected_variant.compare_at_price | money }}</strike>
+                    <span class="sell-price">
+                      {{ selected_variant.price | money }}
+                    </span>
+
+                    {% if selected_variant.price < selected_variant.compare_at_price %}
+                      <span>Sale</span>
+                    {% endif %}
+                  </div>
+                  <div class="submit">
+                    <button
+                      type="submit"
+                      name="add"
+                      class="custom-btn add-to-cart"
+                      {% if selected_variant.available == false %}
+                        disabled
+                      {% endif %}
+                    >
+                      {% if selected_variant.available == false %}
+                        Sold Out
+                      {% else %}
+                        Add To Cart
+                      {% endif %}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script defer>
+  class VariantSelector extends HTMLElement {
+    constructor() {
+      super();
+      this.addEventListener('click', this.onVariantClick);
+    }
+
+    onVariantClick(event) {
+      const clickedOption = event.target.closest('li[data-value]');
+      if (!clickedOption) return;
+
+      const category = clickedOption.getAttribute('data-category');
+
+      // Deselect all variants in the same category
+      const variantsInCategory = Array.from(this.querySelectorAll(`li[data-category="${category}"]`));
+      variantsInCategory.forEach((variant) => {
+        variant.removeAttribute('data-selected');
+      });
+
+      this.toggleOptionSelection(clickedOption);
+      this.getSelectedOptions();
+      this.getSelectedVariant();
+      this.filterImgVariant(); //new added
+
+      if (this.currentVariant) {
+        this.updateURL();
+        this.updateFormID();
+        this.updatePrice(); // Update the price when the variant changes
+      }
+    }
+
+    filterImgVariant() {
+        if (this.currentVariant.featured_image && this.currentVariant.featured_image.alt) {
+          document.querySelectorAll('[thumbnail-alt]').forEach(thumbnail => {
+            thumbnail.setAttribute('thumbnail-alt', this.currentVariant.featured_image.alt);
+          });
+        }
+      }
+
+    toggleOptionSelection(optionElement) {
+      const isSelected = optionElement.getAttribute('data-selected') === 'true';
+      if (isSelected) {
+        optionElement.removeAttribute('data-selected');
+      } else {
+        optionElement.setAttribute('data-selected', 'true');
+      }
+    }
+
+    getSelectedOptions() {
+      this.options = Array.from(this.querySelectorAll('li[data-selected="true"]'), (li) =>
+        li.getAttribute('data-value')
+      );
+      console.log(this.options);
+    }
+
+    getVariantJSON() {
+      this.variantData = this.variantData || JSON.parse(this.querySelector('[type="application/json"]').textContent);
+      return this.variantData;
+    }
+
+    getSelectedVariant() {
+      this.currentVariant = this.getVariantJSON().find((variant) => {
+        const findings = !variant.options
+          .map((option, index) => {
+            return this.options[index] === option;
+          })
+          .includes(false);
+
+        if (findings) return variant;
+      });
+
+      console.log(this.currentVariant);
+    }
+
+    updateURL() {
+      if (!this.currentVariant) return;
+      // window.history.replaceState({}, '', `${this.dataset.url}?variant=${this.currentVariant.id}`);
+      document.querySelector('.global-loadingState.prod').style.display = 'flex';
+    document.querySelector('.pro-img-con').classList.add('loading');
+          fetch(`${this.dataset.url}?variant=${this.currentVariant.id}`)
+        .then(response => response.text())
+        .then((responseText) => {
+          const html = new DOMParser().parseFromString(responseText, 'text/html');
+          const oldHtml = document.getElementById('prodImgSlide');
+          const newHtml = html.getElementById('prodImgSlide');
+          oldHtml.innerHTML = newHtml.innerHTML;
+          setTimeout(()=>{
+            $('#thumbnail-slider').slick({
+              slidesToShow: 4,
+              draggable: false,
+              slidesToScroll: 1,
+              asNavFor: '#main-slider',
+              dots: false,
+              focusOnSelect: true,
+              arrows: true,
+              vertical: true,
+              verticalSwiping: true,
+              responsive: [
+                        {
+                          breakpoint: 1200,
+                          settings: {
+                            vertical: true,
+                            verticalSwiping: true,
+                            slidesToShow: 4,
+                          },
+                        },
+                        {
+                          breakpoint: 992,
+                          settings: {
+                            vertical: false,
+                            verticalSwiping: false,
+                          },
+                        }
+                      ],
+            });
+
+            // Initialize Main Slider
+            $('#main-slider').slick({
+              slidesToShow: 1,
+              draggable: false,
+              slidesToScroll: 1,
+              asNavFor: '#thumbnail-slider',
+              fade: true,
+              arrows: false,
+              infinite: false
+            });
+
+            $(".prod-main-img")
+      // tile mouse actions
+                .on("mouseover", function() {
+              $(this)
+                .children("img")
+                .css({ transform: "scale(" + $(this).attr("data-scale") + ")" });
+                })
+                .on("mouseout", function() {
+              $(this)
+                .children("img")
+                .css({ transform: "scale(1)" });
+                })
+                .on("mousemove", function(e) {
+              $(this)
+                .children("img")
+                .css({
+                  "transform-origin":
+                    ((e.pageX - $(this).offset().left) / $(this).width()) * 100 +
+                    "% " +
+                    ((e.pageY - $(this).offset().top) / $(this).height()) * 100 +
+                    "%"
+                });
+                })
+                .on("click", function() {
+              $(".prod-main-img").not($(this)).removeClass("zoomed"); // Remove zoomed class from all other images except this
+              $(this).toggleClass("zoomed"); // Toggle zoomed class on the clicked image
+                })
+                .on("mouseleave", function() {
+              $(this).removeClass("zoomed"); // Remove zoomed class when mouse leaves the item
+                });
+            document.querySelector('.global-loadingState.prod').style.display = 'none';
+                document.querySelector('.pro-img-con').classList.remove('loading');
+          },2000)
+          
+        })
+    }
+
+    updateFormID() {
+      const form_input = document.querySelector('#product-form').querySelector('input[name="id"]');
+      form_input.value = this.currentVariant.id;
+    }
+
+    updatePrice() {
+      fetch(`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${this.dataset.section}`)
+        .then((response) => response.text())
+        .then((responseText) => {
+          const html = new DOMParser().parseFromString(responseText, 'text/html');
+
+          // Update price
+          const oldPrice = document.getElementById('price-{{ section.id }}');
+          const newPrice = html.getElementById('price-{{ section.id }}');
+          if (oldPrice && newPrice) {
+            oldPrice.innerHTML = newPrice.innerHTML;
+          }
+
+          // Update .psb-variant
+          const oldPsbVariant = document.querySelector('.psb-variant');
+          const newPsbVariant = html.querySelector('.psb-variant');
+          if (oldPsbVariant && newPsbVariant) {
+            oldPsbVariant.innerHTML = newPsbVariant.innerHTML;
+          }
+
+          // Update the variant name in the label
+          const selectedVariantLabels = document.querySelectorAll('.variant-cats label p.small span');
+          selectedVariantLabels.forEach((label, index) => {
+            const optionValue = this.options[index]; // Get the selected option value
+            label.textContent = optionValue; // Update label with option value
+          });
+
+          const newDetail = html.querySelector('.detail-info .item');
+          const oldDetail = document.querySelector('.detail-info .item');
+          if (newDetail && oldDetail) oldDetail.innerHTML = newDetail.innerHTML;
+        });
+    }
+  }
+
+  customElements.define('variant-selector', VariantSelector);
+</script>
+
+
+{% comment %} <script defer>
+  document.addEventListener('DOMContentLoaded', function() {
+    // DIMENSION VARIANT SELECTOR (unchanged)
+    const variantSelector = document.querySelector('variant-selector');
+    if (!variantSelector) return;
+
+    const combinedUl = variantSelector.querySelector('.size-dimensions');
+    if (!combinedUl) return;
+
+    const sampleLI = combinedUl.querySelector('li[data-category]');
+    if (!sampleLI || sampleLI.getAttribute('data-category') !== 'dimension') return;
+
+    const dimensionItems = Array.from(combinedUl.querySelectorAll('li[data-value]'));
+    const sizes = dimensionItems.map((li) => li.getAttribute('data-value'));
+
+    // Create wrapper
+    const dimensionsWrapper = document.createElement('div');
+    dimensionsWrapper.classList.add('dimension-select-wrap');
+
+    // SINGLE DROPDOWN (for values like "0.5")
+    const sizeContainer = document.createElement('div');
+    sizeContainer.classList.add('dimension-select', 'size-select');
+    const sizeLabel = document.createElement('label');
+    sizeLabel.textContent = 'carat:';
+    sizeLabel.setAttribute('for', 'size');
+
+    // Create custom dropdown
+    const customDropdown = document.createElement('div');
+    customDropdown.classList.add('custom-dropdown');
+
+    // Selected value display
+    const selectedDisplay = document.createElement('div');
+    selectedDisplay.classList.add('custom-dropdown-selected');
+
+    const selectedText = document.createElement('span');
+    selectedText.textContent = sizes[0] || '';
+
+    const dropdownArrow = document.createElement('span');
+    dropdownArrow.classList.add('custom-dropdown-arrow');
+    dropdownArrow.innerHTML =
+      '<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="#161716" stroke-linecap="square"/></svg>';
+
+    selectedDisplay.appendChild(selectedText);
+    selectedDisplay.appendChild(dropdownArrow);
+    customDropdown.appendChild(selectedDisplay);
+
+    // Dropdown options
+    const optionsContainer = document.createElement('div');
+    optionsContainer.classList.add('custom-dropdown-options');
+
+    sizes.forEach(function(size) {
+      const option = document.createElement('div');
+      option.classList.add('custom-dropdown-option');
+      option.setAttribute('data-size', size);
+      option.textContent = size;
+
+      option.addEventListener('click', function() {
+        selectedSize = this.getAttribute('data-size');
+        selectedText.textContent = selectedSize;
+        optionsContainer.classList.remove('active');
+        customDropdown.classList.remove('active');
+        updateVariantSelection();
+      });
+
+      optionsContainer.appendChild(option);
+    });
+
+    customDropdown.appendChild(optionsContainer);
+
+    // Toggle dropdown on click
+    selectedDisplay.addEventListener('click', function(e) {
+      e.stopPropagation();
+      optionsContainer.classList.toggle('active');
+      customDropdown.classList.toggle('active');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function() {
+      optionsContainer.classList.remove('active');
+      customDropdown.classList.remove('active');
+    });
+
+    sizeContainer.appendChild(sizeLabel);
+    sizeContainer.appendChild(customDropdown);
+    dimensionsWrapper.appendChild(sizeContainer);
+    combinedUl.parentNode.insertBefore(dimensionsWrapper, combinedUl.nextSibling);
+
+    let selectedSize = null;
+
+    function updateVariantSelection() {
+      if (!selectedSize) return;
+
+      dimensionItems.forEach((li) => li.removeAttribute('data-selected'));
+
+      const matchingLi = combinedUl.querySelector(`li[data-value="${selectedSize}"]`);
+      if (matchingLi) {
+        matchingLi.setAttribute('data-selected', 'true');
+      } else {
+        console.warn('No matching variant found for', selectedSize);
+      }
+
+      if (typeof variantSelector.getSelectedOptions === 'function') {
+        variantSelector.getSelectedOptions();
+        variantSelector.getSelectedVariant();
+        if (variantSelector.currentVariant) {
+          variantSelector.updateFormID();
+          variantSelector.updatePrice();
+        }
+      }
+    }
+
+    // Default Selection
+    if (sizes.length > 0) {
+      selectedSize = sizes[0];
+      updateVariantSelection();
+    }
+
+    // DIAMOND VARIANT SELECTOR (exact structure as requested)
+    const diamondUl = variantSelector.querySelector('.Diamond.variant-cats ul');
+    if (diamondUl) {
+      const diamondItems = Array.from(diamondUl.querySelectorAll("li[data-category='diamond']"));
+      if (diamondItems.length > 0) {
+        // Extract unique stone types from variants (assuming format "StoneType x Carat")
+        const stoneTypes = [...new Set(diamondItems.map(li => {
+          const value = li.getAttribute('data-value');
+          return value.split('x')[0].trim();
+        }))];
+
+        const diamondWrapper = document.createElement('div');
+        diamondWrapper.classList.add('dimension-select-wrap');
+
+        // Create container with exact structure
+        const diamondContainer = document.createElement('div');
+        diamondContainer.classList.add('dimension-select');
+
+        // Create label with selected stone
+        const diamondLabel = document.createElement('label');
+        diamondLabel.textContent = 'Stone Type: ';
+        
+        const selectedStoneSpan = document.createElement('span');
+        selectedStoneSpan.classList.add('selected-stone');
+        selectedStoneSpan.textContent = stoneTypes[0] || '';
+
+        diamondLabel.appendChild(selectedStoneSpan);
+        diamondContainer.appendChild(diamondLabel);
+
+        // Create options grid
+        const optionsGrid = document.createElement('div');
+        optionsGrid.classList.add('width-options-grid');
+
+        stoneTypes.forEach(function(stoneType, index) {
+          const option = document.createElement('div');
+          option.classList.add('width-option');
+          if (index === 0) option.classList.add('active');
+          option.setAttribute('data-stone', stoneType);
+          
+          const optionSpan = document.createElement('span');
+          optionSpan.textContent = stoneType;
+          option.appendChild(optionSpan);
+
+          option.addEventListener('click', function() {
+            // Update selected display
+            selectedStoneSpan.textContent = stoneType;
+            
+            // Update active state
+            optionsGrid.querySelectorAll('.width-option').forEach(opt => 
+              opt.classList.remove('active')
+            );
+            this.classList.add('active');
+            
+            // Find and select matching variant (select first matching variant)
+            const matchingVariant = diamondItems.find(li => 
+              li.getAttribute('data-value').startsWith(stoneType)
+            );
+            
+            if (matchingVariant) {
+              diamondItems.forEach(li => li.removeAttribute('data-selected'));
+              matchingVariant.setAttribute('data-selected', 'true');
+              
+              // Update variant selector
+              if (typeof variantSelector.getSelectedOptions === 'function') {
+                variantSelector.getSelectedOptions();
+                variantSelector.getSelectedVariant();
+                if (variantSelector.currentVariant) {
+                  variantSelector.updateFormID();
+                  variantSelector.updatePrice();
+                }
+              }
+            }
+          });
+
+          optionsGrid.appendChild(option);
+        });
+
+        diamondContainer.appendChild(optionsGrid);
+        diamondWrapper.appendChild(diamondContainer);
+
+        // Insert into DOM
+        const diamondLabelElement = variantSelector.querySelector('.Diamond.variant-cats label');
+        if (diamondLabelElement) {
+          diamondLabelElement.parentNode.insertBefore(diamondWrapper, diamondUl);
+        }
+
+        // Set initial selection
+        if (diamondItems.length > 0) {
+          diamondItems[0].setAttribute('data-selected', 'true');
+        }
+      }
+    }
+    
+    // Handle Metal Color selection UI update (unchanged)
+    const metalItems = document.querySelectorAll('li[data-category="metal-color"]');
+    const metalDisplay = document.querySelector('.metal-display');
+  
+    if (metalItems.length && metalDisplay) {
+      metalItems.forEach((item) => {
+        item.addEventListener('click', function() {
+          const value = item.getAttribute('data-value');
+          const carat = document.querySelector('input[name="metal_carat"]')?.value || '';
+          metalDisplay.textContent = `${carat} ${value}`;
+  
+          metalItems.forEach(i => i.removeAttribute('data-selected'));
+          item.setAttribute('data-selected', 'true');
+        });
+      });
+    }
+  });
+</script> {% endcomment %}
+
+<script defer>
+  document.addEventListener('DOMContentLoaded', function() {
+    // VARIANT SELECTOR INITIALIZATION
+    const variantSelector = document.querySelector('variant-selector');
+    if (!variantSelector) return;
+
+    // =============================================
+    // DIMENSION VARIANT SELECTOR (STANDALONE)
+    // =============================================
+    const dimensionUl = variantSelector.querySelector('.size-dimensions');
+    if (dimensionUl) {
+      const dimensionItems = Array.from(dimensionUl.querySelectorAll('li[data-category="dimension"]'));
+      if (dimensionItems.length > 0) {
+        const sizes = dimensionItems.map(li => li.getAttribute('data-value'));
+
+        // Create wrapper
+        const dimensionsWrapper = document.createElement('div');
+        dimensionsWrapper.classList.add('dimension-select-wrap');
+
+        // Create dropdown container
+        const sizeContainer = document.createElement('div');
+        sizeContainer.classList.add('dimension-select', 'size-select');
+        const sizeLabel = document.createElement('label');
+        sizeLabel.textContent = 'Carat per earring:';
+        sizeLabel.setAttribute('for', 'size');
+
+        // Build dropdown
+        const customDropdown = document.createElement('div');
+        customDropdown.classList.add('custom-dropdown');
+
+        const selectedDisplay = document.createElement('div');
+        selectedDisplay.classList.add('custom-dropdown-selected');
+        const selectedText = document.createElement('span');
+        selectedText.textContent = sizes[0] || '';
+        const dropdownArrow = document.createElement('span');
+        dropdownArrow.classList.add('custom-dropdown-arrow');
+        dropdownArrow.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="#161716" stroke-linecap="square"/></svg>';
+
+        selectedDisplay.append(selectedText, dropdownArrow);
+        customDropdown.appendChild(selectedDisplay);
+
+        // Options container
+        const optionsContainer = document.createElement('div');
+        optionsContainer.classList.add('custom-dropdown-options');
+
+        sizes.forEach(size => {
+          const option = document.createElement('div');
+          option.classList.add('custom-dropdown-option');
+          option.setAttribute('data-size', size);
+          option.textContent = size;
+
+          option.addEventListener('click', function() {
+            selectedText.textContent = size;
+            optionsContainer.classList.remove('active');
+            customDropdown.classList.remove('active');
+            
+            // Update variant selection
+            dimensionItems.forEach(li => li.removeAttribute('data-selected'));
+            const matchingLi = dimensionUl.querySelector(`li[data-value="${size}"]`);
+            if (matchingLi) matchingLi.setAttribute('data-selected', 'true');
+            
+            if (typeof variantSelector.getSelectedOptions === 'function') {
+              variantSelector.getSelectedOptions();
+              variantSelector.getSelectedVariant();
+              if (variantSelector.currentVariant) {
+                variantSelector.updateFormID();
+                variantSelector.updatePrice();
+              }
+            }
+          });
+
+          optionsContainer.appendChild(option);
+        });
+
+        customDropdown.appendChild(optionsContainer);
+
+        // Dropdown interactions
+        selectedDisplay.addEventListener('click', function(e) {
+          e.stopPropagation();
+          optionsContainer.classList.toggle('active');
+          customDropdown.classList.toggle('active');
+        });
+
+        document.addEventListener('click', function() {
+          optionsContainer.classList.remove('active');
+          customDropdown.classList.remove('active');
+        });
+
+        // Assemble and insert
+        sizeContainer.append(sizeLabel, customDropdown);
+        dimensionsWrapper.appendChild(sizeContainer);
+        dimensionUl.parentNode.insertBefore(dimensionsWrapper, dimensionUl.nextSibling);
+
+        // Set initial selection
+        dimensionItems[0]?.setAttribute('data-selected', 'true');
+      }
+    }
+
+    // =============================================
+    // DIAMOND VARIANT SELECTOR (STANDALONE)
+    // =============================================
+    const diamondSection = variantSelector.querySelector('.Diamond.variant-cats');
+    if (diamondSection) {
+      const diamondUl = diamondSection.querySelector('ul');
+      if (diamondUl) {
+        const diamondItems = Array.from(diamondUl.querySelectorAll("li[data-category='diamond']"));
+        if (diamondItems.length > 0) {
+          // Extract unique stone types (assuming "StoneType x Carat" format)
+          const stoneTypes = [...new Set(diamondItems.map(li => {
+            const value = li.getAttribute('data-value');
+            return value.split('x')[0].trim();
+          }))];
+
+          // Create wrapper and container
+          const diamondWrapper = document.createElement('div');
+          diamondWrapper.classList.add('dimension-select-wrap');
+
+          const diamondContainer = document.createElement('div');
+          diamondContainer.classList.add('dimension-select');
+
+          // Create label with selected stone display
+          const diamondLabel = document.createElement('label');
+          diamondLabel.textContent = 'Stone Type: ';
+          
+          const selectedStoneSpan = document.createElement('span');
+          selectedStoneSpan.classList.add('selected-stone');
+          selectedStoneSpan.textContent = stoneTypes[0] || '';
+
+          diamondLabel.appendChild(selectedStoneSpan);
+          diamondContainer.appendChild(diamondLabel);
+
+          // Create options grid
+          const optionsGrid = document.createElement('div');
+          optionsGrid.classList.add('width-options-grid');
+
+          stoneTypes.forEach((stoneType, index) => {
+            const option = document.createElement('div');
+            option.classList.add('width-option');
+            if (index === 0) option.classList.add('active');
+            option.setAttribute('data-stone', stoneType);
+            
+            const optionSpan = document.createElement('span');
+            optionSpan.textContent = stoneType;
+            option.appendChild(optionSpan);
+
+            option.addEventListener('click', function() {
+              // Update UI
+              selectedStoneSpan.textContent = stoneType;
+              optionsGrid.querySelectorAll('.width-option').forEach(opt => 
+                opt.classList.remove('active')
+              );
+              this.classList.add('active');
+              
+              // Find and select first matching variant
+              const matchingVariant = diamondItems.find(li => 
+                li.getAttribute('data-value').startsWith(stoneType)
+              );
+              
+              if (matchingVariant) {
+                diamondItems.forEach(li => li.removeAttribute('data-selected'));
+                matchingVariant.setAttribute('data-selected', 'true');
+                
+                // Update variant selection
+                if (typeof variantSelector.getSelectedOptions === 'function') {
+                  variantSelector.getSelectedOptions();
+                  variantSelector.getSelectedVariant();
+                  if (variantSelector.currentVariant) {
+                    variantSelector.updateFormID();
+                    variantSelector.updatePrice();
+                  }
+                }
+              }
+            });
+
+            optionsGrid.appendChild(option);
+          });
+
+          diamondContainer.appendChild(optionsGrid);
+          diamondWrapper.appendChild(diamondContainer);
+
+          // Insert into DOM (after the diamond label)
+          const diamondLabelElement = diamondSection.querySelector('label');
+          if (diamondLabelElement) {
+            diamondLabelElement.insertAdjacentElement('afterend', diamondWrapper);
+          }
+
+          // Set initial selection
+          diamondItems[0]?.setAttribute('data-selected', 'true');
+        }
+      }
+    }
+    
+    // =============================================
+    // METAL COLOR SELECTOR (UNCHANGED)
+    // =============================================
+    const metalItems = document.querySelectorAll('li[data-category="metal-color"]');
+    const metalDisplay = document.querySelector('.metal-display');
+  
+    if (metalItems.length && metalDisplay) {
+      metalItems.forEach((item) => {
+        item.addEventListener('click', function() {
+          const value = item.getAttribute('data-value');
+          const carat = document.querySelector('input[name="metal_carat"]')?.value || '';
+          metalDisplay.textContent = `${carat} ${value}`;
+  
+          metalItems.forEach(i => i.removeAttribute('data-selected'));
+          item.setAttribute('data-selected', 'true');
+        });
+      });
+    }
+  });
+</script>
+                                      
+<script>
+  $(document).ready(function () {
+    $('.Dimension.variant-cats strong').click(function () {
+      $('.size-dimensions').slideToggle();
+      $(this).toggleClass('active');
+    });
+
+    $('.Diamond.variant-cats strong').click(function () {
+      $(this).next('ul').slideToggle();
+      $(this).toggleClass('active');
+    });
+  });
+</script>
+<script>
+    $('.stone-shape .owl-carousel').owlCarousel({
+      loop:false,
+      responsiveClass:true,
+      dots: false,
+      nav: true,
+      autoWidth:true,
+      center: false,
+      navText: [
+        "<img src='https://cdn.shopify.com/s/files/1/0674/4591/5905/files/backward-arrow.svg' class=icon>",
+        "<img src='https://cdn.shopify.com/s/files/1/0674/4591/5905/files/forward-arrow.svg' class=icon>"
+      ],
+      responsive:{
+          0:{
+              items:3,
+              margin:16
+          },
+          600:{
+              items:3,
+              margin:20
+          },
+          1000:{
+              items: 5,
+              margin:32,
+          }
+      }
+    });
+</script>                                     
+<script>
+  $(document).ready(function(){
+      $('.detail-button-txt').click(function(){
+        $('.detail-info').slideToggle();
+        $(this).toggleClass('active');
+      });
+    });
+</script>                                      
+                                  
+<script>
+  $(document).ready(function () {
+    $('#main-slider').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      draggable: false,
+      asNavFor: '#thumbnail-slider',
+      fade: true,
+      arrows: false,
+      infinite: false,
+    });
+    // Initialize Thumbnail Slider
+    $('#thumbnail-slider').slick({
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      infinite: false,
+      draggable: false,
+      asNavFor: '#main-slider',
+      dots: false,
+      focusOnSelect: true,
+      arrows: true,
+      vertical: true,
+      verticalSwiping: true,
+      responsive: [
+        {
+          breakpoint: 992,
+          settings: {
+            vertical: false,
+            verticalSwiping: false,
+          },
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            vertical: false,
+            verticalSwiping: false,
+          },
+        },
+        {
+          breakpoint: 580,
+          settings: {
+            vertical: false,
+            verticalSwiping: false,
+            slidesToShow: 3,
+          },
+        },
+        {
+          breakpoint: 380,
+          settings: {
+            vertical: false,
+            verticalSwiping: false,
+            slidesToShow: 2,
+          },
+        },
+      ],
+    });
+
+    // Initialize Main Slider
+  });
+</script>
+<script>
+  $('.prod-main-img')
+    // tile mouse actions
+    .on('mouseover', function () {
+      $(this)
+        .children('img')
+        .css({ transform: 'scale(' + $(this).attr('data-scale') + ')' });
+    })
+    .on('mouseout', function () {
+      $(this).children('img').css({ transform: 'scale(1)' });
+    })
+    .on('mousemove', function (e) {
+      $(this)
+        .children('img')
+        .css({
+          'transform-origin':
+            ((e.pageX - $(this).offset().left) / $(this).width()) * 100 +
+            '% ' +
+            ((e.pageY - $(this).offset().top) / $(this).height()) * 100 +
+            '%',
+        });
+    })
+    .on('click', function () {
+      $('.prod-main-img').not($(this)).removeClass('zoomed'); // Remove zoomed class from all other images except this
+      $(this).toggleClass('zoomed'); // Toggle zoomed class on the clicked image
+    })
+    .on('mouseleave', function () {
+      $(this).removeClass('zoomed'); // Remove zoomed class when mouse leaves the item
+    });
+</script>
+<script>
+  $(document).ready(function () {
+    // Function to resize the cart form if needed
+    function resizeCartForm() {
+      var cartContainerForm = document.querySelector('.side-cart-container form');
+      var cartHeading = document.querySelector('.side-cart-heading');
+      var cartDesc = document.querySelector('.side-cart-desc');
+      if (cartContainerForm && cartHeading && cartDesc) {
+        var formHeight = window.innerHeight - (cartHeading.offsetHeight + cartDesc.offsetHeight);
+        cartContainerForm.style.height = formHeight + 'px';
+      }
+    }
+
+    // The full getCart function that builds the cart HTML
+    function getCart() {
+      $.ajax({
+        url: '/cart.json',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+          console.log(data, 'Hello this is the data of the cart');
+          var cartItemsHtml = '';
+
+          if (data.items.length > 0) {
+            data.items.forEach(function (item, index) {
+              var itemPrice = Shopify.formatMoney(item.line_price);
+              var isRingProduct = item.product_type === 'ring' || item.product_type === 'moissanite';
+              var isDiamondProduct = item.product_type === 'diamond';
+              var isEngraving = item.product_type === 'engraving';
+              var engravingPrice = 10000;
+              // For rings, skip showing diamond/engraving add‑ons directly
+              if (isDiamondProduct || isEngraving) {
+                return;
+              }
+              var previousItem = data.items[index - 1];
+              var isPreviousDiamond = previousItem && previousItem.product_type === 'diamond';
+
+              // For ring or moissanite products, include extra features
+              if (isRingProduct) {
+                cartItemsHtml += `
+                <div class="product-add-on flex">
+                  <div class="product-add-on-left">
+                    <div class="product-add-on-empty-div"></div>
+                    <div class="product-add-on-image">
+                      <img loading="lazy" class="img" src="${item.image}">
+                    </div>
+                  </div>
+                  <div class="product-add-on-right flex flex-c">
+                    <div class="product-add-on-price-title flex align-b flex-jsb">
+                      <div class="product-add-on-title">${item.product_title}<span class="tdf-cart-item-t"></span></div>
+                      <div class="product-add-on-remove"><span>Remove</span></div>
+                    </div>
+                    <div class="product-add-on-variant-title-price flex align-b flex-jsb">
+                      <div class="product-add-on-variant-title"><span>${item.variant_title}</span></div>
+                      <div data-pi="${
+                        item.variant_id
+                      }" class="product-add-on-variant-price"><span>${itemPrice}</span></div>
+                    </div>
+                    ${
+                      item.properties['Message']
+                        ? `
+                      <div class="product-add-on-variant-title-price flex align-b flex-jsb">
+                        <div data-ei="44979292406017" class="product-add-on-variant-title"><span>Engraving: "${
+                          item.properties['Message']
+                        }"</span></div>
+                        <div class="product-add-on-variant-price"><span>${Shopify.formatMoney(
+                          engravingPrice
+                        )}</span></div>
+                      </div>
+                    `
+                        : ''
+                    }
+                    ${
+                      isPreviousDiamond
+                        ? (function () {
+                            var diamondItem = previousItem;
+                            var diaPrice = Shopify.formatMoney(diamondItem.line_price);
+                            return `
+                        <div class="product-add-on-variant-title-price">
+                          <div class="product-add-on-variant-title-diamond flex align flex-jsb">
+                            <span>Stone</span>
+                            <div class="product-add-on-variant-price"><span>${diaPrice}</span></div>
+                          </div>
+                          <div data-di="${diamondItem.variant_id}" class="product-add-on-variant-title"><span>${diamondItem.variant_title}</span></div>
+                        </div>
+                      `;
+                          })()
+                        : ''
+                    }
+                    ${
+                      item.properties['Message'] || isPreviousDiamond
+                        ? (function () {
+                            var totalAmount;
+                            if (item.properties['Message'] && isRingProduct && !isPreviousDiamond) {
+                              totalAmount = Shopify.formatMoney(item.line_price + engravingPrice);
+                            } else if (item.properties['Message'] && isRingProduct && isPreviousDiamond) {
+                              totalAmount = Shopify.formatMoney(
+                                item.line_price + previousItem.line_price + engravingPrice
+                              );
+                            } else if (isRingProduct && isPreviousDiamond) {
+                              totalAmount = Shopify.formatMoney(item.line_price + previousItem.line_price);
+                            }
+                            return totalAmount
+                              ? `
+                        <div class="product-add-on-variant-title-price">
+                          <div class="product-add-on-variant-title-diamond flex align flex-jsb">
+                            <span>Total</span>
+                            <div class="product-add-on-variant-price"><span>${totalAmount}</span></div>
+                          </div>
+                        </div>
+                      `
+                              : '';
+                          })()
+                        : ''
+                    }
+                  </div>
+                </div>
+              `;
+              } else {
+                // For non‑ring products, use a standard product card layout
+                cartItemsHtml += `
+                <div class="product-add-on flex">
+                  <div class="product-add-on-left">
+                    <div class="product-add-on-empty-div"></div>
+                    <div class="product-add-on-image">
+                      <img loading="lazy" class="img" src="${item.image}">
+                    </div>
+                  </div>
+                  <div class="product-add-on-right flex flex-c">
+                    <div class="product-add-on-price-title flex align-b flex-jsb">
+                      <div class="product-add-on-title">${item.product_title}<span class="tdf-cart-item-t"></span></div>
+                      <div class="product-add-on-remove"><span>Remove</span></div>
+                    </div>
+                    <div class="product-add-on-variant-title-price flex align-b flex-jsb">
+                      <div class="product-add-on-variant-title"><span>${item.variant_title}</span></div>
+                      <div data-pi="${item.variant_id}" class="product-add-on-variant-price"><span>${itemPrice}</span></div>
+                    </div>
+                  </div>
+                </div>
+              `;
+              }
+            });
+            $('#cartItems').html(cartItemsHtml);
+
+            var dataPrice = Shopify.formatMoney(data.total_price);
+            // Build the cart summary HTML
+            var cartSummaryHtml = `
+            <div class="product-added-desc-down">
+              <div class="product-added-desc-down-total-price">
+                <div class="product-added-desc-down-total">order summary</div>
+                <div class="product-added-desc-down-sub flex align flex-jsb">
+                  <span>Subtotal</span>
+                  <span class="mon">${dataPrice}</span>
+                </div>
+                <div class="product-added-desc-down-sub flex align flex-jsb">
+                  <span>Shipping</span>
+                  <span class="mon shipping">Calculated at checkout</span>
+                </div>
+                <div class="product-added-desc-down-sub flex align flex-jsb">
+                  <span>Tax</span>
+                  <span class="mon tax">Calculated at checkout</span>
+                </div>
+              </div>   
+              <div class="product-added-desc-down-total-final flex align flex-jsb">
+                <div class="product-added-desc-down-total">total</div>
+                <span>${dataPrice}</span>
+              </div>
+            </div>
+            <a class="product-buy-now-btn-a" href="/checkout/">
+              <div class="product-buy-now-btn">
+                <button class="predictive-btn">Checkout</button>
+              </div>
+            </a>
+          `;
+            $('#cartSummary').html(cartSummaryHtml);
+          } else {
+            // Display an empty cart message
+            $('#cartItems').html(
+              '<div class="side-cart-empty flex align flex-jsc"><h4 style="text-align:center;">No items in the cart</h4></div>'
+            );
+            $('#cartSummary').html('');
+          }
+          document.querySelector('.global-loadingState.cart').style.display = 'none';
+          resizeCartForm();
+        },
+        error: function (xhr, status, error) {
+          console.error('Error fetching cart data:', error);
+          document.querySelector('.global-loadingState.cart').style.display = 'none';
+        },
+      });
+    }
+
+    // Add-to-cart functionality with all features integrated
+    $('.add-to-cart').click(async function (e) {
+      e.preventDefault();
+
+      // Show loading state for the cart
+      document.querySelector('.global-loadingState.cart').style.display = 'flex';
+
+      // Get the variant ID from the product form
+      const form_input = document.querySelector('#product-form').querySelector('input[name="id"]');
+      if (!form_input) {
+        console.error('Variant input not found in product form.');
+        return;
+      }
+      const variantId = form_input.value;
+
+      // Build the formData object for the main product variant
+      const formData = {
+        items: [
+          {
+            id: variantId,
+            quantity: 1,
+          },
+        ],
+      };
+
+      // Send the add-to-cart request to Shopify
+      try {
+        await fetch(window.Shopify.routes.root + 'cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+        // Add the js-my-cart-open class to the body
+        document.body.classList.add('js-my-cart-open');
+        // Refresh the cart immediately after adding the product
+        getCart();
+      } catch (error) {
+        console.error('Error adding product to cart:', error);
+        // Even on error, attempt to refresh the cart
+        getCart();
+      }
+    });
+
+    // Ensure the cart is resized on window resize
+    window.addEventListener('resize', resizeCartForm);
+  });
+</script>
+{% schema %}
+{
+  "name": "Product",
+  "blocks": [
+    {
+      "type": "vendor",
+      "name": "Vendor",
+      "limit": 1
+    },
+    {
+      "type": "title",
+      "name": "Title",
+      "limit": 1
+    },
+    {
+      "type": "price",
+      "name": "Price",
+      "limit": 1
+    },
+    {
+      "type": "variant_selector",
+      "name": "Variant Selector",
+      "limit": 1
+    },
+    {
+      "type": "quantity",
+      "name": "Quantity",
+      "limit": 1
+    },
+    {
+      "type": "description",
+      "name": "Description",
+      "limit": 1
+    },
+    {
+      "type": "checkout_buttons",
+      "name": "Checkout Buttons",
+      "limit": 1
+    }
+  ]
+}
+{% endschema %}

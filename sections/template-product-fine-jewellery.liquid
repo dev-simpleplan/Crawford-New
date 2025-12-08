@@ -1,0 +1,1682 @@
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+>
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+  integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+  integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+  integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
+
+<style>
+  /* Custom dropdown styles */
+  .custom-dropdown {
+    position: relative;
+    width: 100%;
+    font-family: inherit;
+    display: flex;
+  }
+
+  .custom-dropdown label {
+    display: block;
+    /* margin-bottom: 8px; */
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .custom-dropdown .selected-value {
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    background-color: #f4f4e7;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 150%;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #161716;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  .custom-dropdown .selected-value::after {
+    content: '';
+    background-image: url('https://cdn.shopify.com/s/files/1/0674/4591/5905/files/Vector.svg?v=1745305819');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 10px;
+    height: 7px;
+    transition: transform 0.2s ease;
+    position: absolute;
+    right: 8px;
+    top: 52%;
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  .custom-dropdown .selected-value.active::after {
+    transform: translateY(-50%) rotate(0deg);
+  }
+
+  .custom-dropdown .dropdown-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    z-index: 100;
+    max-height: 250px;
+    overflow-y: auto;
+    display: none;
+    padding: 5px 0;
+    margin: 0;
+    list-style: none;
+    border-radius: 0px;
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+  }
+
+  .custom-dropdown .dropdown-list.active {
+    display: block;
+  }
+  .diamond-select:nth-child(2) .custom-dropdown .dropdown-list , .dimension-select .custom-dropdown .dropdown-list {
+    display: block;
+    clip-path: inset(0 0 100% 0);
+    transition: all 0.3s ease;
+  }
+  .diamond-select:nth-child(2) .custom-dropdown .dropdown-list.active , .dimension-select .custom-dropdown .dropdown-list.active {
+    clip-path: inset(0 0 0 0);
+  }
+
+  .custom-dropdown .dropdown-list li {
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .custom-dropdown .dropdown-list li:hover {
+    background-color: #E7E7D3;
+  }
+
+  .custom-dropdown .dropdown-list li.selected {
+    background-color: #f0f0f0;
+    font-weight: 500;
+    color: #000;
+  }
+
+  /* Styles for diamond and dimension selects */
+  .diamond-select-wrap,
+  .dimension-select-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 0;
+  }
+
+  .diamond-select,
+  .dimension-select {
+    flex: 1;
+    min-width: 130px;
+  }
+  .dimension-select-wrap {
+    width: 50%;
+  }
+  /* Add animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* .custom-dropdown .dropdown-list.active {
+    animation: fadeIn 0.3s ease forwards;
+  } */
+
+  /* Hide original select options */
+  .size-dimensions,
+  .Diamond.variant-cats > ul {
+    display: none;
+  }
+
+  /* Make product option headings look clickable */
+  .variant-cats > label strong {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+  }
+
+  .variant-cats > label strong::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #333;
+    margin-left: 8px;
+    transition: transform 0.2s ease;
+  }
+
+  .variant-cats > label strong.active::after {
+    transform: rotate(180deg);
+  }
+  li.Diamond.variant-cats ul {
+    display: none;
+    margin-left: 0px;
+  }
+  li.Diamond.variant-cats {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+}
+  li.Diamond.variant-cats ul li {
+    min-width: 100%;
+    border-bottom: 1px solid #dadac5;
+  }
+  .diamond-select-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 20px 0;
+    width: 100%;
+    flex-direction: column;
+  }
+  .diamond-select {
+    min-width: unset;
+  }
+  .diamond-select:nth-child(1) {
+    border-bottom: 1px solid #ecece5;
+    padding-bottom: 27px;
+    margin-bottom: 27px;
+  }
+  #stone-type {
+    display: flex;
+    position: static;
+    z-index: unset;
+    width: auto;
+    border: none;
+    background-color: transparent;
+    max-height: unset;
+    padding: 0;
+    box-shadow: none;
+  }
+  #stone-type li {
+    min-width: unset;
+    transition: all 0.3s ease;
+  }
+  
+  div#stone-type-display {
+    pointer-events: none;
+  }
+  #stone-type-display {
+    display: none;
+  }
+  #stone-count {
+    width: 100%;
+    padding: 0;
+    border: none;
+    max-width: 130px;
+  }
+  .custom-dropdown .selected-value {
+    max-width: 130px;
+    border-bottom: 1px solid #dadac5;
+  }
+  li.Dimension.variant-cats ul {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    padding: 0;
+    border: none;
+  }
+  .custom-dropdown .dropdown-list li.selected {
+    background-color: #e7e7d3;
+  }
+  .dimension-select .custom-dropdown .dropdown-list li {
+    border-bottom: 1px solid #dadac5;
+  }
+  .diamond-select {
+    display: flex;
+    gap: 20px;
+  }
+  .diamond-select label {
+    white-space: nowrap;
+  }
+  .diamond-select .custom-dropdown {
+    /* width: auto; */
+  }
+  #stone-type li {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-family: var(--general);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 5px 8px;
+    color: #555;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+  }
+  #stone-type li::after {
+    content: '';
+    background-image: url('https://cdn.shopify.com/s/files/1/0674/4591/5905/files/Vector.svg?v=1745305819');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 10px;
+    height: 7px;
+    transition: all 0.2s ease;
+    transform: translateY(-50%) rotate(90deg);
+    margin-top: 8px;
+    /* display: none; */
+    visibility: hidden;
+  }
+  li.Dimension.variant-cats {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .dimension-select-wrap {
+    width: fit-content;
+    margin: 0;
+  }
+  .dimension-select .custom-dropdown {
+    max-width: 130px;
+  }
+  .dimension-select .custom-dropdown .selected-value {
+    min-width: 80px;
+  }
+  #stone-type li.selected {
+    border: 1px solid #161716;
+    color: #161716;
+    background-color: #F4F4E7;
+  }
+  #stone-type li.selected::after {
+    /* display: block; */
+    visibility: visible;
+  }
+
+  
+  @media (max-width: 767px) {
+    li.Diamond.variant-cats ul {
+        flex-direction: row;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+}
+
+  .Dimension label p{
+    display: none;
+  }
+  .Metal {
+    border: none !important;
+    padding: 0 !important;
+  }
+   .Metal.Color label {
+    gap: 4px;
+  }
+  ul.variant-wrapper .Color.variant-cats ul{
+    gap: 0;
+  }
+  .product-container-fine-jewel .dimension-select-wrap{
+    flex-direction: column;
+    gap: 25px;
+  }
+</style>
+
+{% assign selected_variant = product.selected_or_first_available_variant %}
+<div style="display:none;" class="global-loadingState prod">
+  <img src="https://cdn.shopify.com/s/files/1/0674/4591/5905/files/Loader-1_1.gif?v=1716898287" alt="">
+</div>
+<div
+  id="prodInfo"
+  class="product-info"
+  data-scroll-section
+>
+  <div class="container-fluid">
+    <div class="product-container-fine-jewel">
+      <div class="pro-grid">
+        <h1 class="mob-display">
+          {{ product.title | split: 'Moissanite' | first | strip }}
+        </h1>
+        <div id="prodImgSlide" class="pro-img-con">
+          <div
+            class="pro-img"
+            id="pro-img"
+            {% for media in product.media %}
+              thumbnail-alt="{{ product.selected_or_first_available_variant.featured_image.alt }}"
+            {% endfor %}
+          >
+            <div class="thumb-slider-con">
+              <div
+                id="thumbnail-slider"
+                class="thumbnail-slider"
+                {% for media in product.media %}
+                  thumbnail-alt="{{ product.selected_or_first_available_variant.featured_image.alt }}"
+                {% endfor %}
+              >
+                {% for media in product.media %}
+                  {% if product.selected_or_first_available_variant.featured_image.alt == media.alt and product.selected_or_first_available_variant.featured_image.alt != blank %}
+                    <div class="item" thumbnail-alt="{{ media.alt }}">
+                      <div class="prod-thumb-img">
+                        {% render 'product-media' | media: media %}
+                      </div>
+                    </div>
+                  {% endif %}
+                  <!-- <div class="item" thumbnail-alt="{{ media.alt }}">
+                    <div class="prod-thumb-img">
+                      {% render 'product-media' | media: media %}
+                    </div>
+                  </div> -->
+                {% endfor %}
+              </div>
+            </div>
+            <div class="main-slider-con">
+              <div
+                id="main-slider"
+                class="main-slider"
+                {% for media in product.media %}
+                  thumbnail-alt="{{ product.selected_or_first_available_variant.featured_image.alt }}"
+                {% endfor %}
+              >
+                {% for media in product.media %}
+                  {% if product.selected_or_first_available_variant.featured_image.alt == media.alt and product.selected_or_first_available_variant.featured_image.alt != blank %}
+                    <div class="item" thumbnail-alt="{{ media.alt }}">
+                      <div class="prod-main-img">
+                        {% render 'product-media' | media: media %}
+                      </div>
+                    </div>
+                  {% endif %}
+                  <!-- <div class="item" thumbnail-alt="{{ media.alt }}">
+                    <div class="prod-main-img">
+                      {% render 'product-media' | media: media %}
+                    </div>
+                  </div> -->
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pro-desp">
+        {% form 'product', product, id: 'product-form', novalidate: 'novalidate' %}
+          <input
+            type="hidden"
+            name="id"
+            value="{{ selected_variant.id }}"
+          >
+          <div class="prod-desp-in">
+            <div class="prod-name border-bottom">
+              <h1>{{ product.title }}</h1>
+              <div class="pro-description">
+                <p>{{ product.description }}</p>
+              </div>
+            </div>
+            <div class="variant">
+              <p class="curate-item">Curate Your {{ product.type }}</p>
+              {% unless product.has_only_default_variant %}
+                <variant-selector data-url="{{ product.url }}" data-section="{{ section.id }}">
+                  <ul class="variant-wrapper">
+                    {% for variant in product.variants limit: 1 %}
+                      {% for option in product.options_with_values %}
+                        <li class="{{ option.name }} variant-cats border-bottom">
+                          {% if option.name == 'Metal Color' %}
+                            <label>
+                              <p class="small">
+                                Metal Type:
+                                <p class="metal-display">{{ option.selected_value }}</p>
+                                <span style="display: none;">{{ option.selected_value }}</span>
+                              </p>
+                            </label>
+                            <ul>
+                              {% for value in option.values %}
+                                <li
+                                  data-value="{{ value | escape }}"
+                                  data-category="{{ option.name | handle }}"
+                                  {% if option.selected_value == value %}
+                                    data-selected="true"
+                                  {% endif %}
+                                >
+                                  <div class="pallete {{ value }}"></div>
+                                  <!-- <p>{{ value }}</p> -->
+                                </li>
+                              {% endfor %}
+                            </ul>
+
+                          {% elsif option.name == 'Diamond' %}
+                            {% comment %}
+                              <label>
+                                <p class="small">
+                                  Stone Type:
+                                  <span style="display: none;">{{ option.selected_value }}</span>
+                                </p>
+                              </label>
+                            {% endcomment %}
+                            <ul>
+                              {% for value in option.values %}
+                                <li
+                                  data-value="{{ value | escape }}"
+                                  data-category="{{ option.name | handle }}"
+                                  {% if option.selected_value == value %}
+                                    data-selected="true"
+                                  {% endif %}
+                                >
+                                  <p>
+                                    {{ value }}
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="6"
+                                      height="11"
+                                      viewBox="0 0 6 11"
+                                      fill="none"
+                                    >
+                                      <path
+                                        d="M1.09937 9.34961L4.94824 5.50073L1.09937 1.65186"
+                                        stroke="#161716"
+                                        stroke-linecap="square"
+                                        stroke-linejoin="round" />
+                                    </svg>
+                                  </p>
+                                </li>
+                              {% endfor %}
+                            </ul>
+
+                          {% elsif option.name == 'Dimension' %}
+                            <label>
+                              <p class="small">
+                                Dimension:
+                                <strong>
+                                  <span>{{ option.selected_value }}</span>
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="6"
+                                    height="11"
+                                    viewBox="0 0 6 11"
+                                    fill="none"
+                                  >
+                                    <path
+                                      d="M1.09937 9.34961L4.94824 5.50073L1.09937 1.65186"
+                                      stroke="#161716"
+                                      stroke-linecap="square"
+                                      stroke-linejoin="round" />
+                                  </svg>
+                                </strong>
+                              </p>
+                            </label>
+                            <ul class="size-dimensions">
+                              {% for value in option.values %}
+                                <li
+                                  data-value="{{ value | escape }}"
+                                  data-category="{{ option.name | handle }}"
+                                  {% if option.selected_value == value %}
+                                    data-selected="true"
+                                  {% endif %}
+                                >
+                                  <p>{{ value }}</p>
+                                </li>
+                              {% endfor %}
+                            </ul>
+                          {% endif %}
+                        </li>
+                      {% endfor %}
+                    {% endfor %}
+                  </ul>
+                  <script type="application/json">
+                    {{ product.variants | json }}
+                  </script>
+                </variant-selector>
+              {% endunless %}
+            </div>
+            <div class="detial-acc border-bottom">
+              <p class="label">details</p>
+              <div class="da-in">
+                {% for i in product.metafields.custom.custom_data.value %}
+                  <div class="da-item">
+                    <p class="da-head">{{ i.heading }}</p>
+                    <p class="da-body">{{ i.description }}</p>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <p class="get-in-touch">
+            Couldn't find what you were looking for?
+            <a href="/pages/custom-enquiry">Get in touch with us!</a>
+          </p>
+          <div class="prod-sticky-button">
+            <div class="container-fluid">
+              <div class="psb-wrapper">
+                <div class="psb-in">
+                  <div class="psb-head">
+                    <h3>{{ product.title }}</h3>
+                  </div>
+                  <div class="psb-variant">
+                    {% if product.selected_or_first_available_variant %}
+                      {{ product.selected_or_first_available_variant.title | replace: '/', ', ' }}
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="psb-price-add-wrap">
+                  <div class="price" id="price-{{ section.id }}">
+                    <strike class="real-price">{{ selected_variant.compare_at_price | money }}</strike>
+                    <span class="sell-price">
+                      {{ selected_variant.price | money }}
+                    </span>
+
+                    {% if selected_variant.price < selected_variant.compare_at_price %}
+                      <span>Sale</span>
+                    {% endif %}
+                  </div>
+                  <div class="submit">
+                    <button
+                      type="submit"
+                      name="add"
+                      class="custom-btn add-to-cart"
+                      {% if selected_variant.available == false %}
+                        disabled
+                      {% endif %}
+                    >
+                      {% if selected_variant.available == false %}
+                        Sold Out
+                      {% else %}
+                        Add To Cart
+                      {% endif %}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script defer>
+  class VariantSelector extends HTMLElement {
+    constructor() {
+      super();
+      this.addEventListener('click', this.onVariantClick);
+    }
+
+    onVariantClick(event) {
+      const clickedOption = event.target.closest('li[data-value]');
+      if (!clickedOption) return;
+
+      const category = clickedOption.getAttribute('data-category');
+
+      // Deselect all variants in the same category
+      const variantsInCategory = Array.from(this.querySelectorAll(`li[data-category="${category}"]`));
+      variantsInCategory.forEach((variant) => {
+        variant.removeAttribute('data-selected');
+      });
+
+      this.toggleOptionSelection(clickedOption);
+      this.getSelectedOptions();
+      this.getSelectedVariant();
+      this.filterImgVariant(); //new added
+
+      if (this.currentVariant) {
+        this.updateURL();
+        this.updateFormID();
+        this.updatePrice(); // Update the price when the variant changes
+      }
+    }
+
+    filterImgVariant() {
+        if (this.currentVariant.featured_image && this.currentVariant.featured_image.alt) {
+          document.querySelectorAll('[thumbnail-alt]').forEach(thumbnail => {
+            thumbnail.setAttribute('thumbnail-alt', this.currentVariant.featured_image.alt);
+          });
+        }
+      }
+
+    toggleOptionSelection(optionElement) {
+      const isSelected = optionElement.getAttribute('data-selected') === 'true';
+      if (isSelected) {
+        optionElement.removeAttribute('data-selected');
+      } else {
+        optionElement.setAttribute('data-selected', 'true');
+      }
+    }
+
+    getSelectedOptions() {
+      this.options = Array.from(this.querySelectorAll('li[data-selected="true"]'), (li) =>
+        li.getAttribute('data-value')
+      );
+      console.log(this.options);
+    }
+
+    getVariantJSON() {
+      this.variantData = this.variantData || JSON.parse(this.querySelector('[type="application/json"]').textContent);
+      return this.variantData;
+    }
+
+    getSelectedVariant() {
+      this.currentVariant = this.getVariantJSON().find((variant) => {
+        const findings = !variant.options
+          .map((option, index) => {
+            return this.options[index] === option;
+          })
+          .includes(false);
+
+        if (findings) return variant;
+      });
+
+      console.log(this.currentVariant);
+    }
+
+    updateURL() {
+      if (!this.currentVariant) return;
+      // window.history.replaceState({}, '', `${this.dataset.url}?variant=${this.currentVariant.id}`);
+      document.querySelector('.global-loadingState.prod').style.display = 'flex';
+    document.querySelector('.pro-img-con').classList.add('loading');
+          fetch(`${this.dataset.url}?variant=${this.currentVariant.id}`)
+        .then(response => response.text())
+        .then((responseText) => {
+          const html = new DOMParser().parseFromString(responseText, 'text/html');
+          const oldHtml = document.getElementById('prodImgSlide');
+          const newHtml = html.getElementById('prodImgSlide');
+          oldHtml.innerHTML = newHtml.innerHTML;
+          setTimeout(()=>{
+            $('#thumbnail-slider').slick({
+              slidesToShow: 4,
+              draggable: false,
+              slidesToScroll: 1,
+              asNavFor: '#main-slider',
+              dots: false,
+              focusOnSelect: true,
+              arrows: true,
+              vertical: true,
+              verticalSwiping: true,
+              responsive: [
+                        {
+                          breakpoint: 1200,
+                          settings: {
+                            vertical: true,
+                            verticalSwiping: true,
+                            slidesToShow: 4,
+                          },
+                        },
+                        {
+                          breakpoint: 992,
+                          settings: {
+                            vertical: false,
+                            verticalSwiping: false,
+                          },
+                        }
+                      ],
+            });
+
+            // Initialize Main Slider
+            $('#main-slider').slick({
+              slidesToShow: 1,
+              draggable: false,
+              slidesToScroll: 1,
+              asNavFor: '#thumbnail-slider',
+              fade: true,
+              arrows: false,
+              infinite: false
+            });
+
+            $(".prod-main-img")
+      // tile mouse actions
+                .on("mouseover", function() {
+              $(this)
+                .children("img")
+                .css({ transform: "scale(" + $(this).attr("data-scale") + ")" });
+                })
+                .on("mouseout", function() {
+              $(this)
+                .children("img")
+                .css({ transform: "scale(1)" });
+                })
+                .on("mousemove", function(e) {
+              $(this)
+                .children("img")
+                .css({
+                  "transform-origin":
+                    ((e.pageX - $(this).offset().left) / $(this).width()) * 100 +
+                    "% " +
+                    ((e.pageY - $(this).offset().top) / $(this).height()) * 100 +
+                    "%"
+                });
+                })
+                .on("click", function() {
+              $(".prod-main-img").not($(this)).removeClass("zoomed"); // Remove zoomed class from all other images except this
+              $(this).toggleClass("zoomed"); // Toggle zoomed class on the clicked image
+                })
+                .on("mouseleave", function() {
+              $(this).removeClass("zoomed"); // Remove zoomed class when mouse leaves the item
+                });
+            document.querySelector('.global-loadingState.prod').style.display = 'none';
+                document.querySelector('.pro-img-con').classList.remove('loading');
+          },2000)
+          
+        })
+    }
+
+    updateFormID() {
+      const form_input = document.querySelector('#product-form').querySelector('input[name="id"]');
+      form_input.value = this.currentVariant.id;
+    }
+
+    updatePrice() {
+      fetch(`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${this.dataset.section}`)
+        .then((response) => response.text())
+        .then((responseText) => {
+          const html = new DOMParser().parseFromString(responseText, 'text/html');
+
+          // Update price
+          const oldPrice = document.getElementById('price-{{ section.id }}');
+          const newPrice = html.getElementById('price-{{ section.id }}');
+          if (oldPrice && newPrice) {
+            oldPrice.innerHTML = newPrice.innerHTML;
+          }
+
+          // Update .psb-variant
+          const oldPsbVariant = document.querySelector('.psb-variant');
+          const newPsbVariant = html.querySelector('.psb-variant');
+          if (oldPsbVariant && newPsbVariant) {
+            oldPsbVariant.innerHTML = newPsbVariant.innerHTML;
+          }
+
+          // Update the variant name in the label
+          const selectedVariantLabels = document.querySelectorAll('.variant-cats label p.small span');
+          selectedVariantLabels.forEach((label, index) => {
+            const optionValue = this.options[index]; // Get the selected option value
+            label.textContent = optionValue; // Update label with option value
+          });
+        });
+    }
+  }
+
+  customElements.define('variant-selector', VariantSelector);
+</script>
+
+<script defer>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Get the variant-selector element.
+    const variantSelector = document.querySelector('variant-selector');
+    if (!variantSelector) return;
+
+    // Hide original variant options initially
+    const originalOptions = variantSelector.querySelectorAll('.size-dimensions, .Diamond.variant-cats > ul');
+    originalOptions.forEach((opt) => {
+      opt.style.display = 'none';
+    });
+
+    // Function to create custom dropdown with improved functionality
+    function createCustomDropdown(options, id, labelText, includeLabel = true) {
+      const container = document.createElement('div');
+      container.classList.add('custom-dropdown');
+
+      // Only add label if includeLabel is true
+      if (includeLabel) {
+        const label = document.createElement('label');
+        label.textContent = labelText;
+        label.setAttribute('for', id);
+        container.appendChild(label);
+      }
+
+      // Create selected value display
+      const selectedDisplay = document.createElement('div');
+      selectedDisplay.classList.add('selected-value');
+      selectedDisplay.setAttribute('id', id + '-display');
+      selectedDisplay.textContent = options.length > 0 ? options[0] : '';
+      selectedDisplay.addEventListener('click', function (e) {
+        e.stopPropagation();
+
+        // Close all other dropdowns first
+        document.querySelectorAll('.dropdown-list.active').forEach((list) => {
+          if (list.id !== id) {
+            list.classList.remove('active');
+            list.previousElementSibling.classList.remove('active');
+          }
+        });
+
+        // Toggle this dropdown
+        this.classList.toggle('active');
+        this.nextElementSibling.classList.toggle('active');
+      });
+      container.appendChild(selectedDisplay);
+
+      // Create dropdown list
+      const dropdownList = document.createElement('ul');
+      dropdownList.classList.add('dropdown-list');
+      dropdownList.setAttribute('id', id);
+
+      options.forEach(function (option, index) {
+        const listItem = document.createElement('li');
+        listItem.setAttribute('data-value', option);
+        listItem.textContent = option;
+        // Mark first item as selected by default
+        if (index === 0) listItem.classList.add('selected');
+
+        listItem.addEventListener('click', function (e) {
+          e.stopPropagation();
+
+          // Remove selected class from all items
+          dropdownList.querySelectorAll('li').forEach((li) => {
+            li.classList.remove('selected');
+          });
+
+          // Add selected class to clicked item
+          this.classList.add('selected');
+
+          // Update the selected display
+          selectedDisplay.textContent = this.textContent;
+
+          // Hide the dropdown
+          dropdownList.classList.remove('active');
+          selectedDisplay.classList.remove('active');
+
+          // Create and dispatch change event
+          const event = new CustomEvent('customChange', {
+            detail: { value: this.getAttribute('data-value') },
+          });
+          dropdownList.dispatchEvent(event);
+        });
+        dropdownList.appendChild(listItem);
+      });
+
+      container.appendChild(dropdownList);
+      return container;
+    }
+
+    // DIMENSION HANDLING
+    // Look for the UL that holds the combined dimensions.
+    const combinedUl = variantSelector.querySelector('.size-dimensions');
+    if (combinedUl) {
+      // Ensure the option is for dimensions by checking the data-category of one LI.
+      const sampleLI = combinedUl.querySelector('li[data-category]');
+      if (sampleLI && sampleLI.getAttribute('data-category') === 'dimension') {
+        // Gather all the combined dimension strings (e.g., "2mm x 17cm").
+        const dimensionItems = Array.from(combinedUl.querySelectorAll('li[data-value]'));
+        const sizes = dimensionItems.map((li) => li.getAttribute('data-value'));
+
+        // Build unique arrays for widths and lengths.
+        let widths = [];
+        let lengths = [];
+        sizes.forEach(function (size) {
+          const parts = size.split('x');
+          if (parts.length === 2) {
+            const width = parts[0].trim();
+            const length = parts[1].trim();
+            if (!widths.includes(width)) {
+              widths.push(width);
+            }
+            if (!lengths.includes(length)) {
+              lengths.push(length);
+            }
+          }
+        });
+
+        // Create wrapper container for both dimension selects
+        const dimensionsWrapper = document.createElement('div');
+        dimensionsWrapper.classList.add('dimension-select-wrap');
+
+        // For dimension width dropdown
+        const widthContainer = document.createElement('div');
+        widthContainer.classList.add('dimension-select');
+
+        // Add label outside the dropdown
+        const widthLabel = document.createElement('label');
+        widthLabel.textContent = 'Width:';
+        widthLabel.setAttribute('for', 'width');
+        widthContainer.appendChild(widthLabel);
+
+        // Create dropdown without label
+        const customWidthDropdown = createCustomDropdown(widths, 'width', '', false);
+        widthContainer.appendChild(customWidthDropdown);
+
+        // For dimension length dropdown
+        const lengthContainer = document.createElement('div');
+        lengthContainer.classList.add('dimension-select');
+
+        // Add label outside the dropdown
+        const lengthLabel = document.createElement('label');
+        lengthLabel.textContent = 'Length:';
+        lengthLabel.setAttribute('for', 'length');
+        lengthContainer.appendChild(lengthLabel);
+
+        // Create dropdown without label
+        const customLengthDropdown = createCustomDropdown(lengths, 'length', '', false);
+        lengthContainer.appendChild(customLengthDropdown);
+
+        // Add both dimension selects to the wrapper
+        dimensionsWrapper.appendChild(widthContainer);
+        dimensionsWrapper.appendChild(lengthContainer);
+
+        // Insert the wrapper into the DOM (right after the combined dimensions UL)
+        combinedUl.parentNode.insertBefore(dimensionsWrapper, combinedUl.nextSibling);
+
+        let selectedWidth = null;
+        let selectedLength = null;
+
+        // Update the main (combined) selection based on the separate width/length choices.
+        function updateDimensionSelection() {
+          if (!selectedWidth || !selectedLength) return;
+
+          const combined = selectedWidth + ' x ' + selectedLength;
+
+          // Clear any previous selection on the combined list.
+          dimensionItems.forEach((li) => li.removeAttribute('data-selected'));
+
+          // Find the matching LI using the combined string.
+          const matchingLi = combinedUl.querySelector(`li[data-value="${combined}"]`);
+          if (matchingLi) {
+            matchingLi.setAttribute('data-selected', 'true');
+          } else {
+            console.warn('No matching variant found for', combined);
+          }
+
+          // Trigger the existing VariantSelector methods.
+          if (typeof variantSelector.getSelectedOptions === 'function') {
+            variantSelector.getSelectedOptions();
+            variantSelector.getSelectedVariant();
+            if (variantSelector.currentVariant) {
+              variantSelector.updateFormID();
+              variantSelector.updatePrice();
+            }
+          }
+        }
+
+        // Set default selections for width and length
+        if (widths.length > 0 && lengths.length > 0) {
+          selectedWidth = widths[0];
+          selectedLength = lengths[0];
+
+          // Set default values in custom dropdowns
+          const widthDisplay = document.getElementById('width-display');
+          const lengthDisplay = document.getElementById('length-display');
+
+          if (widthDisplay) widthDisplay.textContent = selectedWidth;
+          if (lengthDisplay) lengthDisplay.textContent = selectedLength;
+
+          // Update the combined selection based on the defaults
+          updateDimensionSelection();
+        }
+
+        // Update the event listeners too
+        const widthDropdown = document.getElementById('width');
+        if (widthDropdown) {
+          widthDropdown.addEventListener('customChange', function (e) {
+            selectedWidth = e.detail.value;
+            updateDimensionSelection();
+          });
+        }
+
+        const lengthDropdown = document.getElementById('length');
+        if (lengthDropdown) {
+          lengthDropdown.addEventListener('customChange', function (e) {
+            selectedLength = e.detail.value;
+            updateDimensionSelection();
+          });
+        }
+      }
+    }
+
+    // DIAMOND HANDLING
+    // Look for the UL that holds the diamond options
+    const diamondLi = variantSelector.querySelector('.Diamond.variant-cats');
+    if (diamondLi) {
+      const diamondUl = diamondLi.querySelector('ul');
+      if (!diamondUl) return;
+
+      // Get all diamond options
+      const diamondItems = Array.from(diamondUl.querySelectorAll('li[data-value]'));
+      if (diamondItems.length === 0) return;
+
+      // Parse diamond options to extract stone type and count
+      const diamondOptions = diamondItems.map((li) => {
+        const value = li.getAttribute('data-value');
+        // Format is "Stone Type x Number"
+        const parts = value.split('x');
+
+        let stoneType = parts[0].trim(); // "Lab Diamond" or "Moissanite"
+        let count = '1';
+
+        if (parts.length > 1) {
+          count = parts[1].trim(); // Get the count value
+        }
+
+        return { full: value, stoneType, count };
+      });
+
+      // Extract unique values for each property
+      const uniqueStoneTypes = [...new Set(diamondOptions.map((o) => o.stoneType))];
+      const uniqueCounts = [...new Set(diamondOptions.map((o) => o.count))];
+
+      // Create wrapper for diamond selects
+      const diamondSelectWrapper = document.createElement('div');
+      diamondSelectWrapper.classList.add('diamond-select-wrap');
+
+      // Create stone type select
+      if (uniqueStoneTypes.length > 0) {
+        const stoneContainer = document.createElement('div');
+        stoneContainer.classList.add('diamond-select');
+
+        // Add label outside the dropdown
+        const stoneLabel = document.createElement('label');
+        stoneLabel.textContent = 'Stone Type:';
+        stoneLabel.setAttribute('for', 'stone-type');
+        stoneContainer.appendChild(stoneLabel);
+
+        // Create dropdown without label
+        const customStoneDropdown = createCustomDropdown(uniqueStoneTypes, 'stone-type', '', false);
+        stoneContainer.appendChild(customStoneDropdown);
+        diamondSelectWrapper.appendChild(stoneContainer);
+      }
+
+      // Create count select
+      if (uniqueCounts.length > 0) {
+        const countContainer = document.createElement('div');
+        countContainer.classList.add('diamond-select');
+
+        // Add label outside the dropdown
+        const countLabel = document.createElement('label');
+        countLabel.textContent = 'Stone Carat:';
+        countLabel.setAttribute('for', 'stone-count');
+        countContainer.appendChild(countLabel);
+
+        // Create dropdown without label
+        const customCountDropdown = createCustomDropdown(uniqueCounts, 'stone-count', '', false);
+        countContainer.appendChild(customCountDropdown);
+        diamondSelectWrapper.appendChild(countContainer);
+      }
+
+      // Insert the wrapper after the diamond UL
+      diamondUl.parentNode.insertBefore(diamondSelectWrapper, diamondUl.nextSibling);
+
+      // Store selected values
+      let selectedStoneType = uniqueStoneTypes.length > 0 ? uniqueStoneTypes[0] : null;
+      let selectedCount = uniqueCounts.length > 0 ? uniqueCounts[0] : null;
+
+      // Update the diamond selection in the original list
+      function updateDiamondSelection() {
+        // Clear existing selection
+        diamondItems.forEach((li) => li.removeAttribute('data-selected'));
+
+        // For troubleshooting - log the values we're trying to match
+        console.log('Looking for stone type:', selectedStoneType);
+        console.log('Looking for count:', selectedCount);
+
+        // Try different formats of the combined value to increase matching chances
+        const fullValue = `${selectedStoneType} x ${selectedCount}`;
+        const fullValueNoSpace = `${selectedStoneType}x${selectedCount}`;
+
+        // Find matching LI using the combined string - try multiple formats
+        let matchingLi = diamondUl.querySelector(`li[data-value="${fullValue}"]`);
+
+        // If exact match fails, try a more flexible approach
+        if (!matchingLi) {
+          console.log('Exact match failed, trying flexible matching');
+
+          // Try to find a variant by comparing parts more flexibly
+          matchingLi = diamondItems.find((li) => {
+            const value = li.getAttribute('data-value');
+            console.log('Checking value:', value);
+
+            // Try to match regardless of spacing differences
+            const normalizedValue = value.replace(/\s+/g, ' ').trim();
+            const normalizedFullValue = fullValue.replace(/\s+/g, ' ').trim();
+
+            if (normalizedValue === normalizedFullValue) {
+              return true;
+            }
+
+            // Try matching by the parts separately
+            const valueParts = value.split('x').map((part) => part.trim());
+            const stoneTypePart = valueParts[0];
+            const countPart = valueParts.length > 1 ? valueParts[1] : '1';
+
+            // Check if stone type and count match separately
+            return stoneTypePart.includes(selectedStoneType) && countPart.includes(selectedCount);
+          });
+        }
+
+        if (matchingLi) {
+          console.log('Found matching variant:', matchingLi.getAttribute('data-value'));
+          matchingLi.setAttribute('data-selected', 'true');
+
+          // Update the display text in the label
+          const diamondSpan = diamondLi.querySelector('label p.small span');
+          if (diamondSpan) {
+            diamondSpan.textContent = matchingLi.getAttribute('data-value');
+          }
+
+          // Trigger variant selector methods
+          if (typeof variantSelector.getSelectedOptions === 'function') {
+            variantSelector.getSelectedOptions();
+            variantSelector.getSelectedVariant();
+            if (variantSelector.currentVariant) {
+              variantSelector.updateFormID();
+              variantSelector.updatePrice();
+            }
+          }
+        } else {
+          console.warn('No matching diamond variant found for', fullValue);
+        }
+      }
+
+      // For diamonds, set default selections
+      if (uniqueStoneTypes.length > 0 && uniqueCounts.length > 0) {
+        // Set the default selected stone type and count
+        selectedStoneType = uniqueStoneTypes[0];
+        selectedCount = uniqueCounts[0];
+
+        const stoneDisplay = document.getElementById('stone-type-display');
+        const countDisplay = document.getElementById('stone-count-display');
+
+        if (stoneDisplay) stoneDisplay.textContent = selectedStoneType;
+        if (countDisplay) countDisplay.textContent = selectedCount;
+
+        // Update the diamond selection based on defaults
+        updateDiamondSelection();
+      }
+
+      // Set event listeners for diamond dropdowns
+      const stoneDropdown = document.getElementById('stone-type');
+      if (stoneDropdown) {
+        stoneDropdown.addEventListener('customChange', function (e) {
+          selectedStoneType = e.detail.value;
+          updateDiamondSelection();
+        });
+      }
+
+      const countDropdown = document.getElementById('stone-count');
+      if (countDropdown) {
+        countDropdown.addEventListener('customChange', function (e) {
+          selectedCount = e.detail.value;
+          updateDiamondSelection();
+        });
+      }
+    }
+
+    // Add a document click event to close dropdowns when clicking outside
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.custom-dropdown')) {
+        document.querySelectorAll('.dropdown-list.active').forEach((dropdown) => {
+          dropdown.classList.remove('active');
+          if (dropdown.previousElementSibling) {
+            dropdown.previousElementSibling.classList.remove('active');
+          }
+        });
+      }
+    });
+    // Handle Metal Color selection UI update
+    const metalItems = document.querySelectorAll('li[data-category="metal-color"]');
+    const metalDisplay = document.querySelector('.metal-display');
+  
+    if (metalItems.length && metalDisplay) {
+      metalItems.forEach((item) => {
+        item.addEventListener('click', function () {
+          const value = item.getAttribute('data-value');
+          const carat = document.querySelector('input[name="metal_carat"]')?.value || '';
+          metalDisplay.textContent = `${carat} ${value}`;
+  
+          metalItems.forEach(i => i.removeAttribute('data-selected'));
+          item.setAttribute('data-selected', 'true');
+        });
+      });
+    }
+
+  });
+</script>
+
+<script>
+  $(document).ready(function () {
+    // Update toggle functionality for dimension options
+    $('.Dimension.variant-cats strong').click(function () {
+      // Instead of toggling the original dimensions, toggle our custom dropdowns
+      $('.dimension-select-wrap').slideToggle();
+      $(this).toggleClass('active');
+    });
+
+    // Update toggle functionality for diamond variants
+    $('.Diamond.variant-cats strong').click(function () {
+      // Instead of toggling the original options, toggle our custom dropdowns
+      $('.diamond-select-wrap').slideToggle();
+      $(this).toggleClass('active');
+    });
+  });
+</script>
+<script>
+  // Function to programmatically select an option in the custom dropdown
+  function selectCustomDropdownOption(dropdownId, value) {
+    const dropdown = document.getElementById(dropdownId);
+    if (!dropdown) return;
+
+    // Find the display element
+    const display = document.getElementById(dropdownId + '-display');
+    if (!display) return;
+
+    // Find the li with matching value
+    const option = dropdown.querySelector(`li[data-value="${value}"]`);
+    if (!option) return;
+
+    // Update selected class
+    dropdown.querySelectorAll('li').forEach((li) => {
+      li.classList.remove('selected');
+    });
+    option.classList.add('selected');
+
+    // Update display text
+    display.textContent = option.textContent;
+
+    // Create and dispatch change event
+    const event = new CustomEvent('customChange', {
+      detail: { value: value },
+    });
+    dropdown.dispatchEvent(event);
+  }
+</script>
+<script>
+  $(document).ready(function () {
+    $('#main-slider').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      draggable: false,
+      asNavFor: '#thumbnail-slider',
+      fade: true,
+      arrows: false,
+      infinite: false,
+    });
+    // Initialize Thumbnail Slider
+    $('#thumbnail-slider').slick({
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      infinite: false,
+      draggable: false,
+      asNavFor: '#main-slider',
+      dots: false,
+      focusOnSelect: true,
+      arrows: true,
+      vertical: true,
+      verticalSwiping: true,
+      responsive: [
+        {
+          breakpoint: 992,
+          settings: {
+            vertical: false,
+            verticalSwiping: false,
+          },
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            vertical: false,
+            verticalSwiping: false,
+          },
+        },
+        {
+          breakpoint: 580,
+          settings: {
+            vertical: false,
+            verticalSwiping: false,
+            slidesToShow: 3,
+          },
+        },
+        {
+          breakpoint: 380,
+          settings: {
+            vertical: false,
+            verticalSwiping: false,
+            slidesToShow: 2,
+          },
+        },
+      ],
+    });
+
+    // Initialize Main Slider
+  });
+</script>
+<script>
+  $('.prod-main-img')
+    // tile mouse actions
+    .on('mouseover', function () {
+      $(this)
+        .children('img')
+        .css({ transform: 'scale(' + $(this).attr('data-scale') + ')' });
+    })
+    .on('mouseout', function () {
+      $(this).children('img').css({ transform: 'scale(1)' });
+    })
+    .on('mousemove', function (e) {
+      $(this)
+        .children('img')
+        .css({
+          'transform-origin':
+            ((e.pageX - $(this).offset().left) / $(this).width()) * 100 +
+            '% ' +
+            ((e.pageY - $(this).offset().top) / $(this).height()) * 100 +
+            '%',
+        });
+    })
+    .on('click', function () {
+      $('.prod-main-img').not($(this)).removeClass('zoomed'); // Remove zoomed class from all other images except this
+      $(this).toggleClass('zoomed'); // Toggle zoomed class on the clicked image
+    })
+    .on('mouseleave', function () {
+      $(this).removeClass('zoomed'); // Remove zoomed class when mouse leaves the item
+    });
+</script>
+<script>
+  $(document).ready(function () {
+    // Function to resize the cart form if needed
+    function resizeCartForm() {
+      var cartContainerForm = document.querySelector('.side-cart-container form');
+      var cartHeading = document.querySelector('.side-cart-heading');
+      var cartDesc = document.querySelector('.side-cart-desc');
+      if (cartContainerForm && cartHeading && cartDesc) {
+        var formHeight = window.innerHeight - (cartHeading.offsetHeight + cartDesc.offsetHeight);
+        cartContainerForm.style.height = formHeight + 'px';
+      }
+    }
+
+    // The full getCart function that builds the cart HTML
+    function getCart() {
+      $.ajax({
+        url: '/cart.json',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+          console.log(data, 'Hello this is the data of the cart');
+          var cartItemsHtml = '';
+
+          if (data.items.length > 0) {
+            data.items.forEach(function (item, index) {
+              var itemPrice = Shopify.formatMoney(item.line_price);
+              var isRingProduct = item.product_type === 'ring' || item.product_type === 'moissanite';
+              var isDiamondProduct = item.product_type === 'diamond';
+              var isEngraving = item.product_type === 'engraving';
+              var engravingPrice = 10000;
+              // For rings, skip showing diamond/engraving add‑ons directly
+              if (isDiamondProduct || isEngraving) {
+                return;
+              }
+              var previousItem = data.items[index - 1];
+              var isPreviousDiamond = previousItem && previousItem.product_type === 'diamond';
+
+              // For ring or moissanite products, include extra features
+              if (isRingProduct) {
+                cartItemsHtml += `
+                <div class="product-add-on flex">
+                  <div class="product-add-on-left">
+                    <div class="product-add-on-empty-div"></div>
+                    <div class="product-add-on-image">
+                      <img loading="lazy" class="img" src="${item.image}">
+                    </div>
+                  </div>
+                  <div class="product-add-on-right flex flex-c">
+                    <div class="product-add-on-price-title flex align-b flex-jsb">
+                      <div class="product-add-on-title">${item.product_title}<span class="tdf-cart-item-t"></span></div>
+                      <div class="product-add-on-remove"><span>Remove</span></div>
+                    </div>
+                    <div class="product-add-on-variant-title-price flex align-b flex-jsb">
+                      <div class="product-add-on-variant-title"><span>${item.variant_title}</span></div>
+                      <div data-pi="${
+                        item.variant_id
+                      }" class="product-add-on-variant-price"><span>${itemPrice}</span></div>
+                    </div>
+                    ${
+                      item.properties['Message']
+                        ? `
+                      <div class="product-add-on-variant-title-price flex align-b flex-jsb">
+                        <div data-ei="44979292406017" class="product-add-on-variant-title"><span>Engraving: "${
+                          item.properties['Message']
+                        }"</span></div>
+                        <div class="product-add-on-variant-price"><span>${Shopify.formatMoney(
+                          engravingPrice
+                        )}</span></div>
+                      </div>
+                    `
+                        : ''
+                    }
+                    ${
+                      isPreviousDiamond
+                        ? (function () {
+                            var diamondItem = previousItem;
+                            var diaPrice = Shopify.formatMoney(diamondItem.line_price);
+                            return `
+                        <div class="product-add-on-variant-title-price">
+                          <div class="product-add-on-variant-title-diamond flex align flex-jsb">
+                            <span>Stone</span>
+                            <div class="product-add-on-variant-price"><span>${diaPrice}</span></div>
+                          </div>
+                          <div data-di="${diamondItem.variant_id}" class="product-add-on-variant-title"><span>${diamondItem.variant_title}</span></div>
+                        </div>
+                      `;
+                          })()
+                        : ''
+                    }
+                    ${
+                      item.properties['Message'] || isPreviousDiamond
+                        ? (function () {
+                            var totalAmount;
+                            if (item.properties['Message'] && isRingProduct && !isPreviousDiamond) {
+                              totalAmount = Shopify.formatMoney(item.line_price + engravingPrice);
+                            } else if (item.properties['Message'] && isRingProduct && isPreviousDiamond) {
+                              totalAmount = Shopify.formatMoney(
+                                item.line_price + previousItem.line_price + engravingPrice
+                              );
+                            } else if (isRingProduct && isPreviousDiamond) {
+                              totalAmount = Shopify.formatMoney(item.line_price + previousItem.line_price);
+                            }
+                            return totalAmount
+                              ? `
+                        <div class="product-add-on-variant-title-price">
+                          <div class="product-add-on-variant-title-diamond flex align flex-jsb">
+                            <span>Total</span>
+                            <div class="product-add-on-variant-price"><span>${totalAmount}</span></div>
+                          </div>
+                        </div>
+                      `
+                              : '';
+                          })()
+                        : ''
+                    }
+                  </div>
+                </div>
+              `;
+              } else {
+                // For non‑ring products, use a standard product card layout
+                cartItemsHtml += `
+                <div class="product-add-on flex">
+                  <div class="product-add-on-left">
+                    <div class="product-add-on-empty-div"></div>
+                    <div class="product-add-on-image">
+                      <img loading="lazy" class="img" src="${item.image}">
+                    </div>
+                  </div>
+                  <div class="product-add-on-right flex flex-c">
+                    <div class="product-add-on-price-title flex align-b flex-jsb">
+                      <div class="product-add-on-title">${item.product_title}<span class="tdf-cart-item-t"></span></div>
+                      <div class="product-add-on-remove"><span>Remove</span></div>
+                    </div>
+                    <div class="product-add-on-variant-title-price flex align-b flex-jsb">
+                      <div class="product-add-on-variant-title"><span>${item.variant_title}</span></div>
+                      <div data-pi="${item.variant_id}" class="product-add-on-variant-price"><span>${itemPrice}</span></div>
+                    </div>
+                  </div>
+                </div>
+              `;
+              }
+            });
+            $('#cartItems').html(cartItemsHtml);
+
+            var dataPrice = Shopify.formatMoney(data.total_price);
+            // Build the cart summary HTML
+            var cartSummaryHtml = `
+            <div class="product-added-desc-down">
+              <div class="product-added-desc-down-total-price">
+                <div class="product-added-desc-down-total">order summary</div>
+                <div class="product-added-desc-down-sub flex align flex-jsb">
+                  <span>Subtotal</span>
+                  <span class="mon">${dataPrice}</span>
+                </div>
+                <div class="product-added-desc-down-sub flex align flex-jsb">
+                  <span>Shipping</span>
+                  <span class="mon shipping">Calculated at checkout</span>
+                </div>
+                <div class="product-added-desc-down-sub flex align flex-jsb">
+                  <span>Tax</span>
+                  <span class="mon tax">Calculated at checkout</span>
+                </div>
+              </div>   
+              <div class="product-added-desc-down-total-final flex align flex-jsb">
+                <div class="product-added-desc-down-total">total</div>
+                <span>${dataPrice}</span>
+              </div>
+            </div>
+            <a class="product-buy-now-btn-a" href="/checkout/">
+              <div class="product-buy-now-btn">
+                <button class="predictive-btn">Checkout</button>
+              </div>
+            </a>
+          `;
+            $('#cartSummary').html(cartSummaryHtml);
+          } else {
+            // Display an empty cart message
+            $('#cartItems').html(
+              '<div class="side-cart-empty flex align flex-jsc"><h4 style="text-align:center;">No items in the cart</h4></div>'
+            );
+            $('#cartSummary').html('');
+          }
+          document.querySelector('.global-loadingState.cart').style.display = 'none';
+          resizeCartForm();
+        },
+        error: function (xhr, status, error) {
+          console.error('Error fetching cart data:', error);
+          document.querySelector('.global-loadingState.cart').style.display = 'none';
+        },
+      });
+    }
+
+    // Add-to-cart functionality with all features integrated
+    $('.add-to-cart').click(async function (e) {
+      e.preventDefault();
+
+      // Show loading state for the cart
+      document.querySelector('.global-loadingState.cart').style.display = 'flex';
+
+      // Get the variant ID from the product form
+      const form_input = document.querySelector('#product-form').querySelector('input[name="id"]');
+      if (!form_input) {
+        console.error('Variant input not found in product form.');
+        return;
+      }
+      const variantId = form_input.value;
+
+      // Build the formData object for the main product variant
+      const formData = {
+        items: [
+          {
+            id: variantId,
+            quantity: 1,
+          },
+        ],
+      };
+
+      // Send the add-to-cart request to Shopify
+      try {
+        await fetch(window.Shopify.routes.root + 'cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+        // Add the js-my-cart-open class to the body
+        document.body.classList.add('js-my-cart-open');
+        // Refresh the cart immediately after adding the product
+        getCart();
+      } catch (error) {
+        console.error('Error adding product to cart:', error);
+        // Even on error, attempt to refresh the cart
+        getCart();
+      }
+    });
+
+    // Ensure the cart is resized on window resize
+    window.addEventListener('resize', resizeCartForm);
+  });
+</script>
+{% schema %}
+{
+  "name": "Product",
+  "blocks": [
+    {
+      "type": "vendor",
+      "name": "Vendor",
+      "limit": 1
+    },
+    {
+      "type": "title",
+      "name": "Title",
+      "limit": 1
+    },
+    {
+      "type": "price",
+      "name": "Price",
+      "limit": 1
+    },
+    {
+      "type": "variant_selector",
+      "name": "Variant Selector",
+      "limit": 1
+    },
+    {
+      "type": "quantity",
+      "name": "Quantity",
+      "limit": 1
+    },
+    {
+      "type": "description",
+      "name": "Description",
+      "limit": 1
+    },
+    {
+      "type": "checkout_buttons",
+      "name": "Checkout Buttons",
+      "limit": 1
+    }
+  ]
+}
+{% endschema %}

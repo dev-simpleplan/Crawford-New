@@ -1,0 +1,540 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+ fbq('init', '336243422786502'); 
+fbq('track', 'PageView');
+  fbq('track', 'InitiateCheckout');
+</script>
+<noscript>
+ <img height="1" width="1" 
+src="https://www.facebook.com/tr?id=336243422786502&ev=PageView
+&noscript=1"/>
+</noscript>
+<!-- End Meta Pixel Code -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "t09ggmq7bo");
+</script>
+    
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WC2XFMK4');</script>
+    <title>{{ page_title }}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="{{ page_description | escape }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js" defer></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link rel="icon" href="https://cdn.shopify.com/s/files/1/0674/4591/5905/files/Crawford_favicon0.png?v=1716899026" type="image/png">
+    {{ content_for_header }}
+    <style>
+      @font-face {
+        font-family: 'Recife Display Web Book';
+        src: url('{{ 'RecifeDisplayWeb-Book.woff2' | asset_url }}') format('woff2')
+        , url('{{ 'RecifeDisplayWeb-Book.woff' | asset_url }}') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Recife Display Web';
+        src: url('{{ 'RecifeDisplayWeb-Light.woff2' | asset_url }}') format('woff2')
+        , url('{{ 'RecifeDisplayWeb-Light.woff' | asset_url }}') format('woff');
+        font-weight: 300;
+        font-style: normal;
+        font-display: swap;
+      }
+      {% if page.handle == 'contact' or page.handle == 'faq' or page.handle == 'our-causes' or page.handle == 'terms-and-conditions' or page.handle == 'return-policy' or page.handle == 'privacy-policy' or page.handle == 'thank-you' or template == 'product' or template == 'cart' or template == 'collection' or template == '404' or template == 'product.fine-jewellery' or template == 'product.stud-jewellery' or template == 'product.charm-jewellery' or template == 'product.fine-v2-jewellery' or template == 'product.stud-v2-jewellery' or template == 'product.ring' or template == 'password' or template == 'collection.not-ring' %}
+        .header-contents-middle {
+          filter: invert(0%) !important;
+          margin-top: 0 !important;
+          width: 235px !important;
+        }
+        a.cart-icon span{
+          border-color: #222 !important;
+        }
+        .header-contents-middle svg {
+          margin: 0 auto;
+          width: 100%;
+          height: auto;
+          max-height: 100%;
+        }
+        header.state2 {
+          background-color: #FEFEF3;
+        }
+        header.state2.backdrop {
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .logo-top-head {
+          transform: scale(1);
+          transition: 1s all linear !important;
+        }
+        .logo-top-head.active {
+          transform: scale(0);
+          transition: 2s all linear !important;
+        }
+        .header-contents-middle a {
+          transform: translateY(0);
+          transition: 1s all ease;
+        }
+        .header-contents-middle a.active {
+          transform: translateY(-105px);
+        }
+        @media (min-width: 992px) {
+          .header-contents-middle a.active {
+            transform: translateY(-85px);
+          }
+        }
+        @media (min-width: 1100px) {
+          .header-contents-middle a.active {
+            transform: translateY(-105px);
+          }
+        }
+        @media (max-width: 991px) {
+          .header-contents-middle a.active {
+            transform: translateY(-80px);
+          }
+        }
+        @media (max-width: 1100px) {
+          .header-contents-middle {
+            width: 195px !important;
+          }
+        }
+      {% endif %}
+      {% if template == 'collection' or template == 'product' or template == 'cart' or template == 'product.fine-jewellery' or template == 'product.stud-jewellery' or template == 'product.charm-jewellery' or template == 'product.fine-v2-jewellery' or template == 'product.stud-v2-jewellery' or template == 'product.ring' or template == 'password' or template == 'collection.not-ring' %}
+        .logo-top-head {
+          transform: scale(0);
+        }
+        .header-contents-middle a {
+          transform: translateY(-105px);
+        }
+        @media (min-width: 992px) {
+          .header-contents-middle a {
+            transform: translateY(-85px);
+          }
+        }
+        @media (min-width: 1100px) {
+          .header-contents-middle a {
+            transform: translateY(-105px);
+          }
+        }
+        @media (max-width: 991px) {
+          .header-contents-middle a {
+            transform: translateY(-80px);
+          }
+        }
+      {% endif %}
+      {% if page.handle == 'thank-you' or template == '404' %}
+        header.state2{
+          background-color: transparent !important;
+        }
+        header.state2 .header-link a{
+          color: #fff !important;
+        }
+        header.state2 .account-path2{
+          fill: #fff !important;
+        }
+        header.state2 .account-path1, header.state2 .hamburger-icon svg path{
+          stroke: #fff !important;
+        }
+        header.state2 .cart-icon1{
+          stroke: #fff !important;
+        }
+        header.state2 .header-contents-middle svg path{
+          fill: #fff !important;
+        }
+      {% endif %}
+      {% if page.handle == 'privacy-policy' or page.handle == 'return-policy' or page.handle == 'terms-and-conditions' %}
+        header.state2{
+          background-color: #FEFEF3;
+        }
+      {% endif %}
+    </style>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous">
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@701,200,500,301,201,1,300,2,601,600,401,501,400,700&display=swap" rel="stylesheet">
+    <link
+      rel="preload"
+      href="/assets/RecifeDisplayWeb-Book.woff"
+      as="font"
+      type="font/woff"
+      crossorigin>
+    <link
+      rel="preload"
+      href="/assets/RecifeDisplayWeb-Book.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin>
+    <link
+      rel="preload"
+      href="/assets/RecifeDisplayWeb-Light.woff"
+      as="font"
+      type="font/woff2"
+      crossorigin>
+    <link
+      rel="preload"
+      href="/assets/RecifeDisplayWeb-Light.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin>
+    {{ 'application.css' | asset_url | stylesheet_tag }}
+    {% if template == 'product.fine-jewellery' or template == 'product.stud-jewellery' or template == 'product.charm-jewellery' or template == 'product.charm-jewellery' or template == 'product.fine-v2-jewellery' or template == 'product.stud-v2-jewellery' %}
+      {{ 'fine-jewellery.css' | asset_url | stylesheet_tag }}
+    {% endif %}
+    {% if template == 'product.ring' %}
+      {{ 'rings.css' | asset_url | stylesheet_tag }}
+    {% endif %}
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"></script>
+    <script src="https://kit.fontawesome.com/cd58590830.js" crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+      integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+      integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+      integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"></script>
+
+  </head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F85RDG8RG0"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+
+gtag('config', 'G-F85RDG8RG0');
+</script>
+  <body
+    {% if page.handle == 'thank-you' or template == '404' %}
+    style="overflow: hidden"
+    {% else %}
+    {% endif %}
+    class="">
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WC2XFMK4"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    {% section 'side-cart' %}
+
+    {% if page.handle != 'contact' and page.handle != 'faq' and page.handle != 'our-causes' and page.handle != 'terms-and-conditions' and page.handle != 'return-policy' and page.handle != 'privacy-policy' and page.handle != 'thank-you' and template != 'product' and template != 'cart' and template != 'collection' and template != '404' and template != 'product.fine-jewellery' and template != 'product.stud-jewellery' and template != 'product.charm-jewellery' and template != 'product.fine-v2-jewellery' and template != 'product.stud-v2-jewellery' and template != 'product.ring' and template != 'password' and template != 'collection.not-ring' %}
+      {% section 'header' %}
+    {% elsif template.handle == 'customers/login' %}
+      {% section 'header-solid' %}
+    {% else %}
+      {% section 'header-dark' %}
+    {% endif %}
+    {% if page.handle == 'about' %}
+      {% section 'about-sticky-bar' %}
+    {% endif %}
+
+    <main
+      role="main"
+      {% if page.handle != 'contact' and page.handle != 'faq' and page.handle != 'our-causes' and page.handle != 'terms-and-conditions' and page.handle != 'return-policy' and page.handle != 'privacy-policy' and page.handle != 'thank-you' and template != 'product' and template != 'cart' and template != 'collection' and template != '404' and template != 'product.fine-jewellery' and template != 'product.stud-jewellery' and template != 'product.charm-jewellery' and template != 'product.fine-v2-jewellery' and template != 'product.stud-v2-jewellery' and template != 'product.ring' and template != 'password' and template != 'collection.not-ring' %}
+      data-scroll-container
+      id="scroll-container"
+      {% endif %}>
+      {{ content_for_layout }}
+      {% section 'footer' %}
+    </main>
+  </body>
+  {% comment %} <script type="application/json" data-ajax-cart-initial-state>
+                  {{ cart | json }}
+              </script>
+
+              <script type="module">
+                  import '{{ "liquid-ajax-cart-v2.0.0.js" | asset_url }}';
+        </script> {% endcomment %}
+  <script src="{{ 'shopify-money.js' | asset_url }}" defer></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+
+  {% if page.handle != 'contact' and page.handle != 'faq' and page.handle != 'our-causes' and page.handle != 'terms-and-conditions' and page.handle != 'return-policy' and page.handle != 'privacy-policy' and page.handle != 'thank-you' and template != 'product' and template != 'cart' and template != 'collection' and template != '404' and template != 'product.fine-jewellery' and template != 'product.stud-jewellery' and template != 'product.charm-jewellery' and template != 'product.fine-v2-jewellery' and template != 'product.stud-v2-jewellery' and template != 'product.ring' and template != 'password' and template != 'collection.not-ring' %}
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const pagescroll = new LocomotiveScroll({
+            el: document.querySelector('[data-scroll-container]'),
+            smooth: true
+        });
+
+        const slider= document.querySelector('#first');
+
+        $('.home-banner-cta a').on('click', function() {
+            pagescroll.scrollTo(slider);
+        });
+        pagescroll.on("scroll", (event) => {
+          var scrollPosition = event.scroll.y;
+          var scrollPercentage = (scrollPosition / ($(document).height() - $(window).height())) * 100;
+
+          // Check if 'active' class is not present on the header
+          if (!$('header').hasClass('active')) {
+        // Move 'header-contents-middle' element upwards based on scroll percentage, but only until 10% scroll
+        var translateY = Math.min((scrollPercentage / 8) * -78, 0); // Move upwards, up to -150px
+        $('.header-contents-middle').css({
+            'transform': 'translateY(' + translateY + '%)',
+            'transition': 'transform 0.1s linear'
+        });
+          }
+
+          // Add or remove 'active' class based on scroll percentage
+          if (scrollPercentage >= 8) {
+        $('header').addClass('active');
+          } else {
+        $('header').removeClass('active');
+          }
+          const triggerOffset = window.innerHeight;
+          const stickyBar = document.querySelector('.sticky-bar');
+
+          pagescroll.on('scroll', function (obj) {
+              // Check if the scroll position is beyond the trigger offset
+              if (obj.scroll.y > triggerOffset) {
+                // Add the active class to the sticky bar
+                stickyBar.classList.add('active');
+              } else {
+                // Remove the active class from the sticky bar
+                stickyBar.classList.remove('active');
+              }
+            });
+
+          // Scale the 'logo-top-head' element based on scroll percentage, but only until 10% scroll
+          var scaleValue = Math.max(1 - (scrollPercentage / 8), 0); // Scale from 1 to 0 until 10% scroll
+          $('.logo-top-head').css({
+        'transform': 'scale(' + scaleValue + ')',
+        'transition': 'transform 0.1s linear'
+          });
+      });
+          });
+    </script>
+  {% else %}
+    <script>
+          //Header Js
+          $(window).scroll(function () {
+            if ($(this).scrollTop() > 5) {
+              $('.state2').addClass('backdrop');
+            } else {
+              $('.state2').removeClass('backdrop');
+            }
+          });
+    </script>
+    <script>
+      $(window).scroll(function () {
+          var scrollTop = $(this).scrollTop();
+          
+          if (scrollTop > 5) {
+            $('.header-contents-middle a').addClass('active');
+            $('.logo-top-head').addClass('active');
+          } else {
+            $('.header-contents-middle a').removeClass('active');
+            $('.logo-top-head').removeClass('active');
+          }
+      });
+
+    </script>
+    <script>
+      //     let mm2 = gsap.matchMedia();
+
+      // mm2.add("(min-width: 992px)", () => {
+      //     gsap.to(".header-contents-middle svg", {
+      // y: -85,
+      // scrollTrigger: {
+      //   trigger: ".home-banner",
+      //   start: "top top",
+      //   end: "+=100",
+      //   pin: false,
+      //   markers: false,
+      //   repeat:-1, repeatDelay: 2,
+      //   scrub: false,
+      //   onUpdate: (self) => {
+      //     const progress = self.progress;
+      //     if (progress === 0.2) {
+      //       document.querySelector("header").classList.add("active");
+      //     } else {
+      //       document.querySelector("header").classList.remove("active");
+      //     }
+      //   },
+      // },
+      //     });
+
+      //     gsap.to(".header-contents", {
+      // marginTop: 0,
+      // scrollTrigger: {
+      //   trigger: ".home-banner",
+      //   start: "top top",
+      //   end: "50% 30%",
+      //   repeat:-1, repeatDelay: 2,
+      //   pin: false,
+      //   markers: false,
+      //   scrub: false,
+      //   container: "[data-scroll-container]"
+      // },
+      //     });
+
+      //     gsap.to(".logo-top-head", {
+      // scale: 0,
+      // transformOrigin: "50% 50%",
+      // scrollTrigger: {
+      //   trigger: ".home-banner",
+      //   start: "top top",
+      //   end: "bottom 50%",
+      //   repeat:-1, repeatDelay: 2,
+      //   pin: false,
+      //   markers: false,
+      //   scrub: false,
+      //   container: "[data-scroll-container]"
+      // },
+      //     });
+      //   }); 
+      //   let mm = gsap.matchMedia();
+
+      // mm.add("(min-width: 1100px)", () => {
+      //     gsap.to(".header-contents-middle svg", {
+      // y: -105,
+      // scrollTrigger: {
+      //   trigger: ".home-banner",
+      //   start: "top top",
+      //   end: "50% 30%",
+      //   pin: false,
+      //   markers: false,repeat:-1, repeatDelay: 2,
+      //   scrub: false,
+      //   onUpdate: (self) => {
+      //     const progress = self.progress;
+      //     if (progress === 1) {
+      //       document.querySelector("header").classList.add("active");
+      //     } else {
+      //       document.querySelector("header").classList.remove("active");
+      //     }
+      //   },
+      //   container: "[data-scroll-container]"
+      // },
+      //     });
+
+      //     gsap.to(".header-contents", {
+      // marginTop: 0,
+      // scrollTrigger: {
+      //   trigger: ".home-banner",
+      //   start: "top top",
+      //   end: "50% 30%",
+      //   repeat:-1, repeatDelay: 2,
+      //   pin: false,
+      //   markers: false,
+      //   scrub: false,
+      //   container: "[data-scroll-container]"
+      // },
+      //     });
+
+      //     gsap.to(".logo-top-head", {
+      // scale: 0,
+      // transformOrigin: "50% 50%",
+      // scrollTrigger: {
+      //   trigger: ".home-banner",
+      //   start: "top top",
+      //   end: "bottom 50%",
+      //   pin: false,
+      //   repeat:-1, repeatDelay: 2,
+      //   markers: false,
+      //   scrub: false,
+      //   container: "[data-scroll-container]"
+      // },
+      //     });
+      //   });
+      //   let mm3 = gsap.matchMedia();
+
+
+      //   mm3.add("(max-width: 991px)", () => {
+      //       gsap.to(".header-contents-middle svg",{
+      //           yPercent:-55,
+      //           scrollTrigger:{
+      //               trigger:".home-banner",
+      //               start:"top top",
+      //               end:"50% 30%",
+      //               pin: false,
+      //               markers:false,
+      //               scrub:false,
+      //               onUpdate: (self) => {
+      //                   const progress = self.progress;
+      //                   if( progress === 1){
+      //                       document.querySelector("header").classList.add("active");
+      //                   }
+      //                   else {
+      //                       document.querySelector("header").classList.remove("active");
+      //                   }
+      //                 }
+      //           }
+      //       })
+      //       gsap.to(".logo-top-head",{
+      //           scale:0,
+      //           transformOrigin:"50% 50%",
+      //           scrollTrigger:{
+      //               trigger:".home-banner",
+      //               start:"top top",
+      //               end:"50% 30%",
+      //               repeat:-1, repeatDelay: 2,
+      //               pin: false,
+      //               markers:false,
+      //               scrub:false
+      //           }
+      //       })
+            
+      //       });
+    </script>
+  {% endif %}
+
+  {% if page.handle == 'contact' %}
+    <script>
+      document.querySelector('.contact-page-form2-top-btn a').addEventListener("click", (event) => {
+        event.preventDefault();
+        // Add the 'active' class to the form
+        document.querySelector('.contact-page-form2-form').classList.add('active');
+      });
+    </script>
+  {% endif %}
+  <script src="{{ 'application.js' | asset_url }}" defer></script>
+  {% if template == 'index' %}
+    <script src="{{ 'home.js' | asset_url }}" defer></script>
+  {% endif %}
+  {% if page.handle == 'about' %}
+    <script src="{{ 'about.js' | asset_url }}" defer></script>
+  {% endif %}
+  {% if page.handle == 'virtual-appointment' %}
+    <script src="{{ 'virtual.js' | asset_url }}" defer></script>
+  {% endif %}
+  {% if page.handle == 'faq' %}
+    <script src="{{ 'faq.js' | asset_url }}" defer></script>
+  {% endif %}
+</html>

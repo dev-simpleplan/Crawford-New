@@ -1,0 +1,64 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "causes": {
+      "type": "our-causes",
+      "blocks": {
+        "6d1c083f-c589-4492-909c-bcc1671cffb4": {
+          "type": "causes",
+          "settings": {
+            "cause-head": "Cause 01",
+            "cause-body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus risus volutpat, tortor blandit in libero laoreet mi. Volutpat a sed posuere nam.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus risus volutpat",
+            "cause-link": "#!",
+            "cause-cta-name": "LEARN MORE",
+            "causeImg": "shopify://shop_images/bec46ef4e04f9d6d282f94961da407dc.jpg"
+          }
+        },
+        "bc28ccbd-3ffa-46ef-8520-fde4cfca9266": {
+          "type": "causes",
+          "settings": {
+            "cause-head": "Cause 02",
+            "cause-body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus risus volutpat, tortor blandit in libero laoreet mi. Volutpat a sed posuere nam.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus risus volutpat",
+            "cause-link": "#!",
+            "cause-cta-name": "LEARN MORE",
+            "causeImg": "shopify://shop_images/01f0383998a6e652fa5638835660c505.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "6d1c083f-c589-4492-909c-bcc1671cffb4",
+        "bc28ccbd-3ffa-46ef-8520-fde4cfca9266"
+      ],
+      "settings": {
+        "head": "Our Causes"
+      }
+    },
+    "extrapad": {
+      "type": "extrapad",
+      "settings": {}
+    },
+    "contact-bottom": {
+      "type": "contact-bottom",
+      "settings": {
+        "heading": "Book a Virtual Appointment",
+        "body": "Our dedicated team is here to assist you in exploring our various lab diamond & moissanite offerings, crafting a completely bespoke piece, or helping you decide on the dream ring when it can feel like there is a world of options.",
+        "ctaText": "BOOK NOW",
+        "ctaLink": "#!",
+        "image": "shopify://shop_images/contact.png"
+      }
+    }
+  },
+  "order": [
+    "causes",
+    "extrapad",
+    "contact-bottom"
+  ]
+}

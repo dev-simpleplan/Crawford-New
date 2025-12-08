@@ -1,0 +1,43 @@
+<section
+  class="thank-you"
+  data-scroll-section
+  style="background-image: url({{ section.settings.bgImg |  img_url: 'master' }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
+  <div class="container" style="height: 100%;">
+    <div class="thank-you-wrap">
+      <div class="head center">
+        <h1>{{ section.settings.head }}</h1>
+      </div>
+      <div class="para">
+        <p>{{ section.settings.para }}</p>
+      </div>
+      <div class="cta">
+        <a href="{{ shop.url }}" class="craw-cta cta-white">{{ section.settings.cta-txt }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Thank You",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "bgImg",
+        "label": "Background Image"
+      }, {
+        "type": "text",
+        "id": "head",
+        "label": "Heading"
+      }, {
+        "type": "text",
+        "id": "para",
+        "label": "Paragraph"
+      }, {
+        "type": "text",
+        "id": "cta-txt",
+        "label": "CTA Text"
+      }
+    ]
+  }
+{% endschema %}

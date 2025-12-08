@@ -1,0 +1,117 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "appointment-banner",
+      "disabled": true,
+      "settings": {
+        "bannerImg": "shopify://shop_images/Image_1_-_Book_an_Appt.jpg",
+        "bannerImgMob": "shopify://shop_images/Image_1_-_Book_an_Appt.jpg",
+        "heading": "Create Your Dream Piece - Custom Jewellery",
+        "cta": "Book An Appointment",
+        "cta-link": "https://calendly.com/hello_csc/virtual-appointment"
+      }
+    },
+    "appointment_banner_video_LeCJBC": {
+      "type": "appointment-banner-video",
+      "name": "Video Banner with Mobile Fallback",
+      "settings": {
+        "banner_video": "shopify://files/videos/Image 2.mov",
+        "heading": "Create Your Dream Piece - Custom Jewellery",
+        "cta": "Book An Appointment",
+        "cta_link": "https://calendly.com/hello_csc/virtual-appointment"
+      }
+    },
+    "extrapad": {
+      "type": "extrapad",
+      "settings": {}
+    },
+    "book-appointment": {
+      "type": "book-appointment",
+      "disabled": true,
+      "settings": {
+        "heading": "Virtual Appointment",
+        "body": "Connect virtually with a dedicated specialist for a personalised one-on-one consultation, directly from our Sydney showroom.",
+        "headingM": "Chat With a Specialist",
+        "bodyM": "Our dedicated team is here to assist you in exploring our various lab diamond & moissanite offerings, crafting a completely bespoke piece, or helping you decide on the dream ring when it can feel like there is a world of options.",
+        "ctaText": "Book Now",
+        "cta1Link": "https://calendly.com/hello_csc/virtual-appointment",
+        "baseImg": "shopify://shop_images/3aff830f48e80fd9ae27e82099cc4151.png",
+        "overImg": "shopify://shop_images/808cbfffa5f3d3a141ca207d121c95ae.png"
+      }
+    },
+    "extrapad1": {
+      "type": "extrapad",
+      "settings": {}
+    },
+    "founders_story_1": {
+      "type": "founders-story",
+      "settings": {
+        "heading": "The custom process is truly special to Crawford Stone Company.",
+        "body": "<p>We love collaborating closely with our clients, crafting bespoke, heirloom, and entirely unique pieces that speak to their individual stories with certified lab grown diamond, moissanite and other precious gems.</p><p><br/>We also work to repurpose existing stones, setting them in new arrangements that reflect your new dream aesthetic, transforming them into designs that are both on trend and timeless.</p>",
+        "image2": "shopify://shop_images/Image_1_-_Custom_Page.png",
+        "layout": "standard"
+      }
+    },
+    "extrapad2": {
+      "type": "extrapad",
+      "settings": {}
+    },
+    "founders_story_2": {
+      "type": "founders-story",
+      "settings": {
+        "heading": "How do I get started on ordering a custom piece?",
+        "body": "<p>Let's start by talking about your preferences. Have you seen any pieces we've made before that caught your eye? Do you have a vision board? We want to know what you prefer – settings, stone colors, cuts, everything. The more you can show us, the better we can understand your style.</p><p><br/>Once we've got a good idea of what you're looking for, the Crawford Stone Company team will give you some price ranges. Then, we'll start sourcing the perfect stones to match your design or custom cut them to fit the aesthetic perfectly. </p><p><br/>If you have an existing piece, this is where we’ll have you share all of the details. From there, we’ll hand design your dream piece for your approval and start work.</p>",
+        "image2": "shopify://shop_images/Image_3.heic",
+        "layout": "reverse"
+      }
+    },
+    "extrapad3": {
+      "type": "extrapad",
+      "settings": {}
+    },
+    "founders_story_3": {
+      "type": "founders-story",
+      "settings": {
+        "heading": "How long does production take?",
+        "body": "<p>Our production time is generally 12-16 weeks depending on the intricacy of the piece.</p><p><br/>Every stone is personally sourced, and/or cut by hand by a select few talented stone cutters. Each custom order requires a completely personalised sketch before a wax model is made to your specifications.</p><p><br/>Occasionally, pieces do not pass a watchful QC process. In that case, we would remake it entirely under your guidance with you along for the journey en route to your dream piece.</p>",
+        "image2": "shopify://shop_images/screenshot_2025-05-07_at_12.54.02___pm_720.png",
+        "layout": "standard"
+      }
+    },
+    "new_contact": {
+      "type": "new_contact",
+      "custom_css": [],
+      "settings": {
+        "heading1": "Interested in a Custom Project?",
+        "body1": "Share your contact details and ideas below to get started on your dream piece."
+      }
+    },
+    "extrapad4": {
+      "type": "extrapad",
+      "settings": {}
+    }
+  },
+  "order": [
+    "banner",
+    "appointment_banner_video_LeCJBC",
+    "extrapad",
+    "book-appointment",
+    "extrapad1",
+    "founders_story_1",
+    "extrapad2",
+    "founders_story_2",
+    "extrapad3",
+    "founders_story_3",
+    "new_contact",
+    "extrapad4"
+  ]
+}

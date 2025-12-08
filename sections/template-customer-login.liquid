@@ -1,0 +1,135 @@
+<section
+  class="login-signup-page"
+  data-scroll-section
+  style="background-image: url({{ section.settings.Img |  img_url: 'master' }}); background-size: cover; background-repeat: no-repeat; background-position: center;">
+  <div class="container" style="min-height: 100vh">
+    <div class="customer-con login">
+      <div class="customer-wrapper login-signup">
+        <div class="cw-left">
+          <div class="head">
+            <h2>{{ section.settings.head }}</h2>
+          </div>
+        </div>
+        <div class="cw-right">
+          <div class="form">
+            {% form 'customer_login' %}
+              {% if form.errors %}
+                {{ form.errors | default_errors }}
+              {% endif %}
+              <div class="form-con">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  name="customer[email]"
+                  placeholder="robertdowneyjr145@gmail.com"
+                  id="email"
+                  required
+                  pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" />
+              </div>
+              <div class="form-con forgot">
+                <label for="password">password</label>
+                <input
+                  type="password"
+                  name="customer[password]"
+                  id="password"
+                  placeholder="Enter Password"
+                  required
+                  pattern=".{8,}"
+                  title="8+ characters" />
+                <a href="javascript:void(0)" class="forgot-password-cta">Forgot Password?</a>
+              </div>
+              <div class="form-con submit-but">
+                <button class="custom-button" type="submit">
+                  Log In
+                </button>
+              </div>
+            {% endform %}
+          </div>
+          <div class="signup-cta">
+            <p>{{ section.settings.txt }} {{ 'Sign Up' | customer_register_link }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="customer-wrapper forgot-pass">
+        <div class="forgot-pass-wrapper">
+          <div class="head">
+            <h2>{{ section.settings.fp-head }}</h2>
+          </div>
+          <div class="para">
+            {{ section.settings.fp-para }}
+          </div>
+          <div class="form">
+            {% form 'recover_customer_password' %}
+              {% if form.errors %}
+                {{ form.errors | default_errors }}
+              {% endif %}
+              <div class="form-con">
+                <div class="email">
+                  <label for="email">Email</label><br>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email-forgot"
+                    placeholder="johndoe@email.com"
+                    required
+                    pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" />
+                </div>
+              </div>
+              <div class="form-con submit-but">
+                <button class="custom-button" type="submit">
+                  {{ section.settings.fg-cta-txt }}
+                </button>
+                <p class="remember-pass">Remembered your password? {{ 'Log In' | customer_login_link }}</p>
+              </div>
+            {% endform %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  $(document).ready(function(){
+    $(".forgot-password-cta").click(function(){
+      $(".customer-wrapper.login-signup").css("display", "none");
+      $(".customer-wrapper.forgot-pass").css("display", "block");
+    })
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Login Page",
+    "settings": [
+      {
+        "type": "text",
+        "id": "head",
+        "label": "Section heading"
+      },
+      {
+        "type": "image_picker",
+        "id": "Img",
+        "label": "Background Image"
+      },
+      {
+        "type": "text",
+        "id": "txt",
+        "label": "Sign Up Text"
+      },
+      {
+        "type": "text",
+        "id": "fp-head",
+        "label": "Forgot Password Head"
+      }, {
+        "type": "richtext",
+        "id": "fp-para",
+        "label": "Forgot Password Paragraph"
+      }, {
+        "type": "text",
+        "id": "fg-cta-txt",
+        "label": "Forgot Password Submit Button"
+      }
+    ]
+  }
+{% endschema %}

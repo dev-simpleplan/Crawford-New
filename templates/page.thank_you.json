@@ -1,0 +1,25 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "thank-you": {
+      "type": "template-thank-you",
+      "settings": {
+        "bgImg": "shopify://shop_images/image_233.png",
+        "head": "Congratulations!",
+        "para": "Thank you for reaching out! We’ve received your message and our team is on it. We’ll get back to you as soon as possible. In the meantime, feel free to explore more about our products!",
+        "cta-txt": "Shop All"
+      }
+    }
+  },
+  "order": [
+    "thank-you"
+  ]
+}

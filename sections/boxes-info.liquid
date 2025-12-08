@@ -1,0 +1,108 @@
+<section class="three-boxes-sect" data-scroll-section>
+  <div class="three-boxes-rect-cont">
+    <div class="three-boxes-rect-top flex" data-scroll>
+      <div class="three-boxes-text">
+        <div class="three-boxes-text-wrap">
+          <div class="three-boxes-text-head">
+            <h3 class="head-black">{{ section.settings.heading }}</h3>
+          </div>
+          <div class="three-boxes-text-body">
+            <p>{{ section.settings.body }}</p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="three-boxes-img"
+        data-scroll
+        data-scroll-class
+        data-scroll-offset="10%"
+        data-scroll-repeat>
+        <img src="{{ section.settings.image |  img_url: 'master' }}" alt="">
+      </div>
+      <div class="three-boxes-text">
+        <div class="three-boxes-text-wrap center">
+          <div class="three-boxes-text-head">
+            <h3 class="head-black">{{ section.settings.heading1 }}</h3>
+          </div>
+          <div class="three-boxes-text-body">
+            <p>{{ section.settings.body1 }}</p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="three-boxes-img"
+        data-scroll
+        data-scroll-class
+        data-scroll-offset="10%"
+        data-scroll-repeat>
+        <img src="{{ section.settings.image1 |  img_url: 'master' }}" alt="">
+      </div>
+      <div class="three-boxes-text">
+        <div class="three-boxes-text-wrap">
+          <div class="three-boxes-text-head">
+            <h3 class="head-black">{{ section.settings.heading2 }}</h3>
+          </div>
+          <div class="three-boxes-text-body">
+            <p>{{ section.settings.body2 }}</p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="three-boxes-img"
+        data-scroll
+        data-scroll-class
+        data-scroll-offset="10%"
+        data-scroll-repeat>
+        <img src="{{ section.settings.image2 |  img_url: 'master' }}" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Images with Text",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Text Box 1 Heading"
+      },
+      {
+        "type": "text",
+        "id": "body",
+        "label": "Text Box 1 Body"
+      },
+      {
+        "type": "text",
+        "id": "heading1",
+        "label": "Text Box 2 Heading"
+      },
+      {
+        "type": "text",
+        "id": "body1",
+        "label": "Text Box 2 Body"
+      }, {
+        "type": "text",
+        "id": "heading2",
+        "label": "Text Box 3 Heading"
+      }, {
+        "type": "text",
+        "id": "body2",
+        "label": "Text Box 3 Body"
+      }, {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Top Image"
+      }, {
+        "type": "image_picker",
+        "id": "image1",
+        "label": "Bottom Image 1"
+      }, {
+        "type": "image_picker",
+        "id": "image2",
+        "label": "Bottom Image 2"
+      }
+    ]
+  }
+{% endschema %}

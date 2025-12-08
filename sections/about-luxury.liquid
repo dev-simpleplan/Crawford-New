@@ -1,0 +1,62 @@
+<section class="sustainable-luxury" data-scroll-section>
+  <div class="sl-wrapper">
+    <div class="slw-left">
+      <div class="container">
+        <div class="slw-left-wrapper">
+          <div class="head">
+            <h2>{{ section.settings.head }}</h2>
+          </div>
+          <div class="para">
+            <p>{{ section.settings.para }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slw-right">
+      <div class="slwr-img">
+        <div class="slwri-img">
+          <img
+            src="{{ section.settings.bigImg |  img_url: 'master' }}"
+            alt=""
+            class="img-ab">
+        </div>
+      </div>
+      <div
+        class="slwr-float-img"
+        data-scroll=""
+        data-scroll-position=""
+        data-scroll-speed="4">
+        <img
+          src="{{ section.settings.smallImg |  img_url: 'master' }}"
+          alt=""
+          class="img">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Sustainable Luxury",
+    "settings": [
+      {
+        "type": "text",
+        "id": "head",
+        "label": "Section heading"
+      }, {
+        "type": "text",
+        "id": "para",
+        "label": "Section Paragraph"
+      }, {
+        "type": "image_picker",
+        "id": "bigImg",
+        "label": "Big Image"
+      }, {
+        "type": "image_picker",
+        "id": "smallImg",
+        "label": "Small image"
+      }
+    ]
+  }
+{% endschema %}

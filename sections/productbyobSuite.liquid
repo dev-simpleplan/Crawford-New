@@ -1,0 +1,2014 @@
+<style>
+
+              .byob-container {
+                margin: 0 auto;
+                padding: {{ section.settings.section_padding }}px;
+                {% if section.settings.heading_font %}
+                  font-family: {{ section.settings.heading_font.family }}, {{ section.settings.heading_font.fallback_families }};
+                {% endif %}
+                color: {{ section.settings.text_color }};
+              }
+            
+              .product-card img {
+                width: 100%;
+                aspect-ratio: 1/1;
+              }
+            
+              button.select-product-btn {
+                width: 100%;
+                border: 1px solid {{ section.settings.primary_button_border }};
+                border-radius: {{ section.settings.button_border_radius }}px;
+                padding: {{ section.settings.button_padding }}px 0;
+                font-size: {{ section.settings.product_title_size }}px;
+                text-transform: uppercase;
+                font-weight: {{ section.settings.button_font_weight }};
+                background-color: {{ section.settings.primary_button_bg }};
+                color: {{ section.settings.primary_button_text }};
+                transition: .2s ease all;
+                margin-top: 40px;
+              }
+            
+              button.select-product-btn:hover {
+                background-color: {{ section.settings.primary_button_text }};
+                color: {{ section.settings.primary_button_bg }};
+              }
+            
+              button[disabled].select-product-btn {
+                opacity: 0.4;
+                cursor: not-allowed;
+                pointer-events: none;
+                background-color: {{ section.settings.disabled_button_bg }};
+                color: {{ section.settings.disabled_button_text }};
+              }
+            button.select-product-btn.out-of-stock{
+              opacity: 0.4 !important;
+                cursor: not-allowed !important;
+                pointer-events: none !important;
+                background-color: {{ section.settings.disabled_button_bg }} !important;
+                color: {{ section.settings.disabled_button_text }} !important;
+            }
+              .product-header {
+                display: flex;
+                gap: {{ section.settings.grid_gap }}px;
+                margin-bottom: 30px;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+              }
+            
+              .product-header h1 {
+                {% if section.settings.body_font %}
+                  font-family: {{ section.settings.body_font.family }}, {{ section.settings.body_font.fallback_families }};
+                {% endif %}
+                font-size: {{ section.settings.heading_size }}px;
+                color: {{ section.settings.text_color }};
+              }
+            
+             .product-image {
+                width: 100%;
+                position: relative;
+                padding-top: {{ section.settings.product_image_size }}%;
+              }
+            
+              .product-image img {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                inset: 0;
+              }
+            
+              .product-details {
+                flex: 1;
+                max-width: 85ch;
+              }
+            
+              .condition-group {
+                border: 1px solid {{ section.settings.cart_border_color }};
+                padding: 15px;
+                margin-bottom: 15px;
+                border-radius: {{ section.settings.button_border_radius }}px;
+              }
+            
+              .selected-products {
+                display: grid;
+                grid-template-columns: repeat({{ section.settings.grid_columns_desktop }}, 1fr);
+                gap: {{ section.settings.grid_gap }}px;
+                margin-top: 15px;
+              }
+            
+              .product-card {
+                border: 1px solid {{ section.settings.cart_border_color }};
+                padding: 10px;
+                border-radius: {{ section.settings.button_border_radius }}px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+              }
+            
+              .discount-info {
+                margin-top: 20px;
+                padding: 15px;
+                background: #f9f9f9;
+                border-radius: {{ section.settings.button_border_radius }}px;
+                display: none;
+                color: {{ section.settings.text_color }};
+              }
+            
+              .byob-layout {
+                display: grid;
+                grid-template-columns: 2fr 1fr;
+                gap: {{ section.settings.grid_gap }}px;
+                margin-top: 60px;
+                padding: 0 {{ section.settings.section_padding }}px;
+              }
+            
+              .side-cart {
+                position: sticky;
+                top: 160px;
+                background: #fff;
+                padding: 20px;
+                border: 1px solid {{ section.settings.cart_border_color }};
+                border-radius: {{ section.settings.button_border_radius }}px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                height: fit-content;
+                max-height: calc(100vh - 40px);
+                overflow-y: auto;
+              }
+            
+              .side-cart h3 {
+                {% if section.settings.body_font %}
+                  font-family: {{ section.settings.body_font.family }}, {{ section.settings.body_font.fallback_families }};
+                {% endif %}
+                font-size: {{ section.settings.heading_size }}px;
+                color: {{ section.settings.text_color }};
+              }
+            
+              .cart-item {
+                display: flex;
+                gap: {{ section.settings.grid_gap }}px;
+                padding: 15px 0;
+                border-bottom: 1px solid {{ section.settings.cart_border_color }};
+              }
+            
+              .cart-item img {
+                width: 60px;
+                height: 60px;
+                object-fit: cover;
+                border-radius: {{ section.settings.button_border_radius }}px;
+              }
+            
+              .cart-item-details {
+                flex: 1;
+              }
+            
+              .cart-item-details h4 {
+                margin: 0 0 5px 0;
+                font-size: {{ section.settings.product_title_size }}px;
+                color: {{ section.settings.text_color }};
+              }
+            
+              .cart-item-details p {
+                margin: 0;
+                color: {{ section.settings.price_color }};
+                font-size: {{ section.settings.price_size }}px;
+              }
+            
+              .cart-item-variant {
+                font-size: {{ section.settings.price_size | minus: 2 }}px;
+                color: {{ section.settings.price_color }};
+              }
+            
+              .remove-item {
+                color: {{ section.settings.remove_button_color }};
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 5px;
+                font-size: 18px;
+              }
+            
+              .cart-summary {
+                margin-top: 20px;
+                padding-top: 15px;
+                border-top: 2px solid {{ section.settings.cart_border_color }};
+              }
+            
+              .cart-total {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 10px;
+                font-size: {{ section.settings.price_size }}px;
+                color: {{ section.settings.price_color }};
+              }
+            
+              .empty-cart {
+                text-align: center;
+                color: {{ section.settings.text_color }};
+                padding: 20px 0;
+                font-size: {{ section.settings.product_title_size }}px;
+              }
+            
+              .add-to-cart-btn {
+                width: 100%;
+                border: 1px solid {{ section.settings.primary_button_border }};
+                border-radius: {{ section.settings.button_border_radius }}px;
+                padding: {{ section.settings.button_padding }}px 0;
+                font-size: {{ section.settings.product_title_size }}px;
+                text-transform: uppercase;
+                font-weight: {{ section.settings.button_font_weight }};
+                background-color: {{ section.settings.primary_button_bg }};
+                color: {{ section.settings.primary_button_text }};
+                transition: .2s ease all;
+                margin-top: 50px;
+              }
+            
+              .add-to-cart-btn:hover {
+                background-color: {{ section.settings.primary_button_text }};
+                color: {{ section.settings.primary_button_bg }};
+              }
+            
+              .add-to-cart-btn:disabled {
+                opacity: 0.4;
+                cursor: not-allowed;
+                pointer-events: none;
+                background-color: {{ section.settings.disabled_button_bg }};
+                color: {{ section.settings.disabled_button_text }};
+              }
+            
+              .product-variants select {
+                box-sizing: border-box;
+                width: 100%;
+                padding: {{ section.settings.button_padding }}px;
+                font-size: {{ section.settings.product_title_size }}px;
+                border-radius: {{ section.settings.button_border_radius }}px;
+                border: 1px solid {{ section.settings.cart_border_color }};
+                margin-bottom: 8px;
+                appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                background-image: url(https://cdn.shopify.com/s/files/1/0641/6033/3877/files/drop.svg?v=1725863438);
+                background-repeat: no-repeat;
+                background-position: right 8px center;
+                font-family: inherit;
+                font-weight: normal;
+                color: {{ section.settings.text_color }};
+              }
+            
+              @media only screen and (max-width: 1200px) {
+                .selected-products {
+                  grid-template-columns: repeat(2, 1fr);
+                }
+                .byob-layout {
+                  grid-template-columns: 1fr;
+                }
+              }
+            
+              @media only screen and (max-width: 991px) {
+                .selected-products {
+                  grid-template-columns: repeat(1, 1fr);
+                }
+              }
+            
+              /* Add new stepper styles */
+              .discount-stepper {
+                text-align: center;
+                margin: 40px 0;
+                position: sticky;
+                top: 0px;
+                z-index: 9999999;
+                padding: 40px 0;
+                background: {{ section.settings.stepper_bg_color }};
+                border-radius: {{ section.settings.button_border_radius }}px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
+              }
+            
+              .stepper-title {
+                margin: 0px;
+                font-size: 21px;
+                color: {{ section.settings.stepper_text_color }};
+                font-family: inherit;
+              }
+            
+              .stepper-circles {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: {{ section.settings.stepper_spacing }}px;
+              }
+            
+              .stepper-circle {
+                width: {{ section.settings.stepper_circle_size }}px;
+                height: {{ section.settings.stepper_circle_size }}px;
+                border-radius: 50%;
+                border: 4px solid {{ section.settings.stepper_circle_color }};
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 14px;
+                position: relative;
+                transition: 0.3s ease all;
+                background-color: {{ section.settings.stepper_circle_color }};
+                color: white;
+              }
+            
+              .stepper-circle.completed {
+                border: 4px solid {{ section.settings.stepper_circle_completed }};
+              }
+            
+              .stepper-circle.warning {
+                border-color: {{ section.settings.stepper_circle_warning }};
+                background-color: #fff0f0;
+                color: {{ section.settings.stepper_circle_warning }};
+              }
+            
+              .stepper-circle img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 50%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 3;
+              }
+            
+              .stepper-circle:not(:first-child)::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: -192%;
+                width: 170%;
+                height: 4px;
+                border-radius: 40px;
+                background-color: {{ section.settings.stepper_circle_color }};
+                transition: 0.3s ease all;
+              }
+            
+              .stepper-circle.active:not(:first-child)::after,
+              .stepper-circle.completed:not(:first-child)::after {
+                background-color: {{ section.settings.stepper_circle_completed }};
+              }
+            
+              #cartDiscountBoxes {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                margin-top: 20px;
+                background: {{ section.settings.stepper_bg_color }};
+                border-radius: {{ section.settings.button_border_radius }}px;
+                padding: 20px 0;
+              }
+            
+              #cartDiscountBoxes .cart-discount-box-right {
+                  margin-top: 20px;
+                  max-width:30ch;
+                }
+
+                #cartDiscountBoxes .cart-discount-box-right span {
+                  font-size: 13px;
+                  font-weight: 600;
+                  color: {{ section.settings.stepper_text_color }};
+                  font-family: math;
+                }
+            
+              #cartDiscountBoxes .cart-discount-box-left {
+                border-style: dashed;
+                border-radius: 10px;
+                position: relative;
+                height: 70px;
+                width: 80px;
+                margin-top: 20px;
+                border-color: {{ section.settings.stepper_circle_color }};
+              }
+            
+              #cartDiscountBoxes .cart-discount-box-left img,
+              #cartDiscountBoxes .cart-discount-box-left svg {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                inset: 0px;
+                padding: 0 5px;
+              }
+            </style>
+            
+               <div class="byob-container">
+                 <div class="product-header">
+                   <div class="product-image">
+                     {% if product.featured_image %}
+                       <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.title }}">
+                     {% endif %}
+                   </div>
+                   <div class="product-details">
+                     <h1>{{ product.title }}</h1>
+                     <div>{{ product.description }}</div>
+                   </div>
+                 </div>
+            
+                 {% if section.settings.stepper_position != 'none' and section.settings.stepper_position != 'cart' %}
+                   <div class="discount-stepper main-stepper">
+                     <h2 class="stepper-title" id="stepperTitle"></h2>
+                     <div class="stepper-circles" id="stepperCircles"></div>
+                   </div>
+                 {% endif %}
+            
+                 <div class="byob-layout">
+                   <div id="byob-content">
+                     <div class="conditions-container"></div>
+                     <div class="discount-info"></div>
+                   </div>
+            
+                   <div class="side-cart">
+                     <h3>My Bundle</h3>
+                     <div id="cart-items">
+                       <div class="empty-cart">
+                         <p>{{ section.settings.empty_cart_text }}</p>
+                       </div>
+                     </div>
+                     <div class="cart-summary">
+                       <div id="cart-subtotal" class="cart-total"></div>
+                       <div id="cart-discount" class="cart-total"></div>
+                       <div id="cart-final-total" class="cart-total"></div>
+                     </div>
+                     {% if section.settings.stepper_position != 'none' and section.settings.stepper_position != 'top' %}
+                       <div id="cartDiscountBoxes" class="cart-stepper"></div>
+                     {% endif %}
+                     <button id="add-to-cart-btn" class="add-to-cart-btn" disabled>
+                       {{ section.settings.add_to_cart_text }}
+                     </button>
+                   </div>
+                 </div>
+               </div>
+            
+                <script>
+                  var bundleDataS;
+               var curr = {{ shop.currency | json }};
+  var formatF = {{ shop.money_format | json }};
+
+  function formatMoney(cents, format) {
+  if (typeof cents === 'string') cents = cents.replace('.', '');
+  var value = '';
+  var placeholderRegex = /\{\{\s*(\w+)\s*\}\}/;
+  var formatString = format || formatF;
+
+  function defaultOption(opt, def) {
+    return (typeof opt == 'undefined' ? def : opt);
+  }
+
+  function formatWithDelimiters(number, precision, thousands, decimal) {
+    precision = defaultOption(precision, 2);
+    thousands = defaultOption(thousands, ',');
+    decimal = defaultOption(decimal, '.');
+
+    if (isNaN(number) || number == null) { return 0; }
+
+    number = (number/100.0).toFixed(precision);
+
+    var parts = number.split('.'),
+        dollars = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1' + thousands),
+        cents = parts[1] ? (decimal + parts[1]) : '';
+
+    return dollars + cents;
+  }
+            
+              switch(formatString.match(placeholderRegex)[1]) {
+                case 'amount':
+                  value = formatWithDelimiters(cents, 2);
+                  break;
+                case 'amount_no_decimals':
+                  value = formatWithDelimiters(cents, 0);
+                  break;
+                case 'amount_with_comma_separator':
+                  value = formatWithDelimiters(cents, 2, '.', ',');
+                  break;
+                case 'amount_no_decimals_with_comma_separator':
+                  value = formatWithDelimiters(cents, 0, '.', ',');
+                  break;
+              }
+            
+              return formatString.replace(placeholderRegex, value);
+            }
+                 let cartItems = {};
+                 let selectedProducts = new Set();
+            
+                 // Add these global variables to track conditions
+                 let byobConditions = [];
+                 let isAllConditionsMet = false;
+            
+                 // Function to check if conditions are met
+                 function checkConditions() {
+                   if (!window.byobConfig) return false;
+                   
+                   // For tiered discounts
+                   if (window.byobConfig.discountType === 'tiered') {
+                     const totalQuantity = Object.values(cartItems).reduce((sum, products) => sum + products.length, 0);
+                     
+                     // Parse tiers
+                     const tiers = typeof window.byobConfig.tiers === 'string' 
+                       ? JSON.parse(window.byobConfig.tiers) 
+                       : window.byobConfig.tiers;
+                     
+                     // Check if any tier condition is met
+                     return tiers.some(tier => {
+                       const requirement = Number(tier.requirement);
+                       if (tier.condition === 'any') {
+                         return totalQuantity === requirement;
+                       } else if (tier.condition === 'at-least') {
+                         return totalQuantity >= requirement;
+                       }
+                       return false;
+                     });
+                   }
+            
+                   // Original condition checking for non-tiered discounts
+                   return window.byobConditions.every(condition => {
+                     const productsInCondition = cartItems[condition.id] || [];
+                     return productsInCondition.length === parseInt(condition.productConditionNumber);
+                   });
+                 }
+            
+                 // Helper function to calculate subtotal
+                 function calculateSubtotal() {
+                   let subtotal = 0;
+                   Object.values(cartItems).forEach(products => {
+                     products.forEach(product => {
+                       const price = parseFloat(product.price.replace(/[^0-9.-]+/g, ''));
+                       subtotal += price * (1/100);
+                     });
+                   });
+                   return subtotal;
+                 }
+            
+                 // Function to calculate discount
+                 function calculateDiscount(subtotal) {
+                   if (!window.byobConfig) return 0;
+                   
+                   const discountType = window.byobConfig.discountType;
+                   if (discountType !== 'tiered') {
+                     return calculateRegularDiscount(subtotal);
+                   }
+            
+                   const tiers = typeof window.byobConfig.tiers === 'string' 
+                     ? JSON.parse(window.byobConfig.tiers) 
+                     : window.byobConfig.tiers;
+            
+                   if (!tiers || !tiers.length) return 0;
+            
+                   const totalQuantity = getTotalQuantity();
+                   const sortedTiers = [...tiers].sort((a, b) => Number(b.requirement) - Number(a.requirement));
+                   
+                   const applicableTier = sortedTiers.find(tier => {
+                     const requirement = Number(tier.requirement);
+                     return tier.condition === 'any' ? totalQuantity === requirement : totalQuantity >= requirement;
+                   });
+            
+                   if (!applicableTier) return 0;
+            
+                   const tierType = window.byobConfig.tierBasedOn;
+                   const value = Number(applicableTier.value);
+            
+                   switch (tierType) {
+                     case 'percentage':
+                       return subtotal * (value / 100);
+                     case 'price':
+                       return subtotal - value;
+                     case 'fixed-amount':
+                       return value;
+                     case 'per-item':
+                       // Calculate the difference between subtotal and the per-item price total
+                       const perItemTotal = value * totalQuantity;
+                       return subtotal - perItemTotal; // This will make the final total equal to perItemTotal
+                     default:
+                       return 0;
+                   }
+                 }
+            
+                 // Helper function for non-tiered discounts
+                 function calculateRegularDiscount(subtotal) {
+                   if (!window.byobConfig.discountType || !window.byobConfig.discountValue) return 0;
+                   
+                   const discountValue = parseFloat(window.byobConfig.discountValue);
+                   const totalQuantity = getTotalQuantity();
+                   
+                   switch (window.byobConfig.discountType) {
+                     case 'percentage':
+                       return subtotal * (discountValue / 100);
+                     case 'fixed-amount':
+                       return discountValue;
+                     case 'price':
+                       return Math.max(0, subtotal - discountValue);
+                     default:
+                       return 0;
+                   }
+                 }
+            
+                 // Add this helper function at the top
+                 function getTotalQuantity() {
+                   return Object.values(cartItems).reduce((sum, products) => sum + products.length, 0);
+                 }
+            
+                 function updateCartDisplay() {
+                   updateStepper();
+                   const subtotalElement = document.getElementById('cart-subtotal');
+                   const discountElement = document.getElementById('cart-discount');
+                   const finalTotalElement = document.getElementById('cart-final-total');
+                   const cartContainer = document.getElementById('cart-items');
+                   subtotalElement.style.display = 'flex';
+                   finalTotalElement.style.display = 'flex';
+                   let subtotal = 0;
+            
+                   // Clear the cart display
+                   cartContainer.innerHTML = '';
+            
+                   if (Object.keys(cartItems).length === 0) {
+                     cartContainer.innerHTML = '<div class="empty-cart"><p>{{ section.settings.empty_cart_text }}</p></div>';
+                     subtotalElement.innerHTML = '';
+                     discountElement.innerHTML = '';
+                     finalTotalElement.innerHTML = '';
+                     return;
+                   }
+            
+                   // Display cart items
+                   Object.entries(cartItems).forEach(([conditionId, products]) => {
+                     products.forEach(product => {
+                       let price = 0;
+                        if (typeof product.price === 'string') {
+                             price = parseFloat(product.price.replace(/[^0-9-]+/g, ''));
+                        } else{
+                           price = product.price;  
+                        }
+                       subtotal += price*(1/100);
+            
+                       cartContainer.innerHTML += `
+                         <div class="cart-item" id="cart-item-${product.id}">
+                           <img src="${product.image}" alt="${product.title}">
+                           <div class="cart-item-details">
+                             <h4>${product.title}</h4>
+                             <p>${typeof product.price === 'string' ? product.price : formatMoney(product.price, '{{ shop.money_format }}')}</p>
+                           </div>
+                           <button 
+                             class="remove-item" 
+                             onclick="removeFromCart('${product.id}', '${conditionId}')"
+                           >×</button>
+                         </div>
+                       `;
+                     });
+                   });
+            
+                   const totalQuantity = getTotalQuantity();
+                   const tiers = typeof window.byobConfig.tiers === 'string' 
+                     ? JSON.parse(window.byobConfig.tiers) 
+                     : window.byobConfig.tiers;
+            
+                   // Calculate the max tier requirement
+                   const maxTierRequirement = Math.max(...tiers.map(tier => Number(tier.requirement)));
+            
+                   // For tiered discounts, we'll check if any tier condition is met
+                   const allConditionsMet = window.byobConfig.discountType === 'tiered' 
+                     ? tiers.some(tier => totalQuantity === Number(tier.requirement))
+                     : checkConditions();
+            
+                   let discount = 0;
+                   if (allConditionsMet) {
+                     discount = calculateDiscount(subtotal);
+                   }
+            
+                   const finalTotal = subtotal - discount;
+            
+                   // Update the totals display
+                   const addToCartBtn = document.getElementById('add-to-cart-btn');
+            
+                   if (subtotalElement) {
+                     subtotalElement.innerHTML = `
+                       <span>Subtotal:</span>
+                       <span>{{ shop.currency }} ${subtotal.toFixed(2)}</span>
+                     `;
+                   }
+            
+                   if (discountElement) {
+                     if (allConditionsMet && discount > 0) {
+                       let discountLabel = 'Discount';
+                       
+                       if (window.byobConfig.discountType === 'tiered') {
+                         const currentTier = tiers.find(tier => totalQuantity === Number(tier.requirement));
+                         if (currentTier) {
+                           const value = Number(currentTier.value);
+                           switch (window.byobConfig.tierBasedOn) {
+                             case 'percentage':
+                               discountLabel = `Tier Discount (${value}%)`;
+                               break;
+                             case 'fixed-amount':
+                               discountLabel = `Tier Discount ({{ shop.currency }} ${value} Off)`;
+                               break;
+                             case 'price':
+                               discountLabel = `Tier Discount ({{ shop.currency }} ${value} Fixed Price)`;
+                               break;
+                             case 'per-item':
+                               discountLabel = `Tier Discount ({{ shop.currency }} ${value} per item)`;
+                               break;
+                           }
+                         }
+                       } else {
+                         // Handle non-tiered discount types
+                         switch (window.byobConfig.discountType) {
+                           case 'percentage':
+                             discountLabel = `Discount (${window.byobConfig.discountValue}%)`;
+                             break;
+                           case 'fixed-amount':
+                             discountLabel = `Discount ({{ shop.currency }} ${window.byobConfig.discountValue} Off)`;
+                             break;
+                           case 'price':
+                             discountLabel = `Bundle Price ({{ shop.currency }} ${window.byobConfig.discountValue})`;
+                             break;
+                         }
+                       }
+                       
+                       discountElement.innerHTML = `
+                         <span>${discountLabel}:</span>
+                         <span>-{{ shop.currency }} ${discount.toFixed(2)}</span>
+                       `;
+                       discountElement.style.display = 'flex';
+                       subtotalElement.style.display = 'flex';
+                       finalTotalElement.style.display = 'flex';
+            
+                     } else {  
+                       discountElement.style.display = 'none';
+                     }
+                   }
+            
+                   if (finalTotalElement) {
+                     finalTotalElement.innerHTML = `
+                       <span>Total:</span>
+                       <span>{{ shop.currency }} ${finalTotal.toFixed(2)}</span>
+                     `;
+                   }
+            
+                   // Update Add to Cart button visibility and state
+                   if (addToCartBtn) {
+                     if (window.byobConfig.discountType === 'tiered') {
+                       const isTierMet = tiers.some(tier => totalQuantity === Number(tier.requirement));
+                       addToCartBtn.style.display = 'block';
+                       addToCartBtn.disabled = !isTierMet;
+                     } else {
+                       if (allConditionsMet) {
+                         addToCartBtn.style.display = 'block';
+                         addToCartBtn.disabled = false;
+                       } else {
+                         addToCartBtn.style.display = 'none';
+                         addToCartBtn.disabled = true;
+                       }
+                     }
+                   }
+            
+                   // Update product selection buttons
+                   const selectButtons = document.querySelectorAll('.select-product-btn');
+                   selectButtons.forEach(button => {
+                     const buttonProductId = button.dataset.productId;
+                     
+                     if (window.byobConfig.discountType === 'tiered') {
+                       if (totalQuantity >= maxTierRequirement) {
+                         button.disabled = true;
+                         button.textContent = 'Max Tier Reached';
+                       } else if (selectedProducts.has(buttonProductId)) {
+                         button.disabled = true;
+                         button.textContent = '{{ section.settings.added_to_bundle_text }}';
+                       } else {
+                         button.disabled = false;
+                         button.textContent = '{{ section.settings.add_to_bundle_text}}';
+                       }
+                     } else {
+                       // Original non-tiered logic
+                       const conditionId = button.dataset.conditionId;
+                       const condition = window.byobConditions.find(c => c.id === Number(conditionId));
+                       const productsInCondition = cartItems[conditionId] || [];
+                       
+                       if (productsInCondition.length >= parseInt(condition.productConditionNumber)) {
+                         button.disabled = true;
+                         button.textContent = '{{ section.settings.max_selected_text }}';
+                       } else if (selectedProducts.has(buttonProductId)) {
+                         button.disabled = true;
+                         button.textContent = '{{ section.settings.added_to_bundle_text}}';
+                       } else {
+                         button.disabled = false;
+                         button.textContent = '{{ section.settings.add_to_bundle_text}}';
+                       }
+                     }
+                   });
+                 }
+            
+                 // Separate remove function
+                 function removeFromCart(productId, conditionId) {
+                   
+                   if (cartItems[conditionId]) {
+                     const index = cartItems[conditionId].findIndex(item => item.id.toString() === productId.toString());
+                     const allButtons = document.querySelectorAll('.select-product-btn');
+                     allButtons.forEach(btn => {
+                       const variantData = JSON.parse(btn.dataset.product.toString());
+                                       if(variantData.variants[0].id.toString() === productId.toString() ){
+                                         
+                                          selectedProducts.delete(variantData.id.toString());
+                                        
+                                         }
+                                      
+                                     
+                                   });
+                     
+                     if (index !== -1) {
+                       // Remove the product
+                        if(index === 0 && cartItems[conditionId].length === 1 ) {
+             const allButtons = document.querySelectorAll('.select-product-btn');
+             allButtons.forEach(btn => {
+               btn.disabled = false;
+               btn.textContent = '{{ section.settings.add_to_bundle_text}}';
+             });
+              selectedProducts.clear();
+                 // Hide discount info
+             const discountInfo = document.querySelector('.discount-info');
+             if (discountInfo) {
+               discountInfo.style.display = 'none';
+             }
+             
+             // Reset add to cart button
+             const addToCartBtn = document.getElementById('add-to-cart-btn');
+             if (addToCartBtn) {
+               addToCartBtn.style.display = 'none';
+               addToCartBtn.disabled = true;
+             }
+             
+             // Reset conditions
+             isAllConditionsMet = false;
+             
+             // Show empty cart message
+             const cartItemsContainer = document.getElementById('cart-items');
+             if (cartItemsContainer) {
+               cartItemsContainer.innerHTML = '<div class="empty-cart"><p>{{ section.settings.empty_cart_text }}</p></div>';
+             }
+             
+             // Reset cart totals
+             const subtotalElement = document.getElementById('cart-subtotal');
+             const discountElement = document.getElementById('cart-discount');
+             const finalTotalElement = document.getElementById('cart-final-total');
+             
+             if (subtotalElement) subtotalElement.style.display = 'none';
+             if (discountElement) discountElement.style.display = 'none';
+             if (finalTotalElement) finalTotalElement.style.display = 'none';
+           }
+                       cartItems[conditionId].splice(index, 1);
+                      
+                       
+                       // Re-enable this product in all conditions where it's still available
+                       enableProductAcrossConditions(productId);
+                       
+                       // Remove condition if empty
+                       if (cartItems[conditionId].length === 0) {
+                         delete cartItems[conditionId];
+                       }
+                       
+                       
+                       
+                       // Update the cart display
+                       updateCartDisplay();
+                     }
+                   }
+                 }
+            
+                 // Add new function to re-enable product across conditions
+                 function enableProductAcrossConditions(productId) {
+                   window.byobConditions.forEach(condition => {
+                     const productsInCondition = cartItems[condition.id] || [];
+                     const productCount = productsInCondition.length;
+                     const maxProducts = parseInt(condition.productConditionNumber);
+                     
+                     // Only re-enable if the condition hasn't reached its maximum
+                     if (productCount < maxProducts) {
+                       const selectButtons = document.querySelectorAll(
+                         `.select-product-btn[data-product-id="${productId}"][data-condition-id="${condition.id}"]`
+                       );
+                       
+                       selectButtons.forEach(button => {
+                         // Make sure this product exists in this condition before enabling
+                         const productData = JSON.parse(button.dataset.product);
+                         if (productData.id.toString() === productId.toString()) {
+                           button.disabled = false;
+                           button.textContent = '{{ section.settings.add_to_bundle_text}}';
+                         }
+                       });
+                     }
+                   });
+                 }
+            
+                 document.addEventListener('DOMContentLoaded', function() {
+                   const productId = {{ product.id }};
+                   const base = '{{ shop.url }}';
+                   const baseUrl = `${base}/apps/proxyTest`;
+                   
+                   // Pre-load collection data using liquid - Fixed JSON formatting
+                   const collectionProducts = {
+                     {%- for collection in collections -%}
+                       "{{ collection.title }}": [
+                         {%- for product in collection.products -%}
+                           {
+                             "id": {{ product.id | json }},
+                             "title": {{ product.title | json }},
+                             "price": {{ product.price | money | json }},
+                             "image": {{ product.featured_image | img_url: 'medium' | json }},
+                             "url": {{ product.url | json }},
+                             "hasVariants": {{ product.has_only_default_variant | json }},
+                             "options": [
+                               {%- for option in product.options_with_values -%}
+                                 {
+                                   "name": {{ option.name | json }},
+                                   "values": {{ option.values | json }}
+                                 }
+                                 {%- unless forloop.last -%},{%- endunless -%}
+                               {%- endfor -%}
+                             ],
+                             "variants": [
+                               {%- for variant in product.variants -%}
+                                 {
+                                   "id": {{ variant.id | json }},
+                                   "title": {{ variant.title | json }},
+                                   "price": {{ variant.price | money | json }},
+                                   "available": {{ variant.available | json }},
+                                   "image": {{ variant.featured_image | default: product.featured_image | img_url: 'medium' | json }},
+                                   "options": [
+                                     {%- for option in variant.options -%}
+                                       {{ option | json }}
+                                       {%- unless forloop.last -%},{%- endunless -%}
+                                     {%- endfor -%}
+                                   ]
+                                 }
+                                 {%- unless forloop.last -%},{%- endunless -%}
+                               {%- endfor -%}
+                             ]
+                           }
+                           {%- unless forloop.last -%},{%- endunless -%}
+                         {%- endfor -%}
+                       ]
+                       {%- unless forloop.last -%},{%- endunless -%}
+                     {%- endfor -%}
+                   };
+                   function getDiscountText(discountType, value) {
+              switch(discountType) {
+                case 'percentage':
+                  return `${value}% OFF`;
+                case 'fixed-amount':
+                  return `${value} OFF`;
+                case 'price':
+                  return `Fixed price ${value}`;
+                case 'per-item':
+                  return `${value} OFF per item`;
+                default:
+                  return `${value} OFF`;
+              }
+            }
+                  
+            
+                   fetch(baseUrl, {
+                     method: 'GET',
+                     redirect: 'manual',
+                     headers: {
+                       'Content-Type': 'application/json',
+                       'Access-Control-Allow-Origin': '*'
+                     }
+                   })
+                   .then(res => res.json())
+                   .then(response => {
+                     const byobConfig = response.message.byobs.find(bundle => {
+                       const bundleProductId = bundle.productId.replace('gid://shopify/Product/', '');
+                       return bundleProductId === productId.toString();
+                     });
+            
+                     if (!byobConfig) {
+                       console.error('No BYOB configuration found for this product');
+                       return;
+                     }
+            
+                     // Store the config globally
+                     window.byobConfig = byobConfig;
+                     function initializeStepper() {
+  if (!window.byobConfig) return;
+
+  let totalRequirement = 0;
+  let initialMessage = '';
+  let discountText = '';
+
+  if (window.byobConfig.discountType === "tiered" && window.byobConfig.tiers) {
+    // Existing tiered logic remains the same
+    const tiers = typeof window.byobConfig.tiers === 'string' 
+      ? JSON.parse(window.byobConfig.tiers) 
+      : window.byobConfig.tiers;
+
+    if (!tiers.length) return;
+    
+    totalRequirement = Math.max(...tiers.map(tier => Number(tier.requirement)));
+    discountText = getDiscountText(window.byobConfig.tierBasedOn, tiers[0].value);
+    initialMessage = `Add ${tiers[0].requirement} for ${discountText}`;
+    
+  } else if (window.byobConfig.conditions) {
+    // Calculate total requirement from all conditions
+    totalRequirement = JSON.parse(window.byobConfig.conditions).reduce((sum, condition) => {
+      return sum + Number(condition.productConditionNumber);
+    }, 0);
+
+    discountText = getDiscountText(
+      window.byobConfig.discountType, 
+      window.byobConfig.discountValue
+    );
+
+    // Create condition messages
+    const conditionMessages = JSON.parse(window.byobConfig.conditions).map(condition => {
+      const collection = condition.selectedCollection?.title || 'items';
+      const number = condition.productConditionNumber;
+      
+      switch(condition.productCondition) {
+        case 'any':
+          return `Select any ${number} from ${collection}`;
+        case 'atLeast':
+          return `Select at least ${number} from ${collection}`;
+        case 'maximum':
+          return `Select up to ${number} from ${collection}`;
+        default:
+          return `Select ${number} from ${collection}`;
+      }
+    });
+
+    initialMessage = `${conditionMessages.join(' and ')} to get ${discountText}`;
+  }
+
+  // Create stepper circles for total requirements
+  const stepperCircles = document.getElementById('stepperCircles');
+  stepperCircles.innerHTML = Array.from({ length: totalRequirement }, (_, i) => `
+    <div class="stepper-circle" data-step="${i + 1}">${i + 1}</div>
+  `).join('');
+
+  // Update initial messages
+  const stepperTitle = document.getElementById('stepperTitle');
+  stepperTitle.innerHTML = initialMessage;
+
+  const stepperDiscountBoxes = document.getElementById('cartDiscountBoxes');
+  const totalItemsDiv = document.createElement('div');
+  totalItemsDiv.className = 'cart-discount-box-left';
+  totalItemsDiv.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" version="1.2" viewBox="0 0 128 94" width="128" height="94"><path fill-rule="evenodd" d="m56.5 77.7q-0.6 1.3-1.6 2.2-0.9 1-2.2 1.6-1.3 0.5-2.7 0.5c-2.8 0-5.4-1.7-6.5-4.3-1.1-2.6-0.5-5.6 1.6-7.6 2-2.1 5-2.7 7.6-1.6 2.6 1.1 4.3 3.7 4.3 6.5q0 1.4-0.5 2.7zm-9.3-1.6q0.3 0.6 0.7 1 0.4 0.4 1 0.7 0.5 0.2 1.1 0.2c1.2 0 2.3-0.7 2.8-1.9 0.4-1.1 0.2-2.4-0.7-3.2-0.8-0.9-2.1-1.1-3.2-0.7-1.2 0.5-1.9 1.6-1.9 2.8q0 0.6 0.2 1.1z"/><path fill-rule="evenodd" d="m19.3 81.5q-1.3-0.6-2.2-1.6-1-0.9-1.6-2.2-0.5-1.3-0.5-2.7c0-2.8 1.7-5.4 4.3-6.5 2.6-1.1 5.6-0.5 7.6 1.6 2.1 2 2.7 5 1.6 7.6-1.1 2.6-3.7 4.3-6.5 4.3q-1.4 0-2.7-0.5zm1.6-9.3q-0.6 0.3-1 0.7-0.4 0.4-0.7 1-0.2 0.5-0.2 1.1c0 1.2 0.7 2.3 1.9 2.8 1.1 0.4 2.4 0.2 3.2-0.7 0.9-0.8 1.1-2.1 0.7-3.2-0.5-1.2-1.6-1.9-2.8-1.9q-0.6 0-1.1 0.2z"/><path fill-rule="evenodd" d="m84.5 77.7q-0.6 1.3-1.6 2.2-0.9 1-2.2 1.6-1.3 0.5-2.7 0.5c-2.8 0-5.4-1.7-6.5-4.3-1.1-2.6-0.5-5.6 1.6-7.6 2-2.1 5-2.7 7.6-1.6 2.6 1.1 4.3 3.7 4.3 6.5q0 1.4-0.5 2.7zm-9.3-1.6q0.3 0.6 0.7 1 0.4 0.4 1 0.7 0.5 0.2 1.1 0.2c1.2 0 2.3-0.7 2.8-1.9 0.4-1.1 0.2-2.4-0.7-3.2-0.8-0.9-2.1-1.1-3.2-0.7-1.2 0.5-1.9 1.6-1.9 2.8q0 0.6 0.2 1.1z"/><path fill-rule="evenodd" d="m103.3 81.5q-1.3-0.6-2.2-1.6-1-0.9-1.6-2.2-0.5-1.3-0.5-2.7c0-2.8 1.7-5.4 4.3-6.5 2.6-1.1 5.6-0.5 7.6 1.6 2.1 2 2.7 5 1.6 7.6-1.1 2.6-3.7 4.3-6.5 4.3q-1.4 0-2.7-0.5zm1.6-9.3q-0.6 0.3-1 0.7-0.4 0.4-0.7 1-0.2 0.5-0.2 1.1c0 1.2 0.7 2.3 1.9 2.8 1.1 0.4 2.4 0.2 3.2-0.7 0.9-0.8 1.1-2.1 0.7-3.2-0.5-1.2-1.6-1.9-2.8-1.9q-0.6 0-1.1 0.2z"/><path d="m29 34v-21q0-0.4-0.2-0.8-0.1-0.3-0.4-0.6-0.3-0.3-0.6-0.4-0.4-0.2-0.8-0.2h-10q-0.4 0-0.8 0.2-0.3 0.1-0.6 0.4-0.3 0.3-0.4 0.6-0.2 0.4-0.2 0.8v21h4v-19h6v19z"/><path d="m15 46v5q0 0.4 0.2 0.8 0.1 0.3 0.4 0.6 0.3 0.3 0.6 0.4 0.4 0.2 0.8 0.2h10q0.4 0 0.8-0.2 0.3-0.1 0.6-0.4 0.3-0.3 0.4-0.6 0.2-0.4 0.2-0.8v-5h-4v3h-6v-3z"/><path d="m57 26.9v-13.9q0-0.4-0.2-0.8-0.1-0.3-0.4-0.6-0.3-0.3-0.6-0.4-0.4-0.2-0.8-0.2h-10q-0.4 0-0.8 0.2-0.3 0.1-0.6 0.4-0.3 0.3-0.4 0.6-0.2 0.4-0.2 0.8v11.4q0.5-0.1 1-0.2 0.5 0 1-0.1 0.4 0 0.9-0.1 0.5 0 1 0 0.1 0 0.1 0v-9h6v10q0.5 0.2 1 0.4 0.6 0.2 1.1 0.4 0.5 0.3 0.9 0.5 0.5 0.3 1 0.6z"/><path d="m85 25.3v-12.3q0-0.4-0.2-0.8-0.1-0.3-0.4-0.6-0.3-0.3-0.6-0.4-0.4-0.2-0.8-0.2h-10q-0.4 0-0.8 0.2-0.3 0.1-0.6 0.4-0.3 0.3-0.4 0.6-0.2 0.4-0.2 0.8v12.4q0.5-0.2 1-0.4 0.5-0.2 1-0.3 0.5-0.1 1-0.2 0.5-0.2 1-0.2v-9.3h6v9.2q0.5 0.1 1 0.2 0.5 0.1 1 0.3 0.5 0.1 1 0.3 0.5 0.1 1 0.3z"/><path d="m113 34v-21q0-0.4-0.2-0.8-0.1-0.3-0.4-0.6-0.3-0.3-0.6-0.4-0.4-0.2-0.8-0.2h-10q-0.4 0-0.8 0.2-0.3 0.1-0.6 0.4-0.3 0.3-0.4 0.6-0.2 0.4-0.2 0.8v21h4v-19h6v19z"/><path d="m99 46v5q0 0.4 0.2 0.8 0.1 0.3 0.4 0.6 0.3 0.3 0.6 0.4 0.4 0.2 0.8 0.2h10q0.4 0 0.8-0.2 0.3-0.1 0.6-0.4 0.3-0.3 0.4-0.6 0.2-0.4 0.2-0.8v-5h-4v3h-6v-3z"/><path d="m118 88q0 0.4-0.2 0.8-0.1 0.3-0.4 0.6-0.3 0.3-0.6 0.4-0.4 0.2-0.8 0.2h-20q-0.4 0-0.8-0.2-0.3-0.1-0.6-0.4-0.3-0.3-0.4-0.6-0.2-0.4-0.2-0.8v-42h-1.6q0.1 0.8 0 1.6-0.1 0.9-0.4 1.6-0.3 0.8-0.8 1.4-0.5 0.7-1.2 1.2v36.2q0 0.4-0.2 0.8-0.1 0.3-0.4 0.6-0.3 0.3-0.6 0.4-0.4 0.2-0.8 0.2h-20q-0.4 0-0.8-0.2-0.3-0.1-0.6-0.4-0.3-0.3-0.4-0.6-0.2-0.4-0.2-0.8v-21.6q-0.1-0.3-0.2-0.5-0.1-0.3-0.1-0.6-0.1-0.2-0.1-0.5-0.1-0.3-0.1-0.6-0.1-1.7-0.2-3.3-0.2-1.7-0.6-3.4-0.3-1.6-0.7-3.3-0.5-1.6-1-3.2h-1v37q0 0.4-0.2 0.8-0.1 0.3-0.4 0.6-0.3 0.3-0.6 0.4-0.4 0.2-0.8 0.2h-20q-0.4 0-0.8-0.2-0.3-0.1-0.6-0.4-0.3-0.3-0.4-0.6-0.2-0.4-0.2-0.8v-25.5c-0.7-0.5-1.4-1.2-1.8-2.1-0.4-0.8-0.7-1.7-0.7-2.6 0-0.9 0.2-1.8 0.5-2.7 0.4-0.8 1-1.5 1.7-2.1q-0.2-0.1-0.4-0.1-0.2-0.1-0.4-0.2-0.2 0-0.4-0.1-0.2-0.1-0.4-0.2-0.3-0.1-0.6-0.3-0.3-0.1-0.5-0.3-0.3-0.2-0.5-0.5-0.3-0.2-0.5-0.4v37.1q0 0.4-0.2 0.8-0.1 0.3-0.4 0.6-0.3 0.3-0.6 0.4-0.4 0.2-0.8 0.2h-20q-0.4 0-0.8-0.2-0.3-0.1-0.6-0.4-0.3-0.3-0.4-0.6-0.2-0.4-0.2-0.8v-42h-4v42q0 1.2 0.5 2.3 0.4 1.1 1.3 1.9 0.8 0.9 1.9 1.3 1.1 0.5 2.3 0.5h20q0.5 0 1.1-0.1 0.5-0.1 1-0.3 0.6-0.2 1-0.5 0.5-0.3 0.9-0.6 0.4 0.3 0.9 0.6 0.4 0.3 1 0.5 0.5 0.2 1 0.3 0.6 0.1 1.1 0.1h20q0.5 0 1.1-0.1 0.5-0.1 1-0.3 0.6-0.2 1-0.5 0.5-0.3 0.9-0.6 0.4 0.3 0.9 0.6 0.4 0.3 1 0.5 0.5 0.2 1 0.3 0.6 0.1 1.1 0.1h20q0.5 0 1.1-0.1 0.5-0.1 1-0.3 0.6-0.2 1-0.5 0.5-0.3 0.9-0.6 0.4 0.3 0.9 0.6 0.4 0.3 1 0.5 0.5 0.2 1 0.3 0.6 0.1 1.1 0.1h20q1.2 0 2.3-0.5 1.1-0.4 1.9-1.3 0.9-0.8 1.3-1.9 0.5-1.1 0.5-2.3v-42h-4z"/><path d="m122 34v-28q0-1.2-0.5-2.3-0.4-1.1-1.3-1.9-0.8-0.9-1.9-1.3-1.1-0.5-2.3-0.5h-20q-0.5 0-1.1 0.1-0.5 0.1-1 0.3-0.6 0.2-1 0.5-0.5 0.3-0.9 0.6-0.4-0.3-0.9-0.6-0.4-0.3-1-0.5-0.5-0.2-1-0.3-0.6-0.1-1.1-0.1h-20q-0.5 0-1.1 0.1-0.5 0.1-1 0.3-0.6 0.2-1 0.5-0.5 0.3-0.9 0.6-0.4-0.3-0.9-0.6-0.4-0.3-1-0.5-0.5-0.2-1-0.3-0.6-0.1-1.1-0.1h-20q-0.5 0-1.1 0.1-0.5 0.1-1 0.3-0.6 0.2-1 0.5-0.5 0.3-0.9 0.6-0.4-0.3-0.9-0.6-0.4-0.3-1-0.5-0.5-0.2-1-0.3-0.6-0.1-1.1-0.1h-20q-1.2 0-2.3 0.5-1.1 0.4-1.9 1.3-0.9 0.8-1.3 1.9-0.5 1.1-0.5 2.3v28h4v-28q0-0.4 0.2-0.8 0.1-0.3 0.4-0.6 0.3-0.3 0.6-0.4 0.4-0.2 0.8-0.2h20q0.4 0 0.8 0.2 0.3 0.1 0.6 0.4 0.3 0.3 0.4 0.6 0.2 0.4 0.2 0.8v23l1.1-0.9q0.4-0.3 0.7-0.5 0.4-0.3 0.7-0.5 0.4-0.2 0.8-0.4 0.3-0.3 0.7-0.5v-20.2q0-0.4 0.2-0.8 0.1-0.3 0.4-0.6 0.3-0.3 0.6-0.4 0.4-0.2 0.8-0.2h20q0.4 0 0.8 0.2 0.3 0.1 0.6 0.4 0.3 0.3 0.4 0.6 0.2 0.4 0.2 0.8v23h3.2q0.4-0.3 0.8-0.7v-22.3q0-0.4 0.2-0.8 0.1-0.3 0.4-0.6 0.3-0.3 0.6-0.4 0.4-0.2 0.8-0.2h20q0.4 0 0.8 0.2 0.3 0.1 0.6 0.4 0.3 0.3 0.4 0.6 0.2 0.4 0.2 0.8v22.2l1.2 0.9q0.6 0.5 1 1 0.5 0.5 0.8 1.1 0.3 0.6 0.5 1.3 0.1 0.6 0.1 1.3 0 0.1 0 0.2h0.4v-28q0-0.4 0.2-0.8 0.1-0.3 0.4-0.6 0.3-0.3 0.6-0.4 0.4-0.2 0.8-0.2h20q0.4 0 0.8 0.2 0.3 0.1 0.6 0.4 0.3 0.3 0.4 0.6 0.2 0.4 0.2 0.8v28z"/><path fill-rule="evenodd" d="m127.4 38.6c0.4 0.4 0.6 0.9 0.6 1.4 0 0.5-0.2 1-0.6 1.4-0.4 0.4-0.9 0.6-1.4 0.6h-38.6q0 0.5 0.1 1.1 0.1 0.5 0.3 1.1 0.1 0.5 0.2 1 0.2 0.5 0.4 1.1 0.1 0.3 0.1 0.7 0 0.4-0.2 0.7-0.1 0.4-0.4 0.6-0.3 0.3-0.6 0.5-0.9 0.3-1.8 0.5-0.9 0.3-1.9 0.5-0.9 0.1-1.8 0.2-1 0.1-1.9 0.1-0.1 0-0.2 0c1.2 2.1 2.9 4.7 4.8 5.8q0.5 0.2 0.7 0.7 0.3 0.5 0.3 1 0 0.6-0.3 1.1-0.3 0.4-0.8 0.7l-12 6.4q-0.4 0.2-0.9 0.2-0.5 0-1-0.3-0.4-0.2-0.7-0.7-0.3-0.4-0.3-0.9c-0.1-3.5-1.1-12.4-4.1-17.1h-5.8c-3 4.7-4 13.6-4.1 17.1q0 0.5-0.3 0.9-0.3 0.5-0.7 0.7-0.5 0.3-1 0.3-0.5 0-0.9-0.2l-12-6.4q-0.5-0.3-0.8-0.7-0.3-0.5-0.3-1.1 0-0.5 0.3-1 0.2-0.5 0.7-0.7c1.9-1.1 3.7-3.7 4.8-5.8q-1 0-1.9-0.1-1-0.1-2-0.2-0.9-0.2-1.9-0.4-0.9-0.3-1.8-0.6-0.3-0.2-0.6-0.5-0.3-0.2-0.4-0.6-0.2-0.3-0.2-0.7 0-0.4 0.1-0.7 0.2-0.6 0.4-1.1 0.1-0.5 0.2-1 0.2-0.6 0.3-1.1 0.1-0.6 0.1-1.1h-35.6c-0.5 0-1-0.2-1.4-0.6-0.4-0.4-0.6-0.9-0.6-1.4 0-0.5 0.2-1 0.6-1.4 0.4-0.4 0.9-0.6 1.4-0.6h35.4q0-0.4-0.1-0.7-0.2-0.4-0.3-0.7-0.2-0.4-0.4-0.7-0.2-0.3-0.5-0.6-0.1-0.1-0.2-0.3-0.2-0.2-0.2-0.4-0.1-0.2-0.2-0.4 0-0.2 0-0.4 0-0.2 0.1-0.4 0-0.3 0.1-0.4 0.1-0.2 0.3-0.4 0.1-0.2 0.3-0.3l1.3-1.1c1.4-1.1 3-1.9 4.7-2.5 1.7-0.6 3.5-0.8 5.3-0.7 1.8 0.1 3.6 0.5 5.2 1.2 1.7 0.7 3.2 1.7 4.5 2.9l0.9 0.9h8.6l0.9-0.9c1.3-1.2 2.8-2.2 4.5-2.9 1.6-0.7 3.4-1.1 5.2-1.2 1.8-0.1 3.6 0.1 5.3 0.7 1.7 0.6 3.3 1.4 4.7 2.5l1.3 1.1q0.4 0.3 0.6 0.7 0.2 0.3 0.2 0.8 0 0.4-0.2 0.8-0.1 0.4-0.4 0.7-0.3 0.3-0.5 0.6-0.2 0.3-0.4 0.7-0.1 0.3-0.3 0.7-0.1 0.3-0.1 0.7h38.4c0.5 0 1 0.2 1.4 0.6zm-75.3 19q0.3-1.6 0.6-3.2 0.4-1.6 0.8-3.2 0.5-1.5 1-3-0.5 0.2-1.1 0.4-0.5 0.2-1.1 0.4-0.6 0.1-1.1 0.3-0.6 0.1-1.2 0.3-0.4 1-1 2-0.5 1-1.1 2-0.6 1-1.3 1.9-0.7 0.9-1.5 1.8l6.6 3.5q0.2-1.6 0.4-3.2zm3.4-21.7l-1-0.9q-1.4-1.3-3.2-2.1-1.8-0.8-3.8-0.9-1.9-0.1-3.8 0.5-1.9 0.6-3.5 1.8c1.1 2 2.3 5.7 0.8 11.3q1.8 0.4 3.7 0.4 1.9 0.1 3.8-0.2 1.8-0.3 3.6-1 1.8-0.6 3.4-1.6zm10 1.1h-6v6h6zm12.9 18.5q-0.7-0.9-1.3-1.9-0.6-0.9-1.1-2-0.6-1-1-2-0.6-0.2-1.2-0.3-0.5-0.2-1.1-0.3-0.6-0.2-1.1-0.4-0.6-0.2-1.1-0.4 0.5 1.5 1 3 0.4 1.6 0.8 3.2 0.3 1.6 0.6 3.2 0.2 1.6 0.4 3.2l6.6-3.5q-0.8-0.9-1.5-1.8zm6.4-21.2q-1.6-1.2-3.5-1.8-1.9-0.6-3.8-0.5-2 0.1-3.8 0.9-1.8 0.8-3.2 2.1l-1 0.9v7.4q1.6 0.9 3.4 1.5 1.8 0.7 3.6 1 1.9 0.3 3.8 0.2 1.9 0 3.7-0.4c-1.5-5.6-0.3-9.3 0.8-11.3z"/><text style="transform:matrix(1,0,0,1,0,126)"></text><text style="transform:matrix(1,0,0,1,0,131)"></text></svg>'  
+  
+  const totalDiscountDiv = document.createElement('div');
+  totalDiscountDiv.className = 'cart-discount-box-right';
+  totalDiscountDiv.innerHTML = `<span>${initialMessage}</span>`;
+  
+  stepperDiscountBoxes.innerHTML = ''; // Clear existing content
+  stepperDiscountBoxes.appendChild(totalItemsDiv);
+  stepperDiscountBoxes.appendChild(totalDiscountDiv);
+}
+                     // Debug log
+                     initializeStepper();
+                     
+                     const conditionsContainer = document.querySelector('.conditions-container');
+                     const conditions = JSON.parse(byobConfig.conditions);
+                     
+                     // Set the global byobConditions
+                     window.byobConditions = conditions;
+                     
+                     conditions.forEach(condition => {
+                       const conditionElement = document.createElement('div');
+                       conditionElement.className = 'condition-group';
+                       
+                       const header = document.createElement('h3');
+                       header.textContent = condition.productCondition === 'any' 
+                         ? 'Choose any ' + condition.productConditionNumber
+                         : 'Choose all ' + condition.productConditionNumber;
+                       
+                       conditionElement.appendChild(header);
+                       
+                       const productsGrid = document.createElement('div');
+                       productsGrid.className = 'selected-products';
+                       
+                      if (condition.productSelectionType === 'product') {
+                         condition.selectedProducts.forEach(product => {
+                           const cleanProductId = product.id.replace('gid://shopify/Product/', '');
+                           fetch(window.Shopify.routes.root + `products/${product.handle}.js`)
+                            .then(response => response.json())
+                            .then((productI) => {
+                              
+                              let variantSelector = '';
+                               if ( productI.options.length > 0 && productI.variants[0].title !== 'Default Title') {
+                                 variantSelector = `
+                                   <div class="product-variants">
+                                     ${productI.options.map(option => `
+                                       <div class="option-group">
+                                         <label for="${productI.id}-${option.name}">${option.name}:</label>
+                                         <select 
+                                           id="${productI.id}-${option.name}" 
+                                           class="variant-selector" 
+                                           data-product-id="${productI.id}" 
+                                           data-option="${option.name}"
+                                         >
+                                           ${option.values.map(value => `
+                                             <option value="${value}">${value}</option>
+                                           `).join('')}
+                                         </select>
+                                       </div>
+                                     `).join('')}
+                                   </div>
+                                 `;
+                               }
+                              productsGrid.innerHTML += `
+                               <div class="product-card">
+                               <div class="product-card-deets">
+                                 <img src="${productI.featured_image}" alt="${productI.title}">
+                                  <h4>${productI.title}</h4>
+                                   <p class="product-price">${formatMoney(productI.price, '{{ shop.money_format }}')}</p>
+                                   ${variantSelector}
+                                 </div>
+                                 <button 
+                                     class="select-product-btn"
+                                     data-product='${JSON.stringify(productI)}'
+                                     data-product-id="${productI.id}"
+                                     data-condition-id="${condition.id}">{{ section.settings.add_to_bundle_text}}</button>
+                               </div>
+                             `;
+                            })
+                           .then(()=>{
+                             const selectButtons = productsGrid.querySelectorAll('.select-product-btn');
+                          
+                           selectButtons.forEach(button => {
+                             button.addEventListener('click', function() {
+                               try {
+                                 const productData = JSON.parse(this.dataset.product);
+                                 const conditionId = this.dataset.conditionId;
+                                 
+                                 // Initialize cartItems for this condition if it doesn't exist
+                                 if (!cartItems[conditionId]) {
+                                   cartItems[conditionId] = [];
+                                 }
+            
+                                 // Check if product is already selected
+                                 if (!selectedProducts.has(productData.id.toString())) {
+                                   // Add product to cart
+                                   cartItems[conditionId].push({
+                                     id: productData.variants[0].id,
+                                     title: productData.title,
+                                     price: productData.price,
+                                     image: productData.featured_image
+                                   });
+                                   
+                                   // Mark product as selected
+                                   selectedProducts.add(productData.id.toString());
+                                   
+                                   // Disable this product in all other conditions
+                                   disableProductAcrossConditions(productData.id);
+                                   
+                                   // Update cart display
+                                   updateCartDisplay();
+                                   
+                                   // Update button state
+                                   this.disabled = true;
+                                   this.textContent = 'Added';
+                                 }
+                               } catch (error) {
+                                 console.error('Error adding product:', error);
+                               }
+                             });
+                           });
+                           });
+                           
+                           
+                         });
+                         conditionElement.appendChild(productsGrid);
+                      
+                       
+                       } else if (condition.productSelectionType === 'collection' && condition.selectedCollection) {
+                         const collectionTitle = condition.selectedCollection.title;
+                         const collectionProductsList = collectionProducts[collectionTitle] || [];
+                         
+                         if (collectionProductsList.length > 0) {
+                           collectionProductsList.forEach(product => {
+                             let variantSelector = '';
+                             
+                             if (!product.hasVariants && product.options.length > 0) {
+                               variantSelector = `
+                                 <div class="product-variants">
+                                   ${product.options.map(option => `
+                                     <div class="option-group">
+                                       <label for="${product.id}-${option.name}">${option.name}:</label>
+                                       <select 
+                                         id="${product.id}-${option.name}" 
+                                         class="variant-selector" 
+                                         data-product-id="${product.id}" 
+                                         data-option="${option.name}"
+                                       >
+                                         ${option.values.map(value => `
+                                           <option value="${value}">${value}</option>
+                                         `).join('')}
+                                       </select>
+                                     </div>
+                                   `).join('')}
+                                 </div>
+                               `;
+                             }
+            
+                             productsGrid.innerHTML += `
+                               <div class="product-card" id="product-${product.id}">
+                               <div class="product-card-deets">
+                                 <img src="${product.image}" alt="${product.title}">
+                                 <h4>${product.title}</h4>
+                                 <p class="product-price">${product.price}</p>
+                                 ${variantSelector}
+                                 </div>
+                                 <button 
+                                   class='${(product.hasVariants && !product.variants[0].available) ? 'select-product-btn out-of-stock' : 'select-product-btn'}'
+                                   ${(product.hasVariants && !product.variants[0].available) ? 'disabled' : ''}
+                                   data-product='${JSON.stringify(product)}'
+                                   data-product-id="${product.id}"
+                                   data-condition-id="${condition.id}"
+                                 >
+                                  ${(product.hasVariants && !product.variants[0].available) ? 'Out of Stock' : `{{ section.settings.add_to_bundle_text}}`} 
+                                 </button>
+                               </div>
+                               `
+                           });
+            
+                           // Move the event listener attachment after the HTML is added
+                           conditionElement.appendChild(productsGrid);
+                           
+                           // Now attach event listeners to the buttons
+                           const selectButtons = productsGrid.querySelectorAll('.select-product-btn');
+                           selectButtons.forEach(button => {
+                             button.addEventListener('click', function() {
+                               try {
+                                 const productData = JSON.parse(this.dataset.product);
+                                 const conditionId = this.dataset.conditionId;
+                                 
+                                 // Initialize cartItems for this condition if it doesn't exist
+                                 if (!cartItems[conditionId]) {
+                                   cartItems[conditionId] = [];
+                                 }
+            
+                                 // Check if product is already selected
+                                 if (!selectedProducts.has(productData.id.toString())) {
+                                   // Add product to cart
+                                   cartItems[conditionId].push({
+                                     id: productData.variants[0].id,
+                                     title: productData.title,
+                                     price: productData.price,
+                                     image: productData.image
+                                   });
+                                   
+                                   // Mark product as selected
+                                   selectedProducts.add(productData.id.toString());
+                                   
+                                   // Disable this product in all other conditions
+                                   disableProductAcrossConditions(productData.id);
+                                   
+                                   // Update cart display
+                                   updateCartDisplay();
+                                   
+                                   // Update button state
+                                   this.disabled = true;
+                                   this.textContent = 'Added';
+                                 }
+                               } catch (error) {
+                                 console.error('Error adding product:', error);
+                               }
+                             });
+                           });
+                         } else {
+                           productsGrid.innerHTML = '<p>No products found in this collection</p>';
+                         }
+                       }
+                       
+                       conditionElement.appendChild(productsGrid);
+                       conditionsContainer.appendChild(conditionElement);
+                     });
+                   })
+                   .catch(error => {
+                     console.error('Error fetching BYOB config:', error);
+                   });
+                 });
+                 // Add variant selection handling
+                 function updateVariantSelection(productId) {
+                   const productCard = document.getElementById(`product-${productId}`);
+                   const selects = productCard.querySelectorAll('.variant-selector');
+                   const product = findProductById(productId); // You'll need to implement this helper
+                   
+                   const selectedOptions = Array.from(selects).map(select => select.value);
+                   
+                   // Find matching variant
+                   const variant = product.variants.find(v => 
+                     JSON.stringify(v.options) === JSON.stringify(selectedOptions)
+                   );
+                   
+                   if (variant) {
+                     // Update price and image
+                     productCard.querySelector('.product-price').textContent = variant.price;
+                     if (variant.image) {
+                       productCard.querySelector('img').src = variant.image;
+                     }
+                     
+                     // Update add to cart button
+                     const button = productCard.querySelector('button');
+                     button.disabled = !variant.available;
+                     if (!variant.available) {
+                       button.textContent = 'Sold Out';
+                     } else if (!selectedProducts.has(productId)) {
+                       button.textContent = '{{ section.settings.add_to_bundle_text}}';
+                     }
+                     
+                     // Store selected variant
+                     productCard.dataset.selectedVariant = variant.id;
+                   }
+                 }
+            
+                 // Update addToCart function to handle variants
+                 function addToCart(product, conditionId) {
+                   const productCard = document.getElementById(`product-${product.id}`);
+                   const variantId = productCard.dataset.selectedVariant;
+                   
+                   if (variantId) {
+                     const variant = product.variants.find(v => v.id === variantId);
+                     if (variant) {
+                       product = {
+                         ...product,
+                         selectedVariant: variant,
+                         price: variant.price,
+                         image: variant.image || product.image
+                       };
+                     }
+                   }
+                   
+                   // ... rest of existing addToCart logic ...
+                 }
+            
+                 // Initialize conditions when loading the page
+                 if (window.byobConfig && window.byobConfig.conditions) {
+                   byobConditions = JSON.parse(window.byobConfig.conditions);
+                 }
+            
+                 // Add the Add to Cart button if not present
+                 const cartContainer = document.querySelector('.side-cart');
+                 if (cartContainer && !document.getElementById('add-to-cart-btn')) {
+                   const addToCartBtn = document.createElement('button');
+                   addToCartBtn.id = 'add-to-cart-btn';
+                   addToCartBtn.className = 'add-to-cart-btn';
+                   addToCartBtn.textContent = '{{ section.settings.add_to_cart_text }}';
+                   addToCartBtn.disabled = true;
+                   cartContainer.appendChild(addToCartBtn);
+                 }
+            
+                 // Add new function to disable product across all conditions
+                 function disableProductAcrossConditions(productId) {
+                   // Find all select buttons for this product across all conditions
+                   const allProductButtons = document.querySelectorAll(
+                     `.select-product-btn[data-product-id="${productId}"]`
+                   );
+                   
+                   allProductButtons.forEach(button => {
+                     button.disabled = true;
+                     button.textContent = 'Added';
+                   });
+                 }
+            
+                 // Update removeFromCart function to re-enable products across conditions
+                 function removeFromCart(productId, conditionId) {
+                   
+                   if (cartItems[conditionId]) {
+                     const index = cartItems[conditionId].findIndex(item => item.id.toString() === productId.toString());
+                     const allButtons = document.querySelectorAll('.select-product-btn');
+                     allButtons.forEach(btn => {
+                       const variantData = JSON.parse(btn.dataset.product.toString());
+                                       if(variantData.variants[0].id.toString() === productId.toString() ){
+                                         
+                                          selectedProducts.delete(variantData.id.toString());
+                                        
+                                         }
+                                      
+                                     
+                                   });
+                     
+                     if (index !== -1) {
+                       // Remove the product
+                        if(index === 0 && cartItems[conditionId].length === 1 ) {
+             const allButtons = document.querySelectorAll('.select-product-btn');
+             allButtons.forEach(btn => {
+               btn.disabled = false;
+               btn.textContent = '{{ section.settings.add_to_bundle_text}}';
+             });
+              selectedProducts.clear();
+                 // Hide discount info
+             const discountInfo = document.querySelector('.discount-info');
+             if (discountInfo) {
+               discountInfo.style.display = 'none';
+             }
+             
+             // Reset add to cart button
+             const addToCartBtn = document.getElementById('add-to-cart-btn');
+             if (addToCartBtn) {
+               addToCartBtn.style.display = 'none';
+               addToCartBtn.disabled = true;
+             }
+             
+             // Reset conditions
+             isAllConditionsMet = false;
+             
+             // Show empty cart message
+             const cartItemsContainer = document.getElementById('cart-items');
+             if (cartItemsContainer) {
+               cartItemsContainer.innerHTML = '<div class="empty-cart"><p>{{ section.settings.empty_cart_text }}</p></div>';
+             }
+             
+             // Reset cart totals
+             const subtotalElement = document.getElementById('cart-subtotal');
+             const discountElement = document.getElementById('cart-discount');
+             const finalTotalElement = document.getElementById('cart-final-total');
+             
+             if (subtotalElement) subtotalElement.style.display = 'none';
+             if (discountElement) discountElement.style.display = 'none';
+             if (finalTotalElement) finalTotalElement.style.display = 'none';
+           }
+                       cartItems[conditionId].splice(index, 1);
+                      
+                       
+                       // Re-enable this product in all conditions
+                       enableProductAcrossConditions(productId);
+                       
+                       // Remove condition if empty
+                       if (cartItems[conditionId].length === 0) {
+                         delete cartItems[conditionId];
+                       }
+                       
+                       
+                       // Update the cart display
+                       updateCartDisplay();
+                     }
+                   }
+                 }
+            
+                 // Add new function to re-enable product across conditions
+                 function enableProductAcrossConditions(productId) {
+                   window.byobConditions.forEach(condition => {
+                     const productsInCondition = cartItems[condition.id] || [];
+                     const productCount = productsInCondition.length;
+                     const maxProducts = parseInt(condition.productConditionNumber);
+                     
+                     // Only re-enable if the condition hasn't reached its maximum
+                     if (productCount < maxProducts) {
+                       const selectButtons = document.querySelectorAll(
+                         `.select-product-btn[data-product-id="${productId}"][data-condition-id="${condition.id}"]`
+                       );
+                       
+                       selectButtons.forEach(button => {
+                         // Make sure this product exists in this condition before enabling
+                         const productData = JSON.parse(button.dataset.product);
+                         if (productData.id.toString() === productId.toString()) {
+                           button.disabled = false;
+                           button.textContent = '{{ section.settings.add_to_bundle_text}}';
+                         }
+                       });
+                     }
+                   });
+                 }
+            
+                 // Add this after the DOMContentLoaded event listener
+                 document.addEventListener('click', function(event) {
+                   if (event.target && event.target.id === 'add-to-cart-btn') {
+                     // Disable the button and show loading state
+                     const addToCartBtn = event.target;
+                     addToCartBtn.disabled = true;
+                     addToCartBtn.textContent = 'Adding...';
+            
+                     // Prepare the items in Shopify's expected format
+                      const itemsCart = [];
+                    
+            
+                     // Collect all items from cartItems
+                     Object.values(cartItems).forEach(products => {
+                       products.forEach(product => {
+                         itemsCart.push({
+                           id: product.id,
+                           quantity: 1
+                         });
+                       });
+                     });
+                     const total = document.getElementById('cart-final-total').querySelector('span:nth-child(2)').textContent;
+                      const formData = {
+                       items: [{
+                         id: {{ product.variants[0].id }},
+                         quantity: 1,
+                         properties:{
+                           __byob: JSON.stringify(itemsCart),
+                           __totalByob: total.toString().replace(/[^0-9.-]+/g, '')
+                         }
+                         }]
+                     };
+            
+                     // Add items to cart using Shopify Cart API
+                     fetch(window.Shopify.routes.root + 'cart/add.js', {
+                       method: 'POST',
+                       headers: {
+                         'Content-Type': 'application/json'
+                       },
+                       body: JSON.stringify(formData)
+                     })
+                     .then(response => response.json())
+                     .then(data => {
+                       addToCartBtn.disabled = true;
+                       addToCartBtn.textContent = 'Redirecting to cart...';
+                       setTimeout(() => {
+                          addToCartBtn.disabled = false;
+                         addToCartBtn.textContent = '{{ section.settings.add_to_cart_text }}';
+                         window.location.href = '/cart'
+                       }, 2000);
+                     })
+                     .catch((error) => {
+                       console.error('Error:', error);
+                       // Reset button state
+                       addToCartBtn.disabled = false;
+                       addToCartBtn.textContent = '{{ section.settings.add_to_cart_text }}';
+                       // Show error message
+                       alert('There was an error adding items to cart. Please try again.');
+                     });
+                   }
+                 });
+                  function getDiscountText(discountType, value) {
+              switch(discountType) {
+                case 'percentage':
+                  return `${value}% OFF`;
+                case 'fixed-amount':
+                  return `${value} OFF`;
+                case 'price':
+                  return `Fixed price ${value}`;
+                case 'per-item':
+                  return `${value} OFF per item`;
+                default:
+                  return `${value} OFF`;
+              }
+            }
+            
+                 function updateStepper() {
+  if (!window.byobConfig) return;
+
+  const stepperTitle = document.getElementById('stepperTitle');
+  const discountBoxTitle = document.querySelector('.cart-discount-box-right');
+  const circles = document.querySelectorAll('.stepper-circle');
+
+  // Get condition-specific quantities
+  const conditionQuantities = {};
+  JSON.parse(window.byobConfig.conditions).forEach(condition => {
+    conditionQuantities[condition.id] = (cartItems[condition.id] || []).length;
+  });
+
+  // Update circles based on total selected items
+  const totalSelected = Object.values(conditionQuantities).reduce((sum, qty) => sum + qty, 0);
+  
+  circles.forEach((circle, index) => {
+    if (index < totalSelected) {
+      circle.classList.add('completed');
+      // Add product image if available
+      const allProducts = Object.values(cartItems).flat();
+      if (allProducts[index]) {
+        const img = document.createElement('img');
+        img.src = allProducts[index].image;
+        img.alt = allProducts[index].title;
+        if (!circle.querySelector('img')) {
+          circle.insertBefore(img, circle.firstChild);
+        }
+      }
+    } else {
+      circle.classList.remove('completed');
+      const img = circle.querySelector('img');
+      if (img) img.remove();
+    }
+  });
+
+  // Generate status message
+  const conditionStatuses = JSON.parse(window.byobConfig.conditions).map(condition => {
+    const current = conditionQuantities[condition.id] || 0;
+    const required = Number(condition.productConditionNumber);
+    const collection = condition.selectedCollection?.title || 'items';
+    
+    if (condition.productCondition === 'maximum' && current > required) {
+      return `Remove ${current - required} from ${collection}`;
+    } else if (current < required) {
+      return `Add ${required - current} more from ${collection}`;
+    }
+    return null;
+  }).filter(status => status);
+
+  const discountText = getDiscountText(
+    window.byobConfig.discountType, 
+    window.byobConfig.discountValue
+  );
+
+  const message = conditionStatuses.length > 0
+    ? `${conditionStatuses.join(' and ')} for ${discountText}`
+    : `All conditions met! (${discountText})`;
+
+  stepperTitle.textContent = message;
+  if (discountBoxTitle) {
+    discountBoxTitle.innerHTML = `<span>${message}</span>`;
+  }
+}
+            
+                 // Add stepper initialization to DOMContentLoaded
+                 document.addEventListener('DOMContentLoaded', function() {
+                   // ... existing DOMContentLoaded code ...
+                   initializeStepper();
+                 });
+               
+               </script>
+            
+               {% if section.settings.custom_css != blank %}
+                <style>
+                  {{ section.settings.custom_css }}
+                </style>
+                {% endif %}
+               
+                {% if section.settings.custom_js != blank %}
+                <script>
+                  {{ section.settings.custom_js }}
+                </script>
+                {% endif %}
+            
+               {% schema %}
+                {
+                  "name": "Build Your Own Bundle",
+                  "settings": [
+                    {
+                      "type": "header",
+                      "content": "Typography"
+                    },
+                    {
+                      "type": "font_picker",
+                      "id": "heading_font",
+                      "label": "Font Family for Body",
+                      "default": "helvetica_n4"
+                    },
+                    {
+                      "type": "font_picker",
+                      "id": "body_font",
+                      "label": "Font Family for Heading",
+                      "default": "helvetica_n4"
+                    },
+                    {
+                      "type": "range",
+                      "id": "product_image_size",
+                      "label": "Featured Image Size",
+                      "min": 30,
+                      "max": 120,
+                      "step": 10,
+                      "default": 30,
+                      "unit": "%"
+                    },
+                    {
+                      "type": "range",
+                      "id": "heading_size",
+                      "label": "Heading Size",
+                      "min": 20,
+                      "max": 60,
+                      "step": 2,
+                      "default": 32,
+                      "unit": "px"
+                    },
+                    {
+                      "type": "range",
+                      "id": "product_title_size",
+                      "label": "Product Title Size",
+                      "min": 12,
+                      "max": 24,
+                      "step": 1,
+                      "default": 14,
+                      "unit": "px"
+                    },
+                    {
+                      "type": "range",
+                      "id": "price_size",
+                      "label": "Price Text Size",
+                      "min": 12,
+                      "max": 24,
+                      "step": 1,
+                      "default": 14,
+                      "unit": "px"
+                    },
+                    {
+                      "type": "header",
+                      "content": "Colors"
+                    },
+                    {
+                      "type": "color",
+                      "id": "text_color",
+                      "label": "Text Color",
+                      "default": "#000000"
+                    },
+                    {
+                      "type": "color",
+                      "id": "price_color",
+                      "label": "Price Color",
+                      "default": "#666666"
+                    },
+                    {
+                      "type": "color",
+                      "id": "primary_button_bg",
+                      "label": "Button Background",
+                      "default": "#000000"
+                    },
+                    {
+                      "type": "color",
+                      "id": "primary_button_text",
+                      "label": "Button Text",
+                      "default": "#FFFFFF"
+                    },
+                    {
+                      "type": "color",
+                      "id": "primary_button_border",
+                      "label": "Button Border",
+                      "default": "#000000"
+                    },
+                    {
+                      "type": "color",
+                      "id": "disabled_button_bg",
+                      "label": "Disabled Button Background",
+                      "default": "#000000"
+                    },
+                    {
+                      "type": "color",
+                      "id": "disabled_button_text",
+                      "label": "Disabled Button Text",
+                      "default": "#FFFFFF"
+                    },
+                    {
+                      "type": "color",
+                      "id": "remove_button_color",
+                      "label": "Remove Button Color",
+                      "default": "#dc3545"
+                    },
+                    {
+                      "type": "color",
+                      "id": "cart_border_color",
+                      "label": "Cart Border Color",
+                      "default": "#dddddd"
+                    },
+                    {
+                      "type": "header",
+                      "content": "Button Customization"
+                    },
+                    {
+                      "type": "range",
+                      "id": "button_border_radius",
+                      "label": "Button Border Radius",
+                      "min": 0,
+                      "max": 20,
+                      "step": 1,
+                      "default": 10,
+                      "unit": "px"
+                    },
+                    {
+                      "type": "range",
+                      "id": "button_padding",
+                      "label": "Button Padding",
+                      "min": 5,
+                      "max": 30,
+                      "step": 1,
+                      "default": 10,
+                      "unit": "px"
+                    },
+                    {
+                      "type": "select",
+                      "id": "button_font_weight",
+                      "label": "Button Font Weight",
+                      "options": [
+                        {
+                          "value": "400",
+                          "label": "Regular"
+                        },
+                        {
+                          "value": "500",
+                          "label": "Medium"
+                        },
+                        {
+                          "value": "600",
+                          "label": "Semi Bold"
+                        },
+                        {
+                          "value": "700",
+                          "label": "Bold"
+                        },
+                        {
+                          "value": "900",
+                          "label": "Black"
+                        }
+                      ],
+                      "default": "900"
+                    },
+                    {
+                      "type": "header",
+                      "content": "Text Customization"
+                    },
+                    {
+                      "type": "text",
+                      "id": "add_to_bundle_text",
+                      "label": "Add to Bundle Button Text",
+                      "default": "Add to Bundle"
+                    },
+                    {
+                      "type": "text",
+                      "id": "added_to_bundle_text",
+                      "label": "Added to Bundle Text",
+                      "default": "Added"
+                    },
+                    {
+                      "type": "text",
+                      "id": "max_selected_text",
+                      "label": "Max Selected Text",
+                      "default": "Max Selected"
+                    },
+                    {
+                      "type": "text",
+                      "id": "add_to_cart_text",
+                      "label": "Add to Cart Button Text",
+                      "default": "Add to Cart"
+                    },
+                    {
+                      "type": "text",
+                      "id": "empty_cart_text",
+                      "label": "Empty Cart Text",
+                      "default": "No items selected yet"
+                    },
+                    {
+                      "type": "header",
+                      "content": "Layout"
+                    },
+                    {
+                      "type": "range",
+                      "id": "section_padding",
+                      "label": "Section Padding",
+                      "min": 0,
+                      "max": 100,
+                      "step": 5,
+                      "default": 20,
+                      "unit": "px"
+                    },
+                    {
+                      "type": "range",
+                      "id": "grid_gap",
+                      "label": "Grid Gap",
+                      "min": 10,
+                      "max": 50,
+                      "step": 5,
+                      "default": 20,
+                      "unit": "px"
+                    },
+                    {
+                      "type": "select",
+                      "id": "grid_columns_desktop",
+                      "label": "Grid Columns (Desktop)",
+                      "options": [
+                        {
+                          "value": "2",
+                          "label": "2 Columns"
+                        },
+                        {
+                          "value": "3",
+                          "label": "3 Columns"
+                        },
+                        {
+                          "value": "4",
+                          "label": "4 Columns"
+                        }
+                      ],
+                      "default": "3"
+                    },
+                     {
+                      "type":"textarea",
+                      "id":"custom_css",
+                      "label":"Custom CSS",
+                      "default":"/*Add your custom CSS here */"
+                    },
+                    {
+                      "type":"textarea",
+                      "id":"custom_js",
+                      "label":"Custom JS",
+                      "default":"/* Add your custom JS here */"
+                    },
+                    {
+                      "type": "header",
+                      "content": "Stepper Configuration"
+                    },
+                    {
+                      "type": "select",
+                      "id": "stepper_position",
+                      "label": "Stepper Position",
+                      "options": [
+                        {
+                          "value": "both",
+                          "label": "Show in Both Locations"
+                        },
+                        {
+                          "value": "top",
+                          "label": "Show Above Products Only"
+                        },
+                        {
+                          "value": "cart",
+                          "label": "Show in Cart Only"
+                        },
+                        {
+                          "value": "none",
+                          "label": "Hide Stepper"
+                        }
+                      ],
+                      "default": "both"
+                    },
+                    {
+                      "type": "color",
+                      "id": "stepper_bg_color",
+                      "label": "Background Color",
+                      "default": "#fafafa"
+                    },
+                    {
+                      "type": "color",
+                      "id": "stepper_circle_color",
+                      "label": "Circle Color",
+                      "default": "#d4d4d4"
+                    },
+                    {
+                      "type": "color",
+                      "id": "stepper_circle_completed",
+                      "label": "Completed Circle Color",
+                      "default": "#13C573"
+                    },
+                    {
+                      "type": "color",
+                      "id": "stepper_circle_warning",
+                      "label": "Warning Circle Color",
+                      "default": "#ff4444"
+                    },
+                    {
+                      "type": "color",
+                      "id": "stepper_text_color",
+                      "label": "Text Color",
+                      "default": "#000000"
+                    },
+                    {
+                      "type": "range",
+                      "id": "stepper_circle_size",
+                      "label": "Circle Size",
+                      "min": 30,
+                      "max": 80,
+                      "step": 5,
+                      "default": 50,
+                      "unit": "px"
+                    },
+                    {
+                      "type": "range",
+                      "id": "stepper_spacing",
+                      "label": "Circle Spacing",
+                      "min": 40,
+                      "max": 120,
+                      "step": 10,
+                      "default": 80,
+                      "unit": "px"
+                    },
+                    {
+                      "type": "header",
+                      "content": "Cart Discount Box Styling"
+                    },
+                    {
+                      "type": "range",
+                      "id": "cart_discount_box_spacing",
+                      "label": "Box Spacing",
+                      "min": 5,
+                      "max": 30,
+                      "step": 5,
+                      "default": 10,
+                      "unit": "px"
+                    },
+                    {
+                      "type": "range",
+                      "id": "cart_discount_text_size",
+                      "label": "Discount Text Size",
+                      "min": 12,
+                      "max": 24,
+                      "step": 1,
+                      "default": 16,
+                      "unit": "px"
+                    },
+                    {
+                      "type": "range",
+                      "id": "cart_icon_size",
+                      "label": "Discount Icon Size",
+                      "min": 40,
+                      "max": 100,
+                      "step": 5,
+                      "default": 70,
+                      "unit": "px"
+                    }
+                  ]
+                }
+                {% endschema %}
+               
+               
+               
+                          

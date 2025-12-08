@@ -1,0 +1,65 @@
+<section class="about-founder-story" data-scroll-section>
+  <div class="container-fluid">
+    <div class="abs-wrapper" style="background-image: url({{ section.settings.backImg |  img_url: 'master' }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
+      <div class="abs-left">
+        <div class="sub-head green">
+          <p>{{ section.settings.small-head }}</p>
+        </div>
+        <div class="head">
+          <h3>{{ section.settings.head }}</h3>
+        </div>
+        <div class="abs-img tablet">
+          <img
+            src="{{ section.settings.smallImg | img_url: 'master' }}"
+            alt=""
+            class="img-ab">
+        </div>
+        <div class="para">
+          {{ section.settings.para }}
+        </div>
+      </div>
+      <div
+        class="abs-right"
+        data-scroll
+        data-scroll-position=""
+        data-scroll-speed="2">
+        <img
+          src="{{ section.settings.smallImg | img_url: 'master' }}"
+          alt=""
+          class="img-ab">
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Founder Story",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "backImg",
+        "label": "Background Image"
+      },
+      {
+        "type": "text",
+        "id": "small-head",
+        "label": "Small Heading"
+      },
+      {
+        "type": "text",
+        "id": "head",
+        "label": "Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "para",
+        "label": "Paragraph"
+      }, {
+        "type": "image_picker",
+        "id": "smallImg",
+        "label": "Image"
+      }
+    ]
+  }
+{% endschema %}

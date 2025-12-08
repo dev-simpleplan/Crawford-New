@@ -1,0 +1,299 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "about-banner",
+      "settings": {
+        "bannerImg": "shopify://shop_images/Image_1_-_About.jpg",
+        "bannerImgMob": "shopify://shop_images/Image_1_-_About.jpg",
+        "heading": "Lab Diamond & Moissanite, Done Differently."
+      }
+    },
+    "extrapad": {
+      "type": "extrapad",
+      "settings": {}
+    },
+    "usp": {
+      "type": "about-usp",
+      "blocks": {
+        "item1": {
+          "type": "about-usp",
+          "settings": {
+            "head": "Craftsmanship",
+            "para": "Blending past artistry and modern lab stones, we prioritise customer relationships, crafting valued pieces with unfolding stories."
+          }
+        },
+        "item2": {
+          "type": "about-usp",
+          "settings": {
+            "head": "Ethical",
+            "para": "We proudly prioritise lab-grown diamonds and moissanite, radiating the brilliance of mined gems whilst conflict-free, for a planet & people-first approach."
+          }
+        },
+        "item3": {
+          "type": "about-usp",
+          "settings": {
+            "head": "Bespoke",
+            "para": "Entrust our team of experts to guide you in designing engagement rings, customising wedding bands, or exploring your options."
+          }
+        }
+      },
+      "block_order": [
+        "item1",
+        "item2",
+        "item3"
+      ],
+      "settings": {}
+    },
+    "founder-story": {
+      "type": "about-founder-story",
+      "settings": {
+        "backImg": "shopify://shop_images/Image_2_-_About.jpg",
+        "small-head": "Founders Story",
+        "head": "Crawford Stone Company was born from the idea of making meticulously custom and beautiful rings attainable through lab diamonds and moissanite.",
+        "para": "<p>Founded by a husband and wife duo following their own experience shopping for an engagement ring, Crawford Stone Company offers a personalised and concierge-like shopping experience for couples looking for the perfect ring. In a world of mass production, they go further.</p><p>What started as a side-project from a home studio in the beautiful Inner West of Sydney on Gadigal Land, Crawford Stone Co. has evolved into a fully-fledged Australian-born ring concierge and luxury jewellery brand.</p>",
+        "smallImg": "shopify://shop_images/Image_10_-_Homepage.jpg"
+      }
+    },
+    "extrapad1": {
+      "type": "extrapad",
+      "settings": {}
+    },
+    "zig-zag": {
+      "type": "zig-zag-section",
+      "blocks": {
+        "item1": {
+          "type": "zig-zag",
+          "settings": {
+            "image2": "shopify://shop_images/Image_4_-_About.jpg",
+            "small-head": "our stones",
+            "heading": "moissanites",
+            "body": "Moissanite is a precious gemstone, second only to diamonds on the Mohs’ scale (measuring hardness). Moissanite is one of the most fiery and brilliant gemstones on Earth, dazzling with unmatched brilliance, surpassing even diamonds in visible sparkle. Lab-grown and conflict-free, every moissanite stone is thoughtfully selected.",
+            "cta": "faq",
+            "cta-txt": "learn more about moissanites",
+            "image": "shopify://shop_images/Image_5_-_About.jpg"
+          }
+        },
+        "item2": {
+          "type": "zig-zag",
+          "settings": {
+            "image2": "shopify://shop_images/Image_7_-_About.jpg",
+            "small-head": "our stones",
+            "heading": "Lab diamonds",
+            "body": "Lab Diamonds are physically identical to mined diamonds, with the only difference being their genesis. They are produced in a laboratory setting without the negative environmental or human toll of mining following an identical growing process to mined diamonds. After forming, they undergo cutting and polishing for optimal brilliance.",
+            "cta": "faq",
+            "cta-txt": "learn more about lab diamonds",
+            "image": "shopify://shop_images/Image_6_-_About.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "item1",
+        "item2"
+      ],
+      "settings": {
+        "head": "Bespoke Artistry"
+      }
+    },
+    "extrapad2": {
+      "type": "extrapad",
+      "settings": {}
+    },
+    "style-setting": {
+      "type": "style-setting",
+      "blocks": {
+        "item1": {
+          "type": "small-images",
+          "settings": {
+            "front": "shopify://shop_images/SOLITAIRE_310cfb17-8104-47fc-8ce3-8515916420b7.png",
+            "back": "shopify://shop_images/SOLITAIRE_310cfb17-8104-47fc-8ce3-8515916420b7.png",
+            "txt": "solitaire",
+            "col-id": "solitaire"
+          }
+        },
+        "item2": {
+          "type": "small-images",
+          "settings": {
+            "front": "shopify://shop_images/PAVE.png",
+            "back": "shopify://shop_images/Rectangle_24394.png",
+            "txt": "pave",
+            "col-id": "pave"
+          }
+        },
+        "item3": {
+          "type": "small-images",
+          "settings": {
+            "front": "shopify://shop_images/HALO.png",
+            "back": "shopify://shop_images/Rectangle_24394.png",
+            "txt": "halo",
+            "col-id": "halo"
+          }
+        },
+        "item4": {
+          "type": "small-images",
+          "settings": {
+            "front": "shopify://shop_images/THREE_STONE.png",
+            "back": "shopify://shop_images/Rectangle_24394.png",
+            "txt": "three stone",
+            "col-id": "three-stone"
+          }
+        },
+        "item5": {
+          "type": "small-images",
+          "settings": {
+            "front": "shopify://shop_images/SIGNET.png",
+            "back": "shopify://shop_images/Rectangle_24394.png",
+            "txt": "signet",
+            "col-id": "fixed-signet"
+          }
+        },
+        "item6": {
+          "type": "small-images",
+          "settings": {
+            "front": "shopify://shop_images/TOI_ET_MOI.png",
+            "back": "shopify://shop_images/Rectangle_24394.png",
+            "txt": "Toi et Moi",
+            "col-id": "toi-et-moi"
+          }
+        },
+        "item7": {
+          "type": "small-images",
+          "settings": {
+            "front": "shopify://shop_images/ETERNITY.png",
+            "back": "shopify://shop_images/Rectangle_24394.png",
+            "txt": "Eternity",
+            "col-id": "eternity"
+          }
+        },
+        "item8": {
+          "type": "small-images",
+          "settings": {
+            "front": "shopify://shop_images/MENS.png",
+            "back": "shopify://shop_images/Rectangle_24394.png",
+            "txt": "Mens",
+            "col-id": "mens"
+          }
+        }
+      },
+      "block_order": [
+        "item1",
+        "item2",
+        "item3",
+        "item4",
+        "item5",
+        "item6",
+        "item7",
+        "item8"
+      ],
+      "settings": {
+        "head": "our styles and settings",
+        "sec-head": "Your Dream Ring",
+        "sec-para": "Explore a collection of meticulously designed rings, or personalise your own by selecting settings, cuts, sizes, styles, and distinctive details that add your unique touch.",
+        "cta": "all",
+        "cta-txt": "shop now",
+        "secImg": "shopify://shop_images/Image_16_-_About.jpg"
+      }
+    },
+    "extrapad3": {
+      "type": "extrapad",
+      "settings": {}
+    },
+    "luxury": {
+      "type": "about-luxury",
+      "settings": {
+        "head": "sustainable Luxury",
+        "para": "At Crawford Stone Company, luxury meets responsibility. Experience elegance without harming the environment or people—true beauty with a conscience.",
+        "bigImg": "shopify://shop_images/Image_17_-_About.jpg",
+        "smallImg": "shopify://shop_images/41F4912D-7343-4B98-B802-4D5665B61968-10327-00000734B35451E0_31d8e494-e117-4d4c-b86f-9bd258a76d48.jpg"
+      }
+    },
+    "extrapad4": {
+      "type": "extrapad",
+      "settings": {}
+    },
+    "featured": {
+      "type": "featured-products",
+      "blocks": {
+        "card1": {
+          "type": "Card",
+          "settings": {
+            "collectionImg": "shopify://shop_images/Image_2_-_Homepage.jpg",
+            "collectionUrl": "shopify://collections/engagement",
+            "subCollection": "SHOP",
+            "headingCollection": "Engagement Rings"
+          }
+        },
+        "card2": {
+          "type": "Card",
+          "settings": {
+            "collectionImg": "shopify://shop_images/Image_3_-_Homepage.jpg",
+            "collectionUrl": "shopify://collections/wedding-bands",
+            "subCollection": "SHOP",
+            "headingCollection": "Wedding Rings"
+          }
+        },
+        "card3": {
+          "type": "Card",
+          "settings": {
+            "collectionImg": "shopify://shop_images/Image_4_-_Homepage.jpg",
+            "collectionUrl": "shopify://collections/mens",
+            "subCollection": "SHOP",
+            "headingCollection": "Rings for Men"
+          }
+        }
+      },
+      "block_order": [
+        "card1",
+        "card2",
+        "card3"
+      ],
+      "settings": {
+        "heading": "Our Products"
+      }
+    },
+    "extrapad5": {
+      "type": "extrapad",
+      "settings": {}
+    },
+    "video-section": {
+      "type": "video-section",
+      "settings": {
+        "video": "https://cdn.shopify.com/videos/c/o/v/0848d15854a4455487a7846584524833.mov"
+      }
+    },
+    "extrapad6": {
+      "type": "extrapad",
+      "settings": {}
+    },
+    "insta-section": {
+      "type": "insta-section",
+      "settings": {}
+    }
+  },
+  "order": [
+    "banner",
+    "extrapad",
+    "usp",
+    "founder-story",
+    "extrapad1",
+    "zig-zag",
+    "extrapad2",
+    "style-setting",
+    "extrapad3",
+    "luxury",
+    "extrapad4",
+    "featured",
+    "extrapad5",
+    "video-section",
+    "extrapad6",
+    "insta-section"
+  ]
+}

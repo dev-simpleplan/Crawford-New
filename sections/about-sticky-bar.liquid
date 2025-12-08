@@ -1,0 +1,68 @@
+<style>
+  .sticky-bar {
+    position: fixed;
+    top: 62px;
+    width: 100%;
+    z-index: 999;
+    opacity: 0;
+    transition: 0.4s all ease;
+  }
+  .sticky-bar.active {
+    opacity: 1;
+  }
+
+</style>
+
+<section
+  class="sticky-bar"
+  id="sticky-bar"
+  data-scroll-section>
+  <div
+    class="sticky-wrapper"
+    id="sticky-section"
+    data-scroll
+    data-scroll-sticky
+    data-scroll-target="#scroll-container">
+    {% for block in section.blocks %}
+      <div class="item">
+        <a href="{{ block.settings.cta-link.url }}">{{ block.settings.cta-txt }}</a>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<script>
+          // // Get the first section's parent element and add the data-scroll-sticky attribute
+          // var firstSection = document.getElementById('sticky-bar');
+          // var parentElement = firstSection.parentElement;
+          
+          // // Add the attribute only if it doesn't exist
+          // if (!parentElement.hasAttribute('data-scroll-section')) {
+          //     parentElement.setAttribute('data-scroll-section', '');
+          //     parentElement.setAttribute('data-scroll-repeat', 'true');
+          // }
+</script>
+
+{% schema %}
+  {
+    "name": "Sticky Bar",
+    "settings": [],
+    "blocks": [
+      {
+        "name": "Sticky Bar",
+        "type": "sticky-bar",
+        "settings": [
+          {
+            "type": "text",
+            "id": "cta-txt",
+            "label": "Text for CTA"
+          }, {
+            "type": "page",
+            "id": "cta-link",
+            "label": "Select Page"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

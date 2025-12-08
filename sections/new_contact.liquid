@@ -1,0 +1,296 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<section class="contact-page" data-scroll-section>
+  <div class="contact-container">
+    <div class="contact-page-form2" data-scroll>
+      <div class="contact-page-form2-top">
+        <h2>{{ section.settings.heading1 }}</h2>
+        <p>{{ section.settings.body1 }}</p>
+      </div>
+      <div class="contact-page-form2-form active">
+        {% form 'contact', id: 'contactID2' %}
+          {% if form.posted_successfully? %}
+            <script>
+              window.location = "/pages/thank-you";
+            </script>
+          {% else %}
+            {{ form.errors | default_errors }}
+          {% endif %}
+          <div class="contact-form-top flex align">
+            <div class="contact-form-top-left flex flex-c">
+              <label for="name1">Full Name*</label>
+              <input
+                id="name1"
+                type="text"
+                required
+                name="contact[name]"
+              >
+            </div>
+            <div class="contact-form-top-right flex flex-c">
+              <label for="email1">Email Address*</label>
+              <input
+                type="text"
+                id="email1"
+                required
+                name="contact[email]"
+              >
+            </div>
+          </div>
+          <div class="contact-form-bottom flex flex-c">
+            <label for="date">Preferred Date*</label>
+            <input
+              type="date"
+              id="date"
+              required
+              name="contact[date]"
+            >
+          </div>
+          <div class="contact-form-bottom flex flex-c">
+            <label for="subject">Select Jewellery Type*</label>
+            <div class="custom-select">
+              <select
+                name="contact[subject]"
+                id="subject"
+                required
+              >
+                <option value="Select One">Select One</option>
+                <option value="Ring">Ring</option>
+                <option value="Necklace">Necklace</option>
+                <option value="Bracelet">Bracelet</option>
+              </select>
+            </div>
+          </div>
+          <div class="contact-form-bottom flex flex-c">
+            <label for="phone">Phone Number (Optional)</label>
+            <input
+              type="tel"
+              id="phone"
+              placeholder="0000-000-000"
+              minlength="0"
+              maxlength="10"
+              name="contact[phone]"
+            >
+          </div>
+          <div class="contact-form-bottom flex flex-c">
+            <label for="body1">Message*</label>
+            <textarea
+              id="body1"
+              name="contact[body]"
+              required
+              id=""
+            ></textarea>
+          </div>
+          <div class="contact-form-btn">
+            <input type="submit" placeholder="submit">
+          </div>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  .contact-page {
+    padding-top: 150px;
+}
+</style>
+<script>
+  var jsonPath = '{{ "countries.json" | asset_url | json_escape }}';
+  var statesPath = '{{ "states.json" | asset_url | json_escape }}';
+
+  function fetchCountriesAndPopulateSelect() {
+    fetch(jsonPath)
+    .then(response => {
+        if (!response.ok) {
+        throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Data:', data);
+
+        // Assuming data has a "countries" property which is an array
+        const countries = data.countries || [];
+
+        if (Array.isArray(countries)) {
+                const selectElement = document.getElementById('country');
+                const countryNames = countries.map(country => {
+                const optionElement = document.createElement('option');
+                optionElement.value = country.id;
+                optionElement.text = country.name;
+                selectElement.appendChild(optionElement);
+            });
+            initializeCustomSelectDropdowns();
+        } else {
+            console.error('The "countries" property is not an array or is missing:', data);
+        }
+    })
+    .catch(error => console.error('Error fetching or parsing JSON:', error));
+
+  }
+
+  function initializeCustomSelectDropdowns() {
+  var countrySelect = document.getElementById('country'); // Replace with the actual ID of your country select element
+  var stateSelect = document.getElementById('state'); // Replace with the actual ID of your state select element
+
+  countrySelect.addEventListener('change', function () {
+    var selectedCountryId = this.value;
+    if (selectedCountryId) {
+        console.log(selectedCountryId);
+        fetchAndPopulateStates(selectedCountryId);
+    } else {
+      // Clear states if no country is selected
+      stateSelect.innerHTML = '<option value="" selected>Select State</option>';
+    }
+  });
+  }
+
+  function fetchAndPopulateStates(countryId) {
+    fetch(statesPath) // Replace with the path to your states.json
+        .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+        })
+        .then(data => {
+
+        console.log(countryId);
+        // Assuming data has a "states" property which is an array
+        const states = data.states || [];
+        const selectElement = document.getElementById('state'); // Replace with the actual ID of your state select element
+
+        // Clear existing options in the state select element
+        selectElement.innerHTML = '<option value="" selected>Select State</option>';
+
+        // Filter states based on the selected country
+        const filteredStates = states.filter(state => state.country_id === countryId);
+
+        filteredStates.forEach(state => {
+            const optionElement = document.createElement('option');
+            optionElement.value = state.id;
+            optionElement.text = state.name;
+            selectElement.appendChild(optionElement);
+        });
+
+        // You may want to trigger any additional actions here after updating states
+        })
+        .catch(error => console.error('Error fetching or parsing JSON:', error));
+  }
+
+
+
+    var x, i, j, l, ll, selElmnt, a, b, c;
+    /* Look for any elements with the class "custom-select": */
+    x = document.getElementsByClassName("custom-select");
+    l = x.length;
+    for (i = 0; i < l; i++) {
+    selElmnt = x[i].getElementsByTagName("select")[0];
+    ll = selElmnt.length;
+    /* For each element, create a new DIV that will act as the selected item: */
+    a = document.createElement("DIV");
+    a.setAttribute("class", "select-selected");
+    a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+    x[i].appendChild(a);
+    /* For each element, create a new DIV that will contain the option list: */
+    b = document.createElement("DIV");
+    b.setAttribute("class", "select-items select-hide");
+    for (j = 1; j < ll; j++) {
+        /* For each option in the original select element,
+        create a new DIV that will act as an option item: */
+        c = document.createElement("DIV");
+        c.innerHTML = selElmnt.options[j].innerHTML;
+        c.addEventListener("click", function(e) {
+            /* When an item is clicked, update the original select box,
+            and the selected item: */
+            var y, i, k, s, h, sl, yl;
+            s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+            sl = s.length;
+            h = this.parentNode.previousSibling;
+            for (i = 0; i < sl; i++) {
+            if (s.options[i].innerHTML == this.innerHTML) {
+                s.selectedIndex = i;
+                h.innerHTML = this.innerHTML;
+                y = this.parentNode.getElementsByClassName("same-as-selected");
+                yl = y.length;
+                for (k = 0; k < yl; k++) {
+                y[k].removeAttribute("class");
+                }
+                this.setAttribute("class", "same-as-selected");
+                break;
+            }
+            }
+            h.click();
+        });
+        b.appendChild(c);
+    }
+    x[i].appendChild(b);
+    a.addEventListener("click", function(e) {
+        /* When the select box is clicked, close any other select boxes,
+        and open/close the current select box: */
+        e.stopPropagation();
+        closeAllSelect(this);
+        this.nextSibling.classList.toggle("select-hide");
+        this.classList.toggle("select-arrow-active");
+    });
+    }
+
+
+  fetchCountriesAndPopulateSelect();
+
+  function closeAllSelect(elmnt) {
+  /* A function that will close all select boxes in the document,
+  except the current select box: */
+  var x, y, i, xl, yl, arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  xl = x.length;
+  yl = y.length;
+  for (i = 0; i < yl; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i)
+    } else {
+      y[i].classList.remove("select-arrow-active");
+    }
+  }
+  for (i = 0; i < xl; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
+  }
+  }
+
+  /* If the user clicks anywhere outside the select box,
+  then close all select boxes: */
+  // document.addEventListener("click", closeAllSelect);
+
+  // document.querySelectorAll('.footer-top-circle').forEach((e)=>{
+  //  e.addEventListener("mouseenter", ()=>{
+  //   document.querySelectorAll('.footer-top-circle').forEach((f)=>{
+  //      f.style.transition=".4s ease all";
+  //      f.style.transitionDelay="0s";
+  //      f.classList.remove('active');
+  //   })
+  //    e.classList.add('active');
+  //  })
+  //  e.addEventListener("mouseleave", ()=>{
+  //    e.classList.remove('active');
+  //  })
+  // })
+</script>
+
+{% schema %}
+{
+  "name": "Contact Template",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading1",
+      "label": "Form 2 Heading"
+    },
+    {
+      "type": "text",
+      "id": "body1",
+      "label": "Form 2 Body"
+    },
+  ]
+}
+{% endschema %}

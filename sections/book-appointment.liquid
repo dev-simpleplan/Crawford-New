@@ -1,0 +1,88 @@
+<section class="custom-core-section" data-scroll-section>
+  <div class="custom-container">
+    <div class="custom-core-section-wrap flex book-appointment">
+      <div class="custom-core-left">
+        <div class="custom-core-left-top">
+          <div class="custom-core-left-head">
+            <h2 class="head-black">{{ section.settings.heading }}</h2>
+          </div>
+          <div class="custom-core-left-body">
+            <p>{{ section.settings.body }}</p>
+          </div>
+        </div>
+        <div class="custom-core-left-bottom book-appointment">
+          <a href="{{ section.settings.cta1Link }}" class="custom-btn" target="_blank">{{ section.settings.ctaText }}</a>
+        </div>
+        <div class="custom-core-left-middle book-appointment">
+          <div class="custom-core-middle-head">{{ section.settings.headingM }}</div>
+          <div class="custom-core-middle-body">
+            <p class="small">{{ section.settings.bodyM }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="custom-core-right book-appointment">
+        <div class="custom-core-right-img">
+          <div
+            class="custom-core-right-img-base"
+            data-scroll
+            data-scroll-position=""
+            data-scroll-speed="1">
+            <img src="{{ section.settings.baseImg |  img_url: 'master' }}" alt="">
+          </div>
+          <img
+            class="custom-core-right-over-image"
+            src="{{ section.settings.overImg |  img_url: 'master' }}"
+            alt=""
+            data-scroll
+            data-scroll-position=""
+            data-scroll-speed="3">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Book Appointment",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Section Heading"
+      },
+      {
+        "type": "text",
+        "id": "body",
+        "label": "Section Body"
+      },
+      {
+        "type": "text",
+        "id": "headingM",
+        "label": "Middle Section Heading"
+      },
+      {
+        "type": "text",
+        "id": "bodyM",
+        "label": "Middle Section Body"
+      }, {
+        "type": "text",
+        "id": "ctaText",
+        "label": "CTA Text"
+      }, {
+        "type": "text",
+        "id": "cta1Link",
+        "label": "CTA Link"
+      }, {
+        "type": "image_picker",
+        "id": "baseImg",
+        "label": "Base Image"
+      }, {
+        "type": "image_picker",
+        "id": "overImg",
+        "label": "Overlay Image"
+      }
+    ]
+  }
+{% endschema %}

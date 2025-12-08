@@ -1,0 +1,997 @@
+<section class="faq-page">
+  <div class="container-fluid">
+    <div class="faq-page-wrapper">
+      <div class="faq-page-top">
+        <div class="faq-page-anchors">
+          <ul>
+            <li id="first">
+              <a href="#one">{{ section.settings.anchor1 }}</a>
+            </li>
+            <li id="second">
+              <a href="#two">{{ section.settings.anchor2 }}</a>
+            </li>
+            <li id="third">
+              <a href="#three">{{ section.settings.anchor3 }}</a>
+            </li>
+            <li id="fourth">
+              <a href="#four">{{ section.settings.anchor4 }}</a>
+            </li>
+            <li id="fifth">
+              <a href="#five">{{ section.settings.anchor5 }}</a>
+            </li>
+            <li id="sixth">
+              <a href="#six">{{ section.settings.anchor6 }}</a>
+            </li>
+            <li id="seventh">
+              <a href="#seven">{{ section.settings.anchor7 }}</a>
+            </li>
+            <li id="eighted">
+              <a href="#eight">{{ section.settings.anchor8 }}</a>
+            </li>
+            <li id="ninth">
+              <a href="#nine">{{ section.settings.anchor9 }}</a>
+            </li>
+            <li id="tenth">
+              <a href="#ten">{{ section.settings.anchor10 }}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="faq-mob-sticky">
+        <div class="faq-sticky-ham">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="icon-ab">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25" />
+          </svg>
+        </div>
+        <div class="faq-page-anchors">
+          <ul>
+            <li id="first">
+              <a href="#one">{{ section.settings.anchor1 }}</a>
+            </li>
+            <li id="second">
+              <a href="#two">{{ section.settings.anchor2 }}</a>
+            </li>
+            <li id="third">
+              <a href="#three">{{ section.settings.anchor3 }}</a>
+            </li>
+            <li id="fourth">
+              <a href="#four">{{ section.settings.anchor4 }}</a>
+            </li>
+            <li id="fifth">
+              <a href="#five">{{ section.settings.anchor5 }}</a>
+            </li>
+            <li id="sixth">
+              <a href="#six">{{ section.settings.anchor6 }}</a>
+            </li>
+            <li id="seventh">
+              <a href="#seven">{{ section.settings.anchor7 }}</a>
+            </li>
+            <li id="eighted">
+              <a href="#eight">{{ section.settings.anchor8 }}</a>
+            </li>
+            <li id="ninth">
+              <a href="#nine">{{ section.settings.anchor9 }}</a>
+            </li>
+            <li id="tenth">
+              <a href="#ten">{{ section.settings.anchor10 }}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="faq-ques-ans">
+        {% comment %} <div class="faq-page-banner">
+                                                                                                    <div class="faq-head">
+                                                                                                      <h2>{{ section.settings.head }}</h2>
+                                                                                                    </div>
+                                                                                                    <div class="faq-ban-img">
+                                                                                                      <img src="{{ section.settings.banImg | img_url: 'master' }}" alt="">
+                                                                                                    </div>
+                                                                                </div> {% endcomment %}
+        <div class="item" id="one">
+          <div class="faq-ques">
+            <h2>{{ section.settings.anchor1 }}</h2>
+            {% render 'plus-icon' %}
+          </div>
+          <div class="faq-ans">
+            <div class="faq-ans-wrap">
+              {% assign faq1 = section.blocks | where: 'type', 'lab-diamond' %}
+              {% for block in faq1 %}
+                <div class="faq-ans-item">
+                  <h3>{{ block.settings.head }}</h3>
+                  <div class="ans-para">
+                    {{ block.settings.para }}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="item" id="two">
+          <div class="faq-ques">
+            <h2>{{ section.settings.anchor2 }}</h2>
+            {% render 'plus-icon' %}
+          </div>
+          <div class="faq-ans">
+            <div class="faq-ans-wrap">
+              {% assign faq2 = section.blocks | where: 'type', 'moissanites' %}
+              {% for block in faq2 %}
+                <div class="faq-ans-item">
+                  <h3>{{ block.settings.head }}</h3>
+                  <div class="ans-para">
+                    {{ block.settings.para }}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="item" id="three">
+          <div class="faq-ques">
+            <h2>{{ section.settings.anchor3 }}</h2>
+            {% render 'plus-icon' %}
+          </div>
+          <div class="faq-ans">
+            <div class="faq-ans-wrap">
+              {% assign faq3 = section.blocks | where: 'type', 'four-cs' %}
+              {% for block in faq3 %}
+                <div class="faq-ans-item">
+                  <h3>{{ block.settings.head }}</h3>
+                  <div class="ans-para">
+                    {{ block.settings.para }}
+                  </div>
+                  {% if block.settings.csImg-check %}
+                    <div class="cs-img">
+                      <div class="csi-img one">
+                        <img
+                          src="{{ block.settings.csImg1 |  img_url: 'master' }}"
+                          alt=""
+                          class="icon">
+                      </div>
+                      <div class="csi-img two">
+                        <img
+                          src="{{ block.settings.csImg2 |  img_url: 'master' }}"
+                          alt=""
+                          class="icon">
+                        <div class="csi-cf-d">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="13"
+                            viewBox="0 0 17 13"
+                            fill="none">
+                            <path
+                              opacity="0.9"
+                              d="M0.779297 12.9805L16.4316 12.9805L8.60547 0.682199L0.779297 12.9805Z"
+                              fill="#161716" />
+                          </svg>
+                          <h4 style="text-align: center;">Crawford Stone Co Diamonds</h4>
+                        </div>
+                      </div>
+                      <div class="csi-img three">
+                        <img
+                          src="{{ block.settings.csImg3 |  img_url: 'master' }}"
+                          alt=""
+                          class="icon">
+                      </div>
+                    </div>
+                  {% endif %}
+                  {% if block.settings.csImg-col-check %}
+                    <div class="cs-col-img">
+                      <div class="cs-col-double green">
+                        <div class="csc-img">
+                          <img
+                            src="{{ block.settings.csImgcol1 |  img_url: 'master' }}"
+                            alt=""
+                            class="icon">
+                        </div>
+                        <div class="csc-img">
+                          <img
+                            src="{{ block.settings.csImgcol2 |  img_url: 'master' }}"
+                            alt=""
+                            class="icon">
+                        </div>
+                        <div class="csc-img-txt">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="14"
+                            viewBox="0 0 17 14"
+                            fill="none">
+                            <path
+                              opacity="0.9"
+                              d="M0.371094 13.2793L16.0234 13.2793L8.19727 0.981028L0.371094 13.2793Z"
+                              fill="#161716" />
+                          </svg>
+                          <h4 style="text-align: center;">Crawford Stone Co Diamonds</h4>
+                        </div>
+                      </div>
+                      <div class="csc-img">
+                        <img
+                          src="{{ block.settings.csImgcol3 |  img_url: 'master' }}"
+                          alt=""
+                          class="icon">
+                      </div>
+                      <div class="cs-col-double">
+                        <div class="csc-img">
+                          <img
+                            src="{{ block.settings.csImgcol4 |  img_url: 'master' }}"
+                            alt=""
+                            class="icon">
+                        </div>
+                        <div class="csc-img">
+                          <img
+                            src="{{ block.settings.csImgcol5 |  img_url: 'master' }}"
+                            alt=""
+                            class="icon">
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="item" id="four">
+          <div class="faq-ques">
+            <h2>{{ section.settings.anchor4 }}</h2>
+            {% render 'plus-icon' %}
+          </div>
+          <div class="faq-ans">
+            <div class="faq-ans-wrap">
+              {% assign faq4 = section.blocks | where: 'type', 'metal-options' %}
+              {% for block in faq4 %}
+                <div class="faq-ans-item">
+                  <h3>{{ block.settings.head }}</h3>
+                  <div class="ans-para">
+                    {{ block.settings.para }}
+                  </div>
+                  {% if block.settings.ringImg-check %}
+                    <div class="ring-img-wrapper">
+                      <div class="ring-img-wrap">
+                        <div class="ring-img">
+                          <img
+                            src="{{ block.settings.white-gold |  img_url: 'master' }}"
+                            alt=""
+                            class="img-ab">
+                        </div>
+                        <div class="ring-txt">
+                          <p>White Gold</p>
+                        </div>
+                      </div>
+                      <div class="ring-img-wrap">
+                        <div class="ring-img">
+                          <img
+                            src="{{ block.settings.yellow-gold |  img_url: 'master' }}"
+                            alt=""
+                            class="img-ab">
+                        </div>
+                        <div class="ring-txt">
+                          <p>Yellow Gold</p>
+                        </div>
+                      </div>
+                      <div class="ring-img-wrap">
+                        <div class="ring-img">
+                          <img
+                            src="{{ block.settings.rose-gold |  img_url: 'master' }}"
+                            alt=""
+                            class="img-ab">
+                        </div>
+                        <div class="ring-txt">
+                          <p>Rose Gold</p>
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+                  {% if block.settings.list-checkbox %}
+                    <ol>
+                      <li>
+                        <span>{{ block.settings.list1-head }}</span>
+                        {{ block.settings.list1-body }}</li>
+                      <li>
+                        <span>{{ block.settings.list2-head }}</span>
+                        {{ block.settings.list2-body }}</li>
+                      <li>
+                        <span>{{ block.settings.list3-head }}</span>
+                        {{ block.settings.list3-body }}</li>
+                    </ol>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="item" id="five">
+          <div class="faq-ques">
+            <h2>{{ section.settings.anchor5 }}</h2>
+            {% render 'plus-icon' %}
+          </div>
+          <div class="faq-ans">
+            <div class="faq-ans-wrap with-image">
+              {% assign faq5 = section.blocks | where: 'type', 'process' %}
+              {% for block in faq5 %}
+                {% if block.settings.ifImg %}
+                  <div class="faq-ans-img-wrap">
+                    <div class="faq-ans-item">
+                      <h3>{{ block.settings.head }}</h3>
+                      <div class="ans-para">
+                        {{ block.settings.para }}
+                      </div>
+                    </div>
+                    <div class="faq-ans-img">
+                      <img
+                        src="{{ block.settings.processImg |  img_url: 'master' }}"
+                        alt=""
+                        class="img-ab">
+                    </div>
+                  </div>
+                {% else %}
+                  <div class="faq-tab-wrapper">
+                    <h3>{{ block.settings.head }}</h3>
+                    <div class="faq-tab-con">
+                      <div class="tab">
+                        <button
+                          class="tablinks"
+                          onclick="openCity(event, 'Step-01')"
+                          id="defaultOpen">Step 01</button>
+                        <button class="tablinks" onclick="openCity(event, 'Step-02')">Step 02</button>
+                        <button class="tablinks" onclick="openCity(event, 'Step-03')">Step 03</button>
+                        <button class="tablinks" onclick="openCity(event, 'Step-04')">Step 04</button>
+                        <button class="tablinks" onclick="openCity(event, 'Step-05')">Step 05</button>
+                      </div>
+                      <div class="tab-content-wrapper">
+                        <div
+                          id="Step-01"
+                          class="tabcontent"
+                          style="background-image: url({{ block.settings.tab1Img |  img_url: 'master' }}); background-position: center; background-repeat: no-repeat; background-size: cover;">
+                          <div class="tbc-inner">
+                            <h3>{{ block.settings.tab1-head }}</h3>
+                            <p>{{ block.settings.tab1-para }}</p>
+                          </div>
+                        </div>
+
+                        <div
+                          id="Step-02"
+                          class="tabcontent"
+                          style="background-image: url({{ block.settings.tab2Img |  img_url: 'master' }}); background-position: center; background-repeat: no-repeat; background-size: cover;">
+                          <div class="tbc-inner">
+                            <h3>{{ block.settings.tab2-head }}</h3>
+                            <p>{{ block.settings.tab2-para }}</p>
+                          </div>
+                        </div>
+
+                        <div
+                          id="Step-03"
+                          class="tabcontent"
+                          style="background-image: url({{ block.settings.tab3Img |  img_url: 'master' }}); background-position: center; background-repeat: no-repeat; background-size: cover;">
+                          <div class="tbc-inner">
+                            <h3>{{ block.settings.tab3-head }}</h3>
+                            <p>{{ block.settings.tab3-para }}</p>
+                          </div>
+                        </div>
+
+                        <div
+                          id="Step-04"
+                          class="tabcontent"
+                          style="background-image: url({{ block.settings.tab4Img |  img_url: 'master' }}); background-position: center; background-repeat: no-repeat; background-size: cover;">
+                          <div class="tbc-inner">
+                            <h3>{{ block.settings.tab4-head }}</h3>
+                            <p>{{ block.settings.tab4-para }}</p>
+                          </div>
+                        </div>
+
+                        <div
+                          id="Step-05"
+                          class="tabcontent"
+                          style="background-image: url({{ block.settings.tab5Img |  img_url: 'master' }}); background-position: center; background-repeat: no-repeat; background-size: cover;">
+                          <div class="tbc-inner">
+                            <h3>{{ block.settings.tab5-head }}</h3>
+                            <p>{{ block.settings.tab5-para }}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="item" id="six">
+          <div class="faq-ques">
+            <h2>{{ section.settings.anchor6 }}</h2>
+            {% render 'plus-icon' %}
+          </div>
+          <div class="faq-ans">
+            <div class="faq-ans-wrap">
+              {% assign faq6 = section.blocks | where: 'type', 'policy' %}
+              {% for block in faq6 %}
+                <div class="faq-ans-item">
+                  <h3>{{ block.settings.head }}</h3>
+                  <div class="ans-para">
+                    {{ block.settings.para }}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="item" id="seven">
+          <div class="faq-ques">
+            <h2>{{ section.settings.anchor7 }}</h2>
+            {% render 'plus-icon' %}
+          </div>
+          <div class="faq-ans">
+            <div class="faq-ans-wrap">
+              {% assign faq7 = section.blocks | where: 'type', 'practice' %}
+              {% for block in faq7 %}
+                <div class="faq-ans-item">
+                  <h3>{{ block.settings.head }}</h3>
+                  <div class="ans-para">
+                    {{ block.settings.para }}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="item" id="eight">
+          <div class="faq-ques">
+            <h2>{{ section.settings.anchor8 }}</h2>
+            {% render 'plus-icon' %}
+          </div>
+          <div class="faq-ans">
+            <div class="faq-ans-wrap">
+              {% assign faq8 = section.blocks | where: 'type', 'appointment' %}
+              {% for block in faq8 %}
+                <div class="faq-ans-item">
+                  <h3>{{ block.settings.head }}</h3>
+                  <div class="ans-para">
+                    {{ block.settings.para }}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="item" id="nine">
+          <div class="faq-ques">
+            <h2>{{ section.settings.anchor9 }}</h2>
+            {% render 'plus-icon' %}
+          </div>
+          <div class="faq-ans">
+            <div class="faq-ans-wrap">
+              {% assign faq9 = section.blocks | where: 'type', 'shipping' %}
+              {% for block in faq9 %}
+                <div class="faq-ans-item">
+                  <h3>{{ block.settings.head }}</h3>
+                  <div class="ans-para">
+                    {{ block.settings.para }}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="item" id="ten">
+          <div class="faq-ques">
+            <h2>{{ section.settings.anchor10 }}</h2>
+            {% render 'plus-icon' %}
+          </div>
+          <div class="faq-ans">
+            <div class="faq-ans-wrap">
+              {% assign faq10 = section.blocks | where: 'type', 'limitation' %}
+              {% for block in faq10 %}
+                <div class="faq-ans-item">
+                  <h3>{{ block.settings.head }}</h3>
+                  <div class="ans-para">
+                    {{ block.settings.para }}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Wait for the document to fully load
+  document.addEventListener("DOMContentLoaded", function() {
+    // Select all h3 elements on the page
+    var h3Elements = document.querySelectorAll('h3');
+
+    // Iterate through each h3 element
+    h3Elements.forEach(function(h3) {
+      // Check if the content of the h3 element is empty
+      if (h3.innerHTML.trim() === '') {
+        // If it's empty, set its style to 'display: none;'
+        h3.style.display = 'none';
+      }
+    });
+  });
+</script>
+<script>
+  function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+    tabcontent[i].className = tabcontent[i].className.replace(" active", "");
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "flex";
+  document.getElementById(cityName).className += " active";
+  evt.currentTarget.className += " active";
+  }
+
+  // Get the element with id="defaultOpen" and click on it
+  document.getElementById("defaultOpen").click();
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get all anchor elements with class 'faq-page-anchors a'
+        var anchors = document.querySelectorAll('.faq-page-anchors a');
+
+        // Add click event listener to each anchor
+        anchors.forEach(function (anchor) {
+            anchor.addEventListener('click', function (event) {
+
+                // Remove 'active' class from all items and anchors
+                document.querySelectorAll('.item, .faq-page-anchors a').forEach(function (element) {
+                    element.classList.remove('active');
+                });
+
+                // Get the target section id from the href attribute
+                var targetId = anchor.getAttribute('href').substring(1);
+
+                // Get the closing accordion height
+                var closingAccordion = document.querySelector('.item.active');
+                var closingAccordionHeight = closingAccordion ? closingAccordion.offsetHeight : 0;
+
+                // Add the 'active' class to the clicked anchor and the corresponding section
+                anchor.classList.add('active');
+                document.getElementById(targetId).classList.add('active');
+
+                // Calculate the scroll position based on the FAQ accordion's top and adjust for closing accordion height
+                // Check if the FAQ accordion exists
+                var faqAccordion = document.getElementById('faq-accordion');
+                if (faqAccordion) {
+                    // Calculate the scroll position based on the FAQ accordion's top and adjust for closing accordion height
+                    var faqAccordionTop = faqAccordion.offsetTop;
+                    var scrollPosition = faqAccordionTop - closingAccordionHeight;
+
+                    // Scroll to the top of the FAQ accordion with smooth animation
+                    window.scrollTo({
+                        top: scrollPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Use MutationObserver to detect changes in the 'active' class of items
+        var observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+                // Check if the mutation involves a change in the 'active' class
+                if (mutation.attributeName === 'class') {
+                    // Update the anchor's active state based on the corresponding item
+                    var itemId = mutation.target.id;
+                    var correspondingAnchor = document.querySelector('.faq-page-anchors a[href="#' + itemId + '"]');
+                    if (correspondingAnchor) {
+                        correspondingAnchor.classList.toggle('active', mutation.target.classList.contains('active'));
+                    }
+                }
+            });
+        });
+
+        // Observe changes in the 'class' attribute of items with class 'item'
+        document.querySelectorAll('.item').forEach(function (item) {
+            observer.observe(item, { attributes: true });
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all elements with the class 'faq-ques'
+        var faqQuesElements = document.querySelectorAll('.faq-ques');
+
+        // Add click event listener to each 'faq-ques' element
+        faqQuesElements.forEach(function(faqQues) {
+            faqQues.addEventListener('click', function() {
+                // Get the parent element with the class 'item'
+                var parentItem = faqQues.closest('.item');
+                if (parentItem) {
+                    // Set a timeout to delay the scrolling action
+                    setTimeout(function() {
+                        // Scroll the parent 'item' to the top of the screen
+                        parentItem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 1000); // Delay in milliseconds (500ms = 0.5s)
+                }
+            });
+        });
+    });
+</script>
+
+
+{% schema %}
+  {
+    "name": "FAQ Page",
+    "settings": [
+      {
+        "type": "text",
+        "id": "head",
+        "label": "Page Heading"
+      },
+      {
+        "type": "image_picker",
+        "id": "banImg",
+        "label": "Banner Image"
+      },
+      {
+        "type": "text",
+        "id": "anchor1",
+        "label": "Title 1"
+      },
+      {
+        "type": "text",
+        "id": "anchor2",
+        "label": "Title 2"
+      }, {
+        "type": "text",
+        "id": "anchor3",
+        "label": "Title 3"
+      }, {
+        "type": "text",
+        "id": "anchor4",
+        "label": "Title 4"
+      }, {
+        "type": "text",
+        "id": "anchor5",
+        "label": "Title 5"
+      }, {
+        "type": "text",
+        "id": "anchor6",
+        "label": "Title 6"
+      }, {
+        "type": "text",
+        "id": "anchor7",
+        "label": "Title 7"
+      }, {
+        "type": "text",
+        "id": "anchor8",
+        "label": "Title 8"
+      }, {
+        "type": "text",
+        "id": "anchor9",
+        "label": "Title 9"
+      }, {
+        "type": "text",
+        "id": "anchor10",
+        "label": "Title 10"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "lab-diamond",
+        "name": "Lab Diamond",
+        "settings": [
+          {
+            "type": "text",
+            "id": "head",
+            "label": "Heading"
+          }, {
+            "type": "richtext",
+            "id": "para",
+            "label": "Paragraph"
+          }
+        ]
+      },
+      {
+        "type": "moissanites",
+        "name": "Moissanites",
+        "settings": [
+          {
+            "type": "text",
+            "id": "head",
+            "label": "Heading"
+          }, {
+            "type": "richtext",
+            "id": "para",
+            "label": "Paragraph"
+          }
+        ]
+      },
+      {
+        "type": "four-cs",
+        "name": "The 4cs Of Diamonds",
+        "settings": [
+          {
+            "type": "text",
+            "id": "head",
+            "label": "Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "para",
+            "label": "Paragraph"
+          },
+          {
+            "type": "checkbox",
+            "id": "csImg-check",
+            "label": "Want Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "csImg1",
+            "label": "Image 1"
+          }, {
+            "type": "image_picker",
+            "id": "csImg2",
+            "label": "Image 2"
+          }, {
+            "type": "image_picker",
+            "id": "csImg3",
+            "label": "Image 3"
+          }, {
+            "type": "checkbox",
+            "id": "csImg-col-check",
+            "label": "Want Image"
+          }, {
+            "type": "image_picker",
+            "id": "csImgcol1",
+            "label": "Image 1"
+          }, {
+            "type": "image_picker",
+            "id": "csImgcol2",
+            "label": "Image 2"
+          }, {
+            "type": "image_picker",
+            "id": "csImgcol3",
+            "label": "Image 3"
+          }, {
+            "type": "image_picker",
+            "id": "csImgcol4",
+            "label": "Image 4"
+          }, {
+            "type": "image_picker",
+            "id": "csImgcol5",
+            "label": "Image 5"
+          }
+        ]
+      },
+      {
+        "type": "metal-options",
+        "name": "Metal Options",
+        "settings": [
+          {
+            "type": "text",
+            "id": "head",
+            "label": "Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "para",
+            "label": "Paragraph"
+          },
+          {
+            "type": "checkbox",
+            "id": "list-checkbox",
+            "label": "List"
+          },
+          {
+            "type": "text",
+            "id": "list1-head",
+            "label": "Heading"
+          }, {
+            "type": "text",
+            "id": "list1-body",
+            "label": "Paragraph"
+          }, {
+            "type": "text",
+            "id": "list2-head",
+            "label": "Heading"
+          }, {
+            "type": "text",
+            "id": "list2-body",
+            "label": "Paragraph"
+          }, {
+            "type": "text",
+            "id": "list3-head",
+            "label": "Heading"
+          }, {
+            "type": "text",
+            "id": "list3-body",
+            "label": "Paragraph"
+          }, {
+            "type": "checkbox",
+            "id": "ringImg-check",
+            "label": "Image Block"
+          }, {
+            "type": "image_picker",
+            "id": "white-gold",
+            "label": "White Gold"
+          }, {
+            "type": "image_picker",
+            "id": "yellow-gold",
+            "label": "Yellow Gold"
+          }, {
+            "type": "image_picker",
+            "id": "rose-gold",
+            "label": "Rose Gold"
+          }
+        ]
+      }, {
+        "type": "process",
+        "name": "Our Process",
+        "settings": [
+          {
+            "type": "text",
+            "id": "head",
+            "label": "Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "para",
+            "label": "Paragraph"
+          },
+          {
+            "type": "checkbox",
+            "id": "ifImg",
+            "label": "Check If Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "processImg",
+            "label": "Process Image"
+          }, {
+            "type": "image_picker",
+            "id": "tab1Img",
+            "label": "Image For Tab 1"
+          }, {
+            "type": "text",
+            "id": "tab1-head",
+            "label": "Heading For Tab 1"
+          }, {
+            "type": "text",
+            "id": "tab1-para",
+            "label": "Body For Tab 1"
+          }, {
+            "type": "image_picker",
+            "id": "tab2Img",
+            "label": "Image For Tab 1"
+          }, {
+            "type": "text",
+            "id": "tab2-head",
+            "label": "Heading For Tab 1"
+          }, {
+            "type": "text",
+            "id": "tab2-para",
+            "label": "Body For Tab 1"
+          }, {
+            "type": "image_picker",
+            "id": "tab3Img",
+            "label": "Image For Tab 1"
+          }, {
+            "type": "text",
+            "id": "tab3-head",
+            "label": "Heading For Tab 1"
+          }, {
+            "type": "text",
+            "id": "tab3-para",
+            "label": "Body For Tab 1"
+          }, {
+            "type": "image_picker",
+            "id": "tab4Img",
+            "label": "Image For Tab 1"
+          }, {
+            "type": "text",
+            "id": "tab4-head",
+            "label": "Heading For Tab 1"
+          }, {
+            "type": "text",
+            "id": "tab4-para",
+            "label": "Body For Tab 1"
+          }, {
+            "type": "image_picker",
+            "id": "tab5Img",
+            "label": "Image For Tab 1"
+          }, {
+            "type": "text",
+            "id": "tab5-head",
+            "label": "Heading For Tab 1"
+          }, {
+            "type": "text",
+            "id": "tab5-para",
+            "label": "Body For Tab 1"
+          }
+        ]
+      }, {
+        "type": "policy",
+        "name": "Policy",
+        "settings": [
+          {
+            "type": "text",
+            "id": "head",
+            "label": "Heading"
+          }, {
+            "type": "richtext",
+            "id": "para",
+            "label": "Paragraph"
+          }
+        ]
+      }, {
+        "type": "practice",
+        "name": "Our Practices",
+        "settings": [
+          {
+            "type": "text",
+            "id": "head",
+            "label": "Heading"
+          }, {
+            "type": "richtext",
+            "id": "para",
+            "label": "Paragraph"
+          }
+        ]
+      }, {
+        "type": "appointment",
+        "name": "Appointments",
+        "settings": [
+          {
+            "type": "text",
+            "id": "head",
+            "label": "Heading"
+          }, {
+            "type": "richtext",
+            "id": "para",
+            "label": "Paragraph"
+          }
+        ]
+      }, {
+        "type": "shipping",
+        "name": "Shipping",
+        "settings": [
+          {
+            "type": "text",
+            "id": "head",
+            "label": "Heading"
+          }, {
+            "type": "richtext",
+            "id": "para",
+            "label": "Paragraph"
+          }
+        ]
+      }, {
+        "type": "limitation",
+        "name": "Limitation Of Claims",
+        "settings": [
+          {
+            "type": "text",
+            "id": "head",
+            "label": "Heading"
+          }, {
+            "type": "richtext",
+            "id": "para",
+            "label": "Paragraph"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

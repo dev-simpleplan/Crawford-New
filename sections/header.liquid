@@ -1,0 +1,331 @@
+{% liquid 
+    if section.settings.menu.links == blank
+        assign main_menu_linklist = linklists[section.settings.menu].links
+    else
+        assign main_menu_linklist = section.settings.menu.links
+    endif
+%}
+{% if template == 'index' %}
+<header>
+ {% else %}
+ <header class="">
+{% endif %}   
+
+    <div class="container-fluid">
+       <div class="header-contents flex align flex-jsb">
+            <div class="header-contents-left flex align">
+                {% for link in section.settings.menu.links %}
+                
+                        <div class="header-link {% if link.title == "Engagement" %}dropdown {% else %}dropdown-normal{% endif %}">
+                              {% if link.links != blank %}
+                                <div class="dn-box-wrap">
+                                  <a href="javascript:void(0)">{{ link.title }}{%  render 'head-chevron' %}</a>
+                                  {% if link.title != "Engagement"%}
+                                      <div class="dn-box">
+                                  <div class="sub-links">
+                                      {% for childlink in link.links %}
+                                            <a href="{{ childlink.url }}">
+                                                <span>{{  childlink.title }}</span>
+                                            </a>
+                                      {% endfor %}
+                                  </div>
+                                </div>
+                                  {% endif %}                          
+                                  
+                                </div>
+                                {% else %}
+                                <a href="javascript:void(0)">{{ link.title }}</a>
+                              {% endif %}                          
+                            
+                        </div>
+               {% endfor %}
+                <div class="hamburger-icon">
+                    {% render 'ham' %}
+                </div>
+            </div>
+            <div class="header-contents-middle">
+                <a href="{{ shop.url }}">
+                    <div class="hcm-up logo-top-head">
+                    <img src="https://cdn.shopify.com/s/files/1/0674/4591/5905/files/crawford-logo.svg?v=1701861376" alt="">
+                </div>
+                <div class="hcm-bottom">
+                    <img src="https://cdn.shopify.com/s/files/1/0674/4591/5905/files/head-text.svg?v=1701861664" alt="">
+                </div>
+                </a>
+                
+            </div>
+            <div class="header-contents-right flex align">
+                {% for link in section.settings.menu2.links %}
+                    {% if link.links != blank %}
+                        <div class="header-link-dropdown">
+                            <a href="javascript:void(0)">{{ link.title }}</a>
+                            <div class="link-dropdown-links">
+                                {% for childlink in link.links %}
+                                    <a href="{{ childlink.url }}">
+                                      {{ childlink.title }}
+                                    </a>
+                                  {% endfor %}
+                            </div>
+                        </div>
+                       {% else %}
+                       <div class="header-link">
+                          <a href="{{ link.url }}">{{ link.title }}</a>
+                       </div> 
+                    {% endif %}    
+                {% endfor %}
+                {% if shop.customer_accounts_enabled %}
+                    {% if customer %}
+                      <div class="cust-login">
+                        <a href="javascript:void(0)">{% render 'account-icon' %}</a>
+                        <div class="cust-login-dd">
+                          <ul>
+                            <li><div class="cust-name">
+                                Welcome,<br> {{ customer.name }}
+                            </div></li>
+                            <li>
+                              <a href="{{ routes.account_url }}">Account</a>
+                            </li>
+                            <li>{{ 'Log Out' | customer_logout_link }}</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="cust-login-mob">
+                        <a href="{{ routes.account_url }}">{% render 'account-icon' %}</a>
+                      </div>
+                    {% else %}
+                      <a href="{{ routes.account_login_url }}">{% render 'account-icon' %}</a>
+                    {% endif %}
+                {% endif %}
+                <a href="javascript:void(0)" class="cart-icon">
+                    {% render 'cart-icon' %} <span {% if cart.item_count < 1 %}style="display: none" {% endif %} id="cart-count">{{ cart.item_count }}</span>
+                </a>
+            </div>
+       </div>
+    </div>
+    <div class="mega-menu-wrapper">
+        <div class="mega-menu-header">
+        <div class="container-fluid">
+            <div class="mm-head-wrap">
+                <div class="mmh-left">
+                    <div class="mmh-left-menu">
+                    {% for link in section.settings.menu.links %}
+                            {% for childlink in link.links %}
+                                {% if childlink.title == 'By Shape' or childlink.title == 'By Style' %}
+                                    <div class="mml-item">
+                                        <p class="mmhl-head">{{ childlink.title }}</p>
+                                        {% if childlink.links != blank %}
+                                            <div class="sub-links">
+                                                {% for sublink in childlink.links %}
+                                                    <a href="{{ sublink.url }}">
+                                                        <img src="{{ sublink.object.image | img_url: 'master' }}" alt=""><span>{{ sublink.title }}</span>
+                                                    </a>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                    {% endfor %}
+                    </div>
+                </div>
+                <div class="mmh-right">
+                    {% for link in section.settings.menu.links %}
+                        {% for childlink in link.links %}
+                            {% if childlink.title == 'All Engagement Rings' or childlink.title == 'Our Bestsellers' %}
+                                <a href="{{ childlink.url }}" class="mmhr-item">
+                                    <div class="mmhr-img">
+                                        <img src="{{ childlink.object.image | img_url: 'master' }}" alt="" class="img">
+                                    </div>
+                                    <p>{{ childlink.title }}</p>
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                     {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</header>
+
+<div id="ham-menu">
+    <div class="ham-menu-container">
+        <div class="ham-menu-logo">
+        </div>
+        <div class="ham-menu-top">
+            {% for link in section.settings.mobMenu.links %}
+                {% if link.links != blank %}
+                    <div class="mobile-link dropdown {% if link.title == "Engagement" %}left-more {% else %} {% endif %}">
+                        <a href="javascript:void(0)" class="dd-oc">{{ link.title }}{% render 'head-chevron' %}</a>
+                        <div class="mobLink-dropdown-links">
+                            <div class="mobLink-wrap">
+                                {% for childlink in link.links %}
+                                <div class="mob-dd-item {% if childlink.links != blank %}dropdown{% endif %}">
+                                        {% if childlink.links != blank %}
+                                            <a href="{{ childlink.url }}" class="dd-oc-sl">
+                                                {{ childlink.title }}{% render 'head-chevron' %}
+                                            </a>
+                                            <div class="ham-childlinks">
+                                                <div class="hc-wrap">
+                                                    {% for sublink in childlink.links %}
+                                                        <a href="{{ sublink.url }}">
+                                                            <img src="{{ sublink.object.image | img_url: 'master' }}" alt="">{{ sublink.title }}
+                                                        </a>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        {% else %}
+                                            <a href="{{ childlink.url }}">
+                                                {{ childlink.title }}
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                  {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                   {% else %}
+                   <div class="mobile-link">
+                      <a href="{{ link.url }}">{{ link.title }}</a>
+                   </div> 
+                {% endif %}    
+            {% endfor %}
+        </div>
+        <div class="ham-menu-bottom">
+            {% for link in section.settings.mobMenu2.links %}
+                {% if link.links != blank %}
+                    <div class="mobile-link-dropdown">
+                        <a href="javascript:void(0)">{{ link.title }}</a>
+                        <div class="mobile-link-dropdown-links ">
+                            {% for childlink in link.links %}
+                                <a href="{{ childlink.url }}">
+                                  {{ childlink.title }}
+                                </a>
+                              {% endfor %}
+                        </div>
+                    </div>
+                   {% else %}
+                   <div class="mobile-bottom-link">
+                      <a href="{{ link.url }}">{{ link.title }}</a>
+                   </div> 
+                {% endif %}    
+            {% endfor %}
+        </div>
+        <div class="ham-menu-close-btn">
+            close x
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('.cust-login').click(function(){
+            $('.cust-login-dd').toggleClass('active')
+        })
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const dropdowns = document.querySelectorAll(".dropdown-normal");
+
+    dropdowns.forEach(dropdown => {
+        const dnBox = dropdown.querySelector(".dn-box"); // get the dn-box inside this dropdown
+
+        if (dnBox) {
+            dropdown.addEventListener("click", function (event) {
+                event.stopPropagation();
+
+                const isActive = dnBox.classList.contains("active");
+
+                // Close all other dropdowns first
+                document.querySelectorAll(".dn-box.active").forEach(box => {
+                    box.classList.remove("active");
+                });
+                document.querySelectorAll(".dropdown-normal.active").forEach(dd => {
+                    dd.classList.remove("active");
+                });
+
+                // Toggle this one
+                dnBox.classList.toggle("active", !isActive);
+                dropdown.classList.toggle("active", !isActive);
+            });
+        }
+    });
+
+    document.addEventListener("click", function (event) {
+        document.querySelectorAll(".dn-box.active").forEach(box => {
+            if (!box.contains(event.target)) {
+                box.classList.remove("active");
+            }
+        });
+        document.querySelectorAll(".dropdown-normal.active").forEach(dropdown => {
+            if (!dropdown.contains(event.target)) {
+                dropdown.classList.remove("active");
+            }
+        });
+    });
+});
+
+</script>
+
+                  <script>
+    $(document).ready(function() {
+      // Function to update the cart count
+      function updateCartCount() {
+        $.getJSON('/cart.js', function(cart) {
+          $('#cart-count').text(cart.item_count);
+        });
+      }
+    
+      // Function to bind AJAX events
+      function bindCartEvents() {
+        $(document).on('ajax:complete', function(event, xhr, settings) {
+          if (settings.url === '/cart/add.js' || settings.url === '/cart/change.js' || settings.url === '/cart/update.js') {
+            updateCartCount();
+          }
+        });
+      }
+    
+      // Initialize cart events binding
+      bindCartEvents();
+    
+      // Optional: Trigger the initial count update when the page loads
+      updateCartCount();
+    });
+    </script>
+
+{% schema %}
+{
+    "name": "Header",
+    "settings": [
+        {
+            "type": "text",
+            "id": "mobile_menu_title",
+            "default": "Menu",
+            "label": "Mobile Menu Title"
+        },
+        {
+            "type": "link_list",
+            "id": "menu",
+            "default": "main-menu",
+            "label": "Heading Navigation Menu"
+        },
+        {
+            "type": "link_list",
+            "id": "menu2",
+            "label": "Heading Navigation Menu 2"
+        },
+        {
+            "type": "link_list",
+            "id": "mobMenu",
+            "label": "Mobile Navigation Menu"
+        }
+        ,
+        {
+            "type": "link_list",
+            "id": "mobMenu2",
+            "label": "Mobile Navigation Menu 2"
+        }
+    ]
+}
+{% endschema %}

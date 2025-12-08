@@ -1,0 +1,102 @@
+<section class="newsletter-section" data-scroll-section>
+  <div class="newsletter-section-cont">
+    <div class="newsletter-head">
+      <h1 class="head-white">{{ section.settings.heading }}</h1>
+    </div>
+    <div class="newsletter-body">
+      <p>{{ section.settings.body }}</p>
+    </div>
+    <div class="newsletter-button">
+      <a href="javscript:void(0)" class="craw-cta cta-white">{{ section.settings.ctaText }}</a>
+    </div>
+  </div>
+</section>
+
+<div id="newsletterPop">
+  <div class="newsletter-popup">
+    <div class="newsletter-popup-cont">
+      <div class="newsletter-popup-head">
+        <h2 class="head-black">Join Our Mailing List</h2>
+      </div>
+      <div class="newsletter-form">
+        <div class="newsletter-form-label">Email Address</div>
+        {% form 'customer' %}
+          {% if form.posted_successfully? %}
+            <script>
+              window.location = "/pages/thank-you";
+            </script>
+          {% else %}
+            {{ form.errors | default_errors }}
+          {% endif %}
+          <div class="email">
+            <input
+              type="email"
+              placeholder="robertdowneyjr145@gmail.com"
+              name="contact[email]" />
+          </div>
+          <div class="submit">
+            <input type="submit" value="submit" />
+          </div>
+        {% endform %}
+      </div>
+      <div class="cross-icon-newsletter">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="41"
+          height="41"
+          viewBox="0 0 41 41"
+          fill="none">
+          <path d="M30.7305 10.8302L31.4377 10.123L30.0234 8.70883L29.3163 9.41594L30.7305 10.8302ZM9.31633 29.4159C8.92581 29.8065 8.92581 30.4396 9.31633 30.8302C9.70685 31.2207 10.34 31.2207 10.7305 30.8302L9.31633 29.4159ZM29.3163 9.41594L9.31633 29.4159L10.7305 30.8302L30.7305 10.8302L29.3163 9.41594Z" fill="#161716" />
+          <path d="M10.7305 9.41594C10.34 9.02542 9.70685 9.02542 9.31633 9.41594C8.92581 9.80646 8.92581 10.4396 9.31633 10.8302L10.7305 9.41594ZM29.3163 30.8302L30.0234 31.5373L31.4377 30.123L30.7305 29.4159L29.3163 30.8302ZM9.31633 10.8302L29.3163 30.8302L30.7305 29.4159L10.7305 9.41594L9.31633 10.8302Z" fill="#161716" />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .newsletter-section {
+    background-image: url('{{ section.settings.image | img_url: 'master' }}');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+</style>
+
+<script>
+    document.querySelector('.newsletter-button a').addEventListener('click', ()=>{
+        document.getElementById("newsletterPop").classList.add("active");
+        document.body.classList.add("popup");
+    });
+    document.querySelector(".cross-icon-newsletter").addEventListener("click",()=>{
+        document.getElementById("newsletterPop").classList.remove("active");
+        document.body.classList.remove("popup");
+    })
+</script>
+
+
+{% schema %}
+  {
+    "name": "Newsletter",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Founders Story Heading"
+      }, {
+        "type": "text",
+        "id": "body",
+        "label": "Founders Story Body"
+      }, {
+        "type": "text",
+        "id": "ctaText",
+        "label": "CTA text"
+      }, {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Newsletter Background Image"
+      }
+    ]
+  }
+{% endschema %}

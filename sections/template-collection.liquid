@@ -1,0 +1,225 @@
+<section class="collection-page">
+  <div class="container-fluid">
+    <div class="collection-wrapper">
+      <div class="collection-head">
+        <h1>
+          {% if collection.title == 'Products' %}
+            {{ section.settings.text }}
+          {% else %}
+            {{ collection.metafields.custom.collection_page_name }}
+          {% endif %}
+        </h1>
+      </div>
+      <p>{{ page.url }}</p>
+      <div class="collection-filters">
+        <div class="col-filter">
+          {% for link in section.settings.filterMenu.links %}
+            {% if link.links != blank %}
+              <div class="item">
+                <p>{{ link.title }}{% render 'head-chevron' %}</p>
+                <div class="filter-dd">
+                  {% for childlink in link.links %}
+                    {% assign target_url = childlink.url | append: '/all' %}
+                    <a href="{% if childlink.url == routes.collections_url %}{{ childlink.url }}/all{% else %}{{ childlink.url }}{% endif %}" class="{% if request.path == target_url %}active{% endif %}{% if request.path == childlink.url %}active{% endif %}">
+                      <div class="child-title">
+                        {% if childlink.object.image != blank %}
+                          <img src="{{ childlink.object.image | img_url: 'master' }}" alt="">
+                        {% else %}
+                          {% render 'diamond-ring' %}
+                        {% endif %}
+                        {{ childlink.title }}
+                      </div>
+                      {% render 'dark-plus' %}
+                      {% render 'dark-minus' %}
+                    </a>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="col-filter-mob">
+          <div class="item-option-dd">
+            <p>Choose Option{% render 'head-chevron' %}</p>
+          </div>
+          <div class="filter-dd-item">
+            <div class="fdi-wrap">
+              {% for link in section.settings.filterMenu.links %}
+                {% if link.links != blank %}
+                  <div class="item">
+                    <p>{{ link.title }}{% render 'head-chevron' %}</p>
+                    <div class="filter-dd">
+                      {% for childlink in link.links %}
+                        {% assign target_url = childlink.url | append: '/all' %}
+                        <a href="{% if childlink.url == routes.collections_url %}{{ childlink.url }}/all{% else %}{{ childlink.url }}{% endif %}" class="{% if request.path == target_url %}active{% endif %}{% if request.path == childlink.url %}active{% endif %}">
+                          <div class="child-title">
+                            {% if childlink.object.image != blank %}
+                              <img src="{{ childlink.object.image | img_url: 'master' }}" alt="">
+                            {% else %}
+                              {% render 'jewellery' %}
+                            {% endif %}
+                            {{ childlink.title }}
+                          </div>
+                          {% render 'dark-plus' %}
+                          {% render 'dark-minus' %}
+                        </a>
+                      {% endfor %}
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="sort-filter">
+          <div class="item">
+            <div class="collection-products-list-sort">
+              <div class="collection-sort">
+                <select id="sort-by">
+                  {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
+
+                  {% for option in collection.sort_options %}
+                    <option
+                      value="{{ option.value }}"
+                      {% if option.value == sort_by %}
+                      selected="selected"
+                      {% endif %}>
+                      {{ option.name }}
+                    </option>
+                  {% endfor %}
+                </select>
+              {% comment %} <select id="width_tmp_select" style="display: none;">
+                                  <option id="width_tmp_option"></option>
+                              </select> {% endcomment %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="collection-cards" id="collection-cards">
+        {% for product in collection.products %}
+            <div class="item">
+              <a href="{{ product.url }}">
+                <div class="product-img">
+
+                  {% if product.metafields.custom.first_image != blank and product.metafields.custom.second_image != blank %}
+                    <img
+                      src="{{ product.metafields.custom.first_image | img_url: 'master' }}"
+                      alt="firstImage"
+                      class="firstImage">
+                    <img
+                      src="{{ product.metafields.custom.second_image | img_url: 'master' }}"
+                      alt="secondImage"
+                      class="secondImage">
+                  {% else %}
+                    {% render 'ring' %}
+                  {% endif %}
+                </div>
+                <div class="product-col-desp">
+                  <div class="pcd-title">
+                    <p class="title">
+                      {{ product.title }}
+                    </p>
+                    <!-- <p class="dia-title">
+                      {% if product.tags contains 'with-diamond' or product.tags contains 'fixed-diamond' %}
+                        Lab Diamond
+                      {% else %}
+                      {% endif %}
+                    </p> -->
+                  </div>
+                  <div class="pcd-price">
+                    <span style="font-size: 10px;">Starting From: </span><br>
+                    {{ product.price | money_with_currency }}
+                  </div>
+                </div>
+              </a>
+            </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  $(document).ready(function(){
+    // Function to handle click events outside filter-dd
+    
+
+    $('.collection-filters .item p').click(function(){
+        // Check if the clicked element already has the active class
+        if($(this).hasClass('active')) {
+            // If it's active, slide it up and remove the active class
+            $(this).removeClass('active').next('.filter-dd').slideUp(350).removeClass('active');
+        } else {
+            // If it's not active, close all other elements, and slide down the clicked one
+            $('.collection-filters .item p').removeClass('active');
+            $(this).addClass('active');
+            $('.filter-dd').slideUp(350).removeClass('active');
+            $(this).next('.filter-dd').slideToggle(350).addClass('active');
+        }
+    });
+
+    $(document.body).on('click', function(event) {
+        if (!$(event.target).closest('.filter-dd').length && !$(event.target).closest('.collection-filters .item p').length) {
+            $('.filter-dd').removeClass('active').slideUp(350);
+            $('.collection-filters .item p').removeClass('active');
+        }
+    });
+  });
+
+    $('.item-option-dd').click(function(){
+      $('.item-option-dd p').toggleClass('active')
+      $('.filter-dd-item').slideToggle(350);
+    });
+    
+    // $(document).ready(function() {
+    //   $('#sort-by').change(function(){
+    //     $("#width_tmp_option").html($('#sort-by option:selected').text()); 
+    //     $(this).width($("#width_tmp_select").width());  
+    //   });
+    // });
+</script>
+<script>
+  Shopify.queryParams = {};
+      
+      // Preserve existing query parameters
+      if (location.search.length) {
+        var params = location.search.substr(1).split('&');
+    
+        for (var i = 0; i < params.length; i++) {
+          var keyValue = params[i].split('=');
+    
+          if (keyValue.length) {
+            Shopify.queryParams[decodeURIComponent(keyValue[0])] = decodeURIComponent(keyValue[1]);
+          }
+        }
+      }
+    
+      document.querySelector('#sort-by').addEventListener('change', function(e) {
+        var value = e.target.value;
+        Shopify.queryParams.sort_by = value;
+        location.search = new URLSearchParams(Shopify.queryParams).toString();
+        // document.getElementById('width_tmp_option').innerHTML = e.target.options[e.target.selectedIndex].text;
+        // this.style.width = document.getElementById('width_tmp_select').offsetWidth + 'px';
+      });
+
+
+</script>
+
+{% schema %}
+  {
+    "name": "Template Collection",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "filterMenu",
+        "label": "Heading Navigation Menu"
+      }, {
+        "type": "text",
+        "id": "text",
+        "label": "Shop All Collection Name",
+        "default": "Shop All"
+      }
+    ]
+  }
+{% endschema %}

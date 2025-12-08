@@ -1,0 +1,25 @@
+{% assign current_product_tags = product.tags | split: ', ' %}
+{% assign related_products = '' %}
+
+{% for prod in collections.all.products %}
+  {% assign product_tags = prod.tags | split: ', ' %}
+  {% assign common_tags = product_tags | where: current_product_tags %}
+  {% if common_tags.size > 0 and prod.id != product.id %}
+    {% assign related_products = related_products | append: prod.title | append: ',' %}
+  {% endif %}
+{% endfor %}
+
+{% assign related_products = related_products | split: ',' | uniq %}
+{% if related_products.size > 0 %}
+  <h2>Related Products:</h2>
+  <ul>
+    {% for related_product_title in related_products %}
+      {% assign related_product = collections.all.products | where: 'title', related_product_title | first %}
+      {% if related_product %}
+        <li>
+          <a href="{{ related_product.url }}">{{ related_product_title }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endif %}

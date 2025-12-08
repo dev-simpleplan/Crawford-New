@@ -1,0 +1,3045 @@
+<style>
+  .diamond-options {
+    position: relative;
+  }
+  .diamond-options-icon {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .metal-variant-headings.diamondStone {
+    transition: 0.2s ease all;
+  }
+  .metal-variant-headings.diamondStone.active {
+    opacity: .2;
+  }
+</style>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+  integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+  integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+  integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
+
+{% assign selected_variant = product.selected_or_first_available_variant %}
+<div style="display:none;" class="global-loadingState prod">
+  <img src="https://cdn.shopify.com/s/files/1/0674/4591/5905/files/Loader-1_1.gif?v=1716898287" alt="">
+  {% comment %} <i style="color:white; font-size:30px;" class="fa-solid fa-spinner fa-spin"></i> {% endcomment %}
+</div>
+<div
+  id="prodInfo"
+  class="product-info"
+  data-scroll-section>
+  <div class="container-fluid">
+    <div class="product-container">
+      <div class="prod-stepper">
+        <ol class="stepper">
+          <li class="stepper-steps">your ring</li>
+          <li class="stepper-steps">curate a ring</li>
+          <li class="stepper-steps not-visited">summary</li>
+        </ol>
+      </div>
+      <div class="pro-grid">
+        <h1 class="mob-display">{{ product.title }}</h1>
+        <div id="prodImgSlide" class="pro-img-con">
+          <div
+            class="pro-img"
+            id="pro-img"
+            {% for media in product.media %}
+            thumbnail-alt="{{ product.selected_or_first_available_variant.featured_image.alt }}"
+            {% endfor %}>
+            <div class="thumb-slider-con">
+              <div
+                id="thumbnail-slider"
+                class="thumbnail-slider"
+                {% for media in product.media %}
+                thumbnail-alt="{{ media.alt }}"
+                {% endfor %}>
+                {% for media in product.media %}
+                  {% if product.selected_or_first_available_variant.featured_image.alt == media.alt and product.selected_or_first_available_variant.featured_image.alt != blank %}
+                    <div class="item" thumbnail-alt="{{ media.alt }}">
+                      <div class="prod-thumb-img">
+                        {% render 'product-media' | media: media %}
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+            <div class="main-slider-con">
+              <div
+                id="main-slider"
+                class="main-slider"
+                {% for media in product.media %}
+                thumbnail-alt="{{ media.alt }}"
+                {% endfor %}>
+                {% for media in product.media %}
+                  {% if product.selected_or_first_available_variant.featured_image.alt == media.alt and product.selected_or_first_available_variant.featured_image.alt != blank %}
+                    <div class="item" thumbnail-alt="{{ media.alt }}">
+                      <div class="prod-main-img">
+                        {% render 'product-media' | media: media %}
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-glossary">
+          <div class="prod-selection-buttons">
+            <div class="prod-name">
+              <div class="title">
+                <h1>{{ product.title }}</h1>
+              </div>
+            </div>
+            <div class="prod-desp">
+              <div class="pro-description">
+                <p>{{ product.description }}</p>
+              </div>
+            </div>
+            <div class="product-selectors">
+              <div class="item metal-selection">
+                <div class="ps-title">
+                  <p>metal</p>
+                </div>
+                <div class="ps-name">
+                  <div class="ps-name-con">
+                    <p class="selected-value">
+                      {% for variant in product.variants limit: 1 %}
+                        {% for option in product.options_with_values %}
+                          {% if option.name == 'Color' %}
+                            {% if option.selected_value %}
+                              {{ option.selected_value }}
+                            {% endif %}
+                          {% endif %}
+                        {% endfor %}
+                      {% endfor %}
+                    </p>
+                    <div class="ps-arrow">
+                      {% render 'arrow' %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% if product.tags contains 'without-diamond' %}
+
+              {% else %}
+                <div class="item diamond-shape-selection">
+                  <div class="ps-title">
+                    <p>stone shape</p>
+                  </div>
+                  <div class="ps-name">
+                    <div class="ps-name-con">
+                      {% for collection in product.collections %}
+                        {% if collection.title == "Asscher" or collection.title == "Cushion" or collection.title == "Emerald" or collection.title == "Heart" or collection.title == "Oval" or collection.title == "Pear" or collection.title == "Radiant" or collection.title == "Round" %}
+                          <p>{{ collection.title }}</p>
+                        {% endif %}
+                      {% endfor %}
+                      <div class="ps-arrow">
+                        {% render 'arrow' %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="item diamond-type-selection">
+                  <div class="ps-title">
+                    <p>stone type{% if product.tags contains 'with-diamond' %} & size {% endif %}</p>
+                  </div>
+                  <div class="ps-name">
+                    <div class="ps-name-con">
+                      <p>
+                        {% if product.tags contains 'lab-diamond' %}
+                          Lab Diamond
+                        {% else %}
+                          Moissanite
+                        {% endif %}
+                      </p>
+                      <div class="ps-arrow">
+                        {% render 'arrow' %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+              <div class="item add-engraving">
+                <div class="ps-title">
+                  <p>engraving</p>
+                </div>
+                <div class="ps-name">
+                  <div class="ps-name-con">
+                    <p id="display">add</p>
+                    <div class="ps-arrow">
+                      {% render 'arrow' %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="detail-accordion">
+              <div class="detail-button">
+                <p class="detail-button-txt">Details {% render 'down-chevron' %}</p>
+              </div>
+              <div class="detail-info">
+                <div class="item">
+                  <p class="di-head">Band Thickness</p>
+                  <p class="di-desp">{{ product.metafields.custom.thickness }}</p>
+                </div>
+                <div class="item">
+                  <p class="di-head">Setting</p>
+                  <p class="di-desp">{{ product.metafields.custom.setting }}</p>
+                </div>
+              </div>
+            </div>
+            <p style="margin-top: 20px; font-size: 12px; text-align: center;">Couldn’t find what you were looking for? <a href="/pages/contact" title="Contact" style="text-decoration: underline;">Get in touch with us!</a></p>
+          </div>
+        </div>
+        <div class="final-summary">
+          <div class="fs-head">
+            <h3>Your One-of-a Kind Ring</h3>
+            <p>Order Summary</p>
+          </div>
+          <div class="fs-summary">
+            <ul class="fss-wrap">
+              <li class="fss-item">
+                <div class="fss-left">
+                  setting
+                </div>
+                <div class="fss-right">
+                  {{ product.metafields.custom.setting }}
+                </div>
+              </li>
+              <li class="fss-item">
+                <div class="fss-left">
+                  Metal
+                </div>
+                <div class="fss-right" id="summary-metal">
+                  {% for variant in product.variants limit: 1 %}
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Color' %}
+                        {% if option.selected_value %}
+                          {{ option.selected_value }}
+                        {% endif %}
+                      {% endif %}
+                    {% endfor %}
+                  {% endfor %}
+                </div>
+              </li>
+              {% if product.tags contains 'without-diamond' %}
+
+              {% else %}
+                <li class="fss-item">
+                  <div class="fss-left">
+                    stone shape
+                  </div>
+                  <div class="fss-right">
+                    {% for collection in product.collections %}
+                      {% if collection.title == "Asscher" or collection.title == "Cushion" or collection.title == "Emerald" or collection.title == "Heart" or collection.title == "Oval" or collection.title == "Pear" or collection.title == "Radiant" or collection.title == "Round" %}
+                        {{ collection.title }}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </li>
+                <li class="fss-item">
+                  <div class="fss-left">
+                    stone type
+                  </div>
+                  {% if product.tags contains 'with-diamond' %}
+                    <div class="fss-right summary-stone">
+                      {% if product.tags contains 'lab-diamond' %}
+                        <div class="fssr-ss">
+                          <div id="summaryStone"></div>
+                          <div id="stoneType"></div>
+                        </div>
+                        <div class="fssr-es">
+                          <div id="stoneDesp"></div>
+                        </div>
+
+                      {% else %}
+                        Moissanite {{ product.title | split: ' ' | last }} Carat
+                      {% endif %}
+                    </div>
+                  {% else %}
+                    {% if product.tags contains 'lab' %}
+                      <div class="fss-right summary-stone">
+                        Lab Diamond
+                      </div>
+                    {% elsif product.tags contains 'moissanite' %}
+                      <div class="fss-right summary-stone">
+                        Moissanite
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                </li>
+              {% endif %}
+              <li class="fss-item">
+                <div class="fss-left">
+                  Band Thickness
+                </div>
+                <div class="fss-right summary-stone">
+                  {{ product.metafields.custom.thickness }}
+                </div>
+              </li>
+              <li class="fss-item">
+                <div class="fss-left">
+                  size
+                </div>
+                <div class="fss-right" id="summary-size">
+                  {% for variant in product.variants limit: 1 %}
+                    {% for option in product.options_with_values %}
+                      {% if option.name == 'Size' %}
+                        {{ option.selected_value }}
+                      {% endif %}
+                    {% endfor %}
+                  {% endfor %}
+                </div>
+              </li>
+              <li class="fss-item">
+                <div class="fss-left">
+                  Engraving
+                </div>
+                <div class="fss-right summary-engraving">No Engraving</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="pro-desp">
+        {% form 'product'
+          , product
+          , id: 'product-form'
+          , novalidate: 'novalidate' %}
+          <input
+            type="hidden"
+            name="id"
+            id="sVariantId"
+            value="{{ selected_variant.id }}">
+
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'price' %}
+                <div class="price-bar-container">
+                  <div class="container-fluid">
+                    <div class="pb-wrapper">
+                      <div class="price-pd-name">
+                        <div class="pd-name">
+                          <h3>{{ product.title }}</h3>
+                        </div>
+                        <div class="pd-desp">
+                          <p class="show-pd">
+                            <span class="price-text" id="variantTitle">
+                              {% if product.selected_or_first_available_variant %}
+                                {{ product.selected_or_first_available_variant.title | replace: '/', ', ' }}
+                              {% endif %}
+                            </span>
+                          </p>
+                          <p>
+                            {% for collection in product.collections %}
+                              {% if collection.title == "Asscher" or collection.title == "Cushion" or collection.title == "Emerald" or collection.title == "Heart" or collection.title == "Oval" or collection.title == "Pear" or collection.title == "Radiant" or collection.title == "Round" %}
+                                &nbsp,&nbsp{{ collection.title }}
+                              {% endif %}
+                            {% endfor %}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="price-wrapper">
+                        <div class="est-price">
+                          <p>estimated price</p>
+                          {% render 'modal-opener' %}
+                        </div>
+                        <div class="price" id="price-{{ section.id }}">
+                          <strike class="real-price">{{ selected_variant.compare_at_price | money_with_currency }}</strike>
+                          <p class="sell-price" data-price="{{ selected_variant.price }}">
+                            {{ selected_variant.price | money }}
+                          </p>
+                          {% if selected_variant.price < selected_variant.compare_at_price %}
+                            <span style="display: none;">Sale</span>
+                          {% endif %}
+                        </div>
+                        <div class="selection-button-wrapper">
+                          {% if product.tags contains 'with-diamond' %}
+                              <a href="javascript:void(0)" class="custom-btn select-diamond">select diamond</a>
+                          {% endif %}
+                          <a href="javascript:void(0)" class="custom-btn select-size"
+                            {% if product.tags contains 'fixed-diamond' %}
+                              style="display: block;"
+                              {% elsif product.tags contains 'without-diamond' %}
+                              style="display: block;"
+                              {% endif %}>select ring size</a>
+                          <a href="javascript:void(0)" class="custom-btn done">Next</a>
+                          <a href="javascript:void(0)" class="custom-btn preview">Preview Order</a>
+                          <a href="javascript:void(0)" class="custom-btn sumbit-product">Add to cart</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% when 'variant_selector' %}
+                {% unless product.has_only_default_variant %}
+                  <variant-selector data-url="{{ product.url }}" data-section="{{ section.id }}">
+                    <div class="variant-metal full-screen-modal">
+                      <div class="metal-variant-headings">
+                        <div class="left">
+                          <h3>{{ block.settings.metal_heading }}</h3>
+                          <p>{{ block.settings.metal_paragraph }}</p>
+                        </div>
+                      </div>
+                      <ul class="variant-wrapper">
+                        {% for variant in product.variants limit: 1 %}
+                          {% for option in product.options_with_values %}
+                            {% assign first_option = product.options | sort: 'position' | slice: 1 | first %}
+                            {% comment %} <p>{{ product.options | sort: 'position' | slice: 1 | first }}</p> {% endcomment %}
+                            {% if option.name == first_option %}
+                              <li class="{{ option.name }} variant-cats">
+                                <ul>
+                                  {% for value in option.values %}
+                                    <li
+                                      data-value="{{ value | escape }}"
+                                      data-category="{{ option.name | handle }}"
+                                      {% if option.selected_value == value %}
+                                      data-selected="true"
+                                      {% endif %}>
+                                      <label><input
+                                          type="radio"
+                                          name="style"
+                                          value="{{ value | escape }}"
+                                          {% if option.selected_value == value %}
+                                          checked
+                                          {% endif %}>
+                                        {{ value }}</label>
+                                    </li>
+                                  {% endfor %}
+                                </ul>
+                              </li>
+                            {% endif %}
+                            {% assign second_option = product.options | sort: 'position' | slice: 0 | first %}
+                            {% if option.name == second_option %}
+                              <li class="{{ option.name }} variant-cats">
+                                <ul>
+                                  {% for value in option.values %}
+                                    <li
+                                      data-value="{{ value | escape }}"
+                                      data-category="{{ option.name | handle }}"
+                                      {% if option.selected_value == value %}
+                                      data-selected="true"
+                                      {% endif %}>
+                                      <div class="metal-img">
+                                        {% if value == 'Yellow Gold' %}
+                                          <img
+                                            src="{{ product.metafields.custom.yellow_gold | img_url: 'master' }}"
+                                            alt=""
+                                            class="img">
+                                        {% elsif value == 'Rose Gold' %}
+                                          <img
+                                            src="{{ product.metafields.custom.rose_gold | img_url: 'master' }}"
+                                            alt=""
+                                            class="img">
+                                        {% else %}
+                                          <img
+                                            src="{{ product.metafields.custom.white_gold | img_url: 'master' }}"
+                                            alt=""
+                                            class="img">
+                                        {% endif %}
+                                      </div>
+                                      <p>{{ value }}</p>
+                                    </li>
+                                  {% endfor %}
+                                </ul>
+                              </li>
+                            {% endif %}
+                          {% endfor %}
+                        {% endfor %}
+                      </ul>
+                      <div class="metal-contact">
+                        <p>{{ block.settings.contact }}</p>
+                      </div>
+                      <div class="mob-done">
+                        <a href="javascript:void(0)" class="custom-btn done">Next</a>
+                      </div>
+                    </div>
+                    <div class="ring-sizer full-screen-modal">
+                      <div class="go-back-button">
+                        {% render 'left-chevron' %}
+                        <p>
+                          Select Diamond</p>
+                      </div>
+                      <div class="metal-variant-headings">
+                        <div class="left">
+                          <h3>{{ block.settings.size_heading }}</h3>
+                          <p>{{ block.settings.size_paragraph }}</p>
+                        </div>
+                      </div>
+                      {% for variant in product.variants limit: 1 %}
+                        {% for option in product.options_with_values %}
+                          {% if option.name == 'Size' %}
+                            <div class="{{ option.name }} variant-cats">
+                              <div id="slider-prev" class="slider-buttons"></div>
+                              <ul class="bxslider ring-sizes">
+                                {% for value in option.values %}
+                                  <li
+                                    data-value="{{ value | escape }}"
+                                    data-category="{{ option.name | handle }}"
+                                    {% if option.selected_value == value %}
+                                    data-selected="true"
+                                    {% endif %}>
+                                    <label><input
+                                        type="radio"
+                                        name="style"
+                                        value="{{ value | escape }}"
+                                        {% if option.selected_value == value %}
+                                        checked="checked"
+                                        {% endif %}>
+                                      {{ value }}</label>
+                                  </li>
+                                {% endfor %}
+                              </ul>
+                              <div id="slider-next" class="slider-buttons"></div>
+                            </div>
+                            <div class="ring-guide">
+                              <p>Confused about your size?
+                                <a href="javascript:void(0)" class="ring-guide-open">
+                                  View Ring Size Guide</a>
+                              </p>
+                            </div>
+                          {% endif %}
+                        {% endfor %}
+                      {% endfor %}
+                      <div class="metal-contact">
+                        <p>{{ block.settings.contact }}</p>
+                      </div>
+                    </div>
+                    <script type="application/json">{{ product.variants | json }}
+                    </script>
+                  </variant-selector>
+                {% endunless %}
+                <div class="show-collection full-screen-modal">
+                  {% comment %}
+                    This section displays products from specific collections if the collection handle matches.
+                  {% endcomment %}
+                  {% assign current_product_handle = product.handle %}
+                  {% assign allowed_collections = "whisper-thin-solitaire,three-stone,classic-solitaire,classic-pave,floating-gallery,triple-edge-pave,halo-pave,pear-emerald,bezel-solitaire,fine-pave,fixed-signet,ultra-fine-pave-eternity-band,fine-pave-eternity-band,classic-pave-eternity-band,floating-stone-eternity-band,single-bezel-eternity-band,low-profile-eternity-band,classic-eternity-band,eternity-band,east-west-eternity-band,band" | split: "," %}
+                  {% assign allowed_titles = "Asscher,Cushion,Emerald,Heart,Oval,Pear,Radiant,Round" | split: "," %}
+                  {% assign current_collections = "" %}
+
+                  {% for collection in product.collections %}
+                    {% if allowed_collections contains collection.handle %}
+                      {% assign current_collections = collection %}
+                    {% endif %}
+                  {% endfor %}
+
+                  {% if current_collections != "" %}
+                    <div class="metal-variant-headings">
+                      <div class="left">
+                        <h3>Shape</h3>
+                        <p>Choose a diamond shape for your band.</p>
+                      </div>
+                    </div>
+                    <div class="owl-theme owl-carousel">
+                      {% if product.type == 'ring' %}
+                        <div class="item">
+                          <div class="related-prod" data-selected="true">
+                            <a href="javascript:void(0)">
+                              {% for collection in product.collections %}
+                                {% if collection.title == "Asscher" or collection.title == "Cushion" or collection.title == "Emerald" or collection.title == "Heart" or collection.title == "Oval" or collection.title == "Pear" or collection.title == "Radiant" or collection.title == "Round" %}
+                                  <img src="{{ collection.image | img_url: 'small' }}" alt="{{ collection.title }}">
+                                  <p>{{ collection.title }}</p>
+                                {% endif %}
+                              {% endfor %}
+                            </a>
+                          </div>
+                        </div>
+                      {% endif %}
+                      {% for related_product in current_collections.products %}
+                        {% if related_product.handle != current_product_handle and related_product.type == 'ring' %}
+                          <div class="item">
+                            <div class="related-prod">
+                              <a href="{{ related_product.url }}">
+                                {% for collection in related_product.collections %}
+                                  {% if allowed_titles contains collection.title %}
+                                    <img src="{{ collection.image | img_url: 'small' }}" alt="{{ collection.title }}">
+                                    <p>{{ collection.title }}</p>
+                                  {% endif %}
+                                {% endfor %}
+                              </a>
+                            </div>
+                          </div>
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                    <div class="metal-contact">
+                      <p>{{ block.settings.contact }}</p>
+                    </div>
+                  {% endif %}
+
+                  <div class="mob-done">
+                    <a href="javascript:void(0)" class="custom-btn done">Next</a>
+                  </div>
+
+                  <script>
+                    // Get all div elements with class 'item'
+                    const divElements = document.querySelectorAll('.show-collection .item');
+
+                    // Loop through each div element
+                    divElements.forEach(div => {
+                        // Check if there is an anchor element inside the div
+                        const anchor = div.querySelector('a');
+                        if (anchor && !anchor.getAttribute('href')) {
+                            // If anchor exists and has no href attribute, remove the parent div
+                            div.remove();
+                        }
+                    });
+
+                  </script>
+                </div>
+              {% when 'engraving' %}
+
+              {% when 'checkout_buttons' %}
+                <div class="submit">
+                  <button
+                    style="opacity:0; visibility:hidden;"
+                    type="submit"
+                    name="add"
+                    {% if selected_variant.available == false %}
+                    disabled
+                    {% endif %}>
+                    {% if selected_variant.available == false %}
+                      Sold Out
+                    {% else %}
+                      Add To Cart
+                    {% endif %}
+                  </button>
+                </div>
+            {% else %}
+              {% endcase %}
+            {% endfor %}
+          {% endform %}
+        </div>
+        <div class="diamond-selector-modal full-screen-modal">
+          <div class="metal-variant-headings">
+            <div class="left">
+              <h3>Stone Type</h3>
+              <!-- <p>Choose a diamond type for your band.</p> -->
+            </div>
+          </div>
+          <div class="diamond-types">
+            {% if product.tags contains 'fixed-diamond' %}
+              <div class="diamond-tab">
+                <button
+                  class="tablinks active fixed-diamond"
+                  onclick="openCity(event, 'lab-diamond')"
+                  id="defaultOpen">
+                  <div class="radio-option">
+                    <input
+                      type="radio"
+                      name="diamond"
+                      id="lab"
+                      checked="checked"
+                      class="radio-but"><label for="lab">Lab Diamond</label>
+                  </div>
+                  <div class="active-content" style="display: block;">
+                    <p>Lorem ipsum dolor sit amet consectetur. Urna ornare ligula pharetra vivamus non quam magna euismod.
+                    </p>
+                  </div>
+                </button>
+                <button
+                  class="tablinks fixed-diamond"
+                  id="moisBtn"
+                  onclick="openCity(event, 'moissanite')">
+                  <div class="radio-option">
+                    <input
+                      type="radio"
+                      name="diamond"
+                      id="moissan"
+                      class="radio-but"><label for="moissan">Moissanite</label>
+                  </div>
+                  <div class="active-content">
+                    <p>Lorem ipsum dolor sit amet consectetur. Urna ornare ligula pharetra vivamus non quam magna euismod.
+                    </p>
+                  </div>
+                </button>
+              </div>
+              <div class="diamond-options" style="display: none;">
+                <div style="display:none;" class="diamond-options-icon">
+                  <i class="fa-solid fa-spinner fa-spin"></i>
+                </div>
+                <div class="metal-variant-headings diamondStone">
+                  <div class="left">
+                    <h3>Stone Size</h3>
+                    <!-- <p>Choose a diamond type for your band.</p> -->
+                  </div>
+                </div>
+                <div id="lab-diamond" class="tabcontent">
+                  <div class="diamond-slider">
+                    <div class="ds-head">
+                      <p>Select Carat</p>
+                    {% comment %} <p class="selected-product-price lab">Aud 0.00</p> {% endcomment %}
+                    </div>
+                    <div class="ds-range">
+                      <input
+                        type="range"
+                        id="carat-range"
+                        min="0"
+                        max="6"
+                        value="0.01"
+                        step="0.01"
+                        oninput="updateSliderValue(this.value)" />
+                      <span id="carat-range-display" style="position: absolute; left: 0; top: -10px;">0.01</span>
+                      <div class="dsr-num">
+                        <p>0</p>
+                        <p>6</p>
+                      </div>
+                    <!-- Display the current range -->
+                    </div>
+                  </div>
+                  <div class="diamond-form-lab">
+                    <p class="stone-options-txt">Stone Options</p>
+                    {% form 'product', product, id: 'addtocartform', novalidate: 'novalidate' %}
+                      <input type="hidden" name="id1" id="sVariantId1" value="">
+                      <div id="carat-options">
+                        <p id="no-options-message" style="display: none;">No options available</p>
+                        <table id="carat-options-table">
+                          <tr class="first">
+                            <th></th>
+                            <th>carat</th>
+                            <th>color</th>
+                            <th>clarity</th>
+                            <th>price</th>
+                          </tr>
+                          {% assign limit = 10 %}
+                          {% assign total_products = product.collections.first.products_count %}
+                          {% assign pages = total_products | divided_by: limit | ceil %}
+                          
+                          {% for collection in product.collections %}
+                            {% paginate collection.products by limit %}
+                              {% assign sorted_products = collection.products %}
+                              {% for product_in_collection in sorted_products %}
+                                {% assign sorted_variants = product_in_collection.variants %}
+                                {% for variant in sorted_variants %}
+                                  {% if product_in_collection.type == 'diamond' %}
+                                    <tr class="carat-row" data-carat="{{ variant.option1 }}">
+                                      <td>
+                                        <input
+                                          type="radio"
+                                          class="product-radio lab"
+                                          name="id"
+                                          value="{{ variant.id }}"
+                                          data-handle="{{ product_in_collection.handle }}"
+                                          data-price="{{ variant.price }}"
+                                          data-id="{{ variant.id }}"
+                                          data-prod-id="{{ product_in_collection.id }}" />
+                                      </td>
+                                      <td>{{ variant.option1 }}</td>
+                                      <td>{{ variant.option2 }}</td>
+                                      <td>{{ variant.option3 }}</td>
+                                      <td>{{ variant.price | money }}</td>
+                                    </tr>
+                                  {% endif %}
+                                {% endfor %}
+                              {% endfor %}
+                            {% endpaginate %}
+                          {% endfor %}
+                        </table>
+                      </div>
+                      <input type="submit" value="Add selected product to cart" class="btn" />
+                    {% endform %}
+                  </div>
+                </div>
+              </div>
+              <div
+                id="moissanite"
+                class="tabcontent mois-fixed"
+                style="opacity: 0; visibility: hidden;">
+                <p class="stone-options-txt">Stone Options</p>
+                <table></table>
+              </div>
+              <script>
+                $(document).ready(function(){
+                  setTimeout(function(){
+                    $('.diamond-tab #moisBtn').click();
+                    setTimeout(function() { 
+                      $('.diamond-tab .tablinks').eq(0).click(); // Change to eq(0) to target the first child
+                    }, 1000);
+                  }, 2000)
+                });
+                document.getElementById('moisBtn').addEventListener('click', function() {
+                  setTimeout(function() {
+                    const moissaniteRadio = document.querySelector('.tabcontent.mois-fixed input.product-radio.moissanite');
+                    if (moissaniteRadio) {
+                      moissaniteRadio.click();
+                    } else {
+                      console.warn("Moissanite radio button not found in the DOM.");
+                    }
+                  }, 1000); // Adjust timeout as needed based on loading time
+                });
+              </script>
+            {% elsif product.tags contains 'with-diamond' %}
+              <div class="diamond-tab">
+                <button
+                  class="tablinks active"
+                  onclick="openCity(event, 'lab-diamond')"
+                  id="defaultOpen">
+                  <div class="radio-option">
+                    <input
+                      type="radio"
+                      name="diamond"
+                      id="lab"
+                      checked="checked"
+                      class="radio-but"><label for="lab">Lab Diamond</label>
+                  </div>
+                  <div class="active-content" style="display: block;">
+                    <p>Lorem ipsum dolor sit amet consectetur. Urna ornare ligula pharetra vivamus non quam magna euismod.
+                    </p>
+                  </div>
+                </button>
+                <button
+                  class="tablinks"
+                  id="moisBtn"
+                  onclick="openCity(event, 'moissanite')">
+                  <div class="radio-option">
+                    <input
+                      type="radio"
+                      name="diamond"
+                      id="moissan"
+                      class="radio-but"><label for="moissan">Moissanite</label>
+                  </div>
+                  <div class="active-content">
+                    <p>Lorem ipsum dolor sit amet consectetur. Urna ornare ligula pharetra vivamus non quam magna euismod.
+                    </p>
+                  </div>
+                </button>
+              </div>
+              {% if product.tags contains 'fixed-diamond' or product.tags contains 'without-diamond' %}
+
+              {% else %}
+                <p class="scroll-down-sm-txt"><a href="javascript:void(0)" class="scroll-down-sm-anchor">Click here</a> to select carat or scroll down*</p>
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    const scrollAnchors = document.querySelectorAll('.scroll-down-sm-anchor');
+                
+                    scrollAnchors.forEach(anchor => {
+                        anchor.addEventListener('click', function(event) {
+                            event.preventDefault(); // Prevent the default anchor behavior
+                            window.scrollBy({
+                                top: 350, // Scroll down 100px
+                                behavior: 'smooth' // Smooth scrolling
+                            });
+                        });
+                    });
+                });
+                </script>
+              {% endif %}
+              <div class="diamond-options">
+                <div style="display:none;" class="diamond-options-icon">
+                  <i class="fa-solid fa-spinner fa-spin"></i>
+                </div>
+                <div class="metal-variant-headings diamondStone">
+                  <div class="left">
+                    <h3>Stone Size</h3>
+                    <!-- <p>Choose a diamond type for your band.</p> -->
+                  </div>
+                </div>
+                
+                <div id="lab-diamond" class="tabcontent">
+                  <div class="diamond-slider">
+                    <div class="ds-head">
+                      <p>Select Carat</p>
+                    {% comment %} <p class="selected-product-price lab">Aud 0.00</p> {% endcomment %}
+                    </div>
+                    <div class="ds-range">
+                      <input
+                        type="range"
+                        id="carat-range"
+                        min="0"
+                        max="6"
+                        value="0.01"
+                        step="0.01"
+                        oninput="updateSliderValue(this.value)" />
+                      <span id="carat-range-display" style="position: absolute; left: 0; top: -10px;">0.01</span>
+                      <div class="dsr-num">
+                        <p>0</p>
+                        <p>6</p>
+                      </div>
+                    <!-- Display the current range -->
+                    </div>
+                  </div>
+                  <div class="diamond-form-lab">
+                    <p class="stone-options-txt">Stone Options</p>
+                    {% form 'product', product, id: 'addtocartform', novalidate: 'novalidate' %}
+                    <input type="hidden" name="id1" id="sVariantId1" value="">
+                    {% assign collectionHandles = 'asscher,round,oval,heart,radiant,cushion,emerald,pear' | split: ',' %}
+                    {% assign productCollections = product.collections | map: 'handle' %}
+                    {% assign matchedCollectionHandle = '' %}
+                    
+                    {% for collectionHandle in productCollections %}
+                      {% if collectionHandles contains collectionHandle %}
+                        {% assign matchedCollectionHandle = collectionHandle %}
+                        {% break %}
+                      {% endif %}
+                    {% endfor %}
+                    
+                    {% if matchedCollectionHandle != '' %}
+                      <div id="carat-options">
+                        <p id="no-options-message" style="display: none;">No options available</p>
+                        <div style="display: none;" class="global-loadingState prod">
+                            <img src="https://cdn.shopify.com/s/files/1/0674/4591/5905/files/Loader-1_1.gif?v=1716898287" alt="">
+                        </div>
+                        <table id="carat-options-table">
+                          <thead>
+                            <tr class="first">
+                              <th></th>
+                              <th>carat</th>
+                              <th>color</th>
+                              <th>clarity</th>
+                              <th>price</th>
+                            </tr>
+                          </thead>
+                          <tbody id="product-list">
+                            <!-- Products will be dynamically inserted here -->
+                          </tbody>
+                        </table>
+                      </div>
+                      <input type="submit" value="Add selected product to cart" class="btn" />
+                    {% else %}
+                      <p>No matching collection found for this product.</p>
+                    {% endif %}
+                    {% endform %}
+                  </div>
+                </div>
+                <div id="moissanite" class="tabcontent">
+                  <p class="stone-options-txt">Stone Options</p>
+                  <table></table>
+                </div>
+              </div>
+              <!-- Diamond Feteching Starts -->
+              <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var diamondProductsArray = [];
+    var matchedCollectionHandle = '{{ matchedCollectionHandle }}';
+
+    if (matchedCollectionHandle === '') {
+      console.log('No matching collection found.');
+      return;
+    }
+
+    function displayProducts() {
+      var productList = document.getElementById('product-list');
+      productList.innerHTML = '';
+
+      diamondProductsArray.forEach(function(product) {
+        product.variants.forEach(function(variant) {
+          var row = document.createElement('tr');
+          row.className = 'carat-row';
+          row.dataset.carat = variant.option1;
+          row.innerHTML = `
+            <td>
+              <input type="radio" class="product-radio lab" name="id" value="${variant.id}" data-handle="${product.handle}" data-price="${'DATA_PRICE'}" data-id="${variant.id}" data-prod-id="${product.id}" />
+            </td>
+            <td>${variant.option1}</td>
+            <td>${variant.option3}</td>
+            <td>${variant.option2}</td>
+            <td>{{ 'PLACEHOLDER_PRICE' }}</td>
+          `;
+          row.innerHTML = row.innerHTML.replace('PLACEHOLDER_PRICE', Shopify.formatMoney(variant.price));
+          row.innerHTML = row.innerHTML.replace('DATA_PRICE', Shopify.formatMoney(variant.price).replace(/[$,\.]/g, ''));
+          productList.appendChild(row);
+        });
+      });
+
+      if (diamondProductsArray.length === 0) {
+        document.getElementById('no-options-message').style.display = 'block';
+      }
+
+      // Hide loading state
+      document.querySelector('.global-loadingState.prod').style.display = 'none';
+    }
+
+    async function fetchProductsFromCollection(collectionHandle, products = [], page = 1) {
+      const url = `/collections/${collectionHandle}/products.json?limit=250&page=${page}`;
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        products = products.concat(data.products);
+
+        if (data.products.length === 250) {
+          return fetchProductsFromCollection(collectionHandle, products, page + 1);
+        } else {
+          return products;
+        }
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    }
+
+    async function init() {
+      // Show loading state
+      document.querySelector('.global-loadingState.prod').style.display = 'flex';
+
+      const allProducts = await fetchProductsFromCollection(matchedCollectionHandle);
+      diamondProductsArray = allProducts.filter(product => product.product_type === 'diamond');
+      displayProducts();
+    }
+
+    // Initialize and fetch products when the page loads
+    init();
+  });
+</script>
+
+            <!-- Diamond Feteching Ends -->
+            {% elsif product.tags contains 'without-diamond' %}
+              <div class="diamond-tab">
+                <button
+                  class="tablinks active without-diamond"
+                  onclick="openCity(event, 'lab-diamond')"
+                  id="defaultOpen">
+                  <div class="radio-option">
+                    <input
+                      type="radio"
+                      name="diamond"
+                      id="lab"
+                      checked="checked"
+                      class="radio-but"><label for="lab">Lab Diamond</label>
+                  </div>
+                  <div class="active-content" style="display: block;">
+                    <p>Lorem ipsum dolor sit amet consectetur. Urna ornare ligula pharetra vivamus non quam magna euismod.
+                    </p>
+                  </div>
+                </button>
+                <button
+                  class="tablinks without-diamond"
+                  id="moisBtn"
+                  onclick="openCity(event, 'moissanite')">
+                  <div class="radio-option">
+                    <input
+                      type="radio"
+                      name="diamond"
+                      id="moissan"
+                      class="radio-but"><label for="moissan">Moissanite</label>
+                  </div>
+                  <div class="active-content">
+                    <p>Lorem ipsum dolor sit amet consectetur. Urna ornare ligula pharetra vivamus non quam magna euismod.
+                    </p>
+                  </div>
+                </button>
+              </div>
+              <div class="diamond-options">
+                <div style="display:none;" class="diamond-options-icon">
+                  <i class="fa-solid fa-spinner fa-spin"></i>
+                </div>
+                <div class="metal-variant-headings diamondStone">
+                  <div class="left">
+                    <h3>Stone Size</h3>
+                    <!-- <p>Choose a diamond type for your band.</p> -->
+                  </div>
+                </div>
+                <div id="lab-diamond" class="tabcontent">
+                  <div class="diamond-slider">
+                    <div class="ds-head">
+                      <p>Select Carat</p>
+                    {% comment %} <p class="selected-product-price lab">Aud 0.00</p> {% endcomment %}
+                    </div>
+                    <div class="ds-range">
+                      <input
+                        type="range"
+                        id="carat-range"
+                        min="0"
+                        max="6"
+                        value="0.01"
+                        step="0.01"
+                        oninput="updateSliderValue(this.value)" />
+                      <span id="carat-range-display" style="position: absolute; left: 0; top: -10px;">0.01</span>
+                      <div class="dsr-num">
+                        <p>0</p>
+                        <p>6</p>
+                      </div>
+                    <!-- Display the current range -->
+                    </div>
+                  </div>
+                  <div class="diamond-form-lab">
+                    <p class="stone-options-txt">Stone Options</p>
+                    {% form 'product'
+                      , product
+                      , id: 'addtocartform'
+                      , novalidate: 'novalidate' %}
+                      <input
+                        type="hidden"
+                        name="id1"
+                        id="sVariantId1"
+                        value="">
+                      <div id="carat-options">
+                        <p id="no-options-message" style="display: none;">No options available</p>
+                        <table id="carat-options-table">
+                          <tr class="first">
+                            <th></th>
+                            <th>carat</th>
+                            <th>color</th>
+                            <th>clarity</th>
+                            <th>price</th>
+                          </tr>
+                          {% for collection in product.collections %}
+                            {% assign sorted_products = collection.products | sort: 'title' %}
+                            {% for product_in_collection in sorted_products %}
+                              {% assign sorted_variants = product_in_collection.variants | sort: 'option1' %}
+                              {% for variant in sorted_variants %}
+                                {% if product_in_collection.type == 'diamond' %}
+                                  {% assign has_lab_tag = false %}
+                                  {% for tag in product_in_collection.tags %}
+                                    {% if tag == 'lab' %}
+                                      {% assign has_lab_tag = true %}
+                                    {% endif %}
+                                  {% endfor %}
+                                  {% if has_lab_tag %}
+                                    <tr class="carat-row" data-carat="{{ variant.option1 }}">
+                                      <td>
+                                        <input
+                                          type="radio"
+                                          class="product-radio lab"
+                                          name="id"
+                                          value="{{ variant.id }}"
+                                          data-handle="{{ product_in_collection.handle }}"
+                                          data-price="{{ variant.price }}"
+                                          data-id="{{ variant.id }}"
+                                          data-prod-id="{{ product_in_collection.id }}" />
+                                      </td>
+                                      <td>{{ variant.option1 }}</td>
+                                      <td>{{ variant.option2 }}</td>
+                                      <td>{{ variant.option3 }}</td>
+                                      <td>{{ variant.price | money }}</td>
+                                    </tr>
+                                  {% endif %}
+                                {% endif %}
+                              {% endfor %}
+                            {% endfor %}
+                          {% endfor %}
+                        </table>
+                      </div>
+                      <input
+                        type="submit"
+                        value="Add selected product to cart"
+                        class="btn" />
+                    {% endform %}
+                  </div>
+                </div>
+                <div id="moissanite" class="tabcontent">
+                  <p class="stone-options-txt">Stone Options</p>
+                  <table></table>
+                </div>
+              </div>
+            {% endif %}
+
+          </div>
+          <div class="mob-done">
+            <a href="javascript:void(0)" class="custom-btn done">Next</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="engravingModal">
+      <div class="engraving-box">
+        <p>Have your ring custom engraved, with 20 characters or less. This will be laser engraved on the inside of your band.</p>
+        <textarea
+          id="message"
+          placeholder="Add Engraving Text"
+          name="properties[Message]"
+          data-name="properties[Message]"
+          form="product-form"
+          class=""></textarea>
+        <button>Close</button>
+      </div>
+    </div>
+
+    <div id="errorModal">
+      <div class="engraving-box">
+        <h4>Make a Selection</h4>
+        <p style="text-align: center;">Seems like you forgot to select your Diamond Stone.</p>
+        <button>Close</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="display:none;" class="product-diamonds-images">
+    <div class="four-carat-images">
+      {% if product.metafields.custom.four_carat_size.value.rose_gold %}
+        <img data-carat="fourRose" src="{{ product.metafields.custom.four_carat_size.value.rose_gold |  img_url: 'master' }}">
+      {% endif %}
+      {% if product.metafields.custom.four_carat_size.value.yellow_gold %}
+        <img data-carat="fourYellow" src="{{ product.metafields.custom.four_carat_size.value.yellow_gold |  img_url: 'master' }}">
+      {% endif %}
+      {% if product.metafields.custom.four_carat_size.value.white_gold %}
+        <img data-carat="fourWhite" src="{{ product.metafields.custom.four_carat_size.value.white_gold |  img_url: 'master' }}">
+      {% endif %}
+    </div>
+    <div class="three-carat-images">
+      {% if product.metafields.custom.three_carat_size.value.rose_gold %}
+        <img data-carat="threeRose" src="{{ product.metafields.custom.three_carat_size.value.rose_gold |  img_url: 'master' }}">
+      {% endif %}
+      {% if product.metafields.custom.three_carat_size.value.yellow_gold %}
+        <img data-carat="threeYellow" src="{{ product.metafields.custom.three_carat_size.value.yellow_gold |  img_url: 'master' }}">
+      {% endif %}
+      {% if product.metafields.custom.three_carat_size.value.white_gold %}
+        <img data-carat="threeWhite" src="{{ product.metafields.custom.three_carat_size.value.white_gold |  img_url: 'master' }}">
+      {% endif %}
+    </div>
+    <div class="two-carat-images">
+      {% if product.metafields.custom.two_carat_size.value.rose_gold %}
+        <img data-carat="twoRose" src="{{ product.metafields.custom.two_carat_size.value.rose_gold |  img_url: 'master' }}">
+      {% endif %}
+      {% if product.metafields.custom.two_carat_size.value.yellow_gold %}
+        <img data-carat="twoYellow" src="{{ product.metafields.custom.two_carat_size.value.yellow_gold |  img_url: 'master' }}">
+      {% endif %}
+      {% if product.metafields.custom.two_carat_size.value.white_gold %}
+        <img data-carat="twoWhite" src="{{ product.metafields.custom.two_carat_size.value.white_gold |  img_url: 'master' }}">
+      {% endif %}
+    </div>
+
+  </div>
+
+  <div class="est-price-modal">
+    <div class="container-fluid">
+      <div class="epm-wrapper">
+        <div class="cross">
+          {% render 'cross' %}
+        </div>
+        <div class="content">
+          <p>{{ section.settings.est-price }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ring-guide-modal">
+    <div class="rgm-wrapper">
+      <div class="rgm-con">
+        <div class="rgm-cross">
+          {% render 'cross' %}
+        </div>
+        <div class="rgm-head">
+          {% assign ring-guide-heading = section.blocks | where: 'type', 'ring-guide-heading' %}
+          {% for block in ring-guide-heading %}
+            {{ block.settings.modal-heading }}
+          {% endfor %}
+        </div>
+        <table>
+          {% assign ring-guide = section.blocks | where: 'type', 'ring-guide' %}
+          <tr>
+            {% for block in ring-guide-heading %}
+              <th>{{ block.settings.head1 }}</th>
+              <th>{{ block.settings.head2 }}</th>
+              <th>{{ block.settings.head3 }}</th>
+              <th>{{ block.settings.head4 }}</th>
+              <th>{{ block.settings.head5 }}</th>
+              <th>{{ block.settings.head6 }}</th>
+              <th>{{ block.settings.head7 }}</th>
+              <th>{{ block.settings.head8 }}</th>
+            {% endfor %}
+          </tr>
+          {% for block in ring-guide %}
+            <tr>
+              <td>{{ block.settings.group-item1 }}</td>
+              <td>{{ block.settings.group-item2 }}</td>
+              <td>{{ block.settings.group-item3 }}</td>
+              <td>{{ block.settings.group-item4 }}</td>
+              <td>{{ block.settings.group-item5 }}</td>
+              <td>{{ block.settings.group-item6 }}</td>
+              <td>{{ block.settings.group-item7 }}</td>
+              <td>{{ block.settings.group-item8 }}</td>
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.onload = function() {
+        var radioButton = document.querySelector('.pro-desp li[data-selected=true] input[type="radio"]');
+        if (radioButton) {
+            radioButton.click();
+        }
+    };
+
+    document.addEventListener("DOMContentLoaded", (event) => {
+      var controller = new ScrollMagic.Controller();
+
+    // build scenes
+    new ScrollMagic.Scene({triggerElement: "#shopify-section-footer"})
+    .setClassToggle(".price-bar-container", "active") // add class toggle
+    .addTo(controller);
+    });
+  </script>
+  <script>
+    async function fetchAndFilterProducts() {
+      document.querySelector('.metal-variant-headings.diamondStone').classList.add('active');
+      document.querySelector('.diamond-options-icon').style.display = 'flex';
+      try{
+        const limit = 250; // Maximum limit of products per page
+        let page = 1;
+        let allProducts = [];
+
+        while (true) {
+            const response = await fetch(`${window.Shopify.routes.root}products.json?limit=${limit}&page=${page}`);
+            const data = await response.json();
+
+            if (data.products.length === 0) {
+                break;
+            }
+
+            allProducts = allProducts.concat(data.products);
+            page++;
+        }
+    const products = allProducts;
+    const filteredProducts = [];
+    var paraColor = document.querySelector('.variant-metal .variant-wrapper .Color.variant-cats ul li[data-selected=true] p').innerHTML;
+    var paraK = document.querySelector('.variant-metal .variant-wrapper .Style.variant-cats ul li[data-selected=true] label').innerText;
+
+    products.forEach(product => {
+        const title = product.title;
+       const remainingString = title.replace('{{ product.title }}', '').replace(/moissanite/gi, '').trim();
+
+if (
+    title.toLowerCase().includes('moissanite') && 
+    title.includes("{{ product.title }}") &&
+    (remainingString === '1.5' || remainingString === '2' || remainingString === '3' || remainingString === '4' || remainingString === '')
+) {
+    filteredProducts.push(product);
+}
+    });
+    const tableBody = document.querySelector('#moissanite table');
+    if(filteredProducts.length > 0) {
+    tableBody.innerHTML = '';
+    const headerRow = document.createElement('tr');
+    const emptyHeader = document.createElement('th');
+    headerRow.appendChild(emptyHeader);
+    const headerCarat = document.createElement('th');
+    headerCarat.textContent = 'Carat';
+    headerRow.appendChild(headerCarat);
+    const headerPrice = document.createElement('th');
+    headerPrice.textContent = 'Price';
+    headerRow.appendChild(headerPrice);
+    tableBody.appendChild(headerRow);
+
+        filteredProducts.forEach(product => {
+            const variant = product.variants.find(variant => {
+               const title = variant.title;
+                return title.includes(paraColor) && title.includes(paraK.toLowerCase()); 
+            });
+            const newRow = document.createElement('tr');
+            newRow.setAttribute('class', 'carat-row');
+            newRow.setAttribute('data-carat', product.title);
+            const firstCell = document.createElement('td');
+            const radioInput = document.createElement('input');
+            radioInput.setAttribute('type', 'radio');
+            radioInput.setAttribute('class', 'product-radio moissanite');
+            radioInput.setAttribute('name', 'id1');
+            radioInput.setAttribute('value', product.handle);
+            radioInput.setAttribute('data-prod-name', product.title);
+            radioInput.setAttribute('data-price', Shopify.formatMoney(variant.price));
+            radioInput.setAttribute('data-id', variant.id);
+            firstCell.appendChild(radioInput);
+            newRow.appendChild(firstCell);
+            const secondCell = document.createElement('td');
+            secondCell.textContent = product.title.replace(/moissanite|{{ product.title }}/gi, '').trim();
+            newRow.appendChild(secondCell);
+            const thirdCell = document.createElement('td');
+            thirdCell.textContent = Shopify.formatMoney(variant.price);
+            newRow.appendChild(thirdCell);
+            tableBody.appendChild(newRow);
+         });
+      const varID = document.querySelector("#product-form").querySelector('input[name="id"]').value;
+      document.querySelectorAll(".product-radio.moissanite").forEach((radio)=>{
+      
+          radio.addEventListener("click", ()=>{
+              const value = radio.value;
+              const id = radio.getAttribute('data-id');
+              pageChange(value, id, varID);
+          });
+        })
+    }
+    else{
+      tableBody.innerHTML = `<p style="text-align:center; color:black; font-weight:500; max-width:30ch; margin:0 auto;">There are no moissanite diamonds available for the setting</p>`;
+    }
+    }
+    catch (error) {
+      console.error('Error:', error);
+    } finally {
+        document.querySelector('.metal-variant-headings.diamondStone').classList.remove('active');
+        document.querySelector('.diamond-options-icon').style.display = 'none';
+        document.querySelector('.selection-button-wrapper').classList.add('hide-dia');
+    }
+    }
+
+    // Example usage
+    const currentProductTitle = "{{ product.title }}";
+    document.getElementById("moisBtn").addEventListener("click", fetchAndFilterProducts);
+    function pageChange(urlHandle, urlId, iD){
+      document.querySelector('.global-loadingState.prod').style.display = 'flex';
+      document.querySelector('.pro-img-con').classList.add('loading');
+      fetch(`/products/${urlHandle}?variant=${urlId}`)
+        .then(response => response.text())
+        .then((responseText) => {
+            try {
+                const html = new DOMParser().parseFromString(responseText, 'text/html');
+                const oldHtml = document.getElementById("prodInfo");
+                const newHtml = html.getElementById("prodInfo");
+                oldHtml.innerHTML = newHtml.innerHTML;
+                const oldScripts = document.querySelectorAll('[id^="proScrip"]');
+                oldScripts.forEach(script => {
+                    script.parentNode.removeChild(script);
+                });
+                // Populate new scripts
+                const newScripts = html.querySelectorAll('[id^="proScrip"]');
+                newScripts.forEach(script => {
+                    const newScript = document.createElement('script');
+                    newScript.id = script.id;
+                    newScript.text = script.text;
+                    document.body.appendChild(newScript);
+                });
+                setTimeout(()=>{
+                  $('#thumbnail-slider').slick({
+                    slidesToShow: 4,
+                    slidesToScroll: 1,
+                    draggable:false,
+                    asNavFor: '#main-slider',
+                    dots: false,
+                    focusOnSelect: true,
+                    arrows: true,
+                    vertical: true,
+                    verticalSwiping: true,
+                    responsive: [
+                        {
+                          breakpoint: 1200,
+                          settings: {
+                            vertical: true,
+                            verticalSwiping: true,
+                          },
+                        },
+                        {
+                          breakpoint: 992,
+                          settings: {
+                            vertical: false,
+                            verticalSwiping: false,
+                            slidesToShow: 4,
+                          },
+                        }
+                      ],
+                  });
+
+                  // Initialize Main Slider
+                  $('#main-slider').slick({
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    draggable: false,
+                    asNavFor: '#thumbnail-slider',
+                    fade: true,
+                    arrows: false,
+                    infinite: false
+                  });
+                  $('.show-collection .owl-carousel').owlCarousel({
+        loop:false,
+        responsiveClass:true,
+        dots: false,
+        nav: true,
+        autoWidth:true,
+        center: false,
+        navText: [
+          "<img src='https://cdn.shopify.com/s/files/1/0674/4591/5905/files/backward-arrow.svg' class=icon>",
+        	"<img src='https://cdn.shopify.com/s/files/1/0674/4591/5905/files/forward-arrow.svg' class=icon>"
+    		],
+        responsive:{
+            0:{
+                items:1,
+            },
+            600:{
+                items:3,
+                margin:20
+            },
+            1000:{
+                items: 5,
+                margin:32,
+            }
+        }
+      });
+
+                    $('.bxslider.ring-sizes').bxSlider({
+                      minSlides: 2,
+                      maxSlides: 8,
+                      hideControlOnEnd: true,
+                      slideWidth: 61,
+                      pager: false,
+                      touchEnabled: false,
+                      infiniteLoop: false,
+                      nextSelector: '#slider-next',
+                      prevSelector: '#slider-prev',
+                      prevText: '<img class=icon src=https://cdn.shopify.com/s/files/1/0674/4591/5905/files/backward-arrow.svg?v=1709790697>',
+                      nextText: '<img class=icon src=https://cdn.shopify.com/s/files/1/0674/4591/5905/files/forward-arrow.svg?v=1709790685>',
+                    });
+                    document.querySelector('.global-loadingState.prod').style.display = 'none';
+                    document.querySelector('.pro-img-con').classList.remove('loading');
+                  },2000)
+                  
+                oldHtml.querySelector(".prod-name .title h1").innerText = "{{ product.title }}";
+                oldHtml.querySelector(".pd-name h3").innerText = "{{ product.title }}";
+                document.getElementById("moisBtn").addEventListener("click", fetchAndFilterProducts);
+                $(".ring-sizer").removeClass("active");
+                $(".selection-button-wrapper").removeClass("check-preview");
+                $(".diamond-selector-modal").addClass("active");
+                $('.product-container').addClass('add-pad');
+                $(".selection-button-wrapper").removeClass("check-preview");
+                $(".selection-button-wrapper").addClass("active");
+
+                const observer = new MutationObserver((mutationsList, observer) => {
+                          // Check if the data you're looking for is present in the DOM
+                          if (document.querySelector('[data-id="' + urlId + '"]')) {
+                                document.getElementById('moissanite').querySelectorAll('table tr').forEach((e)=>{
+                                  e.classList.remove("active");
+                                })
+                                const active = document.querySelector('[data-id="' + urlId + '"]');
+                                active.checked = true;
+                                const activeParent = active.parentElement;
+                                activeParent.parentElement.classList.add("active");
+                          }
+                      });
+
+                      // Start observing changes to the DOM
+                      observer.observe(document.body, { childList: true, subtree: true });
+                
+                    document.querySelector("#moisBtn input").click();
+                  document.getElementById("defaultOpen").addEventListener("click", ()=>{
+                    document.querySelector('.global-loadingState.prod').style.display = 'flex';
+                    async function fetchProductByHandle() {
+                          const response = await fetch(`/products/{{ product.handle }}.json`);
+                          const data = await response.json();
+                          return data.product;
+                      }
+                      async function fetchVariantByTitle() {
+                        var size = document.querySelector('.bxslider.ring-sizes li[data-selected="true"]').getAttribute('data-value');
+                        var color = document.querySelector('.Color.variant-cats li[data-selected="true"]').getAttribute('data-value');
+                        var metal = document.querySelector('.Style.variant-cats li[data-selected="true"]').getAttribute('data-value');
+                        var variantTitle = `${color} / ${metal} / ${size}`; 
+                          try {
+                              const product = await fetchProductByHandle();
+
+                              // Find the variant with the matching title
+                              const variant = product.variants.find(v => v.title === variantTitle);
+
+                              if (variant) {
+                                  console.log('Variant found:', variant);
+                                  return fetchAgain(variant.id);
+                              } else {
+                                  console.log('Variant not found');
+                                  return null;
+                              }
+                          } catch (error) {
+                              console.error('Error fetching product or variant:', error);
+                          }
+                      }
+                      fetchVariantByTitle();   
+                      function fetchAgain(variantI){
+                    fetch(`/products/{{ product.handle }}?variant=${variantI}`)
+                    .then(response => response.text())
+                    .then((responseText) => {
+                        try{
+                              const html = new DOMParser().parseFromString(responseText, 'text/html');
+                              const oldHtml = document.getElementById("prodInfo");
+                              const newHtml = html.getElementById("prodInfo");
+                              oldHtml.innerHTML = newHtml.innerHTML;
+                              const oldScripts = document.querySelectorAll('[id^="proScrip"]');
+                              oldScripts.forEach(script => {
+                                  script.parentNode.removeChild(script);
+                              });
+                              // Populate new scripts
+               
+                                const newScripts = html.querySelectorAll('[id^="proScrip"]');
+                              newScripts.forEach(script => {
+                                  const newScript = document.createElement('script');
+                                  newScript.id = script.id;
+                                  newScript.text = script.text;
+                                  document.body.appendChild(newScript);
+                              });
+                              setTimeout(()=>{
+                                $('#thumbnail-slider').slick({
+                                  slidesToShow: 4,
+                                  slidesToScroll: 1,
+                                  draggable: false,
+                                  asNavFor: '#main-slider',
+                                  dots: false,
+                                  focusOnSelect: true,
+                                  arrows: true,
+                                  vertical: true,
+                                  verticalSwiping: true,
+                                  responsive: [
+                                      {
+                                        breakpoint: 1200,
+                                        settings: {
+                                          vertical: true,
+                                          verticalSwiping: true,
+                                        },
+                                      },
+                                      {
+                                        breakpoint: 992,
+                                        settings: {
+                                          vertical: false,
+                                          verticalSwiping: false,
+                                          slidesToShow: 4
+                                        },
+                                      }
+                                    ],
+                                });
+
+                                // Initialize Main Slider
+                                $('#main-slider').slick({
+                                  slidesToShow: 1,
+                                  slidesToScroll: 1,
+                                  draggable: false,
+                                  asNavFor: '#thumbnail-slider',
+                                  fade: true,
+                                  arrows: false,
+                                  infinite: false
+                                });
+                                $('.show-collection .owl-carousel').owlCarousel({
+        loop:false,
+        margin:32,
+        responsiveClass:true,
+        dots: false,
+        nav: true,
+        autoWidth:true,
+        center: false,
+        navText: [
+          "<img src='https://cdn.shopify.com/s/files/1/0674/4591/5905/files/backward-arrow.svg' class=icon>",
+        	"<img src='https://cdn.shopify.com/s/files/1/0674/4591/5905/files/forward-arrow.svg' class=icon>"
+    		],
+        responsive:{
+            0:{
+                items:1,
+            },
+            600:{
+                items:3,
+                margin:20
+            },
+            1000:{
+                items: 5,
+            }
+        }
+      });
+
+                              $('.bxslider.ring-sizes').bxSlider({
+                                minSlides: 2,
+                                maxSlides: 8,
+                                hideControlOnEnd: true,
+                                slideWidth: 61,
+                                pager: false,
+                                touchEnabled: false,
+                                infiniteLoop: false,
+                                nextSelector: '#slider-next',
+                                prevSelector: '#slider-prev',
+                                prevText: '<img class=icon src=https://cdn.shopify.com/s/files/1/0674/4591/5905/files/backward-arrow.svg?v=1709790697>',
+                                nextText: '<img class=icon src=https://cdn.shopify.com/s/files/1/0674/4591/5905/files/forward-arrow.svg?v=1709790685>',
+                              });
+                                  document.querySelector('.global-loadingState.prod').style.display = 'none';
+                                },2000)
+                                const observer = new MutationObserver((mutationsList, observer) => {
+                                        // Check if the data you're looking for is present in the DOM
+                                        if (document.querySelector('[data-id="' + urlId + '"]')) {
+                                              const active = document.querySelector('[data-id="' + urlId + '"]');
+                                              active.checked = false;
+                                              const activeParent = active.parentElement;
+                                              activeParent.parentElement.classList.remove("active");
+                                        }
+                                    });
+
+                                    // Start observing changes to the DOM
+                                    observer.observe(document.body, { childList: true, subtree: true });
+                                    $(".ring-sizer").removeClass("active");
+                                    $(".selection-button-wrapper").removeClass("check-preview");
+                                    $(".diamond-selector-modal").addClass("active");
+                                    $('.product-container').addClass('add-pad');
+                                    $(".selection-button-wrapper").removeClass("check-preview");
+                                    $(".selection-button-wrapper").addClass("active");
+                                    document.getElementById("moisBtn").addEventListener("click", fetchAndFilterProducts);
+                          }
+                            catch(error){
+                              console.error("An error occurred:", error);
+                            }
+                    })
+                    .catch(error => {
+                          console.error("Fetch error:", error);
+                      });
+                      }  
+                  });
+
+            } catch (error) {
+                console.error("An error occurred:", error);
+            }
+        })
+        .catch(error => {
+            console.error("Fetch error:", error);
+        });
+    }
+  </script>
+
+  <script id="proScrip1">
+    $(".prod-main-img")
+      // tile mouse actions
+      .on("mouseover", function() {
+    $(this)
+      .children("img")
+      .css({ transform: "scale(" + $(this).attr("data-scale") + ")" });
+      })
+      .on("mouseout", function() {
+    $(this)
+      .children("img")
+      .css({ transform: "scale(1)" });
+      })
+      .on("mousemove", function(e) {
+    $(this)
+      .children("img")
+      .css({
+        "transform-origin":
+          ((e.pageX - $(this).offset().left) / $(this).width()) * 100 +
+          "% " +
+          ((e.pageY - $(this).offset().top) / $(this).height()) * 100 +
+          "%"
+      });
+      })
+      .on("click", function() {
+    $(".prod-main-img").not($(this)).removeClass("zoomed"); // Remove zoomed class from all other images except this
+    $(this).toggleClass("zoomed"); // Toggle zoomed class on the clicked image
+      })
+      .on("mouseleave", function() {
+    $(this).removeClass("zoomed"); // Remove zoomed class when mouse leaves the item
+      });
+
+$(document).ready(function() {
+  // Function to check the condition and add the class
+  function checkAndAddClass() {
+    if ($('#product-list .carat-row input[type="radio"]:checked').length > 0) {
+      $('.selection-button-wrapper').addClass('hide-dia');
+    } else {
+      $('.selection-button-wrapper').removeClass('hide-dia');
+    }
+  }
+
+  // Attach change event listener to all radio buttons within carat-row
+  $('#product-list').on('change', '.carat-row input[type="radio"]', function() {
+    checkAndAddClass();
+  });
+
+  // Initial check in case a radio button is already checked when the page loads
+  checkAndAddClass();
+});
+
+
+
+      $(document).ready(function(){
+        $(".detail-info").hide();
+        $(".detail-button-txt").click(function(){
+          $(".detail-info").slideToggle();
+          $(this).toggleClass('active');
+        });
+      });
+      $(document).ready(function(){
+        // $(".select-size").hide();
+        $(".metal-selection").click(function(){
+          $(".variant-metal").addClass("active");
+          $('.price-bar-container').addClass('mob-hide');
+        });
+        $(".diamond-shape-selection").click(function(){
+          $(".show-collection").addClass("active");
+          $('.price-bar-container').addClass('mob-hide');
+        });
+        $(".diamond-type-selection").click(function(){
+          $(".diamond-selector-modal").addClass("active");
+          $('.price-bar-container').addClass('mob-hide');
+          if( (document.getElementById('moisBtn').classList.contains('active') && document.getElementById('moisBtn').classList.contains('fixed-diamond')) || (document.getElementById('defaultOpen').classList.contains('active') && document.getElementById('defaultOpen').classList.contains('fixed-diamond'))){
+           
+          }
+          else{
+            $('.product-container').addClass('add-pad');
+          }
+        });
+        $(".select-diamond").click(function(){
+          $(".diamond-selector-modal").addClass('active');
+          $(".selection-button-wrapper").addClass('active');
+          $(".product-container").addClass('add-pad');
+        });
+        $(".select-size").click(function(){
+          $(".ring-sizer").addClass("active");
+          $(".selection-button-wrapper").addClass("check-preview");
+        });
+        $(".go-back-button").click(function(){
+          $(".ring-sizer").removeClass("active");
+          $(".selection-button-wrapper").removeClass("check-preview");
+        });
+        $(".done").click(function(){
+          $(".full-screen-modal").removeClass("active");
+          $('.product-container').removeClass('add-pad');
+          $('.price-bar-container').removeClass('mob-hide');
+          if ($(".diamond-selector-modal").hasClass('active')) {
+            $(".selection-button-wrapper").addClass("dia-hide");
+            // $(".select-diamond").hide();
+          }
+        });
+        $(".item.metal-selection, .item.diamond-shape-selection, .item.diamond-type-selection").click(function(){
+          $(".selection-button-wrapper").addClass("active");
+        });
+        $(".done").click(function(){
+          $(".selection-button-wrapper").removeClass("active");
+        });
+        $(".est-price svg").click(function(){
+          $(".est-price-modal").addClass('active')
+        });
+        $(".est-price-modal .cross").click(function(){
+          $(".est-price-modal").removeClass('active')
+        });
+        $(".ring-guide-open").click(function(){
+          $(".ring-guide-modal").addClass('active');
+          $("body").css("overflow","hidden");
+        });
+        $(".rgm-cross").click(function(){
+          $(".ring-guide-modal").removeClass('active');
+          $("body").css("overflow","auto");
+        });
+          function cartUpdate(){
+              $.ajax({
+                url: '/cart.json',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    if (data.items.length > 0) {
+    
+          
+                      var cartItemsHtml = '';
+                      data.items.forEach(function(item,index) {
+                        var itemPrice = Shopify.formatMoney(item.line_price);
+                        var isRingProduct = item.product_type === 'ring' || item.product_type === 'moissanite';
+                        var isDiamondProduct = item.product_type === 'diamond';
+                        var isEngraving = item.product_type === 'engraving';
+                        var engravingPrice = 10000;
+                        // Skip adding diamond products directly to the cart HTML
+                        if (isDiamondProduct || isEngraving) {
+                            return;
+                        }
+
+                      // Check if the previous item was a diamond and the current item is a ring
+                      var previousItem = data.items[index - 1];
+                      var isPreviousDiamond = previousItem && previousItem.product_type === 'diamond';
+
+                      cartItemsHtml += `
+                          <div class="product-add-on flex">
+                              <div class="product-add-on-left">
+                                  <div class="product-add-on-empty-div"></div>
+                                  <div class="product-add-on-image">
+                                      <img loading="lazy" class="img" src="${item.image}">
+                                  </div>
+                              </div>
+                              <div class="product-add-on-right flex flex-c">
+                                  <div class="product-add-on-price-title flex align-b flex-jsb">
+                                      <div class="product-add-on-title">${item.product_title}<span class="tdf-cart-item-t"></span></div>
+                                      <div class="product-add-on-remove"><span>Remove</span></div>
+                                  </div>
+                                  <div class="product-add-on-variant-title-price flex align-b flex-jsb">
+                                      <div class="product-add-on-variant-title"><span>${item.variant_title}"</span></div>
+                                      <div data-pi="${item.variant_id}" class="product-add-on-variant-price"><span>${itemPrice}</span></div>
+                                  </div>
+                                  ${item.properties["Message"] ? 
+                                      `<div class="product-add-on-variant-title-price flex align-b flex-jsb">
+                                            <div data-ei="44979292406017" class="product-add-on-variant-title"><span>Engraving: "${item.properties["Message"]}"</span></div>
+                                            <div class="product-add-on-variant-price"><span>${Shopify.formatMoney(engravingPrice)}</span></div>
+                                        </div>
+                                    ` 
+                                      : 
+                                      ''
+                                  }
+                                  ${item.properties["Diamond"] ? 
+                                      `<div class="product-add-on-variant-title-price flex align-b flex-jsb">
+                                            <div class="product-add-on-variant-title"><span>Diamond: "${item.properties["Diamond"]}"</span></div>
+                                        </div>
+                                    ` 
+                                      : 
+                                      ''
+                                  }
+                                  ${
+                                      isRingProduct && isPreviousDiamond ?
+                                      // Add the previous diamond information inside the current ring product
+                                      (function() {
+                                          var diamondItem = previousItem;
+                                          var diaPrice = Shopify.formatMoney(diamondItem.line_price);
+                                          var totalAmount = Shopify.formatMoney(item.line_price + diamondItem.line_price);
+                                          return `
+                                              <div class="product-add-on-variant-title-price">
+                                                  <div class="product-add-on-variant-title-diamond flex align flex-jsb">
+                                                      <span>Stone</span>
+                                                      <div class="product-add-on-variant-price"><span>${diaPrice}</span></div>
+                                                  </div>
+                                                  <div data-di="${diamondItem.variant_id}" class="product-add-on-variant-title"><span>${diamondItem.variant_title}</span></div>
+                                              </div>
+                                          `;
+                                      })() : ''
+                                  }
+                                  ${ 
+                                    item.properties["Message"] || (isRingProduct && isPreviousDiamond) ? 
+                                      (function() {
+                                          
+                                            if((item.properties["Message"] && isRingProduct) && !isPreviousDiamond){
+                                              var totalAmount = Shopify.formatMoney(item.line_price + 10000);
+                                            }
+                                            else if(item.properties["Message"] && isRingProduct && isPreviousDiamond){
+                                              var diamondItem = previousItem;
+                                              var diaPrice = Shopify.formatMoney(diamondItem.line_price);
+                                              var totalAmount = Shopify.formatMoney(item.line_price + diamondItem.line_price + 10000);
+                                            }
+                                            else if(isRingProduct && isPreviousDiamond){
+                                              var diamondItem = previousItem;
+                                              var diaPrice = Shopify.formatMoney(diamondItem.line_price);
+                                              var totalAmount = Shopify.formatMoney(item.line_price + diamondItem.line_price);
+                                            }
+                                            return `
+                                            <div class="product-add-on-variant-title-price">
+                                                  <div class="product-add-on-variant-title-diamond flex align flex-jsb">
+                                                      <span>Total</span>
+                                                      <div class="product-add-on-variant-price"><span>${totalAmount}</span></div>
+                                                  </div>
+                                              </div>
+                                            `;
+                                        })() : ''
+                                  }
+                              </div>
+                          </div>
+                      `;
+                          });
+                                  $('#cartItems').html(cartItemsHtml);
+
+                                      var dataPrice = Shopify.formatMoney(data.total_price)
+                                      // Populate cart summary
+                                      var cartSummaryHtml = `
+                                          <div class="product-added-desc-down">
+                                              <div class="product-added-desc-down-total-price">
+                                                  <div class="product-added-desc-down-total">order summary</div>
+                                                  <div class="product-added-desc-down-sub flex align flex-jsb">
+                                                      <span>Subtotal</span>
+                                                      <span class="mon">${dataPrice}</span>
+                                                  </div>
+                                                   <div class="product-added-desc-down-sub flex align flex-jsb">
+                                                    <span>Shipping</span>
+                                                    <span class="mon shipping">Calculated at checkout</span>
+                                                </div>
+                                                <div class="product-added-desc-down-sub flex align flex-jsb">
+                                                    <span>Tax</span>
+                                                    <span class="mon tax">Calculated at checkout</span>
+                                                </div>
+                                              </div>   
+                                              <div class="product-added-desc-down-total-final flex align flex-jsb">
+                                                  <div class="product-added-desc-down-total">total</div>
+                                                  <span>${dataPrice}</span>
+                                              </div>
+                                          </div>
+                                          <a class="product-buy-now-btn-a" href="/checkout/">
+                                            <div class="product-buy-now-btn">
+                                              <button class="predictive-btn">Checkout</button>
+                                            </div>
+                                          </a>
+                                      `;
+                                      $('#cartSummary').html(cartSummaryHtml);
+                                  } else {
+                                      // Display message when cart is empty
+                                      $('#cartItems').html('<div class="side-cart-empty flex align flex-jsc"><h4 style="text-align:center;">No items in the cart</h4></div>');
+                                      $('#cartSummary').html(''); // Clear cart summary
+                                  }
+                                  document.querySelector('.global-loadingState.prod').style.display = 'none';
+                                  document.body.classList.add('js-my-cart-open');
+                              },
+                              error: function(xhr, status, error) {
+                                  console.error('Error fetching cart data:', error);
+                              }
+              });
+          }
+          $(".sumbit-product").click(async function() {
+    document.querySelector('.global-loadingState.prod').style.display = 'flex';
+    let addToCartForm1 = document.getElementById('sVariantId').value;
+    let addToCartForm2 = document.getElementById('sVariantId1').value;
+    let engravingCheckbox = document.querySelector('#message').value;
+
+    let formData = {
+        items: [
+            {
+                id: addToCartForm1,
+                quantity: 1,
+                properties: {
+                    Message: engravingCheckbox,
+                    Difference: addToCartForm2
+                }
+            }
+        ]
+    };
+
+    if (
+        (document.getElementById('moisBtn').classList.contains('active') && document.getElementById('moisBtn').classList.contains('fixed-diamond')) ||
+        (document.getElementById('defaultOpen').classList.contains('active') && document.getElementById('defaultOpen').classList.contains('fixed-diamond'))
+    ) {
+        let activeButton;
+        if (document.getElementById('moisBtn').classList.contains('active')) {
+            activeButton = document.getElementById('moisBtn');
+        } else if (document.getElementById('defaultOpen').classList.contains('active')) {
+            activeButton = document.getElementById('defaultOpen');
+        }
+
+        // Add the 'diamond' property to the formData
+        if (activeButton) {
+            let diamondValue = activeButton.querySelector('label').innerText;
+            formData.items[0].properties.Diamond = diamondValue;
+        }
+    }
+
+    if (addToCartForm2.length > 0) {
+        formData.items.push({
+            id: addToCartForm2,
+            quantity: 1,
+            properties: {
+                    labDifference: addToCartForm1,
+                    textDifference: engravingCheckbox
+                }
+        });
+    }
+
+    var engravingVariantId = '44979292406017';
+    if (engravingCheckbox.trim() !== "") {
+        formData.items.push({
+            id: engravingVariantId,
+            quantity: 1,
+            properties: {
+                isEngravingFee: true,
+                engraveDiff: addToCartForm1
+            }
+        });
+    }
+
+    try {
+        await fetch(window.Shopify.routes.root + 'cart/add.js', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
+       await cartUpdate();
+    } catch (error) {
+        console.error('Error:', error);
+        await  cartUpdate();
+    }
+    });
+
+               
+              }); 
+      $(document).ready(function(){
+        $(".add-engraving").click(function(e){
+          e.stopPropagation(); // Prevent click event from bubbling up to the body
+          $("#engravingModal").addClass('active');
+          $("body").addClass('engraving-modal-on');
+        });
+
+    
+
+        // Click event for anywhere in the document
+        $(document).click(function(e) {
+            if (!$(e.target).closest('#engravingModal').length) {
+                // If the click is not within .shopify-block.shopify-app-block
+                $("#engravingModal").removeClass('active');
+                $("body").removeClass('engraving-modal-on');
+            }
+        });
+        // Function to handle keydown event (e.g., escape key)
+        $(document).keydown(function(e) {
+            if (e.keyCode === 27) { // Check if the pressed key is the escape key (keyCode 27)
+            $("#engravingModal").removeClass('active');
+                $("body").removeClass('engraving-modal-on');
+            }
+        });
+        // Find the elements with the specified class
+    var blocks = document.querySelectorAll('#engravingModal button');
+
+    // Iterate over each found block
+    blocks.forEach(function(block) {
+    // Create a new button element
+    
+
+    // Add event listener for button click
+    block.addEventListener('click', function() {
+        // Remove the 'active' class from the block
+        document.getElementById('engravingModal').classList.remove('active');
+        // Remove the 'engraving-modal-on' class from the body
+        document.body.classList.remove('engraving-modal-on');
+    });
+      
+    });
+    });
+  </script>
+
+  <script>
+    class VariantSelector extends HTMLElement {
+      constructor() {
+    super();
+    this.addEventListener("click", this.onVariantClick.bind(this));
+      }
+      
+      onVariantClick(event) {
+    const clickedOption = event.target.closest("li[data-value]");
+    if (!clickedOption) return;
+    
+    const category = clickedOption.getAttribute("data-category");
+    
+    // Deselect all variants in the same category
+    const variantsInCategory = Array.from(this.querySelectorAll(`li[data-category="${category}"]`));
+    variantsInCategory.forEach((variant) => {
+      variant.removeAttribute("data-selected");
+    });
+    
+    this.toggleOptionSelection(clickedOption);
+    this.getSelectedOptions();
+    this.getSelectedVariant();
+    this.filterImgVariant();
+    
+    if (this.currentVariant) {
+      this.updateURL();
+      this.updateFormID();
+      this.updatePrice(); // Update the price when the variant changes
+      this.updateVariantTitle(); // Update the variant title
+    }
+      }
+      
+      filterImgVariant() {
+    if (this.currentVariant.featured_image && this.currentVariant.featured_image.alt) {
+      document.querySelectorAll('[thumbnail-alt]').forEach(thumbnail => {
+        thumbnail.setAttribute('thumbnail-alt', this.currentVariant.featured_image.alt);
+      });
+    }
+      }
+      
+      toggleOptionSelection(optionElement) {
+    const isSelected = optionElement.getAttribute("data-selected") === "true";
+    if (isSelected) {
+      optionElement.removeAttribute("data-selected");
+    } else {
+      optionElement.setAttribute("data-selected", "true");
+    }
+      }
+      
+      getSelectedOptions() {
+    this.options = [];
+    
+    // Get all options with the class "variant-cats"
+    const allOptions = this.querySelectorAll('.variant-cats');
+    
+    allOptions.forEach((option) => {
+      const input = option.querySelector('input[type="radio"]:checked');
+      if (input) {
+        this.options.push(input.value);
+      } else {
+        const selectedValue = option.querySelector('li[data-selected="true"]');
+        if (selectedValue) {
+          this.options.push(selectedValue.getAttribute('data-value'));
+        }
+      }
+    });
+      }
+      
+      getVariantJSON() {
+    this.variantData = this.variantData || JSON.parse(this.querySelector('[type="application/json"]').textContent);
+    return this.variantData;
+      }
+      
+      getSelectedVariant() {
+    this.currentVariant = this.getVariantJSON().find((variant) => {
+      // Check if each option value matches
+      return this.options.every((option, index) => {
+        return variant.options[index] === option;
+      });
+    });
+      }
+      
+      updateURL() {
+    if (!this.currentVariant) return;
+    document.querySelector('.global-loadingState.prod').style.display = 'flex';
+    document.querySelector('.pro-img-con').classList.add('loading');
+          fetch(`${this.dataset.url}?variant=${this.currentVariant.id}`)
+        .then(response => response.text())
+        .then((responseText) => {
+          const html = new DOMParser().parseFromString(responseText, 'text/html');
+          const oldHtml = document.getElementById('prodImgSlide');
+          const newHtml = html.getElementById('prodImgSlide');
+          oldHtml.innerHTML = newHtml.innerHTML;
+          setTimeout(()=>{
+            $('#thumbnail-slider').slick({
+              slidesToShow: 4,
+              draggable: false,
+              slidesToScroll: 1,
+              asNavFor: '#main-slider',
+              dots: false,
+              focusOnSelect: true,
+              arrows: true,
+              vertical: true,
+              verticalSwiping: true,
+              responsive: [
+                        {
+                          breakpoint: 1200,
+                          settings: {
+                            vertical: true,
+                            verticalSwiping: true,
+                            slidesToShow: 4,
+                          },
+                        },
+                        {
+                          breakpoint: 992,
+                          settings: {
+                            vertical: false,
+                            verticalSwiping: false,
+                          },
+                        }
+                      ],
+            });
+
+            // Initialize Main Slider
+            $('#main-slider').slick({
+              slidesToShow: 1,
+              draggable: false,
+              slidesToScroll: 1,
+              asNavFor: '#thumbnail-slider',
+              fade: true,
+              arrows: false,
+              infinite: false
+            });
+
+            $(".prod-main-img")
+      // tile mouse actions
+                .on("mouseover", function() {
+              $(this)
+                .children("img")
+                .css({ transform: "scale(" + $(this).attr("data-scale") + ")" });
+                })
+                .on("mouseout", function() {
+              $(this)
+                .children("img")
+                .css({ transform: "scale(1)" });
+                })
+                .on("mousemove", function(e) {
+              $(this)
+                .children("img")
+                .css({
+                  "transform-origin":
+                    ((e.pageX - $(this).offset().left) / $(this).width()) * 100 +
+                    "% " +
+                    ((e.pageY - $(this).offset().top) / $(this).height()) * 100 +
+                    "%"
+                });
+                })
+                .on("click", function() {
+              $(".prod-main-img").not($(this)).removeClass("zoomed"); // Remove zoomed class from all other images except this
+              $(this).toggleClass("zoomed"); // Toggle zoomed class on the clicked image
+                })
+                .on("mouseleave", function() {
+              $(this).removeClass("zoomed"); // Remove zoomed class when mouse leaves the item
+                });
+                $(document).ready(function() {
+              document.querySelectorAll('#carat-options .product-radio').forEach((e)=>{
+                const firstImage = document.querySelector('#main-slider .slick-track .item.slick-slide .prod-main-img img').src;
+                console.log("First Image Src: ", firstImage);
+                e.addEventListener('click', ()=>{
+                  var carat = parseInt(e.parentElement.parentElement.getAttribute('data-carat'));
+                  var color = document.querySelector('.Color.variant-cats li[data-selected="true"]').getAttribute('data-value');
+                  console.log("This is the carat value", carat);
+                  console.log(color);
+                  if(carat === 1 ){
+                    document.querySelector('#main-slider .slick-track .item.slick-slide .prod-main-img img').src = firstImage;
+                    document.querySelector('#thumbnail-slider .slick-track .item.slick-slide .prod-thumb-img img').src = firstImage;
+                  }
+                  if(carat === 2){
+                    if(color === 'Yellow Gold'){
+                      if(document.querySelector('.product-diamonds-images .two-carat-images img[data-carat="twoYellow"]')){
+                        var src = document.querySelector('.product-diamonds-images .two-carat-images img[data-carat="twoYellow"]').src;
+                        document.querySelector('#main-slider .slick-track .item.slick-slide .prod-main-img img').src = src;
+                        document.querySelector('#thumbnail-slider .slick-track .item.slick-slide .prod-thumb-img img').src = src;
+                      }
+                      
+                    } 
+                    else if (color === 'Rose Gold'){
+                      if(document.querySelector('.product-diamonds-images .two-carat-images img[data-carat="twoRose"]')){
+                        var src = document.querySelector('.product-diamonds-images .two-carat-images img[data-carat="twoRose"]').src;
+                        document.querySelector('#main-slider .slick-track .item.slick-slide .prod-main-img img').src = src;
+                        document.querySelector('#thumbnail-slider .slick-track .item.slick-slide .prod-thumb-img img').src = src;
+                      }
+                    }
+                    else if (color === 'White Gold'){
+                      if(document.querySelector('.product-diamonds-images .two-carat-images img[data-carat="twoWhite"]')){
+                      var src = document.querySelector('.product-diamonds-images .two-carat-images img[data-carat="twoWhite"]').src;
+                      document.querySelector('#main-slider .slick-track .item.slick-slide .prod-main-img img').src = src;
+                      document.querySelector('#thumbnail-slider .slick-track .item.slick-slide .prod-thumb-img img').src = src;
+                      }
+                    }
+                  }
+                  if(carat === 3){
+                    if(color === 'Yellow Gold'){
+                      if(document.querySelector('.product-diamonds-images .three-carat-images img[data-carat="threeYellow"]')){
+                      var src = document.querySelector('.product-diamonds-images .three-carat-images img[data-carat="threeYellow"]').src;
+                      document.querySelector('#main-slider .slick-track .item.slick-slide .prod-main-img img').src = src;
+                      document.querySelector('#thumbnail-slider .slick-track .item.slick-slide .prod-thumb-img img').src = src;
+                      }
+                    } 
+                    else if (color === 'Rose Gold'){
+                      if(document.querySelector('.product-diamonds-images .three-carat-images img[data-carat="threeRose"]')){
+                      var src = document.querySelector('.product-diamonds-images .three-carat-images img[data-carat="threeRose"]').src;
+                      document.querySelector('#main-slider .slick-track .item.slick-slide .prod-main-img img').src = src;
+                      document.querySelector('#thumbnail-slider .slick-track .item.slick-slide .prod-thumb-img img').src = src;
+                      }
+                    }
+                    else if (color === 'White Gold'){
+                      if(document.querySelector('.product-diamonds-images .three-carat-images img[data-carat="threeWhite"]')){
+                      var src = document.querySelector('.product-diamonds-images .three-carat-images img[data-carat="threeWhite"]').src;
+                      document.querySelector('#main-slider .slick-track .item.slick-slide .prod-main-img img').src = src;
+                      document.querySelector('#thumbnail-slider .slick-track .item.slick-slide .prod-thumb-img img').src = src;
+                      }
+                    }
+                  }
+                  if(carat === 4){
+                    if(color === 'Yellow Gold'){
+                      if(document.querySelector('.product-diamonds-images .four-carat-images img[data-carat="fourYellow"]')){
+                      var src = document.querySelector('.product-diamonds-images .four-carat-images img[data-carat="fourYellow"]').src;
+                      document.querySelector('#main-slider .slick-track .item.slick-slide .prod-main-img img').src = src;
+                      document.querySelector('#thumbnail-slider .slick-track .item.slick-slide .prod-thumb-img img').src = src;
+                      }
+                    } 
+                    else if (color === 'Rose Gold'){
+                      if(document.querySelector('.product-diamonds-images .four-carat-images img[data-carat="fourRose"]')){
+                      var src = document.querySelector('.product-diamonds-images .four-carat-images img[data-carat="fourRose"]').src;
+                      document.querySelector('#main-slider .slick-track .item.slick-slide .prod-main-img img').src = src;
+                      document.querySelector('#thumbnail-slider .slick-track .item.slick-slide .prod-thumb-img img').src = src;
+                      }
+                    }
+                    else if (color === 'White Gold'){
+                      if(document.querySelector('.product-diamonds-images .four-carat-images img[data-carat="fourWhite"]')){
+                      var src = document.querySelector('.product-diamonds-images .four-carat-images img[data-carat="fourWhite"]').src;
+                      document.querySelector('#main-slider .slick-track .item.slick-slide .prod-main-img img').src = src;
+                      document.querySelector('#thumbnail-slider .slick-track .item.slick-slide .prod-thumb-img img').src = src;
+                      }
+                    }
+                  }
+                
+                })
+              })
+        });
+                document.querySelector('.global-loadingState.prod').style.display = 'none';
+                document.querySelector('.pro-img-con').classList.remove('loading');
+          },2000)
+          
+        })
+
+        .catch(error => console.error('Error fetching product HTML:', error));
+      }
+      
+      updateFormID() {
+    const form_input = document.querySelector("#product-form").querySelector('input[name="id"]');
+    form_input.value = this.currentVariant.id;
+      }
+      
+      updatePrice() {
+        fetch(`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${this.dataset.section}`)
+      .then((response) => response.text())
+      .then((responseText) => {
+    const html = new DOMParser().parseFromString(responseText, 'text/html');
+    const oldPrice = document.getElementById('price-{{ section.id }}');
+    const newPrice = html.getElementById('price-{{ section.id }}');
+    if (oldPrice && newPrice) {
+      oldPrice.innerHTML = newPrice.innerHTML;
+      const selectedVariantLabels = document.querySelectorAll(".selected-value");
+      const variantTitles = document.querySelectorAll(".variant-title");
+
+      selectedVariantLabels.forEach((label, index) => {
+        const optionValue = this.options[index]; // Get the selected option value
+        label.textContent = optionValue; // Update label with option value
+        
+        // Update the summary-metal div with the same text
+        const summaryMetalDiv = document.getElementById('summary-metal');
+        if(summaryMetalDiv) {
+          summaryMetalDiv.textContent = optionValue;
+        }
+      });
+    }
+      });
+
+      }
+
+      updateVariantTitle() {
+    const variantTitleElement = document.getElementById('variantTitle');
+    const summaryMatalElement = document.getElementById('summary-size');
+    
+    if (variantTitleElement && summaryMatalElement) {
+        // Display the full variant title in variantTitleElement
+        const newTitle = this.currentVariant.title.replace(/\//g, ',');
+        variantTitleElement.textContent = newTitle;
+
+        // Extract the third option from the variant title
+        const titleParts = this.currentVariant.title.split('/');
+        if (titleParts.length >= 3) {
+            const thirdOption = titleParts[2];
+            summaryMatalElement.textContent = thirdOption;
+        }
+    }
+    }
+
+    }
+
+    customElements.define("variant-selector", VariantSelector);
+
+  </script>
+
+  <script id="proScrip3">
+      // document.addEventListener("DOMContentLoaded", function() {
+      //     var radioButtons = document.querySelectorAll('.product-radio.lab');
+      //     var priceDisplay = document.querySelector('.selected-product-price.lab');
+      
+      //     radioButtons.forEach(function(radioButton) {
+      // radioButton.addEventListener('change', function() {
+      //   var selectedPrice = this.getAttribute('data-price');
+      //   priceDisplay.textContent = selectedPrice;
+      // });
+      //     });
+      // });
+
+      // document.addEventListener("DOMContentLoaded", function() {
+      //     var radioButtons1 = document.querySelectorAll('.product-radio.moissanite');
+      //     var priceDisplay1 = document.querySelector('.selected-product-price.moissanite');
+      
+      //     radioButtons1.forEach(function(radioButton1) {
+      // radioButton1.addEventListener('change', function() {
+      //   var selectedPrice1 = this.getAttribute('data-price');
+      //   priceDisplay1.textContent = selectedPrice1;
+      // });
+      //     });
+      // });
+
+      $(document).ready(function() {
+        $('.tablinks').click(function() {
+          // Find the radio button inside this tab
+          var radioButton = $(this).find('input[type="radio"]');
+          
+          // Check the radio button
+          radioButton.prop('checked', true);
+          // Slide up all active-content elements
+          $('.active-content').not($(this).children('.active-content')).slideUp();
+          $(this).children('.active-content').slideDown();
+        });
+      });
+
+      // $(document).ready(function(){
+      //   $('.tablinks').click(function{
+      //     $(this).find('.active-content').slideToggle();
+      //   })
+      // });
+
+  </script>
+
+  <script>
+       $(document).ready(function(){
+    // Initialize Thumbnail Slider
+    $('#thumbnail-slider').slick({
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      draggable:false,
+      asNavFor: '#main-slider',
+      dots: false,
+      focusOnSelect: true,
+      arrows: true,
+      vertical: true,
+      verticalSwiping: true,
+      responsive: [
+                        {
+                          breakpoint: 1200,
+                          settings: {
+                            vertical: true,
+                            verticalSwiping: true,
+                            slidesToShow: 6,
+                          },
+                        },
+                        {
+                          breakpoint: 992,
+                          settings: {
+                            vertical: false,
+                            verticalSwiping: false,
+                          },
+                        }
+                      ],
+    });
+
+    // Initialize Main Slider
+    $('#main-slider').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      draggable:false,
+      asNavFor: '#thumbnail-slider',
+      fade: true,
+      arrows: false,
+      infinite: false
+    });
+      });
+
+      $('.show-collection .owl-carousel').owlCarousel({
+        loop:false,
+        margin:32,
+        responsiveClass:true,
+        dots: false,
+        nav: true,
+        autoWidth:true,
+        center: false,
+        navText: [
+          "<img src='https://cdn.shopify.com/s/files/1/0674/4591/5905/files/backward-arrow.svg' class=icon>",
+        	"<img src='https://cdn.shopify.com/s/files/1/0674/4591/5905/files/forward-arrow.svg' class=icon>"
+    		],
+        responsive:{
+            0:{
+                items:1,
+            },
+            600:{
+                items:3,
+                margin:20
+            },
+            1000:{
+                items: 5,
+            }
+        }
+      });
+
+      $('.bxslider.ring-sizes').bxSlider({
+        minSlides: 2,
+        maxSlides: 8,
+        hideControlOnEnd: true,
+        slideWidth: 61,
+        pager: false,
+        touchEnabled: false,
+        infiniteLoop: false,
+        nextSelector: '#slider-next',
+        prevSelector: '#slider-prev',
+        prevText: '<img class=icon src=https://cdn.shopify.com/s/files/1/0674/4591/5905/files/backward-arrow.svg?v=1709790697>',
+        nextText: '<img class=icon src=https://cdn.shopify.com/s/files/1/0674/4591/5905/files/forward-arrow.svg?v=1709790685>',
+      });
+
+  </script>
+
+  <script id="proScrip5">
+    $(document).ready(function() {
+    // Event handler for range input
+    $("#carat-range").on("input", function() {
+        var selectedCarat = parseFloat($(this).val());
+        $("#carat-range-display").text(selectedCarat.toFixed(2)); // Update displayed range
+
+        // Store the first row and get the remaining rows
+        var firstRow = $("#carat-options-table tr:first");
+        var rows = $("#carat-options-table tr").not(":first").get();
+
+        // Sort the remaining rows based on proximity to selectedCarat
+        rows.sort(function(a, b) {
+            var caratA = parseFloat($(a).data("carat"));
+            var caratB = parseFloat($(b).data("carat"));
+            var diffA = Math.abs(caratA - selectedCarat);
+            var diffB = Math.abs(caratB - selectedCarat);
+            return diffA - diffB;
+        });
+
+        // Clear the table and append the rows back in the sorted order
+        $("#carat-options-table").empty();
+        $("#carat-options-table").append(firstRow); // Append the first row
+        $.each(rows, function(index, row) {
+            $("#carat-options-table").append(row); // Append the remaining sorted rows
+        });
+    });
+
+    // Event delegation for radio buttons
+    $(document).on("click", ".carat-row input[type='radio']", function() {
+        $(".carat-row").removeClass("active");
+        $(this).closest(".carat-row").addClass("active"); 
+        if($('#addtocartform .carat-row').hasClass('active')){
+          var value = $("#addtocartform input[type='radio']:checked").data("id");
+          $("input#sVariantId1").val(value);
+          var value1 = $("#addtocartform input[type='radio']:checked").data("prod-id");
+          $("#addtocartform input[name=product-id]").val(value1);
+          $('.selection-button-wrapper').addClass('hide-dia');
+        }
+        // else if($('#addtocartform1 .carat-row').hasClass('active')){
+        //   var value2 = $("#addtocartform1 input[type='radio']:checked").data("id");
+        //   console.log(value2);
+        //   $("input#sVariantId2, #addtocartform1 input[name=product-id]").val(value2);
+        // }
+    });
+    });
+
+    function updateSliderValue(value) {
+      var display = document.getElementById("carat-range-display");
+      display.innerHTML = value;
+
+      // Get the range input element
+      var range = document.getElementById("carat-range");
+
+      // Calculate the percentage value of the slider
+      var percentage = ((value - range.min) / (range.max - range.min)) * 100;
+
+      // Calculate the position of the thumb
+      var thumbWidth = 16; // Adjust this value if your thumb has a different width
+      var thumbPosition = (percentage / 100) * (range.offsetWidth - thumbWidth);
+
+      // Set the left position of the span element
+      display.style.left = `calc(${thumbPosition}px - ${display.offsetWidth / 2}px)`;
+    }
+  </script>
+
+  <script id="proScrip6">
+    function openCity(evt, cityName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+        tabcontent[i].classList.remove("active");
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      var cityElement = document.getElementById(cityName);
+      cityElement.style.display = "block";
+      cityElement.classList.add("active");
+      evt.currentTarget.className += " active";
+    }
+    
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+
+    // $(".tabcontent").each(function() {
+    //     // Check if the display property of current .tabcontent is "none"
+    //     if (!$(this).hasClass("active")) {
+    //         // Find the closest .carat-row and uncheck its radio input
+    //         $(this).closest("input[type='radio']").prop('checked', false);
+    //     }
+    // });
+      // Add click event listener to the preview element
+      document.querySelector('.preview').addEventListener('click', function() {
+        // document.querySelector('.go-back-button').
+    // Find the selected radio button within the active tabcontent
+           if (document.getElementById('defaultOpen').classList.contains('active') && document.getElementById("sVariantId1").value.trim() !== "") {
+                var checkedRadio = document.querySelector('.tabcontent.active input[type="radio"]:checked');
+                if (checkedRadio) {
+                  // Get the value of the selected radio button (assuming it's the product ID)
+                  var selectedValue = checkedRadio.dataset.handle;
+                  // Fetch product information using the selected value (assuming it's the product ID)
+                  fetch(window.Shopify.routes.root + 'products/' + selectedValue + '.js')
+                    .then(response => response.json())
+                    .then(product => {
+                      // Check inventory information (modify based on your data structure)
+                      // var variantAvailable = product.variants.some(variant => variant.inventory_quantity > 0);
+                      
+                      // if (variantAvailable) {
+                      //   alert('This product has at least one variant in stock!');
+                      // } else {
+                      //   alert('This product is currently out of stock.');
+                      // }
+                      // Check if the active tabcontent has the ID "lab-diamond"
+                      var isLabDiamond = document.querySelector('.tabcontent.active').id === 'lab-diamond';
+                      if (isLabDiamond) {
+                        document.getElementById('summaryStone').innerHTML = product.options[0].values + ' ' + 'Carat';
+                      // Update stoneType element
+                      document.getElementById('stoneType').innerHTML = 'Lab Diamond';
+                      document.getElementById('stoneDesp').innerHTML = product.options[1].values + ' Clarity' + ', ' + product.options[2].values+ ' Colour' ;
+                      } else {
+                        var productName = checkedRadio.getAttribute('data-prod-name');
+                        // Display general product information based on options 0 selected value
+                        document.getElementById('summaryStone').innerHTML = productName + ' ' + 'Carat';
+                        document.getElementById('stoneType').innerHTML = 'Moissanite';
+                      }
+                    })
+                    .catch(error => {
+                          console.error(error);
+                    });
+                } 
+                $(".ring-sizer.full-screen-modal.active").removeClass('active');
+                $("li.stepper-steps").removeClass('not-visited');
+                $(".preview, .product-glossary, .est-price").hide();
+                $('.final-summary').show();
+                $('.sumbit-product').show();
+                  var sellPrice =  $(".sell-price").text(); // Get the initial value from sell-price
+                  var sellPriceNumber = parseInt(sellPrice.replace(/[^\d]/g, '')); // Remove dollar sign and convert to decimal
+                  var total = sellPriceNumber;
+                  var pricing = parseFloat($(".tabcontent.active input[type='radio']:checked").data('price')); // Convert price to floating-point number
+                      if (isNaN(pricing)) {
+                          pricing = 0;
+                      }
+             console.log(pricing);
+             console.log(sellPrice);
+                  var engravingCheckbox = document.querySelector('#message');
+                    if (engravingCheckbox) {
+                        if (engravingCheckbox.value.trim().length > 0) {
+                              total = total + 10000;
+                        } 
+                      }  
+                  $(".sell-price").text(Shopify.formatMoney(total + pricing, "{{money}}"));
+            }
+            else if(document.getElementById('moisBtn').classList.contains('active') && document.getElementById("sVariantId1").value.trim() === ""){
+              var checkedRadio = document.querySelector('.tabcontent.active input[type="radio"]:checked');
+                if (checkedRadio) {
+                  // Get the value of the selected radio button (assuming it's the product ID)
+                  var selectedValue = checkedRadio.dataset.handle;
+
+                  // Update the value of the hidden input field
+                 
+
+                  // Fetch product information using the selected value (assuming it's the product ID)
+                  fetch(window.Shopify.routes.root + 'products/' + selectedValue + '.js')
+                    .then(response => response.json())
+                    .then(product => {
+                      // Check inventory information (modify based on your data structure)
+                      // var variantAvailable = product.variants.some(variant => variant.inventory_quantity > 0);
+                      
+                      // if (variantAvailable) {
+                      //   alert('This product has at least one variant in stock!');
+                      // } else {
+                      //   alert('This product is currently out of stock.');
+                      // }
+                      // Check if the active tabcontent has the ID "lab-diamond"
+                      var isLabDiamond = document.querySelector('.tabcontent.active').id === 'lab-diamond';
+                      if (isLabDiamond) {
+                        document.getElementById('summaryStone').innerHTML = product.options[0].values + ' ' + 'Carat';
+                      // Update stoneType element
+                      document.getElementById('stoneType').innerHTML = 'Lab Diamond';
+                      document.getElementById('stoneDesp').innerHTML = product.options[1].values + ' Clarity' + ', ' + product.options[2].values+ ' Colour' ;
+                      } else {
+                        var productName = checkedRadio.getAttribute('data-prod-name');
+                        // Display general product information based on options 0 selected value
+                        document.getElementById('summaryStone').innerHTML = productName + ' ' + 'Carat';
+                        document.getElementById('stoneType').innerHTML = 'Moissanite';
+                      }
+                    })
+                    .catch(error => {
+                      console.log('Error fetching product information: ' + error);
+                    });
+                } 
+                $(".ring-sizer.full-screen-modal.active").removeClass('active');
+                $("li.stepper-steps").removeClass('not-visited');
+                $(".preview, .product-glossary, .est-price").hide();
+                $('.final-summary').show();
+                $('.sumbit-product').show();
+                  var sellPrice =  $(".sell-price").text(); // Get the initial value from sell-price
+                  var sellPriceNumber = parseInt(sellPrice.replace(/[^\d]/g, '')); // Remove dollar sign and convert to decimal
+                  var total = sellPriceNumber;
+                  console.log(total);
+                  var pricing = parseFloat($(".tabcontent.active input[type='radio']:checked").data('price')); // Convert price to floating-point number
+                      if (isNaN(pricing)) {
+                          pricing = 0;
+                      }
+                  var engravingCheckbox = document.querySelector('#message');
+                    if (engravingCheckbox) {
+                        if (engravingCheckbox.value.trim().length > 0) {
+                              total = total + 10000;
+                        } 
+                      }  
+                  $(".sell-price").text(Shopify.formatMoney(total + pricing));
+            }
+            else if( (document.getElementById('moisBtn').classList.contains('active') && document.getElementById('moisBtn').classList.contains('fixed-diamond')) || (document.getElementById('defaultOpen').classList.contains('active') && document.getElementById('defaultOpen').classList.contains('fixed-diamond')) ){
+        
+                      var isLabDiamond = document.querySelector('.tabcontent.active').id === 'lab-diamond';
+                      if (isLabDiamond) {
+                        
+                     
+                    
+                      } else {
+                       
+                      }
+                  
+                $(".ring-sizer.full-screen-modal.active").removeClass('active');
+                $("li.stepper-steps").removeClass('not-visited');
+                $(".preview, .product-glossary, .est-price").hide();
+                $('.final-summary').show();
+                $('.sumbit-product').show();
+                  var sellPrice =  $(".sell-price").text(); // Get the initial value from sell-price
+                 
+                  var sellPriceNumber = parseInt(sellPrice.replace(/[^\d]/g, '')); // Remove dollar sign and convert to decimal
+                  var total = sellPriceNumber;
+                 
+                  var pricing = parseFloat($(".tabcontent.active input[type='radio']:checked").data('price')); // Convert price to floating-point number
+                      if (isNaN(pricing)) {
+                          pricing = 0;
+                      }
+                  var engravingCheckbox = document.querySelector('#message');
+                    if (engravingCheckbox) {
+                        if (engravingCheckbox.value.trim().length > 0) {
+                              total = total + 10000;
+                        } 
+                      }  
+                  $(".sell-price").text(Shopify.formatMoney(total + pricing));
+            }
+            else if( (document.getElementById('moisBtn').classList.contains('active') && document.getElementById('moisBtn').classList.contains('without-diamond')) || (document.getElementById('defaultOpen').classList.contains('active') && document.getElementById('defaultOpen').classList.contains('without-diamond'))){
+                $(".ring-sizer.full-screen-modal.active").removeClass('active');
+                $("li.stepper-steps").removeClass('not-visited');
+                $(".preview, .product-glossary, .est-price").hide();
+                $('.final-summary').show();
+                $('.sumbit-product').show();
+                  var sellPrice =  $(".sell-price").text(); // Get the initial value from sell-price
+                 
+                  var sellPriceNumber = parseInt(sellPrice.replace(/[^\d]/g, '')); // Remove dollar sign and convert to decimal
+                  var total = sellPriceNumber;
+                 
+                  var pricing = parseFloat($(".tabcontent.active input[type='radio']:checked").data('price')); // Convert price to floating-point number
+                      if (isNaN(pricing)) {
+                          pricing = 0;
+                      }
+                  var engravingCheckbox = document.querySelector('#message');
+                    if (engravingCheckbox) {
+                        if (engravingCheckbox.value.trim().length > 0) {
+                              total = total + 10000;
+                        } 
+                      }  
+                  $(".sell-price").text(Shopify.formatMoney(total + pricing));
+            }
+            else{
+              document.getElementById('errorModal').classList.add("active");
+            }
+      });
+      document.querySelector('#errorModal button').addEventListener("click", ()=>{
+        document.getElementById('errorModal').classList.remove("active");
+        $(".ring-sizer").removeClass("active");
+          $(".selection-button-wrapper").removeClass("check-preview");
+          $(".diamond-selector-modal").addClass("active");
+          $('.product-container').addClass('add-pad');
+          $(".selection-button-wrapper").removeClass("check-preview");
+          $(".selection-button-wrapper").addClass("active");
+          $(".price-bar-container").addClass("mob-hide");
+      });
+  </script>
+
+  <script id="proScrip7">
+    document.addEventListener("DOMContentLoaded", function() {
+    // Wait for the DOM content to be fully loaded
+    
+    // Get a parent element that is present initially (you might need to adjust this selector)
+    var parentElement = document.body;
+
+    // Add an event listener to the parent element for the input event,
+    // and check if the target of the event matches the textarea selector
+    parentElement.addEventListener('input', function(event) {
+        // Check if the event target is a textarea with the specified attribute
+        if (event.target.matches('textarea[data-name="properties[Message]"]')) {
+            // Check if the textarea value is empty
+            var engravingText = event.target.value.trim(); // Trim whitespace
+            if (engravingText === "") {
+                // If textarea is empty, update displayDiv and summaryDiv accordingly
+                var displayDiv = document.querySelector('#display');
+                displayDiv.innerText = "Add";
+                
+                var summaryDiv = document.querySelector('.summary-engraving');
+                summaryDiv.innerText = "No engraving";
+            } else {
+                // If textarea is not empty, update displayDiv and summaryDiv with textarea value
+                var displayDiv = document.querySelector('#display');
+                displayDiv.innerText = engravingText;
+                
+                var summaryDiv = document.querySelector('.summary-engraving');
+                summaryDiv.innerText = engravingText;
+            }
+        }
+    });
+    });
+
+      window.addEventListener('load', function() {
+    // Select the element matching the specified CSS selector and trigger a click event on it
+    var element = document.querySelector('li.Style.variant-cats li[data-selected="true"] input[type="radio"]');
+    if (element) {
+        // element.click();
+    }
+    });
+
+  </script>
+
+  <script id="proScrip8"></script>
+
+  {% schema %}
+    {
+      "name": "Product",
+      "settings": [
+        {
+          "type": "text",
+          "id": "est-price",
+          "label": "Estimated Price Modal Text",
+          "default": "The final cost your ring is calculated after selecting the stone."
+        }
+      ],
+      "blocks": [
+        {
+          "type": "price",
+          "name": "Price",
+          "limit": 1
+        },
+        {
+          "type": "engraving",
+          "name": "Engraving",
+          "limit": 1,
+          "settings": [
+            {
+              "type": "text",
+              "id": "heading",
+              "label": "Engraving Heading",
+              "default": "Engraving"
+            }, {
+              "type": "richtext",
+              "id": "para",
+              "label": "Engraving Paragraph"
+            }
+          ]
+        },
+        {
+          "type": "variant_selector",
+          "name": "Variant Selector",
+          "limit": 1,
+          "settings": [
+            {
+              "type": "text",
+              "id": "metal_heading",
+              "label": "Metal Heading",
+              "default": "Metal"
+            },
+            {
+              "type": "text",
+              "id": "metal_paragraph",
+              "label": "Metal Paragraph",
+              "default": "Choose a metal for your band."
+            },
+            {
+              "type": "richtext",
+              "id": "contact",
+              "label": "Contact Paragraph",
+              "default": "<p>Couldn’t find what you were looking for? Get in touch with us!</p>"
+            },
+            {
+              "type": "text",
+              "id": "size_heading",
+              "label": "Size Heading",
+              "default": "Ring Size"
+            }, {
+              "type": "text",
+              "id": "size_paragraph",
+              "label": "Size Paragraph",
+              "default": "Choose size for diamond ring."
+            }
+          ]
+        },
+        {
+          "type": "checkout_buttons",
+          "name": "Checkout Buttons",
+          "limit": 1
+        }, {
+          "type": "ring-guide-heading",
+          "name": "Ring Guide Heading",
+          "limit": 1,
+          "settings": [
+            {
+              "type": "richtext",
+              "id": "modal-heading",
+              "label": "Modal Heading"
+            },
+            {
+              "type": "text",
+              "id": "head1",
+              "label": "Heading 1"
+            },
+            {
+              "type": "text",
+              "id": "head2",
+              "label": "Heading 2"
+            },
+            {
+              "type": "text",
+              "id": "head3",
+              "label": "Heading 3"
+            }, {
+              "type": "text",
+              "id": "head4",
+              "label": "Heading 4"
+            }, {
+              "type": "text",
+              "id": "head5",
+              "label": "Heading 5"
+            }, {
+              "type": "text",
+              "id": "head6",
+              "label": "Heading 6"
+            }, {
+              "type": "text",
+              "id": "head7",
+              "label": "Heading 7"
+            }, {
+              "type": "text",
+              "id": "head8",
+              "label": "Heading 8"
+            }
+          ]
+        }, {
+          "type": "ring-guide",
+          "name": "Ring Guide",
+          "settings": [
+            {
+              "type": "text",
+              "id": "group-item1",
+              "label": "Group Item 1"
+            },
+            {
+              "type": "text",
+              "id": "group-item2",
+              "label": "Group Item 2"
+            },
+            {
+              "type": "text",
+              "id": "group-item3",
+              "label": "Group Item 3"
+            },
+            {
+              "type": "text",
+              "id": "group-item4",
+              "label": "Group Item 4"
+            }, {
+              "type": "text",
+              "id": "group-item5",
+              "label": "Group Item 5"
+            }, {
+              "type": "text",
+              "id": "group-item6",
+              "label": "Group Item 6"
+            }, {
+              "type": "text",
+              "id": "group-item7",
+              "label": "Group Item 7"
+            }, {
+              "type": "text",
+              "id": "group-item8",
+              "label": "Group Item 8"
+            }
+          ]
+        }
+      ]
+    }
+  {% endschema %}

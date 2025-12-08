@@ -1,0 +1,306 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "faqs": {
+      "type": "template-faqs",
+      "blocks": {
+        "faq-inner-1": {
+          "type": "lab-diamond",
+          "settings": {
+            "head": "What is a lab diamond?",
+            "para": "<p>Lab-grown or “man-made” diamonds are identical to mined diamonds with the only distinction being their origin. Lab diamonds are created within a laboratory setting, avoiding the humanitarian and environmental impacts of mined diamonds.</p><p>The growth process for lab-created diamonds mirrors that of mined diamonds. It begins by exposing carbon atoms to high temperatures and immense pressure, which fuse together to construct a crystalline lattice structure. Once the growing process is complete, meticulous cutting and polishing takes place to reveal their utmost brilliance in an array of colour and clarity grades, exactly the same as mined diamonds.</p>"
+          }
+        },
+        "faq-inner-2": {
+          "type": "lab-diamond",
+          "settings": {
+            "head": "Are lab-grown diamonds real diamonds?",
+            "para": "<p>Yes, lab-grown diamonds are real diamonds. They share identical physical, atomical, and chemical properties as their mined diamond counterparts.</p><p>Distinguishing between the two with the naked eye is impossible, and even trained gemologists require advanced technology to differentiate between them as traditional methods and equipment fall short.</p><p>Like mined diamonds, lab diamonds do not fade or change in composition over time.</p>"
+          }
+        },
+        "faq-inner-3": {
+          "type": "lab-diamond",
+          "settings": {
+            "head": "How are lab-grown diamonds made?",
+            "para": "<p>Lab-grown diamonds are produced in a controlled, laboratory environment under two methods: high pressure, high temperature (HPHT) or chemical vapour deposition (CVD).</p><p>HTHP mimics the high pressure and temperature conditions of mined or natural diamond formation in the earth. The process involves placing a diamond seed into pure carbon and exposing it to intense pressure and heat.</p><p>The second and more commonly used lab diamond growth process is Chemical Vapour Deposition. During CVD, a diamond seed is planted in a low-pressure microwave chamber which is then filled with carbon-containing gas. The microwave beam causes carbon to rain from a plasma cloud, growing the diamond layer by layer, and accelerating the natural crystallisation process to within six to ten weeks.</p><p>Like mined diamonds, once lab diamonds are grown they are then cut, polished, and evaluated by a certified gemologist.</p>"
+          }
+        },
+        "faq-inner-4": {
+          "type": "moissanites",
+          "settings": {
+            "head": "What is moissanite?",
+            "para": "<p>Moissanite was discovered over 100 years ago when Nobel-Prize Winning Scientist Dr. Henri Moissan came across a fallen meteorite while looking for crystalline chemical compositions ideal for electrical conductivity.  During the search, he discovered moissanite, a type of silicon carbide—a remarkable and extremely rare mineral—in a meteorite crater in Arizona.</p><p>Moissanite is a clear, precious gemstone almost identical in both appearance and hardness to diamonds and ranks among Earth's most dazzling and luminous gemstones. <br>Rarely found naturally, moissanite is lab-created, conflict-free and has minimal environmental impact compared to that of other mined precious gemstones.</p>"
+          }
+        },
+        "faq-inner-5": {
+          "type": "moissanites",
+          "settings": {
+            "head": "Moissanite vs Diamond",
+            "para": "<p>Despite their incredible likeness to the eye, moissanite and diamond are made up of two different chemical compounds. Unlike diamonds which are made up of 100% carbon, moissanite is a silicon carbide, sharing similar properties to that of diamond both in structure and appearance.</p><p>Like diamond, moissanite is amongst the strongest materials known, surpassing all other precious gemstones besides diamond. The hardness or scratch resistance of a gemstone is measured on the “Mohs' scale”, where moissanite is 2nd only to diamond.</p><p>What sets moissanite apart is its remarkable ability to refract and reflect more light than diamonds, resulting in heightened fire and brilliance that surpasses even the diamond's sparkle. Just like diamonds, moissanite maintains its enduring lustre and doesn't diminish over time.</p>"
+          }
+        },
+        "faq-inner-6": {
+          "type": "four-cs",
+          "settings": {
+            "head": "",
+            "para": "<p>The 4Cs of diamonds are considered the international standard of measuring a diamond’s beauty and value. The quality of a diamond is assessed against each of the 4C’s; cut, colour, clarity, and carat, and is recorded in a diamond grading report.</p><p>Delving deep into the realm of the 4Cs can be both fascinating and intimidating. Explore our comprehensive 4Cs guide to help find the perfect engagement ring for you or your loved one.</p>",
+            "csImg-check": false,
+            "csImg-col-check": false
+          }
+        },
+        "faq-inner-7": {
+          "type": "four-cs",
+          "settings": {
+            "head": "cut",
+            "para": "<p>Regarded by some experts as the most important of the 4Cs, a diamond’s cut refers to the arrangement of its facets and is key to knowing how your diamond will sparkle. An important point to note is that the cut is not the same thing as the shape of the stone.</p><p>When being graded, the cut assesses the brightness and sparkle of the diamond, the durability of the diamond and the quality of the craftsmanship that went into aligning and polishing the diamond’s facets.</p><p>Our team is committed to excellence and selects the best quality cut every time, ranging from Ideal to Excellent.</p>",
+            "csImg-check": true,
+            "csImg1": "shopify://shop_images/shallow.svg",
+            "csImg2": "shopify://shop_images/crawford.svg",
+            "csImg3": "shopify://shop_images/deep.svg",
+            "csImg-col-check": false
+          }
+        },
+        "faq-inner-8": {
+          "type": "four-cs",
+          "settings": {
+            "head": "Colour",
+            "para": "<p>In the realm of the 4Cs, colour takes the second most crucial role, denoting the absence of colour within a diamond. While diamonds showcase an assortment of hues, entirely colourless white diamonds are an exception, as most possess a very faint undertone of yellow. The closer a white diamond moves to absolute colourlessness, the rarer and more valuable it becomes.</p><p>Beginning at D to signify colourlessness, the scale proceeds alphabetically downwards. Diamonds ranked from D to J maintain transparency on the scale, fitting into the category of colourless to near colourless. Beyond J, a faint hint of pale yellow becomes perceptible.</p><p>Colour significantly impacts a diamond's overall visual allure. Crawford Stone Company only offers diamonds within the D to J range on the colour scale, consisting of colourless and near-colourless variations. Differentiating between colour variations within this range is quite challenging without a direct side-by-side comparison.</p>",
+            "csImg-check": false,
+            "csImg-col-check": true,
+            "csImgcol1": "shopify://shop_images/df.svg",
+            "csImgcol2": "shopify://shop_images/gj.svg",
+            "csImgcol3": "shopify://shop_images/km.svg",
+            "csImgcol4": "shopify://shop_images/nr.svg",
+            "csImgcol5": "shopify://shop_images/sz.svg"
+          }
+        },
+        "faq-inner-9": {
+          "type": "four-cs",
+          "settings": {
+            "head": "Clarity",
+            "para": "<p>Clarity refers to the visual purity of a diamond or the degree to which it presents blemishes and inclusions. These inclusions are usually difficult to see with the naked eye without the aid of magnification.</p><p>When determining a diamond's clarity grade, five factors are taken into account: the size and quantity of imperfections, their location within the diamond, their impact on durability, and the visible contrast between the imperfections and the diamond itself.</p><p>Each diamond is inspected and assessed against these characteristics by gemologists using powerful magnification and a qualitative grading system to assign a clarity grade to each diamond. The lower the number of imperfections, the higher the clarity grade.</p><p>Diamonds that have a clarity grade of “Flawless” (F) rank the highest and are extremely rare, containing no inclusions. “Internally Flawless” (IF) follow “Flawless” in ranking and are also extremely rare.<br>After these high rankings, diamonds are graded as “Very, Very Slightly Included” (VVS1 and VVS2), as well as “Very Slightly Included” (VS1 and VS2) with the grading of 1 denoting a slightly higher degree of clarity.</p>",
+            "csImg-check": false,
+            "csImg-col-check": false
+          }
+        },
+        "faq-inner-10": {
+          "type": "four-cs",
+          "settings": {
+            "head": "Carat",
+            "para": "<p>Out of all of the diamond 4Cs, carat (ct) is arguably the most well-known. Carat refers to the unique unit of weight measurement used exclusively to weigh gemstones and diamonds.<br>Diamond carat and diamond size are often mistaken for one another. Diamond size refers to the measurements of the diamond such as the height and width whereas diamond carat is the diamond’s weight. While a higher carat weight means a bigger diamond, the visible ratio isn’t necessarily 1:1 — a diamond that is 2 carats won’t necessarily be double the visible size of a 1 carat diamond depending on the stone shape and cut.</p>",
+            "csImg-check": false,
+            "csImg-col-check": false
+          }
+        },
+        "faq-inner-11": {
+          "type": "four-cs",
+          "settings": {
+            "head": "What is the colour and clarity of your moissanite?",
+            "para": "<p>All of our moissanites are guaranteed to have a minimum clarity of VVS and have a colour grade of D to F, being modern white.</p><p>We also offer custom orders for vintage white or G, H, and I colour grades.</p>",
+            "csImg-check": false,
+            "csImg-col-check": false
+          }
+        },
+        "faq-inner-12": {
+          "type": "metal-options",
+          "settings": {
+            "head": "What metal choices do you offer?",
+            "para": "<p>We offer each ring in 9 and 18-karat yellow, white, and rose gold.</p><p>We also offer two-toned engagement rings where the head is a different metal than the band.</p><p>For any custom metal needs, <a href=\"/pages/contact\" title=\"Contact\">Reach Out</a> to our team of experts.</p>",
+            "list-checkbox": false,
+            "list1-head": "",
+            "list1-body": "",
+            "list2-head": "",
+            "list2-body": "",
+            "list3-head": "",
+            "list3-body": "",
+            "ringImg-check": true,
+            "white-gold": "shopify://shop_images/An3_cfb50d9d-f3c1-42bd-8c01-fd072104dffe.webp",
+            "yellow-gold": "shopify://shop_images/An3_fec52c2c-378f-4c78-89c8-96e6a554fe19.webp",
+            "rose-gold": "shopify://shop_images/An3.webp"
+          }
+        },
+        "faq-inner-13": {
+          "type": "metal-options",
+          "settings": {
+            "head": "What is the difference between 9 and 18-karat gold?",
+            "para": "<p>Gold karat is the unit of measure for the purity of gold or the percentage of gold in the metal.</p><p>9 karat (9K) gold has a content of 9 parts or 37.5% pure gold and 62.5% other metals (usually a combination of silver and copper) whereas 18 karat (18K) has a higher gold content of 18 parts or 75% pure gold.</p><p>When choosing the material that's right for you, the main differences between 9K and 18K are in the appearance, durability, and cost.</p>",
+            "list-checkbox": true,
+            "list1-head": "Cost:",
+            "list1-body": "The more gold is in the mix, the higher the karat weight and the higher the cost.",
+            "list2-head": "Appearance:",
+            "list2-body": "The greater the gold content, the more golden the metal is in tone. 9K gold is visually lighter and slightly less yellow than its 18K counterpart.",
+            "list3-head": "Durability:",
+            "list3-body": "One of gold's most appealing features is that it does not tarnish. While 18K gold, being nearly pure, should not tarnish at all, 9K gold may experience some tarnishing over the total lifetime. However, the difference is generally minimal.",
+            "ringImg-check": false
+          }
+        },
+        "faq-inner-14": {
+          "type": "process",
+          "settings": {
+            "head": "Production times",
+            "para": "<p>Our standard lead time is approximately 8-12 weeks. Custom pieces that involve the development of bespoke designs may take longer, pending the complexity of the design and manufacturing process.</p><p>Our standard production times are sometimes subject to change due to factors beyond our control, especially during the Christmas holiday season. Crawford Stone Co. is not liable for unforeseen delays to the completion of our pieces, so we encourage you to place your order well in advance for pieces required in time for a special date.</p><p>If you require your ring sooner, please <a href=\"/pages/contact\" title=\"Contact\">Contact Us</a> to discuss if we can help expedite the order.</p>",
+            "ifImg": true,
+            "processImg": "shopify://shop_images/Image_1_-_FAQ.jpg",
+            "tab1-head": "",
+            "tab1-para": "",
+            "tab2-head": "",
+            "tab2-para": "",
+            "tab3-head": "",
+            "tab3-para": "",
+            "tab4-head": "",
+            "tab4-para": "",
+            "tab5-head": "",
+            "tab5-para": ""
+          }
+        },
+        "faq-inner-15": {
+          "type": "process",
+          "settings": {
+            "head": "Production Process",
+            "para": "",
+            "ifImg": false,
+            "tab1Img": "shopify://shop_images/Rectangle_24398.svg",
+            "tab1-head": "Stone Approval",
+            "tab1-para": "Once you’ve picked your dream ring, after around 2-4 weeks, your bespoke cut stone will be finalised. Our team of experts will conduct a thorough quality check before sharing a video showcasing your exact stone for approval, ensuring you're kept informed at every stage of the journey.",
+            "tab2Img": "shopify://shop_images/Rectangle_24398.svg",
+            "tab2-head": "Design Development & Approval",
+            "tab2-para": "For custom orders, our team will craft a personalised design tailored to your exact specifications. Approximately two weeks later, we will contact you with the CAD file for your approval.",
+            "tab3Img": "shopify://shop_images/Rectangle_24398.svg",
+            "tab3-head": "Production",
+            "tab3-para": "This is where the magic happens as your ring starts to come to life. Our artisans will skillfully mould and cast the setting, place your stone, and finally, give your piece a flawless polish.",
+            "tab4Img": "shopify://shop_images/Rectangle_24398.svg",
+            "tab4-head": "Quality Check",
+            "tab4-para": "Upon the completion of your piece, our team will carefully inspect all elements of your ring, ensuring it's perfectly ready for you. After this, we will share an exclusive preview of the final product with you.",
+            "tab5Img": "shopify://shop_images/Rectangle_24398.svg",
+            "tab5-head": "Shipping",
+            "tab5-para": "Your ring will be meticulously wrapped and sent on its journey to you. If you're purchasing the ring as a surprise for your special someone, our team can ensure the package remains inconspicuous, just let us know how we can help."
+          }
+        },
+        "faq-inner-16": {
+          "type": "policy",
+          "settings": {
+            "head": "Warranties",
+            "para": "<p>Crawford Stone Co pieces come with a one-year warranty covering any manufacturing defects, effective from when you receive the piece.</p><p>This warranty does not cover any accidental damage, wear and tear, misuse or loss of a piece including scratches and dents in metal, stone chips, missing stones, loose or broken progs, rhodium fading and mis-shaping of the band.</p><p>Any pieces handled against our cleaning and care instructions outlined here are not eligible for this warranty. Any repairs or modifications made to your piece that are not performed by Crawford Stone Co. will result in a voided warranty.</p><p>Our warranty is only valid for the original purchaser of the piece only and does not extend to pieces purchased by a resale method.</p><p>We strongly recommend that you consider independent insurance on all pieces of precious jewellery to protect your investment in the event that you are not covered by our jewellery warranty.</p><p>Our team is always here to help with any repair needs and are always an email away.</p>"
+          }
+        },
+        "faq-inner-17": {
+          "type": "policy",
+          "settings": {
+            "head": "Returns and Exchanges",
+            "para": "<p>Each piece we meticulously craft is tailored exclusively to you, which is why we cannot accommodate returns or exchanges.</p><p>Upon receiving your piece, it will need to be inspected to ensure the ring is in accordance with your order. For any reason your ring is not as per your order then please contact us within 2 days of receiving your ring. Failure to provide notice by this period may result in your ring being accepted as in accordance with your order.</p><p>If you have any questions or concerns or inquiries about our returns policy,  please don't hesitate to contact us.</p>"
+          }
+        },
+        "faq-inner-18": {
+          "type": "policy",
+          "settings": {
+            "head": "Resizes",
+            "para": "<p>We offer one complimentary resizing for engagement and men’s rings within the first 3 months of receiving your order for all Australian and New Zealand customers. Resizing is not available for customers outside of Australia and New Zealand.</p><p>Please note that eternity bands and men’s rings are unable to be resized.</p><p>Need help with your ring size? Request a complimentary ring sizer so you can easily measure your ring size at home.</p>"
+          }
+        },
+        "faq-inner-19": {
+          "type": "practice",
+          "settings": {
+            "head": "",
+            "para": "<p>Our team highly recommends following our care and cleaning advice to assure longevity in your beautiful jewellery.</p><p>Avoiding chemicals from coming into contact with your jewellery such as perfumes, sulphur, cosmetic products, chlorine and perspiration can help to reduce tarnishing over time. Tarnishing occurs to all metals over time however, these substances will cause the tarnishing reaction much faster and so tarnishing due to these reasons is not covered under our warranty.</p><p>Our team recommends avoiding sleeping, working out, showering or water activities, strenuous activities such as sports or manual tasks or contact with chemicals and cleaning solutions while wearing your piece. The easiest and most effective way to clean your ring at home is with mild soap and water, then gently drying with a soft cloth.</p>"
+          }
+        },
+        "faq-inner-20": {
+          "type": "appointment",
+          "settings": {
+            "head": "",
+            "para": "<p>Our team of specialists are available for one-on-one video consultations, live from our Sydney showroom. Virtual appointments can be booked through the “<a href=\"/pages/virtual-appointment\" title=\"Virtual Appointment\">Virtual Appointment</a>” page on our website here.</p><p>If you don't find a time slot that suits your schedule, please reach out to us via email at <a href=\"mailto:hello@crawfordstoneco.com\">hello@crawfordstoneco.com</a>, and we'll add you to our cancellation list for potential openings.</p>"
+          }
+        },
+        "faq-inner-21": {
+          "type": "shipping",
+          "settings": {
+            "head": "Order Tracking",
+            "para": "<p>We provide tracking and insurance for all orders, and require signature upon receiving delivery of your order, ensuring safe delivery.</p>"
+          }
+        },
+        "faq-inner-22": {
+          "type": "shipping",
+          "settings": {
+            "head": "Will I have to pay duties and taxes for orders outside Australia?",
+            "para": "<p>Any extra taxes or import duties imposed by the destination country's customs are the responsibility of the recipient.</p><p>We are obliged to comply with Australian Export Regulations, necessitating the declaration of the item's exact value and classifying the order as dutiable 'merchandise.' We are legally prohibited from designating an order as a 'gift' for export purposes.</p>"
+          }
+        },
+        "faq-inner-23": {
+          "type": "shipping",
+          "settings": {
+            "head": "Payment Terms",
+            "para": "<p>We welcome payments via Mastercard, Visa, Amex, Afterpay, and Paypal. Kindly note that Afterpay is not available for orders totaling over $2,000.</p>"
+          }
+        },
+        "faq-inner-24": {
+          "type": "limitation",
+          "settings": {
+            "head": "",
+            "para": "<p>Our limit of liability for failure to comply with Australian law consumer guarantee is:</p><ul><li>The replacement of the goods or the supply of equivalent goods</li></ul><p>or</p><ul><li>The repair of the goods</li></ul><p>It is at the sole discretion of Crawford Stone Co. whether replacement or repair will be offered.</p><p>For all other circumstances, our total limit of liability for loss or damage of any kind, arising from or attributed to the supply, sale or delivery of  goods, or the way they behave is limited to an amount equivalent to the sum paid to Crawford Stone Co. for the goods.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq-inner-1",
+        "faq-inner-2",
+        "faq-inner-3",
+        "faq-inner-4",
+        "faq-inner-5",
+        "faq-inner-6",
+        "faq-inner-7",
+        "faq-inner-8",
+        "faq-inner-9",
+        "faq-inner-10",
+        "faq-inner-11",
+        "faq-inner-12",
+        "faq-inner-13",
+        "faq-inner-14",
+        "faq-inner-15",
+        "faq-inner-16",
+        "faq-inner-17",
+        "faq-inner-18",
+        "faq-inner-19",
+        "faq-inner-20",
+        "faq-inner-21",
+        "faq-inner-22",
+        "faq-inner-23",
+        "faq-inner-24"
+      ],
+      "settings": {
+        "head": "Frequently Asked Questions",
+        "banImg": "shopify://shop_images/image_234.png",
+        "anchor1": "lab diamonds",
+        "anchor2": "moissanite",
+        "anchor3": "The 4 Cs of Diamonds - Cut, Colour, Clarity & Carat",
+        "anchor4": "Metal Options",
+        "anchor5": "Our Process",
+        "anchor6": "Warranties, returns, and exchanges",
+        "anchor7": "Care Practices",
+        "anchor8": "Appointments",
+        "anchor9": "Shipping",
+        "anchor10": "Limitation of claims"
+      }
+    },
+    "extrapad": {
+      "type": "extrapad",
+      "settings": {}
+    },
+    "insta-section": {
+      "type": "insta-section",
+      "settings": {}
+    }
+  },
+  "order": [
+    "faqs",
+    "extrapad",
+    "insta-section"
+  ]
+}

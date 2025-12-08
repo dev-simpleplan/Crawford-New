@@ -1,0 +1,42 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "contactPage": {
+      "type": "contact",
+      "settings": {
+        "heading": "get in touch",
+        "body": "We’re here to help with any of your questions. Please fill out the contact form and our team of experts will be in contact with you shortly. ",
+        "heading1": "Request a Free Ring Sizer",
+        "body1": "Unsure about your ring size? We are happy to send you a complimentary ring sizer so you can easily measure it at home. ",
+        "ctaText": "request ring sizer"
+      }
+    },
+    "extrapad": {
+      "type": "extrapad",
+      "settings": {}
+    },
+    "contact-bottom": {
+      "type": "contact-bottom",
+      "settings": {
+        "heading": "Book a Virtual Appointment",
+        "body": "Our dedicated team is here to assist you in exploring our various lab diamond & moissanite offerings, crafting a completely bespoke piece, or helping you decide on the dream ring when it can feel like there is a world of options.",
+        "ctaText": "BOOK NOW",
+        "ctaLink": "https://calendly.com/hello_csc/virtual-appointment",
+        "image": "shopify://shop_images/E5A8AF3E-6A99-4BF0-A374-65C0BC103D17-14349-000009C6241CE3FB_1_2.png"
+      }
+    }
+  },
+  "order": [
+    "contactPage",
+    "extrapad",
+    "contact-bottom"
+  ]
+}

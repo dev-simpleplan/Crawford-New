@@ -1,0 +1,32 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "return": {
+      "type": "template-static-page",
+      "blocks": {
+        "item1": {
+          "type": "static-content",
+          "settings": {
+            "head": "",
+            "para": "<p>Each piece we meticulously craft is tailored exclusively to you, which is why we cannot accommodate returns or exchanges.</p><p>Upon receiving your piece, it will need to be inspected to ensure the ring is in accordance with your order. For any reason your ring is not as per your order then please contact us within 2 days of receiving your ring. Failure to provide notice by this period may result in your ring being accepted as in accordance with your order.</p><p>If you have any questions or concerns or inquiries about our returns policy,  please don't hesitate to contact us.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item1"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "return"
+  ]
+}

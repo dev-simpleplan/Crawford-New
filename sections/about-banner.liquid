@@ -1,0 +1,36 @@
+<section class="home-banner" data-scroll-section>
+        <div class="home-banner-img">
+            <picture>
+                <source media="(min-width:1025px)" srcset="{{ section.settings.bannerImg |  img_url: 'master' }}">
+                <img src="{{ section.settings.bannerImgMob |  img_url: 'master' }}" alt="Flowers">
+            </picture>
+            <div class="home-banner-cont" data-scroll data-scroll-position="top" data-scroll-speed="1">
+            <div class="home-banner-head about-banner">
+                <h1 class="head-white">{{ section.settings.heading }}</h1>
+            </div>
+        </div>
+</section>
+
+
+{% schema %}
+{
+    "name": "About Page Banner",
+    "settings": [
+            {
+                "type": "image_picker",
+                "id": "bannerImg",
+                "label": "About Page Banner Image"
+            },
+            {
+                "type": "image_picker",
+                "id": "bannerImgMob",
+                "label": "About Page Banner Mobile Image"
+            },
+            {
+                "type": "text",
+                "id": "heading",
+                "label": "About Page Banner Heading"
+            }
+    ]
+}
+{% endschema %}

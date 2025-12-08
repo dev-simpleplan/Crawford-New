@@ -1,0 +1,87 @@
+<section class="our-causes">
+  <div class="container">
+    <div class="oc-wrapper">
+      <div class="head">
+        <h1>
+          {{ section.settings.head }}
+        </h1>
+      </div>
+      <div class="cause-wrapper">
+        {% for block in section.blocks %}
+          <div class="item">
+            <div class="cw-left">
+              <div class="cwl-up">
+                <div class="cwl-head">
+                  <h2>{{ block.settings.cause-head }}</h2>
+                </div>
+                <div class="cwl-mob-img">
+                  <img
+                    src="{{ block.settings.causeImg |  img_url: 'master' }}"
+                    alt=""
+                    class="img-ab">
+                </div>
+                <div class="cwl-body">
+                  <p>{{ block.settings.cause-body }}</p>
+                </div>
+              </div>
+              <div class="cwl-cta">
+                <a class="craw-cta cta-green" href="{{ block.settings.cause-link }}">{{ block.settings.cause-cta-name }}</a>
+              </div>
+            </div>
+            <div class="cw-right">
+              <img
+                src="{{ block.settings.causeImg |  img_url: 'master' }}"
+                alt=""
+                class="img-ab">
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Our Causes",
+    "settings": [
+      {
+        "type": "text",
+        "id": "head",
+        "label": "Page Heading"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Causes",
+        "type": "causes",
+        "settings": [
+          {
+            "type": "text",
+            "id": "cause-head",
+            "label": "Cause Heading"
+          },
+          {
+            "type": "text",
+            "id": "cause-body",
+            "label": "Cause Description"
+          },
+          {
+            "type": "text",
+            "id": "cause-link",
+            "label": "Cause Webpage Link"
+          },
+          {
+            "type": "text",
+            "id": "cause-cta-name",
+            "label": "Cause CTA Name"
+          }, {
+            "type": "image_picker",
+            "id": "causeImg",
+            "label": "Cause Image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

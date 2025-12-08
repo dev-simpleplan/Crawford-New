@@ -1,0 +1,85 @@
+<footer data-scroll-section>
+  <div class="footer-wrapper">
+    <div class="footer-top flex flex-jsb">
+      {% for block in section.blocks %}
+        <div class="footer-top-menu">
+          <div class="footer-top-menu-head">{{ block.settings.head }}</div>
+          <ul>
+            {% for link in block.settings.menu.links %}
+              <li>
+                <a href="{{ link.url }}">{{ link.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="footer-logo">
+      <img src="https://cdn.shopify.com/s/files/1/0674/4591/5905/files/footer-logo.svg?v=1701093946" alt="">
+    </div>
+    <div class="footer-body">
+      <p class="small">{{ section.settings.body }}</p>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="footer-copyright-wrap flex align flex-jsc">
+      <div class="copyright-icon flex">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="15"
+          height="15"
+          viewBox="0 0 15 15"
+          fill="none">
+          <path
+            d="M7.56836 13.9844C11.0892 13.9844 13.9434 11.1302 13.9434 7.60938C13.9434 4.08856 11.0892 1.23438 7.56836 1.23438C4.04754 1.23438 1.19336 4.08856 1.19336 7.60938C1.19336 11.1302 4.04754 13.9844 7.56836 13.9844Z"
+            stroke="#555555"
+            stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path
+            d="M9.69304 9.20354C9.35848 9.64944 8.89212 9.97878 8.36 10.1449C7.82787 10.3111 7.25697 10.3056 6.72814 10.1292C6.19931 9.9529 5.73936 9.61466 5.41343 9.16242C5.0875 8.71017 4.91211 8.16685 4.91211 7.60939C4.91211 7.05194 5.08749 6.50861 5.41341 6.05636C5.73933 5.60411 6.19928 5.26586 6.72811 5.08953C7.25694 4.91319 7.82784 4.90769 8.35997 5.07382C8.89209 5.23995 9.35846 5.56929 9.69303 6.01518"
+            stroke="#555555"
+            stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </div>
+      <div class="copyright-text">{{ section.settings.copyright }}</div>
+    </div>
+  </div>
+</footer>
+
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "text",
+        "id": "body",
+        "default": "We acknowledge the traditional custodians of this land, the Cadigal people, and pay our respects to the elders both past and present. We will always remember that here, where we create, was and always will be traditional Aboriginal land.",
+        "label": "Footer Bottom Top Text"
+      }, {
+        "type": "text",
+        "id": "copyright",
+        "default": "Crawford Stone Co. All rights reserved.",
+        "label": "Copyright Text"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "menu",
+        "name": "Menu Block",
+        "settings": [
+          {
+            "type": "text",
+            "id": "head",
+            "label": "Footer Menu Head"
+          }, {
+            "type": "link_list",
+            "id": "menu",
+            "label": "Select Menu"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

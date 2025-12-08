@@ -1,0 +1,47 @@
+<section class="video-section" data-scroll-section>
+  <div
+    class="video-player"
+    data-scroll
+    data-scroll-class=""
+    data-scroll-repeat>
+    <video
+      src="{{ section.settings.video }}"
+      loop
+      autoplay
+      playsinline
+      muted></video>
+  </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var videoPlayer = document.querySelector('.video-player');
+      var video = videoPlayer.querySelector('.video-player video');
+
+      function handleVisibility() {
+        if (videoPlayer.classList.contains('is-inview')) {
+          playVideo();
+        } else {
+          pauseVideo();
+        }
+      }
+
+      // Check on resize
+      window.addEventListener('resize', function () {
+        handleVisibility();
+      });
+    });
+</script>
+
+{% schema %}
+  {
+    "name": "Video Section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "video",
+        "label": "Video"
+      }
+    ]
+  }
+{% endschema %}

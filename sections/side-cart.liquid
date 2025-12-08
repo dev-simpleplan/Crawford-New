@@ -1,0 +1,433 @@
+<div class="side-cart-wrap">
+  <div id="sideCart" class="side-cart-section flex flex-c flex-jsb">
+    <div style="display:none;" class="global-loadingState cart">
+      <i style="font-size:30px;" class="fa-solid fa-spinner fa-spin"></i>
+    </div>
+
+    <div class="side-cart-container">
+      <div class="side-cart-heading flex flex-jsb">
+        <h3>Cart</h3>
+      </div>
+      <div class="side-cart-cross">
+        <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0674/4591/5905/files/x.svg?v=1714135514">
+      </div>
+      <form
+        action="{{ routes.cart_url }}"
+        method="POST"
+        novalidate>
+        <div class="side-cart-items flex flex-c" id="cartItems"></div>
+      </form>
+    </div>
+    <div class="side-cart-desc" id="cartSummary"></div>
+
+  </div>
+</div>
+
+<script>
+      document.querySelector('.side-cart-cross').addEventListener('click', () => {
+        document.body.classList.remove('js-my-cart-open');
+    });
+
+    $(document).ready(function () {
+        function getCart() {
+            $.ajax({
+            url: '/cart.json',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data, "Hello this is the data of the cart");
+
+                if (data.items.length > 0) {
+                let cartItemsHtml = '';
+
+                data.items.forEach(function (item) {
+                    if (item.product_type === 'engraving') return; // Skip standalone engraving lines
+
+                    const itemPrice = Shopify.formatMoney(item.line_price);
+                    const engravingPrice = 10000;
+                    const hasEngraving = item.properties["Message"];
+                    const engravingText = hasEngraving ? item.properties["Message"] : null;
+                    const engravingTotal = hasEngraving ? engravingPrice : 0;
+                    const totalWithEngraving = item.line_price + engravingTotal;
+
+                    cartItemsHtml += `
+                    <div class="product-add-on flex">
+                        <div class="product-add-on-left">
+                        <div class="product-add-on-empty-div"></div>
+                        <div class="product-add-on-image">
+                            <img loading="lazy" class="img" src="${item.image}">
+                        </div>
+                        </div>
+                        <div class="product-add-on-right flex flex-c">
+                        <div class="product-add-on-price-title flex align-b flex-jsb">
+                            <div class="product-add-on-title">${item.product_title}</div>
+                            <div class="product-add-on-remove"><span>Remove</span></div>
+                        </div>
+                        <div class="product-add-on-variant-title-price flex align-b flex-jsb">
+                            <div class="product-add-on-variant-title"><span>${item.variant_title}</span></div>
+                            <div data-pi="${item.variant_id}" class="product-add-on-variant-price"><span>${itemPrice}</span></div>
+                        </div>
+                        ${item.properties["Ring Size"] ? `
+                            <div class="product-add-on-variant-title-price flex align-b flex-jsb">
+                            <div class="product-add-on-variant-title"><span>Ring Size: ${item.properties["Ring Size"]}</span></div>
+                            <div class="product-add-on-variant-price"></div>
+                            </div>` : ''
+                        }
+                        ${hasEngraving ? `
+                            <div class="product-add-on-variant-title-price flex align-b flex-jsb">
+                            <div data-ei="44979292406017" class="product-add-on-variant-title"><span>Engraving: "${engravingText}"</span></div>
+                            <div class="product-add-on-variant-price"><span>${Shopify.formatMoney(engravingPrice)}</span></div>
+                            </div>` : ''
+                        }
+                        ${hasEngraving ? `
+                            <div class="product-add-on-variant-title-price">
+                            <div class="product-add-on-variant-title-diamond flex align flex-jsb">
+                                <span>Total</span>
+                                <div class="product-add-on-variant-price"><span>${Shopify.formatMoney(totalWithEngraving)}</span></div>
+                            </div>
+                            </div>` : ''
+                        }
+                        </div>
+                    </div>
+                    `;
+                });
+
+                $('#cartItems').html(cartItemsHtml);
+
+                const dataPrice = Shopify.formatMoney(data.total_price);
+                const cartSummaryHtml = `
+                    <div class="product-added-desc-down">
+                    <div class="product-added-desc-down-total-price">
+                        <div class="product-added-desc-down-total">order summary</div>
+                        <div class="product-added-desc-down-sub flex align flex-jsb">
+                        <span>Subtotal</span>
+                        <span class="mon">${dataPrice}</span>
+                        </div>
+                        <div class="product-added-desc-down-sub flex align flex-jsb">
+                        <span>Shipping</span>
+                        <span class="mon shipping">Calculated at checkout</span>
+                        </div>
+                        <div class="product-added-desc-down-sub flex align flex-jsb">
+                        <span>Tax</span>
+                        <span class="mon tax">Calculated at checkout</span>
+                        </div>
+                    </div>   
+                    <div class="product-added-desc-down-total-final flex align flex-jsb">
+                        <div class="product-added-desc-down-total">total</div>
+                        <span>${dataPrice}</span>
+                    </div>
+                    </div>
+                    <a class="product-buy-now-btn-a" href="/checkout/">
+                    <div class="product-buy-now-btn">
+                        <button class="predictive-btn">Checkout</button>
+                    </div>
+                    </a>
+                `;
+                $('#cartSummary').html(cartSummaryHtml);
+                } else {
+                $('#cartItems').html('<div class="side-cart-empty flex align flex-jsc"><h4 style="text-align:center;">No items in the cart</h4></div>');
+                $('#cartSummary').html('');
+                }
+
+                document.querySelector('.global-loadingState.cart').style.display = 'none';
+                resizeCartForm();
+            },
+            error: function (xhr, status, error) {
+                console.error('Error fetching cart data:', error);
+            }
+            });
+        }
+
+        getCart();
+
+        function resizeCartForm() {
+            const cartContainerForm = document.querySelector('.side-cart-container form');
+            const cartHeading = document.querySelector('.side-cart-heading');
+            const cartDesc = document.querySelector('.side-cart-desc');
+
+            if (cartContainerForm && cartHeading && cartDesc) {
+            const formHeight = window.innerHeight - (cartHeading.offsetHeight + cartDesc.offsetHeight);
+            cartContainerForm.style.height = formHeight + 'px';
+            }
+        }
+
+        window.addEventListener('resize', resizeCartForm);
+
+        $(document).on('click', '.product-add-on-remove', async function () {
+            document.querySelector('.global-loadingState.cart').style.display = 'flex';
+
+            const container = $(this).closest('.product-add-on');
+            const variantId = container.find('[data-pi]').data('pi');
+            const engravingId = container.find('[data-ei]').data('ei');
+            const relatedIds = [variantId];
+            const relatedVariantIds = {};
+
+            if (engravingId) relatedIds.push(engravingId);
+
+            try {
+            await refreshCart();
+            const response = await fetch(window.Shopify.routes.root + 'cart.js');
+            const cart = await response.json();
+
+            relatedIds.forEach(id => {
+                const item = cart.items.find(i => i.variant_id == id);
+                if (item) {
+                relatedVariantIds[id] = Math.max(item.quantity - 1, 0);
+                }
+            });
+
+            await removeProduct(relatedVariantIds);
+            } catch (error) {
+            console.error('Error fetching cart:', error);
+            }
+        });
+
+        async function removeProduct(relatedVariantIds) {
+            try {
+            await fetch(window.Shopify.routes.root + 'cart/update.js', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ updates: relatedVariantIds })
+            });
+
+            getCart();
+            } catch (error) {
+            console.error('Error updating cart:', error);
+            getCart();
+            }
+        }
+
+        async function refreshCart() {
+            try {
+            await fetch(window.Shopify.routes.root + 'cart.js');
+            } catch (error) {
+            console.error('Error refreshing cart:', error);
+            }
+        }
+    });
+
+</script>
+
+{% comment %} <script>
+          $(document).ready(function () {
+            function resizeCartForm() {
+              var cartContainerForm = document.querySelector('.side-cart-container form');
+              var cartHeading = document.querySelector('.side-cart-heading');
+              var cartDesc = document.querySelector('.side-cart-desc');
+              if (cartContainerForm && cartHeading && cartDesc) {
+                var formHeight = window.innerHeight - (cartHeading.offsetHeight + cartDesc.offsetHeight);
+                cartContainerForm.style.height = formHeight + 'px';
+              }
+            }
+
+            function getCart() {
+              $.ajax({
+                url: '/cart.json',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                  var cartItemsHtml = '';
+                  var engravingPrice = 10000;
+
+                  if (data.items.length > 0) {
+                    data.items.forEach(function (item) {
+                      if (item.variant_id == '44979292406017') return;
+
+                      var itemPrice = Shopify.formatMoney(item.line_price);
+
+                      cartItemsHtml += `
+                        <div class="product-add-on flex">
+                          <div class="product-add-on-left">
+                            <div class="product-add-on-empty-div"></div>
+                            <div class="product-add-on-image">
+                              <img loading="lazy" class="img" src="${item.image}">
+                            </div>
+                          </div>
+                          <div class="product-add-on-right flex flex-c">
+                            <div class="product-add-on-price-title flex align-b flex-jsb">
+                              <div class="product-add-on-title">${item.product_title}</div>
+                              <div class="product-add-on-remove" data-variant-id="${item.variant_id}"><span>Remove</span></div>
+                            </div>
+                            <div class="product-add-on-variant-title-price flex align-b flex-jsb">
+                              <div class="product-add-on-variant-title"><span>${item.variant_title}</span></div>
+                              <div class="product-add-on-variant-price" data-pi="${item.variant_id}"><span>${itemPrice}</span></div>
+                            </div>
+
+                            ${item.properties["Ring Size"] ? `
+                              <div class="product-add-on-variant-title-price flex align-b flex-jsb">
+                                <div class="product-add-on-variant-title"><span>Ring Size: ${item.properties["Ring Size"]}</span></div>
+                              </div>
+                            ` : ''}
+
+                            ${item.properties["Message"] ? `
+                              <div class="product-add-on-variant-title-price flex align-b flex-jsb">
+                                <div class="product-add-on-variant-title"><span>Engraving: "${item.properties["Message"]}"</span></div>
+                              </div>
+                            ` : ''}
+                          </div>
+                        </div>
+                      `;
+                    });
+
+                    $('#cartItems').html(cartItemsHtml);
+
+                    var dataPrice = Shopify.formatMoney(data.total_price);
+                    var cartSummaryHtml = `
+                      <div class="product-added-desc-down">
+                        <div class="product-added-desc-down-total-price">
+                          <div class="product-added-desc-down-total">order summary</div>
+                          <div class="product-added-desc-down-sub flex align flex-jsb">
+                            <span>Subtotal</span>
+                            <span class="mon">${dataPrice}</span>
+                          </div>
+                          <div class="product-added-desc-down-sub flex align flex-jsb">
+                            <span>Shipping</span>
+                            <span class="mon shipping">Calculated at checkout</span>
+                          </div>
+                          <div class="product-added-desc-down-sub flex align flex-jsb">
+                            <span>Tax</span>
+                            <span class="mon tax">Calculated at checkout</span>
+                          </div>
+                        </div>
+                        <div class="product-added-desc-down-total-final flex align flex-jsb">
+                          <div class="product-added-desc-down-total">total</div>
+                          <span>${dataPrice}</span>
+                        </div>
+                      </div>
+                      <a class="product-buy-now-btn-a" href="/checkout/">
+                        <div class="product-buy-now-btn">
+                          <button class="predictive-btn">Checkout</button>
+                        </div>
+                      </a>
+                    `;
+
+                    $('#cartSummary').html(cartSummaryHtml);
+                  } else {
+                    $('#cartItems').html('<div class="side-cart-empty flex align flex-jsc"><h4 style="text-align:center;">No items in the cart</h4></div>');
+                    $('#cartSummary').html('');
+                  }
+
+                  document.querySelector('.global-loadingState.cart').style.display = 'none';
+                  resizeCartForm();
+                },
+                error: function (xhr, status, error) {
+                  console.error("Error fetching cart data:", error);
+                  document.querySelector('.global-loadingState.cart').style.display = 'none';
+                }
+              });
+            }
+
+            // ✅ Add-to-cart with Ring Size support
+            $(".add-to-cart").click(async function (e) {
+              e.preventDefault();
+              document.querySelector('.global-loadingState.cart').style.display = 'flex';
+
+              const form = document.querySelector("#product-form");
+              const variantInput = form.querySelector('input[name="id"]');
+              const ringSizeInput = document.getElementById("selected-ring-size");
+              const engravingInput = document.getElementById("message");
+
+              if (!variantInput) {
+                console.error("Variant input not found.");
+                return;
+              }
+
+              const variantId = variantInput.value;
+              const ringSize = ringSizeInput ? ringSizeInput.value : "";
+              const engravingText = engravingInput ? engravingInput.value.trim() : "";
+
+              const formData = {
+                items: [
+                  {
+                    id: variantId,
+                    quantity: 1,
+                    properties: {
+                      ...(ringSize && { "Ring Size": ringSize }),
+                      ...(engravingText && { "Message": engravingText }) // attach engraving message to main product
+                    }
+                  }
+                ]
+              };
+
+              // Add engraving fee line item only if text exists
+              if (engravingText !== "") {
+                const engravingVariantId = '44979292406017';
+                formData.items.push({
+                  id: engravingVariantId,
+                  quantity: 1,
+                  properties: {
+                    isEngravingFee: true,
+                    Message: engravingText
+                  }
+                });
+              }
+
+              try {
+                await fetch(window.Shopify.routes.root + 'cart/add.js', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(formData)
+                });
+
+                document.body.classList.add("js-my-cart-open");
+                getCart(); // refresh cart
+              } catch (error) {
+                console.error("Error adding product to cart:", error);
+                getCart();
+              }
+            });
+
+            $(document).on('click', '.product-add-on-remove', async function () {
+              const variantIdToRemove = $(this).data('variant-id');
+              if (!variantIdToRemove) return;
+
+              try {
+                const response = await fetch('/cart.js');
+                const cart = await response.json();
+
+                let formData = {
+                  updates: {}
+                };
+
+                // Always remove the clicked product
+                formData.updates[variantIdToRemove] = 0;
+
+                // Look for engraving text on that product
+                const mainItem = cart.items.find(item => item.variant_id == variantIdToRemove);
+                const engravingText = mainItem?.properties?.["Message"];
+
+                // If engraving text exists, remove engraving fee line too
+                if (engravingText) {
+                  const engravingItem = cart.items.find(item =>
+                    item.variant_id == '44979292406017' &&
+                    item.properties?.Message === engravingText
+                  );
+
+                  if (engravingItem) {
+                    formData.updates[engravingItem.variant_id] = 0;
+                  }
+                }
+
+                await fetch('/cart/update.js', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(formData)
+                });
+
+                getCart(); // refresh cart drawer
+
+              } catch (error) {
+                console.error("Error removing items from cart:", error);
+              }
+            });
+
+            window.addEventListener('resize', resizeCartForm);
+          });
+
+</script> {% endcomment %}

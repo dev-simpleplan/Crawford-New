@@ -1,0 +1,42 @@
+<section class="temp-404">
+    <div class="conatiner">
+        <div class="con-404">
+            <h1>{{ section.settings.title }}</h1>
+            <p>{{ section.settings.subtext_title }}</p>
+            <a href="{{ shop.url }}" class="craw-cta cta-white">{{ section.settings.button_label }}</a>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Template 404",
+    "tag": "section",
+    "class": "flex items-center justify-center text-center py-7 h-screen",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "default": "404",
+            "label": "404 Heading Title"
+        },
+        {
+            "type": "text",
+            "id": "subtext_title",
+            "default": "The page that you're looking for is not found",
+            "label": "404 Subtext Title"
+        },
+        {
+            "type": "text",
+            "id": "button_label",
+            "default": "Back to homepage",
+            "label": "Button Label"
+        },
+        {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button URL"
+        }
+    ]
+}
+{% endschema %}

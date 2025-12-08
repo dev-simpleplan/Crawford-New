@@ -1,0 +1,58 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "contact-new-banner",
+      "settings": {
+        "bannerImg": "shopify://shop_images/Image_1_-_Book_an_Appt.jpg",
+        "bannerImgMob": "shopify://shop_images/Image_1_-_Book_an_Appt.jpg",
+        "heading": "Custom Jewellery",
+        "body":"The custom process is special to the Crawford Stone Company team",
+        "cta": "Book an appointment",
+        "cta-link": "https://calendly.com/hello_csc/virtual-appointment"
+      }
+    },
+    "extrapad": {
+      "type": "extrapad",
+      "settings": {}
+    },
+    "book-appointment": {
+      "type": "book-appointment",
+      "settings": {
+        "heading": "Your Bespoke design is a call away",
+        "body": "At Crawford Stone Company we specialise in bespoke, heirloom, and one-of-a-kind pieces. When designing an engagement ring, we know it’s important to have options. Whether you’d like our experts to craft a completely custom piece for you or design it yourself, your perfect piece awaits. Connect virtually with a dedicated specialist for a personalised one-on-one consultation, directly from our Sydney showroom",
+        "headingM": "Chat With a Specialist",
+        "bodyM": "Whether you’re designing a custom ring, necklace or bracelet or repurposing existing stones into new settings, our dedicated team is here to assist you in exploring our various lab diamond & moissanite and lab grown precious gemstone offerings. Our team specialises in helping you decide on the dream ring when it can feel like there is a world of options.",
+        "ctaText": "Get started today",
+        "cta1Link": "https://calendly.com/hello_csc/virtual-appointment",
+        "baseImg": "shopify://shop_images/3aff830f48e80fd9ae27e82099cc4151.png",
+        "overImg": "shopify://shop_images/808cbfffa5f3d3a141ca207d121c95ae.png"
+      }
+    },
+    "extrapad1": {
+      "type": "extrapad",
+      "settings": {}
+    },
+    "video-section": {
+      "type": "video-section",
+      "settings": {
+        "video": "https://cdn.shopify.com/videos/c/o/v/0848d15854a4455487a7846584524833.mov"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "extrapad",
+    "book-appointment",
+    "extrapad1",
+    "video-section"
+  ]
+}

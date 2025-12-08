@@ -1,0 +1,107 @@
+{% comment %}
+  <section class="founders-story" data-scroll-section>
+    <div class="founders-story-wrap flex">
+      <div class="founder-story-left-image">
+        <div
+          class="founder-story-left img-detect"
+          data-scroll
+          data-scroll-speed="-2">
+          <img src="{{ section.settings.image2 |  img_url: 'master' }}" alt="">
+        </div>
+      </div>
+      <div class="founder-story-right">
+        <div class="founder-story-right-wrap">
+          <div class="founder-story-head">
+            <h2 class="head-black">{{ section.settings.heading }}</h2>
+          </div>
+          <div class="founder-story-small-img">
+            <img src="{{ section.settings.image |  img_url: 'master' }}" alt="">
+          </div>
+          <div class="founder-story-body">
+            {{ section.settings.body }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endcomment %}
+
+<section class="founders-story" data-scroll-section>
+  <div class="founders-story-wrap flex {% if section.settings.layout == 'reverse' %}flex-reverse{% endif %}">
+    {% if section.settings.image2 != blank %}
+      <div class="founder-story-left-image">
+        <div
+          class="founder-story-left img-detect"
+          data-scroll
+          data-scroll-speed="-2"
+        >
+          <img src="{{ section.settings.image2 |  img_url: 'master' }}" alt="">
+        </div>
+      </div>
+    {% endif %}
+    <div class="founder-story-right">
+      <div class="founder-story-right-wrap">
+        {% if section.settings.heading != blank %}
+          <div class="founder-story-head">
+            <h2 class="head-black">{{ section.settings.heading }}</h2>
+          </div>
+        {% endif %}
+        {% if section.settings.image != blank %}
+          <div class="founder-story-small-img">
+            <img src="{{ section.settings.image |  img_url: 'master' }}" alt="">
+          </div>
+        {% endif %}
+        {% if section.settings.body != blank %}
+          <div class="founder-story-body">
+            {{ section.settings.body }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% stylesheet %}
+  .flex-reverse{
+    flex-direction: row-reverse;
+  }
+{% endstylesheet %}
+}
+{% schema %}
+{
+  "name": "Founders Story",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Founders Story Heading"
+    }, {
+      "type": "richtext",
+      "id": "body",
+      "label": "Founders Story Body"
+    }, {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Small Image"
+    }, {
+      "type": "image_picker",
+      "id": "image2",
+      "label": "Large Image"
+    }, {
+        "type": "select",
+        "id": "layout",
+        "label": "Layout",
+        "options": [
+          {
+            "value": "standard",
+            "label": "Image Left"
+          },
+          {
+            "value": "reverse",
+            "label": "Image Right"
+          }
+        ],
+        "default": "standard"
+      }
+  ]
+}
+{% endschema %}

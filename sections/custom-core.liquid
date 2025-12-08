@@ -1,0 +1,126 @@
+<section class="custom-core-section" data-scroll-section>
+  <div class="custom-container">
+    <div class="custom-core-section-wrap flex">
+      <div class="custom-core-left">
+        <div class="custom-core-left-top">
+          <div class="custom-core-left-head">
+            <h2 class="head-black">{{ section.settings.heading }}</h2>
+          </div>
+          <div class="custom-core-left-body">
+            <p>{{ section.settings.body }}</p>
+          </div>
+        </div>
+        <div class="custom-core-left-middle">
+          <div class="custom-core-middle-head">{{ section.settings.headingM }}</div>
+          <div class="custom-core-middle-body">
+            <p class="small">{{ section.settings.bodyM }}</p>
+          </div>
+        </div>
+        <div class="custom-core-left-bottom">
+          <ul class="flex flex-c">
+            <li>
+              <a class="craw-cta" href="{{ section.settings.cta1Link.url }}">{{ section.settings.cta1Text }}</a>
+            </li>
+            <li>
+              <a class="craw-cta" href="{{ section.settings.cta2Link.url }}">{{ section.settings.cta2Text }}</a>
+            </li>
+            <li>
+              <a class="craw-cta" href="{{ section.settings.cta3Link.url }}">{{ section.settings.cta3Text }}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="custom-core-right">
+        <div class="custom-core-right-img">
+          <div
+            class="custom-core-right-img-base"
+            data-scroll
+            data-scroll-position=""
+            data-scroll-speed="1">
+            <img src="{{ section.settings.baseImg |  img_url: 'master' }}" alt="">
+          </div>
+          <img
+            class="custom-core-right-over-image"
+            src="{{ section.settings.overImg |  img_url: 'master' }}"
+            alt=""
+            data-scroll
+            data-scroll-position=""
+            data-scroll-speed="3">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+  var links = document.querySelectorAll(".custom-core-left-bottom a");
+   links.forEach((link) => {
+    link.addEventListener("mouseenter", () => {
+        document.querySelectorAll(".custom-core-left-bottom a").forEach((link2)=>{
+            link2.classList.remove("cta-green");
+        })
+        link.classList.add("cta-green");
+    })
+   })
+</script>
+
+{% schema %}
+  {
+    "name": "Images with Text",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Section Heading"
+      },
+      {
+        "type": "text",
+        "id": "body",
+        "label": "Section Body"
+      },
+      {
+        "type": "text",
+        "id": "headingM",
+        "label": "Middle Section Heading"
+      },
+      {
+        "type": "text",
+        "id": "bodyM",
+        "label": "Middle Section Body"
+      }, {
+        "type": "text",
+        "id": "cta1Text",
+        "label": "CTA 1 Text"
+      }, {
+        "type": "page",
+        "id": "cta1Link",
+        "label": "CTA 1 Link"
+      }, {
+        "type": "text",
+        "id": "cta2Text",
+        "label": "CTA 2 Text"
+      }, {
+        "type": "page",
+        "id": "cta2Link",
+        "label": "CTA 2 Link"
+      }, {
+        "type": "text",
+        "id": "cta3Text",
+        "label": "CTA 3 Text"
+      }, {
+        "type": "page",
+        "id": "cta3Link",
+        "label": "CTA 3 Link"
+      }, {
+        "type": "image_picker",
+        "id": "baseImg",
+        "label": "Base Image"
+      }, {
+        "type": "image_picker",
+        "id": "overImg",
+        "label": "Overlay Image"
+      }
+    ]
+  }
+{% endschema %}

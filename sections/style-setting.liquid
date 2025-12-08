@@ -1,0 +1,126 @@
+<section class="style-settings" data-scroll-section>
+  <div class="container-fluid">
+    <div class="ss-wrapper">
+      <div class="head center">
+        <h2>{{ section.settings.head }}</h2>
+      </div>
+      <div class="ss-small-images">
+        {% for block in section.blocks %}
+          <a href="{{ block.settings.col-id.url }}">
+            <div class="item">
+            <div class="image-wrap">
+              <img
+                src="{{ block.settings.front |  img_url: 'master' }}"
+                alt=""
+                class="img-ab img-1">
+              <img
+                src="{{ block.settings.back |  img_url: 'master' }}"
+                alt=""
+                class="img-ab img-2">
+            </div>
+            <div class="img-txt">
+              <p>{{ block.settings.txt }}</p>
+            </div>
+          </div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="ss-dream">
+      <div class="ssd-left">
+        <div class="head">
+          <h3>{{ section.settings.sec-head }}</h3>
+        </div>
+        <div class="ss-img mob">
+          <img
+            src="{{ section.settings.secImg |  img_url: 'master' }}"
+            alt=""
+            class="img-ab">
+        </div>
+        <div class="para">
+          <p>{{ section.settings.sec-para }}</p>
+        </div>
+        <div class="cta">
+          <a href="{{ section.settings.cta.url }}" class="craw-cta cta-green">{{ section.settings.cta-txt }}</a>
+        </div>
+      </div>
+      <div
+        class="ssd-right"
+        data-scroll=""
+        data-scroll-class=""
+        data-scroll-offset="10%"
+        data-scroll-repeat="">
+        <div class="ssdr-img">
+          <img
+            src="{{ section.settings.secImg |  img_url: 'master' }}"
+            alt=""
+            class="img-ab">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Style Setting",
+    "settings": [
+      {
+        "type": "text",
+        "id": "head",
+        "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "sec-head",
+        "label": "Second Heading"
+      },
+      {
+        "type": "text",
+        "id": "sec-para",
+        "label": "Paragraph"
+      },
+      {
+        "type": "collection",
+        "id": "cta",
+        "label": "Select Page"
+      }, {
+        "type": "text",
+        "id": "cta-txt",
+        "label": "Text on CTA"
+      }, {
+        "type": "image_picker",
+        "id": "secImg",
+        "label": "Image"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Small Images",
+        "type": "small-images",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "front",
+            "label": "Front Image"
+          }, {
+            "type": "image_picker",
+            "id": "back",
+            "label": "Second Image"
+          }, {
+            "type": "text",
+            "id": "txt",
+            "label": "Text"
+          },
+          {
+            "type": "collection",
+            "id": "col-id",
+            "label": "Select Collection"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

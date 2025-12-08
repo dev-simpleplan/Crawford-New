@@ -1,0 +1,91 @@
+<section class="zig-zag" data-scroll-section>
+  <div class="head">
+    <h2>{{ section.settings.head }}</h2>
+  </div>
+  <div class="zig-zag-wrapper">
+    {% for block in section.blocks %}
+      <div class="founders-story-wrap flex">
+        <div class="founder-story-left-image">
+          <div
+            class="founder-story-left img-detect"
+            data-scroll
+            data-scroll-speed="-2">
+            <img src="{{ block.settings.image2 |  img_url: 'master' }}" alt="">
+          </div>
+        </div>
+        <div class="founder-story-right">
+          <div class="founder-story-right-wrap">
+            <div class="sub-head dark">
+              <p>{{ block.settings.small-head }}</p>
+            </div>
+            <div class="founder-story-head">
+              <h2 class="head-black">{{ block.settings.heading }}</h2>
+            </div>
+            <div class="founder-story-small-img">
+              <img src="{{ block.settings.image |  img_url: 'master' }}" alt="">
+            </div>
+            <div class="founder-story-body">
+              <p>{{ block.settings.body }}</p>
+            </div>
+            <div class="founder-story-cta">
+              <a href="{{ block.settings.cta.url }}" class="craw-cta cta-green">{{ block.settings.cta-txt }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Zig Zag Section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "head",
+        "label": "Section Heading"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Zig Zag",
+        "type": "zig-zag",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image2",
+            "label": "Big Image"
+          },
+          {
+            "type": "text",
+            "id": "small-head",
+            "label": "Small Heading"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading"
+          },
+          {
+            "type": "text",
+            "id": "body",
+            "label": "Paragraph"
+          }, {
+            "type": "page",
+            "id": "cta",
+            "label": "Select Page"
+          }, {
+            "type": "text",
+            "id": "cta-txt",
+            "label": "Anchor Name"
+          }, {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Small Image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
