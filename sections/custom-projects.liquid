@@ -1,0 +1,48 @@
+<section class="custom-projects">
+    <div class="container">
+        <div class="custom-projects-in" style="background-image: url('{{ section.settings.bg_image | img_url: 'master' }}');">
+            <h2>{{ section.settings.title }}</h2>
+            <p>{{ section.settings.para }}</p>
+            <a href="{{ section.settings.build_cta_url }}">{{ section.settings.build_cta_text }}</a>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+"name": "Custom Projects",
+"settings": [
+{
+"type": "image_picker",
+"id": "bg_image",
+"label": "Background Image"
+},
+{
+"type": "text",
+"id": "title",
+"label": "Heading"
+},
+{
+"type": "textarea",
+"id": "para",
+"label": "Paragraph"
+},
+{
+"type": "text",
+"id": "build_cta_text",
+"label": "CTA Text"
+},
+{
+"type": "url",
+"id": "build_cta_url",
+"label": "CTA URL"
+}
+],
+"presets": [
+{
+"name": "Custom Projects"
+}
+]
+}
+
+{% endschema %}
