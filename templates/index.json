@@ -53,11 +53,7 @@
           }
         }
       },
-      "block_order": [
-        "card1",
-        "card2",
-        "card3"
-      ],
+      "block_order": ["card1", "card2", "card3"],
       "settings": {
         "heading": "Our Products"
       }
@@ -102,9 +98,7 @@
           }
         }
       },
-      "block_order": [
-        "instafeed_app_block_q8Wkc6"
-      ],
+      "block_order": ["instafeed_app_block_q8Wkc6"],
       "settings": {
         "token": "IGQWRNWVB0R0hjOHBXLXo2VkJScjY0SHFNWWZAOOHhxd3FJek43NGQ4VEJVbG9PR2pYQlFNWEN0ODktdUhmVVJ3c0RudUNaRmJXRTVITjlDeDBrOWQyNzJkdnpzRVp0ZA1hLWVY1a3hZAUHQ4ZA3l0ODdQNC1Sa0NSdFUZD"
       }
@@ -179,6 +173,34 @@
     "extrapad6": {
       "type": "extrapad",
       "settings": {}
+    },
+    "landing-faq": {
+      "type": "landing-faq",
+      "settings": {
+        "title": "The Crawford Stone Company Difference",
+        "para": "From selecting the finest gemstones to crafting intricate designs, we don't just create jewellery—we create future heirlooms."
+      },
+      "blocks": {
+        "faq1": {
+          "type": "landing-faq-item",
+          "settings": {
+            "accord_title": "Handcrafted & Customisable",
+            "accord_para": "Every piece is made to order, allowing us to bring your unique vision to life. Whether you're selecting from our collections or working with our bespoke team, we guide you through the process to create a one-of-a-kind piece."
+          }
+        },
+        "faq2": {
+          "type": "landing-faq-item",
+          "settings": {
+            "accord_title": "Ethical & Certified",
+            "accord_para": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour."
+          }
+        }
+      },
+      "block_order": ["faq1", "faq2"]
+    },
+    "extrapad8": {
+      "type": "extrapad",
+      "settings": {}
     }
   },
   "order": [
@@ -196,6 +218,8 @@
     "extrapad4",
     "foundersStory",
     "extrapad5",
-    "newsletter"
+    "newsletter",
+    "landing-faq",
+    "extrapad8"
   ]
 }

@@ -7586,3 +7586,85 @@ header.active .header-link.dropdown-normal svg {
 .custom-projects-in a {
     margin-top: 50px;
 }
+
+.landing-faq .accordion-title {
+    background-color: #fff;
+    color: ##000000;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+    position: relative;
+}
+
+.landing-faq .accordion-item {
+    border-bottom: 1px solid #dddddd;
+    padding: 12px 0px;
+}
+
+.landing-faq .accordion-title.active {
+    background-color: #fff;
+}
+
+.landing-faq .accordion-content {
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    max-width: 90%;
+    padding-left: 50px;
+}
+
+.landing-faq .accordion-content p {
+    padding-top: 10px;
+}
+
+.landing-faq .accordion-icon {
+    height: 24px;
+    width: 24px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    transition: .4s ease all;
+}
+
+.landing-faq .accordion-title.active .accordion-icon svg path:nth-child(1) {
+    display: none;
+    transition: .4s ease all;
+}
+
+.landing-faq-in {
+    display: flex;
+    gap: 40px;
+}
+
+.landing-faq-in .left {
+    width: 40%;
+}
+
+.landing-faq-in .right {
+    width: 60%;
+}
+
+.landing-faq .accord-title-img img {
+    width: 100%;
+    height: auto;
+}
+
+.landing-faq .accord-title-img {
+    width: 27px;
+    height: auto;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.landing-faq-in .accordion-title {
+    text-transform: uppercase;
+    font-size: 16px;
+    line-height: 120%;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
