@@ -80,6 +80,35 @@
       "type": "extrapad",
       "settings": {}
     },
+    "insta-section": {
+      "type": "insta-section",
+      "blocks": {
+        "instafeed_app_block_q8Wkc6": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_q8Wkc6"
+      ],
+      "settings": {
+        "token": "IGQWRNWVB0R0hjOHBXLXo2VkJScjY0SHFNWWZAOOHhxd3FJek43NGQ4VEJVbG9PR2pYQlFNWEN0ODktdUhmVVJ3c0RudUNaRmJXRTVITjlDeDBrOWQyNzJkdnpzRVp0ZA1hLWVY1a3hZAUHQ4ZA3l0ODdQNC1Sa0NSdFUZD"
+      }
+    },
     "customCore": {
       "type": "custom-core",
       "disabled": true,
@@ -139,6 +168,7 @@
     },
     "newsletter": {
       "type": "newsletter",
+      "disabled": true,
       "settings": {
         "heading": "Join Our Mailing List",
         "body": "Sign up to receive $25 off your first purchase and for Crawford Stone Co updates & inspiration",
@@ -149,35 +179,6 @@
     "extrapad6": {
       "type": "extrapad",
       "settings": {}
-    },
-    "insta-section": {
-      "type": "insta-section",
-      "blocks": {
-        "instafeed_app_block_q8Wkc6": {
-          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
-          "settings": {
-            "title": "",
-            "title_color": "",
-            "title_size_v2": 0,
-            "alignment": "center",
-            "instafeed_margin_top": 0,
-            "instafeed_margin_bottom": 0,
-            "instafeed_margin_sides": 0,
-            "show_instagram_link": false,
-            "link_alignment": "left",
-            "link_color": "#000000",
-            "background_color": "",
-            "feed_id": "",
-            "html_area": ""
-          }
-        }
-      },
-      "block_order": [
-        "instafeed_app_block_q8Wkc6"
-      ],
-      "settings": {
-        "token": "IGQWRNWVB0R0hjOHBXLXo2VkJScjY0SHFNWWZAOOHhxd3FJek43NGQ4VEJVbG9PR2pYQlFNWEN0ODktdUhmVVJ3c0RudUNaRmJXRTVITjlDeDBrOWQyNzJkdnpzRVp0ZA1hLWVY1a3hZAUHQ4ZA3l0ODdQNC1Sa0NSdFUZD"
-      }
     }
   },
   "order": [
@@ -187,14 +188,14 @@
     "extrapad2",
     "custom-projects",
     "extrapad7",
+    "insta-section",
+    "extrapad6",
     "customCore",
     "extrapad3",
     "three-boxes",
     "extrapad4",
     "foundersStory",
     "extrapad5",
-    "newsletter",
-    "extrapad6",
-    "insta-section"
+    "newsletter"
   ]
 }
