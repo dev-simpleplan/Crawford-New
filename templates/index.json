@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "banner": {
@@ -44,7 +53,11 @@
           }
         }
       },
-      "block_order": ["card1", "card2", "card3"],
+      "block_order": [
+        "card1",
+        "card2",
+        "card3"
+      ],
       "settings": {
         "heading": "Our Products"
       }
@@ -55,7 +68,13 @@
     },
     "custom-projects": {
       "type": "custom-projects",
-      "settings": {}
+      "settings": {
+        "bg_image": "shopify://shop_images/89fd6f3461c8ea30be58c0ca4996dd896d1fb0fa_1.png",
+        "title": "Custom Projects",
+        "para": "Your Story, Our Craft",
+        "build_cta_text": " Build Your Dream Ring",
+        "build_cta_url": "#!"
+      }
     },
     "extrapad7": {
       "type": "extrapad",
@@ -149,7 +168,9 @@
           }
         }
       },
-      "block_order": ["instafeed_app_block_q8Wkc6"],
+      "block_order": [
+        "instafeed_app_block_q8Wkc6"
+      ],
       "settings": {
         "token": "IGQWRNWVB0R0hjOHBXLXo2VkJScjY0SHFNWWZAOOHhxd3FJek43NGQ4VEJVbG9PR2pYQlFNWEN0ODktdUhmVVJ3c0RudUNaRmJXRTVITjlDeDBrOWQyNzJkdnpzRVp0ZA1hLWVY1a3hZAUHQ4ZA3l0ODdQNC1Sa0NSdFUZD"
       }
