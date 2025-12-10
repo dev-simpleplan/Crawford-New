@@ -111,7 +111,6 @@
     },
     "extrapad4": {
       "type": "extrapad",
-      "disabled": true,
       "settings": {}
     },
     "foundersStory": {
