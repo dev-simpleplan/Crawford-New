@@ -269,8 +269,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       id="scroll-container"
       {% endif %}>
       {{ content_for_layout }}
-      {% section 'footer' %}
+          {% section 'footer' %}
     </main>
+    
   </body>
   {% comment %} <script type="application/json" data-ajax-cart-initial-state>
                   {{ cart | json }}
@@ -287,236 +288,134 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   
+{% if page.handle != 'contact' and page.handle != 'faq' and page.handle != 'our-causes' and page.handle != 'terms-and-conditions' and page.handle != 'return-policy' and page.handle != 'privacy-policy' and page.handle != 'thank-you' and template != 'product' and template != 'cart' and template != 'collection' and template != '404' and template != 'product.fine-jewellery' and template != 'product.stud-jewellery' and template != 'product.charm-jewellery' and template != 'product.fine-v2-jewellery' and template != 'product.stud-v2-jewellery' and template != 'product.ring' and template != 'password' and template != 'collection.not-ring' %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Wait for all content to load before initializing
+      window.addEventListener('load', function() {
+        initLocomotiveScroll();
+      });
 
-  {% if page.handle != 'contact' and page.handle != 'faq' and page.handle != 'our-causes' and page.handle != 'terms-and-conditions' and page.handle != 'return-policy' and page.handle != 'privacy-policy' and page.handle != 'thank-you' and template != 'product' and template != 'cart' and template != 'collection' and template != '404' and template != 'product.fine-jewellery' and template != 'product.stud-jewellery' and template != 'product.charm-jewellery' and template != 'product.fine-v2-jewellery' and template != 'product.stud-v2-jewellery' and template != 'product.ring' and template != 'password' and template != 'collection.not-ring' %}
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
+      function initLocomotiveScroll() {
         const pagescroll = new LocomotiveScroll({
-            el: document.querySelector('[data-scroll-container]'),
-            smooth: true
+          el: document.querySelector('[data-scroll-container]'),
+          smooth: true,
+          multiplier: 1,
+          reloadOnContextChange: true,
+          resetNativeScroll: true
         });
 
-        const slider= document.querySelector('#first');
+        // Force update after initialization
+        setTimeout(() => {
+          pagescroll.update();
+        }, 100);
 
-        $('.home-banner-cta a').on('click', function() {
+        // Update on image loads
+        const images = document.querySelectorAll('img');
+        let loadedImages = 0;
+        images.forEach(img => {
+          if (img.complete) {
+            loadedImages++;
+          } else {
+            img.addEventListener('load', () => {
+              loadedImages++;
+              if (loadedImages === images.length) {
+                pagescroll.update();
+              }
+            });
+          }
+        });
+
+        const slider = document.querySelector('#first');
+
+        $('.home-banner-cta a').on('click', function(e) {
+          e.preventDefault();
+          if (slider) {
             pagescroll.scrollTo(slider);
+          }
         });
+
         pagescroll.on("scroll", (event) => {
           var scrollPosition = event.scroll.y;
-          var scrollPercentage = (scrollPosition / ($(document).height() - $(window).height())) * 100;
+          var scrollLimit = event.limit.y; // Use Locomotive's calculated limit
+          var scrollPercentage = scrollLimit > 0 ? (scrollPosition / scrollLimit) * 100 : 0;
 
           // Check if 'active' class is not present on the header
           if (!$('header').hasClass('active')) {
-        // Move 'header-contents-middle' element upwards based on scroll percentage, but only until 10% scroll
-        var translateY = Math.min((scrollPercentage / 8) * -78, 0); // Move upwards, up to -150px
-        $('.header-contents-middle').css({
-            'transform': 'translateY(' + translateY + '%)',
-            'transition': 'transform 0.1s linear'
-        });
+            // Move 'header-contents-middle' element upwards based on scroll percentage
+            var translateY = Math.min((scrollPercentage / 8) * -78, 0);
+            $('.header-contents-middle').css({
+              'transform': 'translateY(' + translateY + '%)',
+              'transition': 'transform 0.1s linear'
+            });
           }
 
           // Add or remove 'active' class based on scroll percentage
           if (scrollPercentage >= 8) {
-        $('header').addClass('active');
+            $('header').addClass('active');
           } else {
-        $('header').removeClass('active');
+            $('header').removeClass('active');
           }
+
+          // Sticky bar logic
           const triggerOffset = window.innerHeight;
           const stickyBar = document.querySelector('.sticky-bar');
-
-          pagescroll.on('scroll', function (obj) {
-              // Check if the scroll position is beyond the trigger offset
-              if (obj.scroll.y > triggerOffset) {
-                // Add the active class to the sticky bar
-                stickyBar.classList.add('active');
-              } else {
-                // Remove the active class from the sticky bar
-                stickyBar.classList.remove('active');
-              }
-            });
-
-          // Scale the 'logo-top-head' element based on scroll percentage, but only until 10% scroll
-          var scaleValue = Math.max(1 - (scrollPercentage / 8), 0); // Scale from 1 to 0 until 10% scroll
-          $('.logo-top-head').css({
-        'transform': 'scale(' + scaleValue + ')',
-        'transition': 'transform 0.1s linear'
-          });
-      });
-          });
-    </script>
-  {% else %}
-    <script>
-          //Header Js
-          $(window).scroll(function () {
-            if ($(this).scrollTop() > 5) {
-              $('.state2').addClass('backdrop');
-            } else {
-              $('.state2').removeClass('backdrop');
-            }
-          });
-    </script>
-    <script>
-      $(window).scroll(function () {
-          var scrollTop = $(this).scrollTop();
           
-          if (scrollTop > 5) {
-            $('.header-contents-middle a').addClass('active');
-            $('.logo-top-head').addClass('active');
-          } else {
-            $('.header-contents-middle a').removeClass('active');
-            $('.logo-top-head').removeClass('active');
+          if (stickyBar) {
+            if (event.scroll.y > triggerOffset) {
+              stickyBar.classList.add('active');
+            } else {
+              stickyBar.classList.remove('active');
+            }
           }
-      });
 
-    </script>
-    <script>
-      //     let mm2 = gsap.matchMedia();
+          // Scale the 'logo-top-head' element based on scroll percentage
+          var scaleValue = Math.max(1 - (scrollPercentage / 8), 0);
+          $('.logo-top-head').css({
+            'transform': 'scale(' + scaleValue + ')',
+            'transition': 'transform 0.1s linear'
+          });
+        });
 
-      // mm2.add("(min-width: 992px)", () => {
-      //     gsap.to(".header-contents-middle svg", {
-      // y: -85,
-      // scrollTrigger: {
-      //   trigger: ".home-banner",
-      //   start: "top top",
-      //   end: "+=100",
-      //   pin: false,
-      //   markers: false,
-      //   repeat:-1, repeatDelay: 2,
-      //   scrub: false,
-      //   onUpdate: (self) => {
-      //     const progress = self.progress;
-      //     if (progress === 0.2) {
-      //       document.querySelector("header").classList.add("active");
-      //     } else {
-      //       document.querySelector("header").classList.remove("active");
-      //     }
-      //   },
-      // },
-      //     });
+        // Update on window resize
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            pagescroll.update();
+          }, 250);
+        });
 
-      //     gsap.to(".header-contents", {
-      // marginTop: 0,
-      // scrollTrigger: {
-      //   trigger: ".home-banner",
-      //   start: "top top",
-      //   end: "50% 30%",
-      //   repeat:-1, repeatDelay: 2,
-      //   pin: false,
-      //   markers: false,
-      //   scrub: false,
-      //   container: "[data-scroll-container]"
-      // },
-      //     });
-
-      //     gsap.to(".logo-top-head", {
-      // scale: 0,
-      // transformOrigin: "50% 50%",
-      // scrollTrigger: {
-      //   trigger: ".home-banner",
-      //   start: "top top",
-      //   end: "bottom 50%",
-      //   repeat:-1, repeatDelay: 2,
-      //   pin: false,
-      //   markers: false,
-      //   scrub: false,
-      //   container: "[data-scroll-container]"
-      // },
-      //     });
-      //   }); 
-      //   let mm = gsap.matchMedia();
-
-      // mm.add("(min-width: 1100px)", () => {
-      //     gsap.to(".header-contents-middle svg", {
-      // y: -105,
-      // scrollTrigger: {
-      //   trigger: ".home-banner",
-      //   start: "top top",
-      //   end: "50% 30%",
-      //   pin: false,
-      //   markers: false,repeat:-1, repeatDelay: 2,
-      //   scrub: false,
-      //   onUpdate: (self) => {
-      //     const progress = self.progress;
-      //     if (progress === 1) {
-      //       document.querySelector("header").classList.add("active");
-      //     } else {
-      //       document.querySelector("header").classList.remove("active");
-      //     }
-      //   },
-      //   container: "[data-scroll-container]"
-      // },
-      //     });
-
-      //     gsap.to(".header-contents", {
-      // marginTop: 0,
-      // scrollTrigger: {
-      //   trigger: ".home-banner",
-      //   start: "top top",
-      //   end: "50% 30%",
-      //   repeat:-1, repeatDelay: 2,
-      //   pin: false,
-      //   markers: false,
-      //   scrub: false,
-      //   container: "[data-scroll-container]"
-      // },
-      //     });
-
-      //     gsap.to(".logo-top-head", {
-      // scale: 0,
-      // transformOrigin: "50% 50%",
-      // scrollTrigger: {
-      //   trigger: ".home-banner",
-      //   start: "top top",
-      //   end: "bottom 50%",
-      //   pin: false,
-      //   repeat:-1, repeatDelay: 2,
-      //   markers: false,
-      //   scrub: false,
-      //   container: "[data-scroll-container]"
-      // },
-      //     });
-      //   });
-      //   let mm3 = gsap.matchMedia();
-
-
-      //   mm3.add("(max-width: 991px)", () => {
-      //       gsap.to(".header-contents-middle svg",{
-      //           yPercent:-55,
-      //           scrollTrigger:{
-      //               trigger:".home-banner",
-      //               start:"top top",
-      //               end:"50% 30%",
-      //               pin: false,
-      //               markers:false,
-      //               scrub:false,
-      //               onUpdate: (self) => {
-      //                   const progress = self.progress;
-      //                   if( progress === 1){
-      //                       document.querySelector("header").classList.add("active");
-      //                   }
-      //                   else {
-      //                       document.querySelector("header").classList.remove("active");
-      //                   }
-      //                 }
-      //           }
-      //       })
-      //       gsap.to(".logo-top-head",{
-      //           scale:0,
-      //           transformOrigin:"50% 50%",
-      //           scrollTrigger:{
-      //               trigger:".home-banner",
-      //               start:"top top",
-      //               end:"50% 30%",
-      //               repeat:-1, repeatDelay: 2,
-      //               pin: false,
-      //               markers:false,
-      //               scrub:false
-      //           }
-      //       })
-            
-      //       });
-    </script>
-  {% endif %}
+        // Expose for debugging
+        window.locomotiveScroll = pagescroll;
+      }
+    });
+  </script>
+{% else %}
+  <script>
+    //Header Js
+    $(window).scroll(function () {
+      if ($(this).scrollTop() > 5) {
+        $('.state2').addClass('backdrop');
+      } else {
+        $('.state2').removeClass('backdrop');
+      }
+    });
+  </script>
+  <script>
+    $(window).scroll(function () {
+      var scrollTop = $(this).scrollTop();
+      
+      if (scrollTop > 5) {
+        $('.header-contents-middle a').addClass('active');
+        $('.logo-top-head').addClass('active');
+      } else {
+        $('.header-contents-middle a').removeClass('active');
+        $('.logo-top-head').removeClass('active');
+      }
+    });
+  </script>
+{% endif %}
 
   {% if page.handle == 'contact' %}
     <script>

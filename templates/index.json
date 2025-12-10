@@ -18,7 +18,7 @@
         "cta": "DISCOVER"
       }
     },
-    "extrapad": {
+    "extrapad1": {
       "type": "extrapad",
       "settings": {}
     },
@@ -76,7 +76,7 @@
         "build_cta_url": "#!"
       }
     },
-    "extrapad7": {
+    "extrapad3": {
       "type": "extrapad",
       "settings": {}
     },
@@ -109,45 +109,6 @@
         "token": "IGQWRNWVB0R0hjOHBXLXo2VkJScjY0SHFNWWZAOOHhxd3FJek43NGQ4VEJVbG9PR2pYQlFNWEN0ODktdUhmVVJ3c0RudUNaRmJXRTVITjlDeDBrOWQyNzJkdnpzRVp0ZA1hLWVY1a3hZAUHQ4ZA3l0ODdQNC1Sa0NSdFUZD"
       }
     },
-    "extrapad6": {
-      "type": "extrapad",
-      "settings": {}
-    },
-    "customCore": {
-      "type": "custom-core",
-      "settings": {
-        "heading": "custom to our core",
-        "body": "From selecting the finest gemstones to crafting intricate designs, our meticulous process ensures every desire is met, delivering an exquisite masterpiece of the utmost quality.",
-        "headingM": "Not sure where to start?",
-        "bodyM": "Looking for a one-of-a-kind ring? Our experts can help you.",
-        "cta1Text": "CONTACT US",
-        "cta1Link": "contact",
-        "cta2Text": "OUR PROCESS",
-        "cta2Link": "faq",
-        "cta3Text": "FAQs",
-        "cta3Link": "faq",
-        "baseImg": "shopify://shop_images/9fc68facd59e15e115eb62b92af179ca.jpg",
-        "overImg": "shopify://shop_images/68e5c318110df6aa4b14401c839642ae.png"
-      }
-    },
-    "extrapad3": {
-      "type": "extrapad",
-      "settings": {}
-    },
-    "three-boxes": {
-      "type": "boxes-info",
-      "settings": {
-        "heading": "Heritage Designs,<br> Eternal Elegance",
-        "body": "With profound respect for past artistry, we seamlessly blend tradition into our modern creations. True luxury lies not only in the finest materials and design but also in the stories that unfold as our pieces become cherished heirlooms.",
-        "heading1": "Personalised Service,<br> Bespoke Designs",
-        "body1": "At the heart of our mission lies your absolute satisfaction and an unforgettable experience. Entrust our team of experts to guide you in designing engagement rings, customising wedding bands, or exploring financial options.",
-        "heading2": "Ethically Sourced,<br> Sustainably Crafted",
-        "body2": "We proudly embrace lab-grown diamonds and moissanite as the core of our collections. These exquisite gems exude the same brilliance as their mined counterparts, while leaving no environmental impact—because luxury should be a force for good.",
-        "image": "shopify://shop_images/Image_7-_Homepage.jpg",
-        "image1": "shopify://shop_images/Image_1_-_Homepage_1.heic",
-        "image2": "shopify://shop_images/Image_9_-_Homepage.heic"
-      }
-    },
     "extrapad4": {
       "type": "extrapad",
       "settings": {}
@@ -165,15 +126,6 @@
     "extrapad5": {
       "type": "extrapad",
       "settings": {}
-    },
-    "newsletter": {
-      "type": "newsletter",
-      "settings": {
-        "heading": "Join Our Mailing List",
-        "body": "Sign up to receive $25 off your first purchase and for Crawford Stone Co updates & inspiration",
-        "ctaText": "SIGN UP",
-        "image": "shopify://shop_images/E5A8AF3E-6A99-4BF0-A374-65C0BC103D17-14349-000009C6241CE3FB_1_2.png"
-      }
     },
     "landing-faq": {
       "type": "landing-faq",
@@ -222,7 +174,7 @@
         "para": "From selecting the finest gemstones to crafting intricate designs, we don't just create jewellery—we create future heirlooms."
       }
     },
-    "extrapad8": {
+    "extrapad6": {
       "type": "extrapad",
       "settings": {}
     },
@@ -257,30 +209,25 @@
         "cta_link": "#!"
       }
     },
-    "extrapad9": {
+    "extrapad7": {
       "type": "extrapad",
       "settings": {}
     }
   },
   "order": [
     "banner",
-    "extrapad",
+    "extrapad1",
     "featured",
     "extrapad2",
     "custom-projects",
-    "extrapad7",
-    "insta-section",
-    "extrapad6",
-    "customCore",
     "extrapad3",
-    "three-boxes",
+    "insta-section",
     "extrapad4",
     "foundersStory",
     "extrapad5",
-    "newsletter",
     "landing-faq",
-    "extrapad8",
+    "extrapad6",
     "test-slider",
-    "extrapad9"
+    "extrapad7"
   ]
 }
