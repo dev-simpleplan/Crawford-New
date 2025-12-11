@@ -7842,4 +7842,10 @@ header.active .header-link.dropdown-normal svg {
     .featured-collection .container-fluid {
         padding-right: 12px;
     }
+    .sticky-floater-div .enquiry {
+        width: 100%;
+    }
+    .sticky-floater-div .enquiry button {
+        width: 100%;
+    }
 }
