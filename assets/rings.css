@@ -1,6 +1,7 @@
 .product-in {
     padding-top: 120px;
 }
+
 .product-image {
     display: flex;
     width: 45%;
@@ -9,19 +10,23 @@
     position: sticky;
     top: 90px;
 }
-.product-image.loading{
+
+.product-image.loading {
     opacity: 0.1;
     transition: 0.4s all ease;
 }
+
 .product-thumb-wrapper {
     width: 20%;
     position: relative;
     padding: 22px 0;
 }
-.product-thumb-wrapper .btn-wrap.slick-disabled{
+
+.product-thumb-wrapper .btn-wrap.slick-disabled {
     display: none;
 }
-.product-thumb-wrapper .btn-wrap{
+
+.product-thumb-wrapper .btn-wrap {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -31,29 +36,36 @@
     justify-content: space-between;
     align-items: center;
 }
-.product-thumb-wrapper .btn-wrap button{
+
+.product-thumb-wrapper .btn-wrap button {
     display: inline-flex;
     width: 20px;
 }
+
 .product-media-main {
     width: 75%;
 }
+
 .product-wrapper {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
 }
+
 .product-desp {
     width: 40%;
 }
+
 .product-image .item {
     position: relative;
     aspect-ratio: 1 / 1;
 }
+
 .product-image .item img {
     position: absolute;
     inset: 0;
 }
+
 .product-image .product-media-thumb .item {
     width: 90px !important;
     height: 90px !important;
@@ -62,15 +74,19 @@
     transition: 0.4s all ease;
     cursor: pointer;
 }
+
 .product-image .product-media-thumb .item.slick-current {
     border-color: #708274;
 }
-.product-media-thumb button{
+
+.product-media-thumb button {
     display: none !important;
 }
-.product-media-thumb{
+
+.product-media-thumb {
     z-index: 1;
-} 
+}
+
 .product-title {
     display: flex;
     flex-direction: column;
@@ -78,15 +94,18 @@
     padding-bottom: 28px;
     border-bottom: 1px solid #ECECE5;
 }
-.product-title h1{
+
+.product-title h1 {
     font-size: clamp(32px, 5vw, 48px);
     text-wrap-style: balance;
 }
-.variant{
+
+.variant {
     padding: 30px 0;
     /* border-bottom: 1px solid #ECECE5; */
 }
-.variant p.curate-ring{
+
+.variant p.curate-ring {
     font-family: var(--general);
     font-weight: 400;
     font-size: clamp(16px, 2.6vw, 20px);
@@ -95,27 +114,34 @@
     color: #161716;
     text-transform: capitalize;
 }
-.variant .variant-in{
+
+.variant .variant-in {
     padding: 26px 0;
     /* border-bottom: 1px solid #ECECE5 !important; */
 }
-ul.color-list{
+
+ul.color-list {
     display: none;
 }
-.metal-select-wrap{
+
+.metal-select-wrap {
     display: flex;
     flex-direction: column-reverse;
     gap: 36px;
 }
-.metal-select-carat{
+
+.metal-select-carat {
     display: flex;
     align-items: center;
     gap: 16px;
 }
-.variant .variant-in.Color label{
+
+.variant .variant-in.Color label {
     display: none !important;
 }
-.variant .variant-in.Color .metal-select-carat label, .variant .variant-in label{
+
+.variant .variant-in.Color .metal-select-carat label,
+.variant .variant-in label {
     display: inline-block !important;
     font-family: var(--general);
     font-weight: 400;
@@ -126,34 +152,40 @@ ul.color-list{
     text-transform: uppercase;
     color: #161716;
 }
+
 .metal-carat-in {
     display: flex;
     align-items: center;
     gap: 34px;
 }
-.metal-carat-option{
+
+.metal-carat-option {
     display: flex;
     align-items: center;
     gap: 8px;
 }
-.variant .variant-in.Color .metal-select-carat .metal-carat-option label{
+
+.variant .variant-in.Color .metal-select-carat .metal-carat-option label {
     color: #555;
     font-weight: 400;
     transition: 0.4s all ease;
     text-decoration: none;
     text-underline-offset: 4px;
 }
-.variant .variant-in.Color .metal-select-carat .metal-carat-option.active label{
+
+.variant .variant-in.Color .metal-select-carat .metal-carat-option.active label {
     font-weight: 500;
     /* text-decoration: underline; */
     color: #161716;
 }
-.metal-color-in{
+
+.metal-color-in {
     display: flex;
     align-items: stretch;
     gap: 36px;
 }
-.metal-color-div .color-swatch{
+
+.metal-color-div .color-swatch {
     display: flex;
     width: 30px;
     aspect-ratio: 1/1;
@@ -161,26 +193,32 @@ ul.color-list{
     border: 1px solid transparent;
     transition: 0.4s all ease;
 }
-.yellow-gold .metal-color-div .color-swatch{
+
+.yellow-gold .metal-color-div .color-swatch {
     background: linear-gradient(143.23deg, #DAC392 15.54%, #D8B960 92.96%);
 }
-.rose-gold .metal-color-div .color-swatch{
+
+.rose-gold .metal-color-div .color-swatch {
     background: radial-gradient(circle, rgba(240, 159, 148, 1) 20%, rgba(179, 100, 79, 1) 80%);
 }
-.white-gold .metal-color-div .color-swatch{
+
+.white-gold .metal-color-div .color-swatch {
     background: linear-gradient(143.23deg, #F2F2F1 15.54%, #D0D0D0 92.96%);
 }
-.metal-color-in li.active .metal-color-div .color-swatch{
+
+.metal-color-in li.active .metal-color-div .color-swatch {
     border-color: #555555;
 }
-.metal-color-div{
+
+.metal-color-div {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 12px;
     position: relative;
 }
-.metal-color-div p{
+
+.metal-color-div p {
     font-family: var(--general);
     font-weight: 400;
     font-size: 12px;
@@ -201,30 +239,37 @@ ul.color-list{
     top: 5px;
     visibility: hidden;
     display: none;
-}   
-.metal-color-div:hover p{
+}
+
+.metal-color-div:hover p {
     visibility: visible;
 }
+
+
 /* .metal-color-in li.active .metal-color-div p{
     text-decoration: underline;
     text-underline-offset: 2px;
 } */
-.metal-color-in li{
+
+.metal-color-in li {
     flex: 0 0 10%;
     cursor: pointer;
 }
-li.Stone.Type.variant-in{
+
+li.Stone.Type.variant-in {
     display: flex;
     align-items: center;
     gap: 16px;
     border-bottom: none !important;
 }
-li.Stone.Type.variant-in ul{
+
+li.Stone.Type.variant-in ul {
     display: flex;
     align-items: stretch;
     gap: 10px;
 }
-li.Stone.Type.variant-in ul li{
+
+li.Stone.Type.variant-in ul li {
     cursor: pointer;
     padding: 8px;
     background-color: #F4F4E7;
@@ -236,7 +281,8 @@ li.Stone.Type.variant-in ul li{
     transition: 0.4s all ease;
     position: relative;
 }
-li.Stone.Type.variant-in ul li::after{
+
+li.Stone.Type.variant-in ul li::after {
     content: "";
     width: 5px;
     height: 5px;
@@ -250,11 +296,13 @@ li.Stone.Type.variant-in ul li::after{
     opacity: 0;
     transition: 0.4s all ease;
 }
-li.Stone.Type.variant-in ul li svg{
+
+li.Stone.Type.variant-in ul li svg {
     transition: 0.4s all ease;
     opacity: 1;
 }
-li.Stone.Type.variant-in ul li p{
+
+li.Stone.Type.variant-in ul li p {
     font-family: var(--general);
     font-weight: 500;
     font-size: 12px;
@@ -264,27 +312,33 @@ li.Stone.Type.variant-in ul li p{
     text-transform: uppercase;
     color: #161716;
 }
-li.Stone.Type.variant-in ul li[data-selected= true]{
+
+li.Stone.Type.variant-in ul li[data-selected=true] {
     border: 1px solid #555;
     padding-left: 24px;
     gap: 0;
 }
-li.Stone.Type.variant-in ul li[data-selected= true] svg{
+
+li.Stone.Type.variant-in ul li[data-selected=true] svg {
     opacity: 0;
 }
-li.Stone.Type.variant-in ul li[data-selected= true]::after{
+
+li.Stone.Type.variant-in ul li[data-selected=true]::after {
     opacity: 1;
 }
-li.Stone.Size.variant-in label{
+
+li.Stone.Size.variant-in label {
     display: flex !important;
     align-items: center;
     gap: 16px;
 }
-li.Stone.Size.variant-in{
+
+li.Stone.Size.variant-in {
     position: relative;
     border-bottom: none !important;
 }
-li.Stone.Size.variant-in .selected-wrap{
+
+li.Stone.Size.variant-in .selected-wrap {
     cursor: pointer;
     padding: 8px 12px;
     background-color: #F4F4E7;
@@ -296,7 +350,8 @@ li.Stone.Size.variant-in .selected-wrap{
     position: relative;
     min-width: 138px;
 }
-li.Stone.Size.variant-in .selected-wrap span{
+
+li.Stone.Size.variant-in .selected-wrap span {
     font-family: var(--general);
     font-weight: 500;
     font-size: 12px;
@@ -306,14 +361,18 @@ li.Stone.Size.variant-in .selected-wrap span{
     text-transform: uppercase;
     color: #161716;
 }
-li.Stone.Size.variant-in .selected-wrap svg{
+
+li.Stone.Size.variant-in .selected-wrap svg {
     transition: 0.4s all ease;
     transform: rotate(0deg);
 }
-li.Stone.Size.variant-in .selected-wrap.active svg{
+
+li.Stone.Size.variant-in .selected-wrap.active svg {
     transform: rotate(-180deg);
 }
-li.Stone.Size.variant-in ul, ul.ring-size-list{
+
+li.Stone.Size.variant-in ul,
+ul.ring-size-list {
     flex-direction: column;
     min-width: 138px;
     position: absolute;
@@ -321,11 +380,14 @@ li.Stone.Size.variant-in ul, ul.ring-size-list{
     display: none;
     z-index: 1;
 }
-ul.ring-size-list{
+
+ul.ring-size-list {
     left: 105px;
     top: 54px;
 }
-li.Stone.Size.variant-in ul li, ul.ring-size-list li{
+
+li.Stone.Size.variant-in ul li,
+ul.ring-size-list li {
     padding: 8px;
     background-color: #F4F4E7;
     border-top: 1px solid #DADAC5;
@@ -333,16 +395,22 @@ li.Stone.Size.variant-in ul li, ul.ring-size-list li{
     cursor: pointer;
     transition: 0.4s all ease;
 }
-li.Stone.Size.variant-in ul li:last-child{
+
+li.Stone.Size.variant-in ul li:last-child {
     border-bottom: 1px solid #DADAC5;
 }
-li.Stone.Size.variant-in ul li:hover, .ring-size-list li:hover{
+
+li.Stone.Size.variant-in ul li:hover,
+.ring-size-list li:hover {
     background-color: #DADAC5;
 }
-li.Stone.Size.variant-in ul li[data-selected= true]{
+
+li.Stone.Size.variant-in ul li[data-selected=true] {
     background-color: #DADAC5;
 }
-li.Stone.Size.variant-in ul li p, .ring-size-list li{
+
+li.Stone.Size.variant-in ul li p,
+.ring-size-list li {
     font-family: var(--general);
     font-weight: 400;
     font-size: 12px;
@@ -352,12 +420,14 @@ li.Stone.Size.variant-in ul li p, .ring-size-list li{
     text-transform: capitalize;
     color: #161716;
 }
-li.variant-in.ring-size label{
+
+li.variant-in.ring-size label {
     display: flex !important;
     gap: 16px;
     align-items: center;
 }
-li.variant-in.ring-size .ring-size-selected{
+
+li.variant-in.ring-size .ring-size-selected {
     cursor: pointer;
     padding: 8px 12px;
     background-color: #F4F4E7;
@@ -369,6 +439,7 @@ li.variant-in.ring-size .ring-size-selected{
     position: relative;
     min-width: 138px;
 }
+
 li.variant-in.ring-size .ring-size-selected span.selected-ring-size-display {
     font-family: var(--general);
     font-weight: 500;
@@ -379,13 +450,15 @@ li.variant-in.ring-size .ring-size-selected span.selected-ring-size-display {
     text-transform: uppercase;
     color: #161716;
 }
-li.variant-in.ring-size{
+
+li.variant-in.ring-size {
     position: relative;
     display: flex;
     align-items: center;
     border-bottom: none !important;
 }
-li.variant-in.ring-size a.ring-guide-open{
+
+li.variant-in.ring-size a.ring-guide-open {
     font-family: General Sans;
     font-weight: 400;
     font-style: italic;
@@ -400,7 +473,8 @@ li.variant-in.ring-size a.ring-guide-open{
     text-decoration-thickness: 0%;
     margin-left: 20px;
 }
-.sticky-floater-div{
+
+.sticky-floater-div {
     position: fixed;
     width: 100%;
     background-color: #ECECE5;
@@ -410,20 +484,37 @@ li.variant-in.ring-size a.ring-guide-open{
     left: 0;
     z-index: 99;
 }
-.sticky-float-wrap{
+
+.sticky-floater-div .enquiry button {
+    background: none;
+    border: 1px solid #2C5234;
+    color: #2C5234;
+    padding: 14px 30px;
+}
+
+.sticky-floater-div .enquiry button:hover {
+    background: #0C1E10;
+    border: 1px solid #2C5234;
+    color: #ECECE5;
+}
+
+.sticky-float-wrap {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.sticky-float-wrap h2{
+
+.sticky-float-wrap h2 {
     font-size: clamp(22px, 5vw, 26px);
     max-width: 17ch;
 }
-.sticky-price-cart button{
+
+.sticky-price-cart button {
     display: inline-flex;
-    padding: 17px 65px;
+    padding: 14px 65px;
 }
-.sticky-price-cart .price .sell-price{
+
+.sticky-price-cart .price .sell-price {
     color: rgb(22, 23, 22);
     font-size: 20px;
     font-weight: 500;
@@ -432,17 +523,20 @@ li.variant-in.ring-size a.ring-guide-open{
     text-align: right;
     text-transform: uppercase;
 }
-.sticky-price-cart{
+
+.sticky-price-cart {
     display: flex;
     align-items: center;
     gap: 20px;
 }
-.sticky-title{
+
+.sticky-title {
     display: flex;
     align-items: center;
     gap: 8px;
 }
-.engrav-btn{
+
+.engrav-btn {
     cursor: pointer;
     padding: 8px 12px;
     background-color: #F4F4E7;
@@ -454,13 +548,16 @@ li.variant-in.ring-size a.ring-guide-open{
     position: relative;
     min-width: 138px;
 }
-li.variant-in.engraving{
+
+li.variant-in.engraving {
     display: flex;
     align-items: center;
     gap: 16px;
-  border-bottom: 1px solid #ECECE5;
+    border-bottom: 1px solid #ECECE5;
 }
-li.variant-in.engraving .engrav-btn p, .engrav-btn{
+
+li.variant-in.engraving .engrav-btn p,
+.engrav-btn {
     font-family: var(--general);
     font-weight: 500;
     font-size: 12px;
@@ -470,13 +567,15 @@ li.variant-in.engraving .engrav-btn p, .engrav-btn{
     text-transform: uppercase;
     color: #161716;
 }
-.product-image-con{
+
+.product-image-con {
     display: flex;
     align-items: center;
     /* gap: 20px; */
     width: 100%;
 }
-.product-desp .engraving-box a{
+
+.product-desp .engraving-box a {
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -491,14 +590,17 @@ li.variant-in.engraving .engrav-btn p, .engrav-btn{
     text-align: center;
     padding: 18px 20px;
 }
-.detail-accordion{
+
+.detail-accordion {
     width: 90%;
     margin-top: 26px;
 }
+
 .detail-accordion .detail-button {
     display: flex;
     align-items: center;
 }
+
 .detail-accordion p.detail-button-txt {
     display: inline-flex !important;
     font-family: var(--general);
@@ -513,15 +615,18 @@ li.variant-in.engraving .engrav-btn p, .engrav-btn{
     gap: 6px;
     cursor: pointer;
 }
+
 .detail-accordion p.detail-button-txt svg {
     transition: 0.4s all ease;
     transform: rotate(-90deg);
     width: 8px;
     height: 8px;
 }
+
 .detail-accordion p.detail-button-txt.active svg {
     transform: rotate(0deg);
 }
+
 .detail-info {
     display: none;
     flex-direction: column;
@@ -529,11 +634,13 @@ li.variant-in.engraving .engrav-btn p, .engrav-btn{
     padding-top: 26px;
     padding-bottom: 16px;
 }
+
 .detail-info .item {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
 }
+
 .detail-info .item p {
     color: #161716;
     font-family: var(--general);
@@ -543,115 +650,127 @@ li.variant-in.engraving .engrav-btn p, .engrav-btn{
     letter-spacing: 0.02em;
     text-align: left;
 }
+
 .detail-info .item p.di-desp {
     color: #555555;
     text-align: right;
     max-width: 26ch;
     text-transform: capitalize;
 }
-.mob-title{
+
+.mob-title {
     display: none;
 }
-.mob-title h1{
+
+.mob-title h1 {
     font-size: clamp(32px, 5vw, 48px);
     text-wrap-style: balance;
 }
 
-li.variant-in.stone-shape{
+li.variant-in.stone-shape {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-li.variant-in.stone-shape .owl-carousel .related-prod img{
+
+li.variant-in.stone-shape .owl-carousel .related-prod img {
     width: 40px;
     height: 40px;
     aspect-ratio: 1/1;
     object-fit: contain;
     opacity: 0.5 !important;
 }
-li.variant-in.stone-shape .owl-carousel .related-prod a{
+
+li.variant-in.stone-shape .owl-carousel .related-prod a {
     display: flex;
     flex-direction: column;
     gap: 8px;
     align-items: center;
     justify-content: flex-start;
 }
-li.variant-in.stone-shape .owl-carousel .related-prod p{
+
+li.variant-in.stone-shape .owl-carousel .related-prod p {
     text-align: center;
 }
-li.variant-in.stone-shape .owl-carousel .related-prod[data-selected=true] img{
+
+li.variant-in.stone-shape .owl-carousel .related-prod[data-selected=true] img {
     opacity: 1 !important;
 }
-li.variant-in.stone-shape .owl-carousel .related-prod[data-selected=true] p{
+
+li.variant-in.stone-shape .owl-carousel .related-prod[data-selected=true] p {
     font-weight: 500;
     color: #161716;
     text-decoration: underline;
     text-underline-offset: 4px;
 }
-li.variant-in.stone-shape .metal-variant-headings p{
+
+li.variant-in.stone-shape .metal-variant-headings p {
     font-size: 12px;
     letter-spacing: 0.05em;
     margin-top: 8px;
 }
-li.variant-in.stone-shape  .metal-variant-headings span{
+
+li.variant-in.stone-shape .metal-variant-headings span {
     font-weight: 500;
 }
+
 .prod-main-img:hover img {
     transform: scale(2) !important;
 }
-.metal-carat-option input[type=radio]{
-  display: none;
+
+.metal-carat-option input[type=radio] {
+    display: none;
 }
 
 @media (min-width: 1600px) {
-    .product-image .product-media-thumb .item{
+    .product-image .product-media-thumb .item {
         width: 100px !important;
         height: 100px !important;
     }
 }
 
-@media(max-width: 1200px){
-    .product-image{
+@media(max-width: 1200px) {
+    .product-image {
         width: 50%
     }
     .product-desp {
         width: 45%;
     }
-    .product-image-con{
+    .product-image-con {
         justify-content: space-between;
     }
-    .metal-color-div p{
+    .metal-color-div p {
         display: none !important;
     }
 }
 
 @media(max-width: 991px) {
-    .product-wrapper{
+    .product-wrapper {
         flex-direction: column;
     }
-    .product-image{
+    .product-image {
         width: 100%;
     }
-    .product-desp{
+    .product-desp {
         width: 100%;
     }
-    .product-image{
+    .product-image {
         position: static;
     }
-    .product-image-con{
+    .product-image-con {
         flex-direction: column-reverse;
     }
-    .product-thumb-wrapper{
+    .product-thumb-wrapper {
         width: 100%;
     }
-    .product-media-main{
+    .product-media-main {
         width: 80%;
     }
-    .product-image .product-media-thumb .item{
+    .product-image .product-media-thumb .item {
         margin-bottom: 0;
         margin-right: 10px;
     }
-    .product-image .product-media-thumb .item:last-child{
+    .product-image .product-media-thumb .item:last-child {
         margin-right: 0;
     }
     .sticky-price-cart {
@@ -660,13 +779,13 @@ li.variant-in.stone-shape  .metal-variant-headings span{
     .sticky-title {
         flex-direction: column;
     }
-    .metal-color-in li{
+    .metal-color-in li {
         flex: 0 0 9%;
     }
-    .metal-color-div .color-swatch{
+    .metal-color-div .color-swatch {
         flex-shrink: 0;
     }
-    .mob-title{
+    .mob-title {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -677,10 +796,9 @@ li.variant-in.stone-shape  .metal-variant-headings span{
     .product-in {
         padding-top: 80px;
     }
-    .product-title .title{
+    .product-title .title {
         display: none;
     }
-    
 }
 
 @media(max-width: 767px) {
@@ -688,7 +806,7 @@ li.variant-in.stone-shape  .metal-variant-headings span{
         width: 100%;
         position: static;
     }
-    .product-media-main{
+    .product-media-main {
         width: 100%;
     }
     .product-thumb-wrapper {
@@ -705,48 +823,47 @@ li.variant-in.stone-shape  .metal-variant-headings span{
     .sticky-floater-div {
         padding: 20px 0;
     }
-    .product-desp{
+    .product-desp {
         margin-top: 24px;
     }
-    li.Stone.Type.variant-in{
+    li.Stone.Type.variant-in {
         flex-direction: column;
         align-items: flex-start;
     }
-    .sticky-float-wrap{
+    .sticky-float-wrap {
         flex-direction: column;
         align-items: flex-start;
     }
-    .sticky-price-cart{
+    .sticky-price-cart {
         align-items: flex-start;
         width: 100%;
         padding-bottom: 45px;
     }
-    .sticky-title{
+    .sticky-title {
         align-items: flex-start;
         width: 100%;
     }
-    .sticky-float-wrap h2{
+    .sticky-float-wrap h2 {
         max-width: 100%;
     }
-    .sticky-price-cart .submit{
+    .sticky-price-cart .submit {
         position: absolute;
         width: 100%;
         left: 0;
         bottom: 0;
     }
-    .sticky-price-cart button{
+    .sticky-price-cart button {
         width: 100%;
     }
-    .rgm-con{
+    .rgm-con {
         padding: 0px 20px;
         padding-bottom: 50px;
         padding-top: 30px;
     }
-    .detail-accordion{
+    .detail-accordion {
         width: 100%;
     }
-    .sticky-price-cart .price .sell-price{
+    .sticky-price-cart .price .sell-price {
         font-size: 16px;
     }
 }
-

@@ -1,0 +1,437 @@
+<!-- Enquiry to Customise Popup Modal -->
+<div id="enquiryModal" class="enquiry-modal">
+  <div class="enquiry-modal-overlay"></div>
+  <div class="enquiry-modal-content">
+    <button class="enquiry-modal-close" aria-label="Close">&times;</button>
+    <div class="enquiry-modal-header">
+      <h2>{{ product.title }}</h2>
+      <p>Tell us about your dream piece and we'll bring it to life</p>
+    </div>
+    <div class="enquiry-modal-body">
+      <!-- Shopify Form App Embed - Replace this entire section with your actual form embed code -->
+      <!-- Go to Shopify Admin > Apps > Shopify Forms > Your Form > Get Embed Code -->
+      
+      <!-- METHOD 1: If you have the form snippet, use this -->
+      {% comment %}
+      {% render 'shopify-form-785918' %}
+      {% endcomment %}
+      
+      <!-- METHOD 2: If you have direct embed code, paste it here -->
+      <!-- Your Shopify Form embed code goes here -->
+      
+      <!-- METHOD 3: Manual form as fallback (TEMPORARY - Replace with actual Shopify form) -->
+      {% form 'contact', id: 'contact-form-785918' %}
+        {% if form.posted_successfully? %}
+          <div class="form-success-message">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <p>Thank you! We'll get back to you soon.</p>
+          </div>
+        {% endif %}
+        
+        {% if form.errors %}
+          <div class="form-error-message">
+            <p>Please correct the errors below:</p>
+            <ul>
+              {% for field in form.errors %}
+                <li>{{ field | capitalize }} {{ form.errors.messages[field] }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+
+        <input type="hidden" name="contact[Form ID]" value="785918">
+        <input type="hidden" name="contact[Product]" value="{{ product.title }}">
+        <input type="hidden" name="contact[Product URL]" value="{{ shop.url }}{{ product.url }}">
+        {% if product.selected_or_first_available_variant %}
+          <input type="hidden" name="contact[Selected Variant]" value="{{ product.selected_or_first_available_variant.title }}">
+        {% endif %}
+
+        <div class="enquiry-form-group">
+          <label for="contact-name">
+            Name <span class="required">*</span>
+          </label>
+          <input 
+            type="text" 
+            id="contact-name" 
+            name="contact[name]" 
+            required
+            placeholder="Enter your full name"
+            value="{% if form.name %}{{ form.name }}{% endif %}">
+        </div>
+
+        <div class="enquiry-form-group">
+          <label for="contact-email">
+            Email <span class="required">*</span>
+          </label>
+          <input 
+            type="email" 
+            id="contact-email" 
+            name="contact[email]" 
+            required
+            placeholder="your.email@example.com"
+            value="{% if form.email %}{{ form.email }}{% endif %}">
+        </div>
+
+        <div class="enquiry-form-group">
+          <label for="contact-phone">
+            Phone Number
+          </label>
+          <input 
+            type="tel" 
+            id="contact-phone" 
+            name="contact[phone]" 
+            placeholder="+1 (555) 000-0000"
+            value="{% if form.phone %}{{ form.phone }}{% endif %}">
+        </div>
+
+        <div class="enquiry-form-group">
+          <label for="contact-message">
+            Your Requirements <span class="required">*</span>
+          </label>
+          <textarea 
+            id="contact-message" 
+            name="contact[body]" 
+            rows="5" 
+            required
+            placeholder="Tell us about your customisation requirements...">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+        </div>
+
+        <div class="enquiry-form-actions">
+          <button type="button" class="enquiry-btn-secondary enquiry-cancel-btn">Cancel</button>
+          <button type="submit" class="enquiry-btn-primary">Submit Enquiry</button>
+        </div>
+      {% endform %}
+      
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Modal Styles */
+  .enquiry-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .enquiry-modal.active {
+    display: block;
+  }
+
+  .enquiry-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+  }
+
+  .enquiry-modal-content {
+    position: relative;
+    background: #fff;
+    max-width: 767px;
+    width: 90%;
+    margin: 100px auto;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.4s ease;
+    max-height: calc(100vh - 150px);
+    overflow-y: auto;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .enquiry-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s ease;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    line-height: 1;
+  }
+
+  .enquiry-modal-close:hover {
+    color: #000;
+    background: #f5f5f5;
+  }
+
+  .enquiry-modal-header {
+    padding: 40px 40px 20px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .enquiry-modal-header h2 {
+    margin: 0 0 10px;
+    font-size: 28px;
+    font-weight: 600;
+    color: #161716;
+    line-height: 1.3;
+  }
+
+  .enquiry-modal-header p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+  }
+
+  .enquiry-modal-body {
+    padding: 30px 40px 40px;
+  }
+
+  /* Form Styles */
+  .enquiry-form-group {
+    margin-bottom: 20px;
+  }
+
+  .enquiry-form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #161716;
+  }
+
+  .required {
+    color: #e63946;
+  }
+
+  .enquiry-form-group input,
+  .enquiry-form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background: #fff;
+    box-sizing: border-box;
+  }
+
+  .enquiry-form-group input:focus,
+  .enquiry-form-group textarea:focus {
+    outline: none;
+    border-color: #161716;
+    box-shadow: 0 0 0 3px rgba(22, 23, 22, 0.1);
+  }
+
+  .enquiry-form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  /* Success/Error Messages */
+  .form-success-message,
+  .form-error-message {
+    padding: 16px;
+    border-radius: 6px;
+    margin-bottom: 24px;
+  }
+
+  .form-success-message {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .form-success-message svg {
+    flex-shrink: 0;
+    color: #28a745;
+  }
+
+  .form-error-message {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+  }
+
+  .form-error-message ul {
+    margin: 8px 0 0 0;
+    padding-left: 20px;
+  }
+
+  .form-error-message li {
+    margin: 4px 0;
+  }
+
+  /* Form Actions */
+  .enquiry-form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .enquiry-btn-primary,
+  .enquiry-btn-secondary {
+    flex: 1;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+  }
+
+  .enquiry-btn-primary {
+    background: #161716;
+    color: #fff;
+  }
+
+  .enquiry-btn-primary:hover {
+    background: #000;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .enquiry-btn-secondary {
+    background: #fff;
+    color: #161716;
+    border: 1px solid #ddd;
+  }
+
+  .enquiry-btn-secondary:hover {
+    background: #f5f5f5;
+    border-color: #161716;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .enquiry-modal-content {
+      margin: 70px auto;
+      width: 95%;
+      max-height: calc(100vh - 100px);
+    }
+
+    .enquiry-modal-header {
+      padding: 30px 24px 20px;
+    }
+
+    .enquiry-modal-body {
+      padding: 20px 24px 30px;
+    }
+
+    .enquiry-modal-header h2 {
+      font-size: 24px;
+    }
+
+    .enquiry-form-actions {
+      flex-direction: column;
+    }
+  }
+
+  /* Prevent body scroll when modal is open */
+  body.enquiry-modal-open {
+    overflow: hidden !important;
+  }
+</style>
+
+<script>
+  (function() {
+    'use strict';
+    
+    // Wait for DOM to be ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initEnquiryModal);
+    } else {
+      initEnquiryModal();
+    }
+
+    function initEnquiryModal() {
+      const modal = document.getElementById('enquiryModal');
+      const openBtn = document.querySelector('.enquiry .custom-btn');
+      const closeBtn = document.querySelector('.enquiry-modal-close');
+      const cancelBtn = document.querySelector('.enquiry-cancel-btn');
+      const overlay = document.querySelector('.enquiry-modal-overlay');
+
+      if (!modal) return;
+
+      // Open modal
+      if (openBtn) {
+        openBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          modal.classList.add('active');
+          document.body.classList.add('enquiry-modal-open');
+        });
+      }
+
+      // Close modal function
+      function closeModal() {
+        modal.classList.remove('active');
+        document.body.classList.remove('enquiry-modal-open');
+      }
+
+      // Close on X button
+      if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+      }
+
+      // Close on Cancel button
+      if (cancelBtn) {
+        cancelBtn.addEventListener('click', closeModal);
+      }
+
+      // Close on overlay click
+      if (overlay) {
+        overlay.addEventListener('click', closeModal);
+      }
+
+      // Close on Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+          closeModal();
+        }
+      });
+
+      // Auto-open if form was submitted (to show success message)
+      {% if form.posted_successfully? %}
+        modal.classList.add('active');
+        document.body.classList.add('enquiry-modal-open');
+        
+        // Auto-close after 3 seconds
+        setTimeout(function() {
+          closeModal();
+        }, 3000);
+      {% endif %}
+    }
+  })();
+</script>
