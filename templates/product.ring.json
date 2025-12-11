@@ -1,1 +1,340 @@
-{"sections":{"template":{"type":"template-product-ring","blocks":{"title":{"type":"title","settings":{}},"price":{"type":"price","settings":{}},"variant_selector":{"type":"variant_selector","settings":{}},"checkout_buttons":{"type":"checkout_buttons","settings":{}},"ring_guide_heading_eY9gkt":{"type":"ring-guide-heading","settings":{"modal-heading":"","head1":"IN","head2":"MM","head3":"US, Canada, Mexico","head4":"UK, Australia, Ireland,<br> New Zealand,<br> South Africa","head5":"France","head6":"Germany, Russia,<br> Ukraine, Asia","head7":"India, China, Japan,<br> South America,<br> Turkey, Israel","head8":"Italy, Spain,<br> Netherlands,<br> Switzerland"}},"ring_guide_CQxfWg":{"type":"ring-guide","settings":{"group-item1":"1.74","group-item2":"44.2","group-item3":"3","group-item4":"F","group-item5":"44","group-item6":"14","group-item7":"41","group-item8":"4"}},"ring_guid1":{"type":"ring-guide","settings":{"group-item1":"1.74","group-item2":"44.2","group-item3":"3","group-item4":"F","group-item5":"44","group-item6":"14","group-item7":"41","group-item8":"4"}},"ring_guid2":{"type":"ring-guide","settings":{"group-item1":"1.74","group-item2":"44.2","group-item3":"3","group-item4":"F","group-item5":"44","group-item6":"14","group-item7":"41","group-item8":"4"}},"ring_guid3":{"type":"ring-guide","settings":{"group-item1":"1.74","group-item2":"44.2","group-item3":"3","group-item4":"F","group-item5":"44","group-item6":"14","group-item7":"41","group-item8":"4"}},"ring_guid4":{"type":"ring-guide","settings":{"group-item1":"1.74","group-item2":"44.2","group-item3":"3","group-item4":"F","group-item5":"44","group-item6":"14","group-item7":"41","group-item8":"4"}},"ring_guid5":{"type":"ring-guide","settings":{"group-item1":"1.74","group-item2":"44.2","group-item3":"3","group-item4":"F","group-item5":"44","group-item6":"14","group-item7":"41","group-item8":"4"}},"ring_guid6":{"type":"ring-guide","settings":{"group-item1":"1.74","group-item2":"44.2","group-item3":"3","group-item4":"F","group-item5":"44","group-item6":"14","group-item7":"41","group-item8":"4"}},"ring_guid7":{"type":"ring-guide","settings":{"group-item1":"1.74","group-item2":"44.2","group-item3":"3","group-item4":"F","group-item5":"44","group-item6":"14","group-item7":"41","group-item8":"4"}},"ring_guid8":{"type":"ring-guide","settings":{"group-item1":"1.74","group-item2":"44.2","group-item3":"3","group-item4":"F","group-item5":"44","group-item6":"14","group-item7":"41","group-item8":"4"}},"ring_guid9":{"type":"ring-guide","settings":{"group-item1":"1.74","group-item2":"44.2","group-item3":"3","group-item4":"F","group-item5":"44","group-item6":"14","group-item7":"41","group-item8":"4"}},"ring_guid10":{"type":"ring-guide","settings":{"group-item1":"1.74","group-item2":"44.2","group-item3":"3","group-item4":"F","group-item5":"44","group-item6":"14","group-item7":"41","group-item8":"4"}},"ring_guid11":{"type":"ring-guide","settings":{"group-item1":"1.74","group-item2":"44.2","group-item3":"3","group-item4":"F","group-item5":"44","group-item6":"14","group-item7":"41","group-item8":"4"}},"ring_guid12":{"type":"ring-guide","settings":{"group-item1":"1.74","group-item2":"44.2","group-item3":"3","group-item4":"F","group-item5":"44","group-item6":"14","group-item7":"41","group-item8":"4"}},"ring_guid13":{"type":"ring-guide","settings":{"group-item1":"1.74","group-item2":"44.2","group-item3":"3","group-item4":"F","group-item5":"44","group-item6":"14","group-item7":"41","group-item8":"4"}},"ring_guid14":{"type":"ring-guide","settings":{"group-item1":"1.74","group-item2":"44.2","group-item3":"3","group-item4":"F","group-item5":"44","group-item6":"14","group-item7":"41","group-item8":"4"}},"ring_guid15":{"type":"ring-guide","settings":{"group-item1":"1.74","group-item2":"44.2","group-item3":"3","group-item4":"F","group-item5":"44","group-item6":"14","group-item7":"41","group-item8":"4"}},"ring_guid16":{"type":"ring-guide","settings":{"group-item1":"1.74","group-item2":"44.2","group-item3":"3","group-item4":"F","group-item5":"44","group-item6":"14","group-item7":"41","group-item8":"4"}},"ring_guid17":{"type":"ring-guide","settings":{"group-item1":"1.74","group-item2":"44.2","group-item3":"3","group-item4":"F","group-item5":"44","group-item6":"14","group-item7":"41","group-item8":"4"}}},"block_order":["title","price","variant_selector","checkout_buttons","ring_guide_heading_eY9gkt","ring_guide_CQxfWg","ring_guid1","ring_guid2","ring_guid3","ring_guid4","ring_guid5","ring_guid6","ring_guid7","ring_guid8","ring_guid9","ring_guid10","ring_guid11","ring_guid12","ring_guid13","ring_guid14","ring_guid15","ring_guid16","ring_guid17"],"settings":{}}},"order":["template"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "template": {
+      "type": "template-product-ring",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "description": true
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_selector": {
+          "type": "variant_selector",
+          "settings": {}
+        },
+        "checkout_buttons": {
+          "type": "checkout_buttons",
+          "settings": {}
+        },
+        "ring_guide_heading_eY9gkt": {
+          "type": "ring-guide-heading",
+          "settings": {
+            "modal-heading": "",
+            "head1": "IN",
+            "head2": "MM",
+            "head3": "US, Canada, Mexico",
+            "head4": "UK, Australia, Ireland,<br> New Zealand,<br> South Africa",
+            "head5": "France",
+            "head6": "Germany, Russia,<br> Ukraine, Asia",
+            "head7": "India, China, Japan,<br> South America,<br> Turkey, Israel",
+            "head8": "Italy, Spain,<br> Netherlands,<br> Switzerland"
+          }
+        },
+        "ring_guide_CQxfWg": {
+          "type": "ring-guide",
+          "settings": {
+            "group-item1": "1.74",
+            "group-item2": "44.2",
+            "group-item3": "3",
+            "group-item4": "F",
+            "group-item5": "44",
+            "group-item6": "14",
+            "group-item7": "41",
+            "group-item8": "4"
+          }
+        },
+        "ring_guid1": {
+          "type": "ring-guide",
+          "settings": {
+            "group-item1": "1.74",
+            "group-item2": "44.2",
+            "group-item3": "3",
+            "group-item4": "F",
+            "group-item5": "44",
+            "group-item6": "14",
+            "group-item7": "41",
+            "group-item8": "4"
+          }
+        },
+        "ring_guid2": {
+          "type": "ring-guide",
+          "settings": {
+            "group-item1": "1.74",
+            "group-item2": "44.2",
+            "group-item3": "3",
+            "group-item4": "F",
+            "group-item5": "44",
+            "group-item6": "14",
+            "group-item7": "41",
+            "group-item8": "4"
+          }
+        },
+        "ring_guid3": {
+          "type": "ring-guide",
+          "settings": {
+            "group-item1": "1.74",
+            "group-item2": "44.2",
+            "group-item3": "3",
+            "group-item4": "F",
+            "group-item5": "44",
+            "group-item6": "14",
+            "group-item7": "41",
+            "group-item8": "4"
+          }
+        },
+        "ring_guid4": {
+          "type": "ring-guide",
+          "settings": {
+            "group-item1": "1.74",
+            "group-item2": "44.2",
+            "group-item3": "3",
+            "group-item4": "F",
+            "group-item5": "44",
+            "group-item6": "14",
+            "group-item7": "41",
+            "group-item8": "4"
+          }
+        },
+        "ring_guid5": {
+          "type": "ring-guide",
+          "settings": {
+            "group-item1": "1.74",
+            "group-item2": "44.2",
+            "group-item3": "3",
+            "group-item4": "F",
+            "group-item5": "44",
+            "group-item6": "14",
+            "group-item7": "41",
+            "group-item8": "4"
+          }
+        },
+        "ring_guid6": {
+          "type": "ring-guide",
+          "settings": {
+            "group-item1": "1.74",
+            "group-item2": "44.2",
+            "group-item3": "3",
+            "group-item4": "F",
+            "group-item5": "44",
+            "group-item6": "14",
+            "group-item7": "41",
+            "group-item8": "4"
+          }
+        },
+        "ring_guid7": {
+          "type": "ring-guide",
+          "settings": {
+            "group-item1": "1.74",
+            "group-item2": "44.2",
+            "group-item3": "3",
+            "group-item4": "F",
+            "group-item5": "44",
+            "group-item6": "14",
+            "group-item7": "41",
+            "group-item8": "4"
+          }
+        },
+        "ring_guid8": {
+          "type": "ring-guide",
+          "settings": {
+            "group-item1": "1.74",
+            "group-item2": "44.2",
+            "group-item3": "3",
+            "group-item4": "F",
+            "group-item5": "44",
+            "group-item6": "14",
+            "group-item7": "41",
+            "group-item8": "4"
+          }
+        },
+        "ring_guid9": {
+          "type": "ring-guide",
+          "settings": {
+            "group-item1": "1.74",
+            "group-item2": "44.2",
+            "group-item3": "3",
+            "group-item4": "F",
+            "group-item5": "44",
+            "group-item6": "14",
+            "group-item7": "41",
+            "group-item8": "4"
+          }
+        },
+        "ring_guid10": {
+          "type": "ring-guide",
+          "settings": {
+            "group-item1": "1.74",
+            "group-item2": "44.2",
+            "group-item3": "3",
+            "group-item4": "F",
+            "group-item5": "44",
+            "group-item6": "14",
+            "group-item7": "41",
+            "group-item8": "4"
+          }
+        },
+        "ring_guid11": {
+          "type": "ring-guide",
+          "settings": {
+            "group-item1": "1.74",
+            "group-item2": "44.2",
+            "group-item3": "3",
+            "group-item4": "F",
+            "group-item5": "44",
+            "group-item6": "14",
+            "group-item7": "41",
+            "group-item8": "4"
+          }
+        },
+        "ring_guid12": {
+          "type": "ring-guide",
+          "settings": {
+            "group-item1": "1.74",
+            "group-item2": "44.2",
+            "group-item3": "3",
+            "group-item4": "F",
+            "group-item5": "44",
+            "group-item6": "14",
+            "group-item7": "41",
+            "group-item8": "4"
+          }
+        },
+        "ring_guid13": {
+          "type": "ring-guide",
+          "settings": {
+            "group-item1": "1.74",
+            "group-item2": "44.2",
+            "group-item3": "3",
+            "group-item4": "F",
+            "group-item5": "44",
+            "group-item6": "14",
+            "group-item7": "41",
+            "group-item8": "4"
+          }
+        },
+        "ring_guid14": {
+          "type": "ring-guide",
+          "settings": {
+            "group-item1": "1.74",
+            "group-item2": "44.2",
+            "group-item3": "3",
+            "group-item4": "F",
+            "group-item5": "44",
+            "group-item6": "14",
+            "group-item7": "41",
+            "group-item8": "4"
+          }
+        },
+        "ring_guid15": {
+          "type": "ring-guide",
+          "settings": {
+            "group-item1": "1.74",
+            "group-item2": "44.2",
+            "group-item3": "3",
+            "group-item4": "F",
+            "group-item5": "44",
+            "group-item6": "14",
+            "group-item7": "41",
+            "group-item8": "4"
+          }
+        },
+        "ring_guid16": {
+          "type": "ring-guide",
+          "settings": {
+            "group-item1": "1.74",
+            "group-item2": "44.2",
+            "group-item3": "3",
+            "group-item4": "F",
+            "group-item5": "44",
+            "group-item6": "14",
+            "group-item7": "41",
+            "group-item8": "4"
+          }
+        },
+        "ring_guid17": {
+          "type": "ring-guide",
+          "settings": {
+            "group-item1": "1.74",
+            "group-item2": "44.2",
+            "group-item3": "3",
+            "group-item4": "F",
+            "group-item5": "44",
+            "group-item6": "14",
+            "group-item7": "41",
+            "group-item8": "4"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "variant_selector",
+        "checkout_buttons",
+        "ring_guide_heading_eY9gkt",
+        "ring_guide_CQxfWg",
+        "ring_guid1",
+        "ring_guid2",
+        "ring_guid3",
+        "ring_guid4",
+        "ring_guid5",
+        "ring_guid6",
+        "ring_guid7",
+        "ring_guid8",
+        "ring_guid9",
+        "ring_guid10",
+        "ring_guid11",
+        "ring_guid12",
+        "ring_guid13",
+        "ring_guid14",
+        "ring_guid15",
+        "ring_guid16",
+        "ring_guid17"
+      ],
+      "settings": {}
+    },
+    "1765441908bf8f6949": {
+      "type": "apps",
+      "blocks": {
+        "forms_inline_FNpeUb": {
+          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
+          "settings": {
+            "form_id": "785918",
+            "text_color": "#202020",
+            "button_background_color": "#202020",
+            "button_label_color": "#FFFFFF",
+            "links_color": "#1878B9",
+            "errors_color": "#E02229",
+            "text_alignment": "center",
+            "form_alignment": "center",
+            "padding_top": 0,
+            "padding_bottom": 24,
+            "padding_right": 0,
+            "padding_left": 0
+          }
+        }
+      },
+      "block_order": [
+        "forms_inline_FNpeUb"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "template",
+    "1765441908bf8f6949"
+  ]
+}
