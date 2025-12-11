@@ -5,105 +5,90 @@
     <button class="enquiry-modal-close" aria-label="Close">&times;</button>
     <div class="enquiry-modal-header">
       <h2>{{ product.title }}</h2>
-      <p>Tell us about your dream piece and we'll bring it to life</p>
     </div>
     <div class="enquiry-modal-body">
-      <!-- Shopify Form App Embed - Replace this entire section with your actual form embed code -->
-      <!-- Go to Shopify Admin > Apps > Shopify Forms > Your Form > Get Embed Code -->
-      
-      <!-- METHOD 1: If you have the form snippet, use this -->
-      {% comment %}
-      {% render 'shopify-form-785918' %}
-      {% endcomment %}
-      
-      <!-- METHOD 2: If you have direct embed code, paste it here -->
-      <!-- Your Shopify Form embed code goes here -->
-      
-      <!-- METHOD 3: Manual form as fallback (TEMPORARY - Replace with actual Shopify form) -->
-      {% form 'contact', id: 'contact-form-785918' %}
+      {% form 'contact', id: 'enquiryForm' %}
         {% if form.posted_successfully? %}
           <div class="form-success-message">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="20 6 9 17 4 12"></polyline>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
             </svg>
-            <p>Thank you! We'll get back to you soon.</p>
+            <div>
+              <strong>Thank you for your enquiry!</strong>
+            </div>
           </div>
         {% endif %}
-        
+
         {% if form.errors %}
           <div class="form-error-message">
-            <p>Please correct the errors below:</p>
+            <strong>Please fix the following errors:</strong>
             <ul>
               {% for field in form.errors %}
-                <li>{{ field | capitalize }} {{ form.errors.messages[field] }}</li>
+                <li>{{ field | capitalize | replace: '_', ' ' }}: {{ form.errors.messages[field] }}</li>
               {% endfor %}
             </ul>
           </div>
         {% endif %}
 
-        <input type="hidden" name="contact[Form ID]" value="785918">
-        <input type="hidden" name="contact[Product]" value="{{ product.title }}">
-        <input type="hidden" name="contact[Product URL]" value="{{ shop.url }}{{ product.url }}">
-        {% if product.selected_or_first_available_variant %}
-          <input type="hidden" name="contact[Selected Variant]" value="{{ product.selected_or_first_available_variant.title }}">
-        {% endif %}
+        <!-- Hidden field for product info -->
+        <input type="hidden" name="contact[product]" value="{{ product.title }}">
+        <input type="hidden" name="contact[product_url]" value="{{ shop.url }}{{ product.url }}">
 
+        <!-- Full Name -->
         <div class="enquiry-form-group">
-          <label for="contact-name">
-            Name <span class="required">*</span>
-          </label>
+          {% comment %} <label for="enquiry_name">Full Name <span class="required">*</span></label> {% endcomment %}
           <input 
             type="text" 
-            id="contact-name" 
+            id="enquiry_name" 
             name="contact[name]" 
             required
-            placeholder="Enter your full name"
+            placeholder="Full Name"
             value="{% if form.name %}{{ form.name }}{% endif %}">
         </div>
 
+        <!-- Email -->
         <div class="enquiry-form-group">
-          <label for="contact-email">
-            Email <span class="required">*</span>
-          </label>
+          {% comment %} <label for="enquiry_email">Email Address <span class="required">*</span></label> {% endcomment %}
           <input 
             type="email" 
-            id="contact-email" 
+            id="enquiry_email" 
             name="contact[email]" 
             required
-            placeholder="your.email@example.com"
+            placeholder="Email"
             value="{% if form.email %}{{ form.email }}{% endif %}">
         </div>
 
+        <!-- Phone -->
         <div class="enquiry-form-group">
-          <label for="contact-phone">
-            Phone Number
-          </label>
+          {% comment %} <label for="enquiry_phone">Phone Number</label> {% endcomment %}
           <input 
             type="tel" 
-            id="contact-phone" 
+            id="enquiry_phone" 
             name="contact[phone]" 
-            placeholder="+1 (555) 000-0000"
+            placeholder="Phone Number"
             value="{% if form.phone %}{{ form.phone }}{% endif %}">
         </div>
 
+    
+
+        <!-- Message -->
         <div class="enquiry-form-group">
-          <label for="contact-message">
-            Your Requirements <span class="required">*</span>
-          </label>
+          {% comment %} <label for="enquiry_message">Tell us about your customisation <span class="required">*</span></label> {% endcomment %}
           <textarea 
-            id="contact-message" 
+            id="enquiry_message" 
             name="contact[body]" 
-            rows="5" 
             required
-            placeholder="Tell us about your customisation requirements...">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+            placeholder="Message">{% if form.body %}{{ form.body }}{% endif %}</textarea>
         </div>
 
+
+        <!-- Form Actions -->
         <div class="enquiry-form-actions">
-          <button type="button" class="enquiry-btn-secondary enquiry-cancel-btn">Cancel</button>
-          <button type="submit" class="enquiry-btn-primary">Submit Enquiry</button>
+          {% comment %} <button type="button" class="enquiry-btn-secondary enquiry-cancel-btn">Cancel</button> {% endcomment %}
+          <button type="submit" class="enquiry-btn-primary">Submit</button>
         </div>
       {% endform %}
-      
     </div>
   </div>
 </div>
@@ -141,7 +126,6 @@
     max-width: 767px;
     width: 90%;
     margin: 100px auto;
-    border-radius: 12px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     animation: slideUp 0.4s ease;
     max-height: calc(100vh - 150px);
@@ -231,11 +215,11 @@
   }
 
   .enquiry-form-group input,
-  .enquiry-form-group textarea {
+  .enquiry-form-group textarea,
+  .enquiry-form-group select {
     width: 100%;
     padding: 12px 16px;
     border: 1px solid #ddd;
-    border-radius: 6px;
     font-size: 14px;
     font-family: inherit;
     transition: all 0.3s ease;
@@ -244,7 +228,8 @@
   }
 
   .enquiry-form-group input:focus,
-  .enquiry-form-group textarea:focus {
+  .enquiry-form-group textarea:focus,
+  .enquiry-form-group select:focus {
     outline: none;
     border-color: #161716;
     box-shadow: 0 0 0 3px rgba(22, 23, 22, 0.1);
@@ -255,11 +240,19 @@
     min-height: 120px;
   }
 
+  .enquiry-form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23161716' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+  }
+
   /* Success/Error Messages */
   .form-success-message,
   .form-error-message {
     padding: 16px;
-    border-radius: 6px;
     margin-bottom: 24px;
   }
 
@@ -268,13 +261,14 @@
     border: 1px solid #c3e6cb;
     color: #155724;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 12px;
   }
 
   .form-success-message svg {
     flex-shrink: 0;
-    color: #28a745;
+    color: #155724;
+    margin-top: 2px;
   }
 
   .form-error-message {
@@ -304,16 +298,17 @@
     flex: 1;
     padding: 14px 24px;
     border: none;
-    border-radius: 6px;
     font-size: 15px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
     font-family: inherit;
+    text-transform: uppercase;
+    width: 100%;
   }
 
   .enquiry-btn-primary {
-    background: #161716;
+    background: #2c5234;
     color: #fff;
   }
 
@@ -331,7 +326,7 @@
 
   .enquiry-btn-secondary:hover {
     background: #f5f5f5;
-    border-color: #161716;
+    border-color: #2c5234;
   }
 
   /* Responsive */
@@ -427,10 +422,10 @@
         modal.classList.add('active');
         document.body.classList.add('enquiry-modal-open');
         
-        // Auto-close after 3 seconds
+        // Auto-close after 5 seconds
         setTimeout(function() {
           closeModal();
-        }, 3000);
+        }, 5000);
       {% endif %}
     }
   })();
