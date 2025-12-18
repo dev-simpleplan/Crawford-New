@@ -187,6 +187,7 @@
         </div>
       </div>
 
+
       <div class="blog-articles" id="blog-articles-container">
         {% if blog.articles.size == 0 %}
           <p>No articles found.</p>
@@ -351,14 +352,14 @@
       "default": "Althera's blogs are meticulously jotted to address a wide range of health-related needs and provide information."
     },
     {
-      "type": "range",
-      "id": "articles_per_page",
-      "min": 4,
-      "max": 24,
-      "step": 4,
-      "label": "Articles per page",
-      "default": 12
-    },
+  "type": "range",
+  "id": "articles_per_page",
+  "min": 1,
+  "max": 9,
+  "step": 1,
+  "label": "Articles per page",
+  "default": 9
+},
     {
       "type": "range",
       "id": "article_min_width",

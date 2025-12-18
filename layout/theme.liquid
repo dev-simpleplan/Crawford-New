@@ -64,7 +64,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         font-style: normal;
         font-display: swap;
       }
-      {% if page.handle == 'contact' or page.handle == 'faq' or page.handle == 'our-causes' or page.handle == 'terms-and-conditions' or page.handle == 'return-policy' or page.handle == 'privacy-policy' or page.handle == 'thank-you' or template == 'product' or template == 'cart' or template == 'collection' or template == '404' or template == 'product.fine-jewellery' or template == 'product.stud-jewellery' or template == 'product.charm-jewellery' or template == 'product.fine-v2-jewellery' or template == 'product.stud-v2-jewellery' or template == 'product.ring' or template == 'password' or template == 'collection.not-ring' %}
+      {% if page.handle == 'contact' or page.handle == 'faq' or page.handle == 'our-causes' or page.handle == 'terms-and-conditions' or page.handle == 'return-policy' or page.handle == 'privacy-policy' or page.handle == 'thank-you' or template == 'product' or template == 'cart' or template == 'collection' or template == '404' or template == 'product.fine-jewellery' or template == 'product.stud-jewellery' or template == 'product.charm-jewellery' or template == 'product.fine-v2-jewellery' or template == 'product.stud-v2-jewellery' or template == 'product.ring' or template == 'password' or template == 'collection.not-ring' or template == 'blog' or template == 'article' %}
         .header-contents-middle {
           filter: invert(0%) !important;
           margin-top: 0 !important;
@@ -80,7 +80,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           max-height: 100%;
         }
         header.state2 {
-          background-color: #FEFEF3;
+          background-color: #FFF;
+          top: 0;
         }
         header.state2.backdrop {
           box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -121,7 +122,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }
         }
       {% endif %}
-      {% if template == 'collection' or template == 'product' or template == 'cart' or template == 'product.fine-jewellery' or template == 'product.stud-jewellery' or template == 'product.charm-jewellery' or template == 'product.fine-v2-jewellery' or template == 'product.stud-v2-jewellery' or template == 'product.ring' or template == 'password' or template == 'collection.not-ring' %}
+      {% if template == 'collection' or template == 'product' or template == 'cart' or template == 'product.fine-jewellery' or template == 'product.stud-jewellery' or template == 'product.charm-jewellery' or template == 'product.fine-v2-jewellery' or template == 'product.stud-v2-jewellery' or template == 'product.ring' or template == 'password' or template == 'collection.not-ring' or template == 'blog' or template == 'article' %}
         .logo-top-head {
           transform: scale(0);
         }
@@ -166,7 +167,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       {% endif %}
       {% if page.handle == 'privacy-policy' or page.handle == 'return-policy' or page.handle == 'terms-and-conditions' %}
         header.state2{
-          background-color: #FEFEF3;
+          background-color: #FFF;
         }
       {% endif %}
     </style>
@@ -251,7 +252,7 @@ gtag('config', 'G-F85RDG8RG0');
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     {% section 'side-cart' %}
 
-    {% if page.handle != 'contact' and page.handle != 'faq' and page.handle != 'our-causes' and page.handle != 'terms-and-conditions' and page.handle != 'return-policy' and page.handle != 'privacy-policy' and page.handle != 'thank-you' and template != 'product' and template != 'cart' and template != 'collection' and template != '404' and template != 'product.fine-jewellery' and template != 'product.stud-jewellery' and template != 'product.charm-jewellery' and template != 'product.fine-v2-jewellery' and template != 'product.stud-v2-jewellery' and template != 'product.ring' and template != 'password' and template != 'collection.not-ring' %}
+    {% if page.handle != 'contact' and page.handle != 'faq' and page.handle != 'our-causes' and page.handle != 'terms-and-conditions' and page.handle != 'return-policy' and page.handle != 'privacy-policy' and page.handle != 'thank-you' and template != 'product' and template != 'cart' and template != 'collection' and template != '404' and template != 'product.fine-jewellery' and template != 'product.stud-jewellery' and template != 'product.charm-jewellery' and template != 'product.fine-v2-jewellery' and template != 'product.stud-v2-jewellery' and template != 'product.ring' and template != 'password' and template != 'collection.not-ring' and template != 'blog' and template != 'article' %}
       {% section 'header' %}
     {% elsif template.handle == 'customers/login' %}
       {% section 'header-solid' %}
@@ -288,7 +289,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   
-{% if page.handle != 'contact' and page.handle != 'faq' and page.handle != 'our-causes' and page.handle != 'terms-and-conditions' and page.handle != 'return-policy' and page.handle != 'privacy-policy' and page.handle != 'thank-you' and template != 'product' and template != 'cart' and template != 'collection' and template != '404' and template != 'product.fine-jewellery' and template != 'product.stud-jewellery' and template != 'product.charm-jewellery' and template != 'product.fine-v2-jewellery' and template != 'product.stud-v2-jewellery' and template != 'product.ring' and template != 'password' and template != 'collection.not-ring' %}
+{% if page.handle != 'contact' and page.handle != 'faq' and page.handle != 'our-causes' and page.handle != 'terms-and-conditions' and page.handle != 'return-policy' and page.handle != 'privacy-policy' and page.handle != 'thank-you' and template != 'product' and template != 'cart' and template != 'collection' and template != '404' and template != 'product.fine-jewellery' and template != 'product.stud-jewellery' and template != 'product.charm-jewellery' and template != 'product.fine-v2-jewellery' and template != 'product.stud-v2-jewellery' and template != 'product.ring' and template != 'password' and template != 'collection.not-ring' and template != 'blog' and template != 'article' %}
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       // Wait for all content to load before initializing

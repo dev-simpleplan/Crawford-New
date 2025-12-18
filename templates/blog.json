@@ -1,16 +1,8 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
+
 {
   "sections": {
-    "featured-blog": {
-      "type": "blog-featured-section",
+    "featured-blogs": {
+      "type": "featured-blogs",
       "blocks": {
         "blog1": {
           "type": "blog_item",
@@ -33,12 +25,12 @@
       },
       "block_order": ["blog1", "blog2", "blog3"]
     },
-    "all-blogs-list":{
-      "type": "template-blog",
-       "settings": {
+    "blogs":{
+      "type": "blogs",
+      "settings": {
         "title": "All Blog",
         "description": "Althera’s articles are built to simplify the complex, delivering straightforward, science-backed clarity to help you enjoy life more.",
-        "articles_per_page": 12,
+        "articles_per_page": 9,
         "article_min_width": 300,
         "article_gap": 30,
         "article_image_height": 200,
@@ -50,7 +42,8 @@
         "tab_border_color": "#e0e0e0",
         "article_title_color": "#000000"
       }
+      
     }
   },
-  "order": ["featured-blog", "all-blogs-list"]
+  "order": ["featured-blogs", "blogs"]
 }
