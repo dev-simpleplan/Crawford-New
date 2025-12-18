@@ -1,32 +1,47 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "featured-blog": {
       "type": "blog-featured-section",
-      "settings": {
-        "title": "From Our Blog"
-      },
       "blocks": {
         "blog1": {
           "type": "blog_item",
           "settings": {
-            "article": "news/first-blog-post"
+            "article": "all-blogs/featured-blog-title-lorem-ipsum-dolor-1"
           }
         },
         "blog2": {
           "type": "blog_item",
           "settings": {
-            "article": "news/second-blog-post"
+            "article": "all-blogs/minimal-vs-bold-choosing-jewelry-that-matches-your-personality"
           }
         },
         "blog3": {
           "type": "blog_item",
           "settings": {
-            "article": "news/third-blog-post"
+            "article": "all-blogs/featured-blog-title-lorem-ipsum-dolor"
           }
         }
       },
-      "block_order": ["blog1", "blog2", "blog3"]
+      "block_order": [
+        "blog1",
+        "blog2",
+        "blog3"
+      ],
+      "settings": {
+        "title": "From Our Blog"
+      }
     }
   },
-  "order": ["featured-blog"]
+  "order": [
+    "featured-blog"
+  ]
 }
