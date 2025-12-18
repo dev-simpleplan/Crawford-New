@@ -1,0 +1,136 @@
+{% style %}
+.featured-blogs {
+  padding: 100px 0;
+}
+
+.featured-blogs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.featured-blog-item {
+  text-decoration: none;
+  color: inherit;
+}
+
+.featured-blog-image {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.featured-blog-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.featured-blog-item:hover img {
+  transform: scale(1.05);
+}
+
+.featured-blog-content {
+  margin-top: 15px;
+}
+
+.featured-blog-title {
+  font-size: 20px;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+
+.featured-blog-excerpt {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #666;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (max-width: 991px) {
+  .featured-blogs-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+{% endstyle %}
+
+<div class="featured-blogs"  data-scroll-section>
+  <div class="container">
+    {% if section.settings.title != blank %}
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+    {% endif %}
+
+    <div class="featured-blogs-grid">
+      {% for block in section.blocks %}
+        {% assign article = articles[block.settings.article] %}
+        {% if article %}
+          <a href="{{ article.url }}" class="featured-blog-item">
+            {% if article.image %}
+              <div class="featured-blog-image">
+                <img
+                  src="{{ article.image | img_url: '800x' }}"
+                  alt="{{ article.title }}"
+                  loading="lazy"
+                >
+              </div>
+            {% endif %}
+
+            <div class="featured-blog-content">
+              <h3 class="featured-blog-title">{{ article.title }}</h3>
+
+              <div class="featured-blog-excerpt">
+                {% if article.excerpt != blank %}
+                  {{ article.excerpt }}
+                {% else %}
+                  {{ article.content | strip_html }}
+                {% endif %}
+              </div>
+            </div>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Featured Blogs (3)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "Featured Blogs"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "blog_item",
+      "name": "Featured Blog",
+      "settings": [
+        {
+          "type": "article",
+          "id": "article",
+          "label": "Select article"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Featured Blogs (3)",
+      "blocks": [
+        { "type": "blog_item" },
+        { "type": "blog_item" },
+        { "type": "blog_item" }
+      ]
+    }
+  ]
+}
+{% endschema %}
