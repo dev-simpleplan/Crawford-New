@@ -11,56 +11,30 @@
   "sections": {
     "template": {
       "type": "template-article",
-      "blocks": {
-        "thumbnail": {
-          "type": "featured_image",
-          "settings": {}
-        },
-        "title": {
-          "type": "article_title",
-          "settings": {}
-        },
-        "published_date": {
-          "type": "article_published_date",
-          "settings": {}
-        },
-        "author": {
-          "type": "article_author",
-          "settings": {}
-        },
-        "content": {
-          "type": "article_content",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "thumbnail",
-        "title",
-        "published_date",
-        "author",
-        "content"
-      ],
-      "settings": {
-        "enable_author": true,
-        "enable_published_date": true
-      }
-    },
-    "17664751110d4ed658": {
-      "type": "apps",
-      "blocks": {
-        "table_of_contents_theme_extension_8q4UDp": {
-          "type": "shopify://apps/table-of-contents/blocks/theme-extension/d06f5754-affb-4dc7-a2a9-18d74d225f70",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "table_of_contents_theme_extension_8q4UDp"
-      ],
       "settings": {}
+    },
+     "extrapad1": {
+      "type": "extrapad",
+      "settings": {}
+    },
+    "recommended-blogs":{
+       "type": "recommended-blogs",
+      "settings": {}
+    },
+     "extrapad2": {
+      "type": "extrapad",
+      "settings": {}
+    },
+    "join-mail":{
+      "type": "join-mail",
+        "settings": {
+        "heading":"Join Our Mailing List",
+        "text":"Sign up to receive $25 off your first purchase and for Crawford Stone Co updates & inspiration"
+      }
     }
+   
   },
   "order": [
-    "template",
-    "17664751110d4ed658"
+    "template", "extrapad1", "recommended-blogs", "extrapad2", "join-mail"
   ]
 }

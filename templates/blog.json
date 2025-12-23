@@ -43,7 +43,14 @@
         "article_title_color": "#000000"
       }
       
+    },
+    "join-mail":{
+      "type": "join-mail",
+      "settings": {
+        "heading":"Join Our Mailing List",
+        "text":"Sign up to receive $25 off your first purchase and for Crawford Stone Co updates & inspiration"
+      }
     }
   },
-  "order": ["featured-blogs", "blogs"]
+  "order": ["featured-blogs", "blogs", "join-mail"]
 }
