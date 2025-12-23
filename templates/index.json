@@ -14,8 +14,9 @@
       "settings": {
         "bannerImg": "shopify://shop_images/Image_1_-_Homepage.jpg",
         "bannerImgMob": "shopify://shop_images/banner-mobile.png",
-        "heading": "Exquisite Craftsmanship, Timeless Brilliance.",
-        "cta": "DISCOVER"
+        "heading": "The Future of Fine Jewellery",
+        "para":"Bespoke & Lab-Grown Engagement Rings and Fine Jewellery",
+        "cta": " Build Your Dream Ring"
       }
     },
     "extrapad1": {
@@ -116,8 +117,8 @@
     "foundersStory": {
       "type": "founders-story",
       "settings": {
-        "heading": "Founder’s Story",
-        "body": "<p>Crawford Stone Company was born from the idea of making meticulously custom and beautiful rings attainable through Lab Diamond and Moissanite, whilst delivering a luxury jewellery retailer experience. The company was founded by husband and wife duo, following their own experience shopping for an engagement ring. They wanted to offer a more personalised and concierge-like shopping experience for couples looking for the perfect engagement ring. In a world of mass production, they go further.</p>",
+        "heading": "About the Founders",
+        "body": "<p>Crawford Stone Company was born from a simple idea: that beautiful, custom rings should be attainable. After their own experience searching for an engagement ring, a husband and wife duo founded the company to redefine the jewellery retail experience.</p><p>They wanted to go further than mass production, offering a more personal, concierge-like journey for couples. By focusing on lab diamonds and moissanite, they created a business dedicated to crafting meticulously designed rings and delivering a truly luxurious experience.</p>",
         "image": "shopify://shop_images/Image_11-_Homepage.jpg",
         "image2": "shopify://shop_images/Image_10_-_Homepage.jpg",
         "layout": "standard"
@@ -223,9 +224,9 @@
     "extrapad3",
     "insta-section",
     "extrapad4",
-    "foundersStory",
-    "extrapad5",
     "landing-faq",
+    "extrapad5",
+  "foundersStory",
     "extrapad6",
     "test-slider",
     "extrapad7"

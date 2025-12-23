@@ -1252,7 +1252,7 @@ header.state2.menu-open:not(.backdrop) .header-contents-middle a {
 }
 
 .home-banner-cta {
-    padding-top: 40px;
+    padding-top: 20px;
 }
 
 
@@ -2782,7 +2782,14 @@ header.state2.menu-open:not(.backdrop) .header-contents-middle a {
     max-width: 90ch;
     margin: 0 auto;
 }
-
+.home-banner-head p.text-white{
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    line-height: 162%;
+    font-family: "General Sans";
+    font-weight: 400;
+    color: #fff;
+}
 .sticky-wrapper {
     display: flex;
     align-items: stretch;
