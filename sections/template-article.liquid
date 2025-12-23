@@ -33,6 +33,7 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
+        align-items: flex-start;
     }
 
     h2 span,
@@ -85,24 +86,37 @@
 
     .article-content .right {
         width: 30%;
+        position: sticky;
+        top: 100px;
+        align-self: flex-start;
     }
+
     .table-of-content {
         margin-bottom: 20px;
     }
+
     @media screen and (max-width: 991px) {
-        .article-content{
+        .article-content {
             flex-direction: column;
         }
-        .article-content .left{
+
+        .article-content .left {
             order: 2;
             width: 100%;
         }
-        .article-content .right{
+
+        .article-content .right {
             width: 100%;
         }
-        .blog-container{
+
+        .blog-container {
             padding: 40px 20px 0px 20px;
         }
+        .article-content .right {
+        position: unset;
+        top: unset;
+        align-self: unset;
+    }
     }
 </style>
 <div class="article-page" data-scroll-section>
@@ -142,7 +156,7 @@
                 {{ article.content }}
             </div>
             <div class="right">
-                 <div id="rr-toc" class="table-of-content"></div>
+                <div id="rr-toc" class="table-of-content"></div>
                 <p>Share</p>
                 <div class="blog-share-icon" id="shareBtn" role="button" aria-label="Share blog">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
