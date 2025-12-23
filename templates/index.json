@@ -15,7 +15,7 @@
         "bannerImg": "shopify://shop_images/Image_1_-_Homepage.jpg",
         "bannerImgMob": "shopify://shop_images/banner-mobile.png",
         "heading": "The Future of Fine Jewellery",
-        "para":"Bespoke & Lab-Grown Engagement Rings and Fine Jewellery",
+        "para": "Bespoke & Lab-Grown Engagement Rings and Fine Jewellery",
         "cta": " Build Your Dream Ring"
       }
     },
@@ -114,20 +114,6 @@
       "type": "extrapad",
       "settings": {}
     },
-    "foundersStory": {
-      "type": "founders-story",
-      "settings": {
-        "heading": "About the Founders",
-        "body": "<p>Crawford Stone Company was born from a simple idea: that beautiful, custom rings should be attainable. After their own experience searching for an engagement ring, a husband and wife duo founded the company to redefine the jewellery retail experience.</p><p>They wanted to go further than mass production, offering a more personal, concierge-like journey for couples. By focusing on lab diamonds and moissanite, they created a business dedicated to crafting meticulously designed rings and delivering a truly luxurious experience.</p>",
-        "image": "shopify://shop_images/Image_11-_Homepage.jpg",
-        "image2": "shopify://shop_images/Image_10_-_Homepage.jpg",
-        "layout": "standard"
-      }
-    },
-    "extrapad5": {
-      "type": "extrapad",
-      "settings": {}
-    },
     "landing-faq": {
       "type": "landing-faq",
       "blocks": {
@@ -175,6 +161,20 @@
         "para": "From selecting the finest gemstones to crafting intricate designs, we don't just create jewellery—we create future heirlooms."
       }
     },
+    "extrapad5": {
+      "type": "extrapad",
+      "settings": {}
+    },
+    "foundersStory": {
+      "type": "founders-story",
+      "settings": {
+        "heading": "About the Founders",
+        "body": "<p>Crawford Stone Company was born from a simple idea: that beautiful, custom rings should be attainable. After their own experience searching for an engagement ring, a husband and wife duo founded the company to redefine the jewellery retail experience.</p><p>They wanted to go further than mass production, offering a more personal, concierge-like journey for couples. By focusing on lab diamonds and moissanite, they created a business dedicated to crafting meticulously designed rings and delivering a truly luxurious experience.</p>",
+        "image": "shopify://shop_images/Image_11-_Homepage.jpg",
+        "image2": "shopify://shop_images/Image_10_-_Homepage.jpg",
+        "layout": "standard"
+      }
+    },
     "extrapad6": {
       "type": "extrapad",
       "settings": {}
@@ -214,6 +214,24 @@
     "extrapad7": {
       "type": "extrapad",
       "settings": {}
+    },
+    "1766473842701fa682": {
+      "type": "apps",
+      "blocks": {
+        "okendo_reviews_carousel_kJXBYF": {
+          "type": "shopify://apps/okendo/blocks/reviews-carousel/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "show_heading": true,
+            "heading": "Loved by Our Customers",
+            "badge_link": "",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_carousel_kJXBYF"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -227,9 +245,10 @@
     "extrapad4",
     "landing-faq",
     "extrapad5",
-  "foundersStory",
+    "foundersStory",
     "extrapad6",
     "test-slider",
-    "extrapad7"
+    "extrapad7",
+    "1766473842701fa682"
   ]
 }
