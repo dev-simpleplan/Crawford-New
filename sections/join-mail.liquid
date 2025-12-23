@@ -1,0 +1,251 @@
+{% style %}
+.jm-img img{
+width: 100%;
+height: 100%;
+object-fit: cover;
+filter: brightness(0.7)
+}
+.jm-img {
+position: absolute;
+width: 100%;
+height: 100%;
+inset: 0;
+z-index: 2;
+filter: blur(3px);
+}
+.join-mail-in{
+position: relative;
+height: 440px;
+overflow: hidden;
+z-index: 1;
+}
+.jm-content{
+position: absolute;
+width: 100%;
+height: 100%;
+inset: 0;
+z-index: 3;
+display: flex;
+justify-content: center;
+flex-direction: column;
+align-items: center;
+gap: 20px;
+padding: 20px;
+}
+.jm-content h2{
+    color: #fff;
+    font-size: clamp(28px, 5vw, 64px)
+}
+.jm-content p{
+    font-family: 'general sans';
+    color: #fff;
+    max-width: 54ch;
+    font-size: 20px;
+    line-height: 162%;
+    text-align: center;
+}
+.jm-content a{
+    margin-top: 40px;
+}
+.container-fluid{
+    padding: 0 3%;
+}
+body.modal-open {
+  overflow: hidden;
+}
+
+.newsletter-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+}
+
+.newsletter-modal.active {
+  display: block;
+}
+
+/* Backdrop */
+.newsletter-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Modal box */
+.newsletter-box {
+  position: relative;
+  max-width: 820px;
+  width: 90%;
+  background: #fff;
+  padding: 50px 60px;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Close icon */
+.newsletter-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Heading */
+.newsletter-box h2 {
+  font-size: 40px;
+  margin-bottom: 30px;
+  font-family: serif;
+}
+
+/* Input + Button row */
+.newsletter-field {
+  display: flex;
+  gap: 10px;
+}
+
+.newsletter-field input {
+  flex: 1;
+  padding: 14px;
+  border: none;
+  font-size: 16px;
+  border: 1px solid #ABAAA8;
+  background-color: #ECECE5;
+}
+
+.newsletter-field input:focus {
+  outline: none;
+}
+
+.newsletter-field button {
+  background: #2C5234;
+  color: #fff;
+  border: none;
+  padding: 14px 40px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+  font-family: 'general sans'
+
+}
+@media screen and (max-width: 767px){
+    .newsletter-field{
+        flex-direction: column;
+    }
+    .newsletter-box h2{
+        text-align: center;
+        font-size: 28px;
+    }
+    .newsletter-box{
+        padding: 60px 40px;
+    }
+    .newsletter-close{
+       width: 30px;
+        height: 30px;
+        top: 8px;
+        right: 15px;
+    }
+        .newsletter-close svg{
+            width: 100%;
+            height: auto;
+        }
+}
+{% endstyle %}
+<section class="join-mail">
+    <div class="">
+        <div class="join-mail-in">
+            <div class="jm-img">
+                <img src="https://cdn.shopify.com/s/files/1/0674/4591/5905/files/b0303f841f59f2f2227758a4ff30888e3ccfef43.png?v=1766487052"
+                    alt="Image">
+            </div>
+            <div class="jm-content">
+                <h2>{{ section.settings.heading }}</h2>
+                <p>{{ section.settings.text }}</p>
+               <a href="javascript:void(0)" class="craw-cta cta-white js-open-newsletter">Sign Up</a>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="newsletter-modal" id="newsletterModal">
+  <div class="newsletter-backdrop"></div>
+
+  <div class="newsletter-box">
+    <button class="newsletter-close js-close-newsletter">
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M30.7071 10.7071L31.4142 10L30 8.58579L29.2929 9.29289L30 10L30.7071 10.7071ZM9.29289 29.2929C8.90237 29.6834 8.90237 30.3166 9.29289 30.7071C9.68342 31.0976 10.3166 31.0976 10.7071 30.7071L10 30L9.29289 29.2929ZM30 10L29.2929 9.29289L9.29289 29.2929L10 30L10.7071 30.7071L30.7071 10.7071L30 10Z" fill="#161716"/>
+<path d="M10.7071 9.29289C10.3166 8.90237 9.68342 8.90237 9.29289 9.29289C8.90237 9.68342 8.90237 10.3166 9.29289 10.7071L10 10L10.7071 9.29289ZM29.2929 30.7071L30 31.4142L31.4142 30L30.7071 29.2929L30 30L29.2929 30.7071ZM10 10L9.29289 10.7071L29.2929 30.7071L30 30L30.7071 29.2929L10.7071 9.29289L10 10Z" fill="#161716"/>
+</svg>
+</button>
+
+    <h2>Join Our Mailing List</h2>
+
+    {% form 'customer', id: 'NewsletterPopup' %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <div class="newsletter-field">
+        <input
+          type="email"
+          name="contact[email]"
+          placeholder="Email Address"
+          required
+        >
+        <button type="submit">SUBMIT</button>
+      </div>
+    {% endform %}
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("newsletterModal");
+  const openBtn = document.querySelector(".js-open-newsletter");
+  const closeBtn = modal.querySelector(".js-close-newsletter");
+  const backdrop = modal.querySelector(".newsletter-backdrop");
+
+  function openModal() {
+    modal.classList.add("active");
+    document.body.classList.add("modal-open");
+  }
+
+  function closeModal() {
+    modal.classList.remove("active");
+    document.body.classList.remove("modal-open");
+  }
+
+  openBtn.addEventListener("click", openModal);
+  closeBtn.addEventListener("click", closeModal);
+  backdrop.addEventListener("click", closeModal);
+
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") closeModal();
+  });
+});
+</script>
+
+{% schema %}
+{
+"name": "Join Mail",
+"settings": [
+{
+"type": "text",
+"id": "heading",
+"label": "Heading"
+},
+{
+"type": "textarea",
+"id": "text",
+"label": "Text"
+}
+],
+"presets": [
+{
+"name": "Join Mail"
+}
+]
+}
+{% endschema %}

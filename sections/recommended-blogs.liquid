@@ -1,0 +1,212 @@
+<style>
+  .recommended-title{
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: clamp(28px, 5vw, 40px);
+  }
+.recommended-blogs-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 19px;
+}
+.recommended-blogs-grid img{
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+}
+.bai-wrap{
+  aspect-ratio: 9/8;
+}
+
+.featured-blog-image img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform 0.4s ease;
+}
+
+.featured-blog-item:hover img {
+transform: scale(1.05);
+}
+
+.blog-title {
+font-size: 16px;
+line-height: 150%;
+letter-spacing: 0.02em;
+color: #161716;
+font-family: "general sans";
+padding-top: 10px;
+}
+.blog-category{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 18px;
+}
+.blog-category .blog-tag:before{
+  content:'';
+  width: 4px;
+  height: 4px;
+  border-radius: 25px;
+  display: inline-block;
+  background-color: #d6d6d6;
+  margin-right: 10px;
+  margin-bottom: 2px;
+}
+.blog-category .blog-tag:nth-child(1):before{
+  display: none;
+}
+.blog-category .blog-tag{
+  text-transform: uppercase;
+  color: #555555;
+  letter-spacing: 0.08em;
+  font-family: 'general sans';
+  font-size: 12px;
+  line-height: 120%;
+}
+.blog-date p{
+color: #708274;
+letter-spacing: 0.02em;
+font-size: 14px;
+font-family: 'general sans';
+line-height: 96%;
+padding-top: 8px;
+}
+@media screen and (max-width: 991px) {
+  .recommended-blogs-grid{
+    grid-template-columns: 1fr 1fr;
+    row-gap: 40px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .recommended-blogs-grid{
+    grid-template-columns: 1fr;
+    row-gap: 40px;
+  }
+}
+</style>
+<section class="recommended-blogs">
+  <div class="container-fluid">
+    <h2 class="recommended-title">Similar Insightful Blogs</h2>
+    
+    {% comment %} Get current article's tags {% endcomment %}
+    {% assign current_tags = article.tags %}
+    {% assign current_article_id = article.id %}
+    
+    {% comment %} Create arrays to store article counts {% endcomment %}
+    {% assign related_count = 0 %}
+    {% assign shown_count = 0 %}
+    {% assign max_articles = 3 %}
+    
+    {% comment %} First pass: Show articles with matching tags {% endcomment %}
+    <div class="recommended-blogs-grid">
+      {% for blog_article in blogs[blog.handle].articles %}
+        {% if blog_article.id != current_article_id and shown_count < max_articles %}
+          {% assign has_matching_tag = false %}
+          
+          {% comment %} Check if article has any matching tags {% endcomment %}
+          {% for tag in blog_article.tags %}
+            {% if current_tags contains tag %}
+              {% assign has_matching_tag = true %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+          
+          {% if has_matching_tag %}
+            {% assign shown_count = shown_count | plus: 1 %}
+            {% assign related_count = related_count | plus: 1 %}
+            
+            <a href="{{ blog_article.url }}" class="blog-article-link">
+              <div
+                class="blog-article"
+                data-tags="{% for tag in blog_article.tags %}{{ tag | handleize }} {% endfor %}"
+                data-published-date="{{ blog_article.published_at | date: '%Y%m%d' }}"
+                data-title="{{ blog_article.title | handleize }}"
+              >
+                {% if blog_article.image %}
+                  <div class="blog-article-image">
+                    <div class="bai-wrap">
+                      <img src="{{ blog_article.image | img_url: 'master' }}" alt="{{ blog_article.title }}" loading="lazy">
+                    </div>
+                  </div>
+                {% endif %}
+                
+                <div class="blog-article-content">
+                  {% if blog_article.tags.size > 0 %}
+                    <div class="blog-category">
+                      {% for tag in blog_article.tags limit: 2 %}
+                        <span class="blog-tag">{{ tag }}</span>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                  <h3 class="blog-title">{{ blog_article.title }}</h3>
+                  <div class="blog-date">
+                    <p>{{ blog_article.published_at | date: "%d %B, %Y" }}</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      
+      {% comment %} Second pass: Fill remaining slots with any other articles {% endcomment %}
+      {% if shown_count < max_articles %}
+        {% for blog_article in blogs[blog.handle].articles %}
+          {% if blog_article.id != current_article_id and shown_count < max_articles %}
+            {% assign has_matching_tag = false %}
+            
+            {% comment %} Check if this article was already shown {% endcomment %}
+            {% for tag in blog_article.tags %}
+              {% if current_tags contains tag %}
+                {% assign has_matching_tag = true %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+            
+            {% comment %} Only show if it wasn't shown in first pass {% endcomment %}
+            {% unless has_matching_tag %}
+              {% assign shown_count = shown_count | plus: 1 %}
+              
+              <a href="{{ blog_article.url }}" class="blog-article-link">
+                <div
+                  class="blog-article"
+                  data-tags="{% for tag in blog_article.tags %}{{ tag | handleize }} {% endfor %}"
+                  data-published-date="{{ blog_article.published_at | date: '%Y%m%d' }}"
+                  data-title="{{ blog_article.title | handleize }}"
+                >
+                  {% if blog_article.image %}
+                    <div class="blog-article-image">
+                      <div class="bai-wrap">
+                        <img src="{{ blog_article.image | img_url: 'master' }}" alt="{{ blog_article.title }}" loading="lazy">
+                      </div>
+                    </div>
+                  {% endif %}
+                  
+                  <div class="blog-article-content">
+                    {% if blog_article.tags.size > 0 %}
+                      <div class="blog-category">
+                        {% for tag in blog_article.tags limit: 2 %}
+                          <span class="blog-tag">{{ tag }}</span>
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                    <h3 class="blog-title">{{ blog_article.title }}</h3>
+                    <div class="blog-date">
+                      <p>{{ blog_article.published_at | date: "%d %B, %Y" }}</p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            {% endunless %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+    
+    {% comment %} Show message if no articles found {% endcomment %}
+    {% if shown_count == 0 %}
+      <p class="no-articles">No related articles found.</p>
+    {% endif %}
+  </div>
+</section>

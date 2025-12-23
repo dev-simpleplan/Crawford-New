@@ -1,136 +1,229 @@
 {% style %}
-.featured-blogs {
-  padding: 100px 0;
+.featured-blogs{
+  padding-top: 100px !important;
+  padding-bottom: 0px !important;
+}
+.section-title{
+margin-bottom: 30px;
+font-size: 30px;
+}
+.featured-blogs-layout{
+display: flex;
+width: 100%;
+gap: 40px;
+}
+.featured-blogs-left{
+width: 65%;
+}
+.featured-blogs-right{
+width: 35%;
+display: flex;
+flex-direction: column;
+gap: 20px;
+}
+.featured-blogs-right .featured-blog-image {
+max-height: 267px;
+overflow: hidden;
+}
+.featured-blogs-left .featured-blog-image{
+aspect-ratio: 8 / 6;
+overflow: hidden;
 }
 
-.featured-blogs-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
+.featured-blogs {
+padding: 100px 0;
 }
+
 
 .featured-blog-item {
-  text-decoration: none;
-  color: inherit;
+text-decoration: none;
+color: inherit;
 }
 
-.featured-blog-image {
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-}
 
 .featured-blog-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform 0.4s ease;
 }
 
 .featured-blog-item:hover img {
-  transform: scale(1.05);
-}
-
-.featured-blog-content {
-  margin-top: 15px;
+transform: scale(1.05);
 }
 
 .featured-blog-title {
-  font-size: 20px;
-  line-height: 1.3;
-  margin-bottom: 10px;
+font-size: 16px;
+line-height: 150%;
+letter-spacing: 0.02em;
+color: #161716;
+font-family: "general sans";
+padding-top: 10px;
 }
-
-.featured-blog-excerpt {
-  font-size: 16px;
-  line-height: 1.5;
-  color: #666;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+.blog-category{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 18px;
 }
-
+.blog-category .blog-tag:before{
+  content:'';
+  width: 4px;
+  height: 4px;
+  border-radius: 25px;
+  display: inline-block;
+  background-color: #d6d6d6;
+  margin-right: 10px;
+  margin-bottom: 2px;
+}
+.blog-category .blog-tag:nth-child(1):before{
+  display: none;
+}
+.blog-category .blog-tag{
+  text-transform: uppercase;
+  color: #555555;
+  letter-spacing: 0.08em;
+  font-family: 'general sans';
+  font-size: 12px;
+  line-height: 120%;
+}
+.blog-date p{
+color: #708274;
+letter-spacing: 0.02em;
+font-size: 14px;
+font-family: 'general sans';
+line-height: 96%;
+padding-top: 8px;
+}
 @media (max-width: 991px) {
-  .featured-blogs-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
+.featured-blogs-layout {
+flex-direction: column;
+gap: 30px;
 }
+.featured-blogs-layout > div {
+width: 100% !important;
+}
+.featured-blog-image {
+overflow: hidden;
+max-height: 250px !important;
+width: 100%;
+}
+
+}
+
 {% endstyle %}
 
 <div class="featured-blogs" data-scroll-section>
-  <div class="container">
+  <div class="container-fluid">
     {% if section.settings.title != blank %}
-      <h2 class="section-title">{{ section.settings.title }}</h2>
+    <h2 class="section-title">{{ section.settings.title }}</h2>
     {% endif %}
 
-    <div class="featured-blogs-grid">
-      {% for block in section.blocks %}
+    <div class="featured-blogs-layout">
+
+      <!-- LEFT -->
+      <div class="featured-blogs-left">
+        {% assign block = section.blocks[0] %}
         {% assign article = articles[block.settings.article] %}
         {% if article %}
-          <a href="{{ article.url }}" class="featured-blog-item">
-            {% if article.image %}
-              <div class="featured-blog-image">
-                <img
-                  src="{{ article.image | img_url: '800x' }}"
-                  alt="{{ article.title }}"
-                  loading="lazy"
-                >
-              </div>
-            {% endif %}
+        <a href="{{ article.url }}" class="featured-blog-item">
+          {% if article.image %}
+          <div class="featured-blog-image">
+            <img src="{{ article.image | img_url: '1200x' }}" alt="{{ article.title }}" loading="lazy">
+          </div>
+          {% endif %}
 
-            <div class="featured-blog-content">
-              <h3 class="featured-blog-title">{{ article.title }}</h3>
+          {% if article.tags.size > 0 %}
+          <div class="blog-category">
+            {% for tag in article.tags %}
+            <span class="blog-tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
 
-              <div class="featured-blog-excerpt">
-                {% if article.excerpt != blank %}
-                  {{ article.excerpt }}
-                {% else %}
-                  {{ article.content | strip_html }}
-                {% endif %}
-              </div>
-            </div>
-          </a>
+          <div class="featured-blog-content">
+            <h3 class="featured-blog-title">{{ article.title }}</h3>
+          </div>
+
+          <div class="blog-date">
+            <p>{{ article.published_at | date: "%d %B, %Y" }}</p>
+          </div>
+        </a>
         {% endif %}
-      {% endfor %}
+      </div>
+
+      <!-- RIGHT -->
+      <div class="featured-blogs-right">
+        {% for block in section.blocks offset:1 limit:2 %}
+        {% assign article = articles[block.settings.article] %}
+        {% if article %}
+        <a href="{{ article.url }}" class="featured-blog-item">
+          {% if article.image %}
+          <div class="featured-blog-image">
+            <img src="{{ article.image | img_url: '600x' }}" alt="{{ article.title }}" loading="lazy">
+          </div>
+          {% endif %}
+          {% if article.tags.size > 0 %}
+          <div class="blog-category">
+            {% for tag in article.tags %}
+            <span class="blog-tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+
+          <div class="featured-blog-content">
+            <h3 class="featured-blog-title">{{ article.title }}</h3>
+          </div>
+
+          <div class="blog-date">
+            <p>{{ article.published_at | date: "%d %B, %Y" }}</p>
+          </div>
+
+        </a>
+        {% endif %}
+        {% endfor %}
+      </div>
+
     </div>
   </div>
 </div>
 
+
 {% schema %}
 {
-  "name": "Featured Blogs (3)",
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Section title",
-      "default": "Featured Blogs"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "blog_item",
-      "name": "Featured Blog",
-      "settings": [
-        {
-          "type": "article",
-          "id": "article",
-          "label": "Select article"
-        }
-      ]
-    }
-  ],
-  "max_blocks": 3,
-  "presets": [
-    {
-      "name": "Featured Blogs (3)",
-      "blocks": [
-        { "type": "blog_item" },
-        { "type": "blog_item" },
-        { "type": "blog_item" }
-      ]
-    }
-  ]
+"name": "Featured Blogs (3)",
+"settings": [
+{
+"type": "text",
+"id": "title",
+"label": "Section title",
+"default": "Featured Blogs"
+}
+],
+"blocks": [
+{
+"type": "blog_item",
+"name": "Featured Blog",
+"settings": [
+{
+"type": "article",
+"id": "article",
+"label": "Select article"
+}
+]
+}
+],
+"max_blocks": 3,
+"presets": [
+{
+"name": "Featured Blogs (3)",
+"blocks": [
+{ "type": "blog_item" },
+{ "type": "blog_item" },
+{ "type": "blog_item" }
+]
+}
+]
 }
 {% endschema %}
