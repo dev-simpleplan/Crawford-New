@@ -9,6 +9,14 @@
   grid-template-columns: 1fr 1fr 1fr;
   gap: 19px;
 }
+.recommended-blogs-grid a img{
+  transition: .3s ease all;
+}
+.recommended-blogs-grid a:hover img{
+  transform: scale(1.1);
+  transition: .3s ease all;
+  cursor: pointer;
+}
 .recommended-blogs-grid img{
  width: 100%;
  height: 100%;
@@ -16,6 +24,7 @@
 }
 .bai-wrap{
   aspect-ratio: 9/8;
+  overflow: hidden;
 }
 
 .featured-blog-image img {
