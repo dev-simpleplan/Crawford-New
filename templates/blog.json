@@ -1,4 +1,12 @@
-
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "featured-blogs": {
@@ -23,9 +31,14 @@
           }
         }
       },
-      "block_order": ["blog1", "blog2", "blog3"]
+      "block_order": [
+        "blog1",
+        "blog2",
+        "blog3"
+      ],
+      "settings": {}
     },
-    "blogs":{
+    "blogs": {
       "type": "blogs",
       "settings": {
         "title": "All Blog",
@@ -42,15 +55,18 @@
         "tab_border_color": "#e0e0e0",
         "article_title_color": "#000000"
       }
-      
     },
-    "join-mail":{
+    "join-mail": {
       "type": "join-mail",
       "settings": {
-        "heading":"Join Our Mailing List",
-        "text":"Sign up to receive $25 off your first purchase and for Crawford Stone Co updates & inspiration"
+        "heading": "Join Our Mailing List",
+        "text": "Sign up to receive $25 off your first purchase and for Crawford Stone Co updates & inspiration"
       }
     }
   },
-  "order": ["featured-blogs", "blogs", "join-mail"]
+  "order": [
+    "featured-blogs",
+    "blogs",
+    "join-mail"
+  ]
 }

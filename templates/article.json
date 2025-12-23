@@ -13,28 +13,45 @@
       "type": "template-article",
       "settings": {}
     },
-     "extrapad1": {
+    "extrapad1": {
       "type": "extrapad",
       "settings": {}
     },
-    "recommended-blogs":{
-       "type": "recommended-blogs",
+    "recommended-blogs": {
+      "type": "recommended-blogs",
       "settings": {}
     },
-     "extrapad2": {
+    "extrapad2": {
       "type": "extrapad",
       "settings": {}
     },
-    "join-mail":{
+    "join-mail": {
       "type": "join-mail",
-        "settings": {
-        "heading":"Join Our Mailing List",
-        "text":"Sign up to receive $25 off your first purchase and for Crawford Stone Co updates & inspiration"
+      "settings": {
+        "heading": "Join Our Mailing List",
+        "text": "Sign up to receive $25 off your first purchase and for Crawford Stone Co updates & inspiration"
       }
+    },
+    "1766498683ea6a0291": {
+      "type": "apps",
+      "blocks": {
+        "table_of_contents_theme_extension_GzMtkA": {
+          "type": "shopify://apps/table-of-contents/blocks/theme-extension/d06f5754-affb-4dc7-a2a9-18d74d225f70",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "table_of_contents_theme_extension_GzMtkA"
+      ],
+      "settings": {}
     }
-   
   },
   "order": [
-    "template", "extrapad1", "recommended-blogs", "extrapad2", "join-mail"
+    "template",
+    "extrapad1",
+    "recommended-blogs",
+    "extrapad2",
+    "join-mail",
+    "1766498683ea6a0291"
   ]
 }
