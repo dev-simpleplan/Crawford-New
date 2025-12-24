@@ -16,7 +16,8 @@
         "bannerImgMob": "shopify://shop_images/banner-mobile.png",
         "heading": "The Future of Fine Jewellery",
         "para": "Bespoke & Lab-Grown Engagement Rings and Fine Jewellery",
-        "cta": " Build Your Dream Ring"
+        "cta": " Build Your Dream Ring",
+        "cta_url":""
       }
     },
     "extrapad1": {

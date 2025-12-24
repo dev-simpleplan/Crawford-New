@@ -10,7 +10,7 @@
                 <p class="text-white">{{ section.settings.para }}</p>
             </div>
             <div class="home-banner-cta">
-                <a class="craw-cta cta-white" href="javascript:void(0)">{{ section.settings.cta }}</a>
+                <a class="craw-cta cta-white" href="{{ section.settings.cta_url }}">{{ section.settings.cta }}</a>
             </div>
         </div>
 </section>
@@ -44,6 +44,11 @@
                 "type": "text",
                 "id": "cta",
                 "label": "Home Page Banner CTA Text"
+            },
+            {
+                "type": "url",
+                "id": "cta_url",
+                "label": "Home Page Banner CTA Text URL"
             }
     ]
 }
