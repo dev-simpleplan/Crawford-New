@@ -17,7 +17,7 @@
         "heading": "The Future of Fine Jewellery",
         "para": "Bespoke & Lab-Grown Engagement Rings and Fine Jewellery",
         "cta": " Build Your Dream Ring",
-        "cta_url":"https://www.crawfordstoneco.com/collections/all/rings"
+        "cta_url": "https://www.crawfordstoneco.com/collections/all/rings"
       }
     },
     "extrapad1": {
@@ -30,7 +30,7 @@
         "card1": {
           "type": "Card",
           "settings": {
-            "collectionImg": "shopify://shop_images/Image_2_-_Homepage.jpg",
+            "collectionImg": "shopify://shop_images/Engagement_Rings.png",
             "collectionUrl": "shopify://collections/engagement",
             "subCollection": "SHOP",
             "headingCollection": "Engagement Rings"
