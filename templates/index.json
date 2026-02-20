@@ -32,7 +32,7 @@
           "settings": {
             "collectionImg": "shopify://shop_images/Engagement_Rings.png",
             "collectionUrl": "shopify://collections/engagement",
-            "subCollection": "SHOP",
+            "subCollection": "",
             "headingCollection": "Engagement Rings"
           }
         },
