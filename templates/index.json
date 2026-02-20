@@ -27,6 +27,24 @@
     "featured": {
       "type": "featured-products",
       "blocks": {
+        "card_AKCq4L": {
+          "type": "Card",
+          "settings": {
+            "collectionImg": "shopify://shop_images/Bracelets.png",
+            "collectionUrl": "shopify://collections/bracelet",
+            "subCollection": "SHOP",
+            "headingCollection": "Bracelets"
+          }
+        },
+        "card_UaUaaR": {
+          "type": "Card",
+          "settings": {
+            "collectionImg": "shopify://shop_images/Neckacles.png",
+            "collectionUrl": "shopify://collections/necklace",
+            "subCollection": "SHOP",
+            "headingCollection": "Neckacles"
+          }
+        },
         "card1": {
           "type": "Card",
           "settings": {
@@ -39,7 +57,7 @@
         "card2": {
           "type": "Card",
           "settings": {
-            "collectionImg": "shopify://shop_images/Image_3_-_Homepage.jpg",
+            "collectionImg": "shopify://shop_images/Wedding_Bands.png",
             "collectionUrl": "shopify://collections/wedding-bands",
             "subCollection": "SHOP",
             "headingCollection": "Wedding Rings"
@@ -48,7 +66,7 @@
         "card3": {
           "type": "Card",
           "settings": {
-            "collectionImg": "shopify://shop_images/Image_4_-_Homepage.jpg",
+            "collectionImg": "shopify://shop_images/Mens_59df69da-8dfa-4f49-a82b-32fa3eef3379.png",
             "collectionUrl": "shopify://collections/mens",
             "subCollection": "SHOP",
             "headingCollection": "Rings for Men"
@@ -56,6 +74,8 @@
         }
       },
       "block_order": [
+        "card_AKCq4L",
+        "card_UaUaaR",
         "card1",
         "card2",
         "card3"
