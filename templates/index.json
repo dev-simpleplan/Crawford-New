@@ -41,7 +41,7 @@
           "settings": {
             "collectionImg": "shopify://shop_images/Wedding_Bands.png",
             "collectionUrl": "shopify://collections/wedding-bands",
-            "subCollection": "SHOP",
+            "subCollection": "",
             "headingCollection": "Wedding Rings"
           }
         },
@@ -50,7 +50,7 @@
           "settings": {
             "collectionImg": "shopify://shop_images/Neckacles.png",
             "collectionUrl": "shopify://collections/necklace",
-            "subCollection": "SHOP",
+            "subCollection": "",
             "headingCollection": "Neckacles"
           }
         },
@@ -59,7 +59,7 @@
           "settings": {
             "collectionImg": "shopify://shop_images/Bracelets.png",
             "collectionUrl": "shopify://collections/bracelet",
-            "subCollection": "SHOP",
+            "subCollection": "",
             "headingCollection": "Bracelets"
           }
         },
@@ -68,7 +68,7 @@
           "settings": {
             "collectionImg": "shopify://shop_images/Mens_59df69da-8dfa-4f49-a82b-32fa3eef3379.png",
             "collectionUrl": "shopify://collections/mens",
-            "subCollection": "SHOP",
+            "subCollection": "",
             "headingCollection": "Rings for Men"
           }
         }
