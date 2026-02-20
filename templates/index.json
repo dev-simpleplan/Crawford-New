@@ -27,24 +27,6 @@
     "featured": {
       "type": "featured-products",
       "blocks": {
-        "card_AKCq4L": {
-          "type": "Card",
-          "settings": {
-            "collectionImg": "shopify://shop_images/Bracelets.png",
-            "collectionUrl": "shopify://collections/bracelet",
-            "subCollection": "SHOP",
-            "headingCollection": "Bracelets"
-          }
-        },
-        "card_UaUaaR": {
-          "type": "Card",
-          "settings": {
-            "collectionImg": "shopify://shop_images/Neckacles.png",
-            "collectionUrl": "shopify://collections/necklace",
-            "subCollection": "SHOP",
-            "headingCollection": "Neckacles"
-          }
-        },
         "card1": {
           "type": "Card",
           "settings": {
@@ -63,6 +45,24 @@
             "headingCollection": "Wedding Rings"
           }
         },
+        "card_UaUaaR": {
+          "type": "Card",
+          "settings": {
+            "collectionImg": "shopify://shop_images/Neckacles.png",
+            "collectionUrl": "shopify://collections/necklace",
+            "subCollection": "SHOP",
+            "headingCollection": "Neckacles"
+          }
+        },
+        "card_AKCq4L": {
+          "type": "Card",
+          "settings": {
+            "collectionImg": "shopify://shop_images/Bracelets.png",
+            "collectionUrl": "shopify://collections/bracelet",
+            "subCollection": "SHOP",
+            "headingCollection": "Bracelets"
+          }
+        },
         "card3": {
           "type": "Card",
           "settings": {
@@ -74,10 +74,10 @@
         }
       },
       "block_order": [
-        "card_AKCq4L",
-        "card_UaUaaR",
         "card1",
         "card2",
+        "card_UaUaaR",
+        "card_AKCq4L",
         "card3"
       ],
       "settings": {
