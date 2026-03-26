@@ -6168,6 +6168,11 @@ section.temp-404 h1 {
     text-transform: capitalize;
     font-size: 24px;
 }
+.jm-reviewer-info__name{
+    font-weight: 500;
+    font-family: 'Aboreto';
+    font-size: 20px;
+}
 /* Responsive CSS Starts */
 
 
