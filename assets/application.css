@@ -6184,7 +6184,14 @@ section.temp-404 h1 {
     font-family: 'Aboreto';
     font-size: 18px !important;
 }
-
+.jdgm-verified-badge-header{
+    display: none !important;
+}
+.jdgm-reviewer-name{
+    font-weight: 300;
+    font-family: 'Aboreto';
+    font-size: 14px !important;
+}
 /* Responsive CSS Starts */
 
 
