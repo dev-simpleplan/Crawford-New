@@ -6157,8 +6157,17 @@ section.temp-404 h1 {
 
 
 /* 404 Page Ends */
-
-
+#judgeme_product_reviews{
+    margin-top: 60px;
+}
+.jm-review-widget-minimal-header__title{
+    font-family: var(--aboreto);
+    font-style: normal;
+    font-weight: 300;
+    line-height: 104%;
+    text-transform: capitalize;
+    font-size: 24px;
+}
 /* Responsive CSS Starts */
 
 
