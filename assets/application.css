@@ -7869,4 +7869,7 @@ header.active .header-link.dropdown-normal svg {
     .sticky-floater-div .enquiry button {
         width: 100%;
     }
+    .jm-reviewer-info__name{
+font-size: 14px !important;
+    }
 }
