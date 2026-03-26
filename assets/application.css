@@ -6171,7 +6171,7 @@ section.temp-404 h1 {
 .jm-reviewer-info__name{
     font-weight: 500;
     font-family: 'Aboreto';
-    font-size: 20px;
+    font-size: 20px !important;
 }
 /* Responsive CSS Starts */
 
