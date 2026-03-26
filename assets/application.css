@@ -6192,6 +6192,9 @@ section.temp-404 h1 {
     font-family: 'Aboreto';
     font-size: 14px !important;
 }
+.jdgm-arrow{
+    display: none !important;
+}
 /* Responsive CSS Starts */
 
 
