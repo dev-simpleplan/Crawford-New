@@ -244,7 +244,9 @@
             "show_sample_reviews": true,
             "reviews_selection": "all",
             "products": [
-              "emerald-bezel-pendant-necklace"
+              "emerald-bezel-pendant-necklace",
+              "lab-diamond-initial-necklace",
+              "asscher-signet"
             ],
             "star_rating": "all",
             "show_review_media": true,
