@@ -71,6 +71,15 @@
             "subCollection": "",
             "headingCollection": "Mens"
           }
+        },
+        "card_LjbUty": {
+          "type": "Card",
+          "settings": {
+            "collectionImg": "shopify://shop_images/Lab_Diamond_Round_Hoop_Earrings_Angle_Yellow_Gold.jpg",
+            "collectionUrl": "shopify://collections/earrings",
+            "subCollection": "",
+            "headingCollection": "Earrings"
+          }
         }
       },
       "block_order": [
@@ -78,7 +87,8 @@
         "card2",
         "card_UaUaaR",
         "card_AKCq4L",
-        "card3"
+        "card3",
+        "card_LjbUty"
       ],
       "settings": {
         "heading": "Our Products"
